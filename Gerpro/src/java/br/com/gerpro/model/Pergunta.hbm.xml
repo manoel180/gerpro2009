@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/02/2009 08:31:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.gerpro.model.Pergunta" table="pergunta" catalog="gerprodb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="item" class="br.com.gerpro.model.Item" fetch="join">
+            <column name="id_item" />
+        </many-to-one>
+        <property name="descricao" type="string">
+            <column name="descricao" length="50" />
+        </property>
+        <set name="correcaos" inverse="true">
+            <key>
+                <column name="id_pergunta" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.Correcao" />
+        </set>
+    </class>
+</hibernate-mapping>
