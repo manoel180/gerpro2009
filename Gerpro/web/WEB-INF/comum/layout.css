@@ -1,0 +1,168 @@
+/* 
+    Document   : layout
+    Created on : 08/01/2009, 11:03:21
+    Author     : msouza
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+#container{
+    margin:0;
+    width:auto;
+    height:auto;
+}
+
+#internal_container{
+
+    background-image:url(../images/blank.gif);
+    margin:auto;
+    width:800px;
+
+}
+
+#header{
+  
+    width:780px;
+    height:200px;  
+    margin:auto;
+
+}
+
+#navbar{
+  
+    background-image: url(../images/blank.gif);
+    width:780px;
+    height:20px;
+    margin:auto;
+}
+
+#menu{
+    margin:auto;
+    border-right-style:solid;
+    border-right-width:thin;    
+ 
+    padding-top:20px;
+    padding-left:15px;
+    width:180px;
+    height:360px;
+    background-image: url(../images/blank.gif);
+    float:left;
+
+}
+
+#content{
+    padding-top:30px;
+    padding-left:10px;
+
+    background-image: url(../images/blank.gif);
+    float:left;
+    height:380px;
+    width:580px;
+}
+
+
+#imageIndex{
+    background-image: url(../images/blank.gif);
+    padding-left:15px;
+    float:left;
+    height:300px;
+    width:380px;
+}
+
+
+#contentIndex{    
+    background-image: url(../images/blank.gif);
+    float:right;
+    width:250px;
+    height:300px;
+}
+
+
+#footer{
+ 
+    clear:both;
+   
+     background-image: url(../images/blank.gif);
+
+     width:780px;
+     height:50px;
+     margin:auto;
+
+}
+
+
+/*body {
+	margin:0px;
+	padding:0px;
+	background-color:#CCCCCC;
+}
+*/
+
+
+td,thead,tbody,tr {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#433A4F;
+    text-decoration:none;
+}
+
+li {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#433A4F;
+    text-decoration:none;
+}
+
+#banner{
+    background: url(images/header-img.jpg);
+    height:200px;
+    width:780px;
+}
+
+
+p {padding:0px; margin:0px;}
+.bg1 {background-image:url(images/bg1.gif); background-repeat:repeat-x;}
+.bg2 {background-image:url(images/bg2.gif); background-repeat:repeat-x; width:307px;}
+.line2{height:20px; background-color:#999999;}
+.divider { padding-left:23px; padding-right:21px;}
+.dividerbg {background-image:url(images/divider-bg.gif); background-repeat:no-repeat; width:2px;}
+.aboutuslink {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#433A4F; text-decoration:none;}
+.aboutuslink:hover {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#433A4F; text-decoration:underline;}
+.bg3 {background-image:url(images/bg3.gif); background-repeat:repeat-x;}
+.txt1 { font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:12px; color:#343434;}
+.categorylink {font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:12px; color:#343434; text-decoration:none;}
+.categorylink:hover {font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:12px; color:#B02C13; text-decoration:none;}
+.textbox {width:95px; height:15px; font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#3F3F3E;}
+.txt2 { font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#260403;}
+.txt3 { font-family:Tahoma, Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#FFFFFF;}
+.style1 {
+	color: #FFFFFF;
+	font-style: italic;
+}
+.style2 {
+	color: #FFFFFF
+}
+.Titulos {
+	font-size: 16px;
+	font-weight: bold;
+	color: #326698;
+}
+.sub_titulo {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	color: #006699;
+}
+.observacoes {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #006699;
+    }
+
