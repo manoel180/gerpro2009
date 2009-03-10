@@ -13,6 +13,7 @@
   <table-filter match-name="proposta_item"/>
   <table-filter match-name="resposta"/>
   <table-filter match-name="status"/>
+  <table-filter match-name="tipo_funcao"/>
   <table-filter match-name="tipo_usuario"/>
   <table-filter match-name="usuario"/>
 </hibernate-reverse-engineering>
