@@ -18,20 +18,20 @@
 
         <tr>
             <td>Matrícula: </td>
-            <td><input type="text" disabled value="${aluno.matricula}" /></td>
+            <td><input type="text" disabled value="${usuario.matricula}" /></td>
         </tr>
         <tr>
             <td>Aluno: </td>
-            <td><input type="text" value="${aluno.nome}" /></td>
+            <td><input type="text" value="${usuario.nome}" /></td>
         </tr>
-        <tr>
+        <!--tr>
             <td>E-mail: </td>
-            <td><input type="text" value="${aluno.email}" /></td>
-        </tr>
+            <td><input type="text" value="{aluno.email}" /></td>
+        </tr-->
 
         <tr>
             <td>Periodo: </td>
-            <td><input type="text" value="${aluno.periodo}" /></td>
+            <td><input type="text" value="${usuario.periodo}" /></td>
         </tr>
         <tr>
             <td>
