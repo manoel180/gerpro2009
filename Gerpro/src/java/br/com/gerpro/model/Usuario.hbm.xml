@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.gerpro.model.Usuario" table="usuario" catalog="gerprodb">
+        <id name="matricula" type="string">
+            <column name="matricula" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join">
+            <column name="id_equipe" />
+        </many-to-one>
+        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" fetch="join">
+            <column name="id_tipo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periodo" class="br.com.gerpro.model.Periodo" fetch="join">
+            <column name="id_periodo" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="80" not-null="true" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="10" not-null="true" />
+        </property>
+        <set name="correcaos" inverse="true">
+            <key>
+                <column name="matricula_professor" length="8" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.Correcao" />
+        </set>
+    </class>
+</hibernate-mapping>
