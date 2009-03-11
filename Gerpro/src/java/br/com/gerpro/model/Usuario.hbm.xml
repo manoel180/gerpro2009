@@ -30,4 +30,16 @@
             <one-to-many class="br.com.gerpro.model.Correcao" />
         </set>
     </class>
+    <query name="Usuario.findAll">
+             select u from Usuario u
+    </query>
+    <query name="Usuario.findByName">
+             select u from Usuario u where u.nome = ?
+    </query>
+    <query name="Usuario.findAllUsuariosByTipo">
+             select u from Usuario u where u.tipoUsuario.nome = ?
+    </query>
+    <query name="Usuario.findAlunosSemEquipe">
+             select u from Usuario u where u.tipoUsuario.id = 1 and u.equipe is null
+    </query>
 </hibernate-mapping>

@@ -24,4 +24,7 @@
             <one-to-many class="br.com.gerpro.model.Usuario" />
         </set>
     </class>
+     <query name="Equipe.findAll">
+      select e from Equipe e
+  </query>
 </hibernate-mapping>
