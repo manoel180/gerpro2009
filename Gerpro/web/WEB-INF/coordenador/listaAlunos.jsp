@@ -36,30 +36,37 @@
         </table>
     </tr-->
     <tr>
-        <table>
+        <table c>
             <thead>
                 <th>Matrícula</th>
+                <td>&nbsp;</td>
                 <th>Nome</th>
-                <!--th>Período</th>
-                <th>E-mail</th-->
+                <td>&nbsp;</td>
+                 <td>&nbsp;</td>
+                <th>Período</th>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <th>Editar</th>
             </thead>
             <tbody>
-                <c:forEach items="${alunos}" var="aluno">
+                <c:forEach items="${alunos}" var="aluno" >
                     <tr>
                         <td>
                             <fmt:formatNumber value="${aluno.matricula}" pattern="00000000"/>
                         </td>
+                        <td>&nbsp;</td>
                         <td>
                             ${aluno.nome}
                         </td>
-                        <!--td>
-                            {aluno.periodo}
-                        </td-->
-                        <!--td>
-                            {aluno.email}
-                        </td-->
+                        <td>&nbsp;</td>
+                         <td>&nbsp;</td>
                         <td>
-                            <a href="cadastroAluno.htm?id=${aluno.matricula}">Editar</a>
+                            ${aluno.periodo.semestre}
+                        </td>
+                         <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        <td>
+                            <a href="cadastroAluno.htm?matricula=${aluno.matricula}">Editar</a>
                         </td>
                     </tr>
                 </c:forEach>

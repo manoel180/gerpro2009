@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class ApplicationSecurityManager
 {
-    public static final String USER = "user";
+    public static final String USER = "usuario";
 
     public Object getUsuario(HttpServletRequest request)
     {
