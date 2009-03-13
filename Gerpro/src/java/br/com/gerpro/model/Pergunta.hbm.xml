@@ -1,24 +1,23 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="br.com.gerpro.model.Pergunta" table="pergunta" catalog="gerprodb">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="item" class="br.com.gerpro.model.Item" fetch="join">
-            <column name="id_item" />
-        </many-to-one>
-        <property name="descricao" type="string">
-            <column name="descricao" />
-        </property>
-        <set name="correcaos" inverse="true">
-            <key>
-                <column name="id_pergunta" not-null="true" />
-            </key>
-            <one-to-many class="br.com.gerpro.model.Correcao" />
-        </set>
-    </class>
+  <class catalog="gerprodb" name="br.com.gerpro.model.Pergunta" table="pergunta">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="br.com.gerpro.model.Item" fetch="join" name="item">
+      <column name="id_item"/>
+    </many-to-one>
+    <property name="descricao" type="string">
+      <column name="descricao"/>
+    </property>
+    <set inverse="true" name="correcaos">
+      <key>
+        <column name="id_pergunta" not-null="true"/>
+      </key>
+      <one-to-many class="br.com.gerpro.model.Correcao"/>
+    </set>
+  </class>
 </hibernate-mapping>

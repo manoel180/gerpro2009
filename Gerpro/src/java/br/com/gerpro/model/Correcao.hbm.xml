@@ -1,41 +1,40 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="br.com.gerpro.model.Correcao" table="correcao" catalog="gerprodb">
-        <composite-id name="id" class="br.com.gerpro.model.CorrecaoId">
-            <key-property name="idProposta" type="int">
-                <column name="id_proposta" />
-            </key-property>
-            <key-property name="idItem" type="int">
-                <column name="id_item" />
-            </key-property>
-            <key-property name="matriculaProfessor" type="string">
-                <column name="matricula_professor" length="8" />
-            </key-property>
-            <key-property name="idPergunta" type="int">
-                <column name="id_pergunta" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" update="false" insert="false" fetch="join">
-            <column name="id_proposta" not-null="true" />
-            <column name="id_item" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pergunta" class="br.com.gerpro.model.Pergunta" update="false" insert="false" fetch="join">
-            <column name="id_pergunta" not-null="true" />
-        </many-to-one>
-        <many-to-one name="resposta" class="br.com.gerpro.model.Resposta" fetch="select">
-            <column name="resposta" />
-        </many-to-one>
-        <many-to-one name="usuario" class="br.com.gerpro.model.Usuario" update="false" insert="false" fetch="join">
-            <column name="matricula_professor" length="8" not-null="true" />
-        </many-to-one>
-        <property name="observacao" type="string">
-            <column name="observacao" length="65535" />
-        </property>
-        <property name="dataCorrecao" type="date">
-            <column name="data_correcao" length="10" />
-        </property>
-    </class>
+  <class catalog="gerprodb" name="br.com.gerpro.model.Correcao" table="correcao">
+    <composite-id class="br.com.gerpro.model.CorrecaoId" name="id">
+      <key-property name="idProposta" type="int">
+        <column name="id_proposta"/>
+      </key-property>
+      <key-property name="idItem" type="int">
+        <column name="id_item"/>
+      </key-property>
+      <key-property name="matriculaProfessor" type="string">
+        <column length="8" name="matricula_professor"/>
+      </key-property>
+      <key-property name="idPergunta" type="int">
+        <column name="id_pergunta"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.gerpro.model.PropostaItem" fetch="join" insert="false" name="propostaItem" update="false">
+      <column name="id_proposta" not-null="true"/>
+      <column name="id_item" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.gerpro.model.Pergunta" fetch="join" insert="false" name="pergunta" update="false">
+      <column name="id_pergunta" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.gerpro.model.Resposta" fetch="select" name="resposta">
+      <column name="resposta"/>
+    </many-to-one>
+    <many-to-one class="br.com.gerpro.model.Usuario" fetch="join" insert="false" name="usuario" update="false">
+      <column length="8" name="matricula_professor" not-null="true"/>
+    </many-to-one>
+    <property name="observacao" type="string">
+      <column length="65535" name="observacao"/>
+    </property>
+    <property name="dataCorrecao" type="date">
+      <column length="10" name="data_correcao"/>
+    </property>
+  </class>
 </hibernate-mapping>

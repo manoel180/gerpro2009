@@ -1,49 +1,48 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="br.com.gerpro.model.PropostaItem" table="proposta_item" catalog="gerprodb">
-        <composite-id name="id" class="br.com.gerpro.model.PropostaItemId">
-            <key-property name="idProposta" type="int">
-                <column name="id_proposta" />
-            </key-property>
-            <key-property name="idItem" type="int">
-                <column name="id_item" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="item" class="br.com.gerpro.model.Item" update="false" insert="false" fetch="join">
-            <column name="id_item" not-null="true" />
-        </many-to-one>
-        <many-to-one name="proposta" class="br.com.gerpro.model.Proposta" update="false" insert="false" fetch="join">
-            <column name="id_proposta" not-null="true" />
-        </many-to-one>
-        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join">
-            <column name="id_status" />
-        </many-to-one>
-        <property name="conteudoItem" type="string">
-            <column name="conteudo_item" length="65535" />
-        </property>
-        <set name="cronogramas" inverse="true">
-            <key>
-                <column name="id_proposta" not-null="true" />
-                <column name="id_item" not-null="true" />
-            </key>
-            <one-to-many class="br.com.gerpro.model.Cronograma" />
-        </set>
-        <set name="listaFuncaos" inverse="true">
-            <key>
-                <column name="id_proposta" not-null="true" />
-                <column name="id_item" not-null="true" />
-            </key>
-            <one-to-many class="br.com.gerpro.model.ListaFuncao" />
-        </set>
-        <set name="correcaos" inverse="true">
-            <key>
-                <column name="id_proposta" not-null="true" />
-                <column name="id_item" not-null="true" />
-            </key>
-            <one-to-many class="br.com.gerpro.model.Correcao" />
-        </set>
-    </class>
+  <class catalog="gerprodb" name="br.com.gerpro.model.PropostaItem" table="proposta_item">
+    <composite-id class="br.com.gerpro.model.PropostaItemId" name="id">
+      <key-property name="idProposta" type="int">
+        <column name="id_proposta"/>
+      </key-property>
+      <key-property name="idItem" type="int">
+        <column name="id_item"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.gerpro.model.Item" fetch="join" insert="false" name="item" update="false">
+      <column name="id_item" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.gerpro.model.Proposta" fetch="join" insert="false" name="proposta" update="false">
+      <column name="id_proposta" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.gerpro.model.Status" fetch="join" name="status">
+      <column name="id_status"/>
+    </many-to-one>
+    <property name="conteudoItem" type="string">
+      <column length="65535" name="conteudo_item"/>
+    </property>
+    <set inverse="true" name="cronogramas">
+      <key>
+        <column name="id_proposta" not-null="true"/>
+        <column name="id_item" not-null="true"/>
+      </key>
+      <one-to-many class="br.com.gerpro.model.Cronograma"/>
+    </set>
+    <set inverse="true" name="listaFuncaos">
+      <key>
+        <column name="id_proposta" not-null="true"/>
+        <column name="id_item" not-null="true"/>
+      </key>
+      <one-to-many class="br.com.gerpro.model.ListaFuncao"/>
+    </set>
+    <set inverse="true" name="correcaos">
+      <key>
+        <column name="id_proposta" not-null="true"/>
+        <column name="id_item" not-null="true"/>
+      </key>
+      <one-to-many class="br.com.gerpro.model.Correcao"/>
+    </set>
+  </class>
 </hibernate-mapping>
