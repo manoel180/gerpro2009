@@ -16,6 +16,7 @@
         <property name="mappings">
             <props>                
                 <prop key="login.htm">loginController</prop>
+                <prop key="logoff.htm">logoffController</prop>
                 
                 <!-- Mapeamento Coordenador -->
                 <prop key="listar.htm">listaObjetosController</prop>                
@@ -60,12 +61,24 @@
     <bean name="loginController"
         class="br.com.gerpro.controller.LoginController">
         <property name="usuarioService" ref="usuarioService"/>
+        <property name="applicationSecurityManager" ref="applicationSecurityManager"/>
         <property name="methodNameResolver">
             <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
                 <property name="paramName" value="method"/>
                 <property name="defaultMethodName" value="display"/>
             </bean>
         </property>       
+    </bean>
+
+    <bean name="logoffController"
+        class="br.com.gerpro.controller.LogoffController">
+        <property name="applicationSecurityManager" ref="applicationSecurityManager"/>
+        <property name="methodNameResolver">
+            <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+                <property name="paramName" value="method"/>
+                <property name="defaultMethodName" value="display"/>
+            </bean>
+        </property>
     </bean>
 
     <bean name="cadastroAlunoController" class="br.com.gerpro.controller.CadastroAlunoController">
@@ -220,6 +233,8 @@
     <bean name="submeterCorrecaoController" class="br.com.gerpro.controller.SubmeterCorrecaoController">
         <property name="professorDao" ref="professorDao"/>
     </bean-->
+    <bean name="applicationSecurityManager" class="br.com.gerpro.util.ApplicationSecurityManager">
+    </bean>
 
     
     <!-- Configuração do Tiles 2 -->
