@@ -7,7 +7,14 @@ package br.com.gerpro.controller;
 
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
+<<<<<<< .mine
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+=======
+import java.util.Map;
+>>>>>>> .r62
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.validation.BindException;
@@ -32,6 +39,23 @@ public class CadastroAlunoController extends SimpleFormController {
         //Usuario usuarioDB = usuarioService.getUsuario(usuarioForm.getMatricula());
         return usuarioForm;
     }
+
+    @Override
+    protected Map referenceData(HttpServletRequest request) throws Exception {
+        List listaAlunos = usuarioService.listByTipo("aluno");
+        List listaAlunosSemEquipe = usuarioService.listAlunosSemEquipe();
+        List listaAlunosSelecionados = new LinkedList();
+
+        Map cadastroAlunosMap = new HashMap();
+
+        cadastroAlunosMap.put("alunos", listaAlunos);
+        cadastroAlunosMap.put("alunosSemEquipe", listaAlunosSemEquipe);
+        cadastroAlunosMap.pur()
+
+        return cadastroAlunosMap;
+    }
+
+
     
     @Override
     protected ModelAndView onSubmit(HttpServletRequest request,
