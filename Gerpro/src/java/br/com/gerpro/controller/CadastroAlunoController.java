@@ -50,7 +50,7 @@ public class CadastroAlunoController extends SimpleFormController {
 
         cadastroAlunosMap.put("alunos", listaAlunos);
         cadastroAlunosMap.put("alunosSemEquipe", listaAlunosSemEquipe);
-        cadastroAlunosMap.pur()
+        cadastroAlunosMap.put("alunosSelecionados",listaAlunosSelecionados);
 
         return cadastroAlunosMap;
     }
