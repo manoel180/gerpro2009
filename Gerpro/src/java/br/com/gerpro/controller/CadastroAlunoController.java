@@ -7,14 +7,10 @@ package br.com.gerpro.controller;
 
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
-<<<<<<< .mine
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-=======
-import java.util.Map;
->>>>>>> .r62
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.validation.BindException;
