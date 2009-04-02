@@ -45,7 +45,7 @@
     </tr>
     <tr>
         <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="logoff.htm" class="categorylink">Logoff</a>
+            <a href="login.htm?method=remove" class="categorylink">Logoff</a>
         </td>
     </tr>
 </table>
