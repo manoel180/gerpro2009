@@ -122,7 +122,7 @@
         </property>
     </bean>
 
-    <bean id="coorrecaoDao" parent="abstractDao">
+    <bean id="correcaoDao" parent="abstractDao">
         <property name="proxyInterfaces">
             <value>br.com.gerpro.dao.CorrecaoDao</value>
         </property>

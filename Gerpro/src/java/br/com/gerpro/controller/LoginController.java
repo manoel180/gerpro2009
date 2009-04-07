@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
- * Classe para validação de login do usuario, inserção deste na sessão
+ * Classe para validação de login do usuario, inserção deste na sessão.
  *
  * @author Marcelo
  *
