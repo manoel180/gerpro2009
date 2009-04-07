@@ -15,9 +15,9 @@ public interface UsuarioService {
 
     public String validaLoginUsuario(Usuario usuario);
 
-    public void createUsuario(Usuario usuario, int tipo);
+    public String createUsuario(Usuario usuario, int tipo);
 
-    public void updateUsuario(Usuario usuario);
+    public String updateUsuario(Usuario usuario);
 
     public List listAll();
 

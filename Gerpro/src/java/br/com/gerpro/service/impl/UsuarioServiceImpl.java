@@ -2,6 +2,7 @@ package br.com.gerpro.service.impl;
 
 import br.com.gerpro.dao.TipoUsuarioDao;
 import br.com.gerpro.dao.UsuarioDao;
+import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
@@ -24,12 +25,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioDb.getTipoUsuario().getNome();
     }
 
-    public void updateUsuario(Usuario usuario) {
+    public String updateUsuario(Usuario usuario) {
         usuarioDao.update(usuario);
+        return "Usuário atualizado com sucesso";
     }
 
     public List listAll() {
-        
         return usuarioDao.findAll();
     }
     
@@ -45,11 +46,22 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioDao.findAlunosSemEquipe();
     }
 
-    public void createUsuario(Usuario usuario, int tipo) {
-        TipoUsuario tipoUsuario = new TipoUsuario();
-        tipoUsuario.setId(tipo);
-        usuario.setTipoUsuario(tipoUsuario);
-        usuarioDao.create(usuario);
+    public String createUsuario(Usuario usuarioTransinte, int tipo) {
+        TipoUsuario tipoUsuario = tipoUsuarioDao.read(tipo);
+        usuarioTransinte.setTipoUsuario(tipoUsuario);
+
+        if( usuarioDao.read( usuarioTransinte.getMatricula() ) != null){
+            return "Usuario já cadastrado";
+        }
+
+        //Usuario do tipo Aluno
+        if(tipoUsuario.getNome().equals("Aluno")){
+            Equipe equipe = usuarioTransinte.getEquipe();
+
+        }
+
+        usuarioDao.create(usuarioTransinte);
+        return "Usuário cadastrado com sucesso";
     }
 
     //Componente

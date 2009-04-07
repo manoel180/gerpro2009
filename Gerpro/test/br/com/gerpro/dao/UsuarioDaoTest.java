@@ -26,8 +26,85 @@ public class UsuarioDaoTest extends TestCase {
         super.setUp();
     }
 
+
+
     /**
-     * Test of findAll method, of class UsuarioDao.
+     * Teste do método create estendido da classe HibernateGenericDao.java.
+     */
+    public void testCreate(){
+    System.out.println("create");
+
+
+    FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+    UsuarioDao usuarioDao = (UsuarioDao) factory.getBean("usuarioDao");
+    TipoUsuarioDao tipoUsuarioDao = (TipoUsuarioDao) factory.getBean("tipoUsuarioDao");
+    Usuario usuario = new Usuario("123159", tipoUsuarioDao.read(1), "teste", "senha");
+
+    String resultado = usuarioDao.create(usuario);
+
+    System.out.println(resultado + "**************");
+
+    assertNotNull(resultado);
+
+
+    }
+
+    /**
+     * Teste do método read estendido da classe HibernateGenericDao.java.
+     */
+
+    public void testRead(){
+        System.out.println("read");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+        UsuarioDao usuarioDao = (UsuarioDao) factory.getBean("usuarioDao");
+        Usuario usuario = usuarioDao.read("123159");
+        System.out.println(usuario.getNome() + "    **************");
+        assertNotNull(usuario);
+        
+
+    }
+
+    /**
+     * Teste do método update estendido da classe HibernateGenericDao.java.
+     */
+
+    public void testUpdate(){
+        System.out.println("update");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+        UsuarioDao usuarioDao = (UsuarioDao) factory.getBean("usuarioDao");
+        Usuario usuario = usuarioDao.read("123159");
+        usuario.setNome("Teste Atualizado");
+
+        usuarioDao.update(usuario);
+        
+        System.out.println(usuario.getNome() + "    **************");
+
+        assertNotNull(usuario);
+
+    }
+
+    /**
+     * Teste do método delete estendido da classe HibernateGenericDao.java.
+     */
+    public void testDelete(){
+        System.out.println("delete");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+        UsuarioDao usuarioDao = (UsuarioDao) factory.getBean("usuarioDao");
+        Usuario usuario = usuarioDao.read("123159");
+        usuario.setNome("Teste Atualizado");
+
+        usuarioDao.delete(usuario);
+
+        System.out.println(usuario.getNome() + "    **************");
+
+        Usuario usuario2 = usuarioDao.read("123159");
+        assertNull(usuario2);
+
+    }
+
+
+    /**
+     * Teste do método findAll, da classe UsuarioDao.
      */
     public void testFindAll() {
         System.out.println("findAll");
@@ -44,7 +121,7 @@ public class UsuarioDaoTest extends TestCase {
     }
 
     /**
-     * Test of findByName method, of class UsuarioDao.
+     * Teste do método findByName, da classe UsuarioDao.     *
      */
     public void testFindByName() {
         System.out.println("findByName");
@@ -57,7 +134,7 @@ public class UsuarioDaoTest extends TestCase {
     }
 
     /**
-     * Test of findAllUsuariosByTipo method, of class UsuarioDao.
+     * Teste do método findAllUsuariosByTipo, da classe UsuarioDao.     *
      */
     public void testFindAllUsuariosByTipo() {
         System.out.println("findAllUsuariosByTipo");
@@ -71,7 +148,7 @@ public class UsuarioDaoTest extends TestCase {
     }
 
     /**
-     * Test of findAlunosSemEquipe method, of class UsuarioDao.
+     * Teste do método findAlunosSemEquipe, da classe UsuarioDao.     *
      */
     public void testFindAlunosSemEquipe() {
         System.out.println("findAlunosSemEquipe");

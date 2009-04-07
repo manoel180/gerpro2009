@@ -10,7 +10,6 @@ import java.util.Set;
  */
 public class TipoUsuario  implements java.io.Serializable {
 
-
      private Integer id;
      private String nome;
      private Set usuarios = new HashSet(0);
@@ -44,10 +43,6 @@ public class TipoUsuario  implements java.io.Serializable {
     public void setUsuarios(Set usuarios) {
         this.usuarios = usuarios;
     }
-
-
-
-
 }
 
 
