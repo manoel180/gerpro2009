@@ -43,4 +43,39 @@ public class EquipeDaoTest extends TestCase {
         
     }
 
+    public void testRead() {
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+        EquipeDao equipeDao = (EquipeDao)factory.getBean("equipeDao");
+
+        int id = 1;
+
+        Equipe equipe = equipeDao.read(id);
+
+        System.out.println(equipe.getNome() + " *************************************");
+
+    }
+
+    /*public void testPersist() {
+    FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+    EquipeDao equipeDao = (EquipeDao)factory.getBean("equipeDao");
+
+    Equipe equipe = new Equipe("Teste101");
+
+    int result = equipeDao.create(equipe);
+    
+    System.out.println("Resultado" + result + "****");
+
+
+
+    }*/
+    
+    public void testDelete() {
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-data.xml" );
+        EquipeDao equipeDao = (EquipeDao)factory.getBean("equipeDao");
+
+        Equipe equipe = equipeDao.read(5);       
+        
+        equipeDao.delete(equipe);
+
+    }
 }
