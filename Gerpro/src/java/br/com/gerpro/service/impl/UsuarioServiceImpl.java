@@ -3,6 +3,7 @@ package br.com.gerpro.service.impl;
 import br.com.gerpro.dao.TipoUsuarioDao;
 import br.com.gerpro.dao.UsuarioDao;
 import br.com.gerpro.model.Equipe;
+import br.com.gerpro.model.Periodo;
 import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
@@ -17,7 +18,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     public String validaLoginUsuario(Usuario usuario) {
-        Usuario usuarioDb = usuarioDao.read(usuario.getMatricula());      
+        Usuario usuarioDb = usuarioDao.read(usuario.getMatricula());
 
         if (!usuarioDb.getSenha().equals(usuario.getSenha())) {
             return "erro";
@@ -27,14 +28,41 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     public String updateUsuario(Usuario usuario) {
         usuarioDao.update(usuario);
-        return "Usuário atualizado com sucesso";
+
+        return usuario.getTipoUsuario().getNome() + " atualizado com sucesso";
     }
 
+    public String createUsuario(Usuario usuarioTransiente, int tipo) {
+        TipoUsuario tipoUsuario = tipoUsuarioDao.read(tipo);
+        usuarioTransiente.setTipoUsuario(tipoUsuario);
+
+        if (usuarioDao.read(usuarioTransiente.getMatricula()) != null) {
+            return usuarioTransiente.getTipoUsuario().getNome() + " já cadastrado";
+        }
+
+        //Usuario do tipo Aluno
+        if (tipoUsuario.getNome().equals("Aluno")) {
+            Equipe equipe = usuarioTransiente.getEquipe();
+            if (equipe == null) {
+                usuarioTransiente.setEquipe(new Equipe());
+            }
+
+            Periodo periodo = usuarioTransiente.getPeriodo();
+            if (periodo == null) {
+                usuarioTransiente.setPeriodo(new Periodo());
+            }
+        }
+
+        usuarioDao.create(usuarioTransiente);
+        return usuarioTransiente.getTipoUsuario().getNome() + " cadastrado com sucesso";
+    }
+
+    //Métodos para listagem
     public List listAll() {
         return usuarioDao.findAll();
     }
-    
-    public List listByTipo(String tipo) {        
+
+    public List listByTipo(String tipo) {
         return usuarioDao.findAllUsuariosByTipo(tipo);
     }
 
@@ -44,24 +72,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     public List listAlunosSemEquipe() {
         return usuarioDao.findAlunosSemEquipe();
-    }
-
-    public String createUsuario(Usuario usuarioTransinte, int tipo) {
-        TipoUsuario tipoUsuario = tipoUsuarioDao.read(tipo);
-        usuarioTransinte.setTipoUsuario(tipoUsuario);
-
-        if( usuarioDao.read( usuarioTransinte.getMatricula() ) != null){
-            return "Usuario já cadastrado";
-        }
-
-        //Usuario do tipo Aluno
-        if(tipoUsuario.getNome().equals("Aluno")){
-            Equipe equipe = usuarioTransinte.getEquipe();
-
-        }
-
-        usuarioDao.create(usuarioTransinte);
-        return "Usuário cadastrado com sucesso";
     }
 
     //Componente
