@@ -189,20 +189,7 @@
         </property>
     </bean>
 
-    <bean id="periodoDao" parent="abstractDao">
-        <property name="proxyInterfaces">
-            <value>br.com.gerpro.dao.PeriodoDao</value>
-        </property>
-        <property name="target">
-            <bean parent="abstractDaoTarget">
-                <constructor-arg>
-                    <value>br.com.gerpro.model.Periodo</value>
-                </constructor-arg>
-            </bean>
-        </property>
-    </bean>
-
-    <bean id="respostaDao" parent="abstractDao">
+     <bean id="respostaDao" parent="abstractDao">
         <property name="proxyInterfaces">
             <value>br.com.gerpro.dao.RespostaDao</value>
         </property>
