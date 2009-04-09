@@ -36,16 +36,13 @@
         </table>
     </tr-->
     <tr>
-        <table c>
+        <table>
             <thead>
                 <th>Matrícula</th>
                 <td>&nbsp;</td>
                 <th>Nome</th>
                 <td>&nbsp;</td>
-                 <td>&nbsp;</td>
-                <th>Período</th>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                 <td>&nbsp;</td>             
                 <th>Editar</th>
             </thead>
             <tbody>
@@ -59,12 +56,7 @@
                             ${aluno.nome}
                         </td>
                         <td>&nbsp;</td>
-                         <td>&nbsp;</td>
-                        <td>
-                            ${aluno.periodo.semestre}
-                        </td>
-                         <td>&nbsp;</td>
-                          <td>&nbsp;</td>
+                         <td>&nbsp;</td>                       
                         <td>
                             <a href="cadastroAluno.htm?matricula=${aluno.matricula}">Editar</a>
                         </td>
