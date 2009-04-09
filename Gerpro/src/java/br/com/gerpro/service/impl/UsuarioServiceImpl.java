@@ -17,6 +17,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioServiceImpl() {
     }
 
+    /*
+     * Método
+     *
+     */
+
     public String validaLoginUsuario(Usuario usuario) {
         Usuario usuarioDb = usuarioDao.read(usuario.getMatricula());
 
@@ -33,7 +38,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     public String createUsuario(Usuario usuarioTransiente, int tipo) {
+
+        //Cria objeto TipoUsuario proveniente do banco de dados.
         TipoUsuario tipoUsuario = tipoUsuarioDao.read(tipo);
+
+
         usuarioTransiente.setTipoUsuario(tipoUsuario);
 
         if (usuarioDao.read(usuarioTransiente.getMatricula()) != null) {
@@ -41,17 +50,17 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         //Usuario do tipo Aluno
-        if (tipoUsuario.getNome().equals("Aluno")) {
-            Equipe equipe = usuarioTransiente.getEquipe();
-            if (equipe == null) {
-                usuarioTransiente.setEquipe(new Equipe());
-            }
-
-            Periodo periodo = usuarioTransiente.getPeriodo();
-            if (periodo == null) {
-                usuarioTransiente.setPeriodo(new Periodo());
-            }
+        /*if (tipoUsuario.getNome().equals("Aluno")) {
+        Equipe equipe = usuarioTransiente.getEquipe();
+        if (equipe == null) {
+        usuarioTransiente.setEquipe(new Equipe());
         }
+
+        Periodo periodo = usuarioTransiente.getPeriodo();
+        if (periodo == null) {
+        usuarioTransiente.setPeriodo(new Periodo());
+        }
+        }*/
 
         usuarioDao.create(usuarioTransiente);
         return usuarioTransiente.getTipoUsuario().getNome() + " cadastrado com sucesso";

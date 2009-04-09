@@ -32,4 +32,10 @@
       <one-to-many class="br.com.gerpro.model.PropostaItem"/>
     </set>
   </class>
+  <query name="Proposta.findAll">
+      select p from Proposta p
+    </query>
+    <query name="Proposta.findByStatus">
+      select p from Proposta p where p.status.nome = ?
+    </query>
 </hibernate-mapping>
