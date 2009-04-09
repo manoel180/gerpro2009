@@ -1,23 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2009 07:16:06 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="gerprodb" name="br.com.gerpro.model.TipoFuncao" table="tipo_funcao">
-    <id name="id" type="byte">
-      <column name="id"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="nome" type="string">
-      <column length="80" name="nome" not-null="true"/>
-    </property>
-    <property name="abreviatura" type="char">
-      <column length="1" name="abreviatura" not-null="true"/>
-    </property>
-    <set inverse="true" name="listaFuncaos">
-      <key>
-        <column name="Id_tipo_funcao" not-null="true"/>
-      </key>
-      <one-to-many class="br.com.gerpro.model.ListaFuncao"/>
-    </set>
-  </class>
+    <class name="br.com.gerpro.model.TipoFuncao" table="tipo_funcao" catalog="gerprodb">
+        <id name="id" type="byte">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="80" not-null="true" />
+        </property>
+        <property name="abreviatura" type="char">
+            <column name="abreviatura" length="1" not-null="true" />
+        </property>
+        <set name="listaFuncaos" inverse="true">
+            <key>
+                <column name="Id_tipo_funcao" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.ListaFuncao" />
+        </set>
+    </class>
 </hibernate-mapping>

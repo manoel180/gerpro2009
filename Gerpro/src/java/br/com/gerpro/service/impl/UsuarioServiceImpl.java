@@ -2,8 +2,6 @@ package br.com.gerpro.service.impl;
 
 import br.com.gerpro.dao.TipoUsuarioDao;
 import br.com.gerpro.dao.UsuarioDao;
-import br.com.gerpro.model.Equipe;
-import br.com.gerpro.model.Periodo;
 import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
@@ -47,20 +45,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         if (usuarioDao.read(usuarioTransiente.getMatricula()) != null) {
             return usuarioTransiente.getTipoUsuario().getNome() + " já cadastrado";
-        }
-
-        //Usuario do tipo Aluno
-        /*if (tipoUsuario.getNome().equals("Aluno")) {
-        Equipe equipe = usuarioTransiente.getEquipe();
-        if (equipe == null) {
-        usuarioTransiente.setEquipe(new Equipe());
-        }
-
-        Periodo periodo = usuarioTransiente.getPeriodo();
-        if (periodo == null) {
-        usuarioTransiente.setPeriodo(new Periodo());
-        }
-        }*/
+        }       
 
         usuarioDao.create(usuarioTransiente);
         return usuarioTransiente.getTipoUsuario().getNome() + " cadastrado com sucesso";

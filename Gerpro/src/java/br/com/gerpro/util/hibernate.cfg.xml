@@ -21,5 +21,18 @@
     <mapping resource="br/com/gerpro/model/Correcao.hbm.xml"/>
     <mapping resource="br/com/gerpro/model/Proposta.hbm.xml"/>
     <mapping resource="br/com/gerpro/model/Status.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Cronograma.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/TipoFuncao.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/TipoUsuario.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Resposta.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/PropostaItem.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Usuario.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Pergunta.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/ListaFuncao.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Equipe.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Item.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Correcao.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Proposta.hbm.xml"/>
+    <mapping resource="br/com/gerpro/model/Status.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,5 +1,5 @@
 package br.com.gerpro.model;
-// Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA
+// Generated 09/04/2009 07:15:49 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;

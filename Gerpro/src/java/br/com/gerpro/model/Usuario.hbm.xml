@@ -1,44 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2009 07:16:06 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="gerprodb" name="br.com.gerpro.model.Usuario" table="usuario">
-    <id name="matricula" type="string">
-      <column length="8" name="matricula"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="br.com.gerpro.model.Equipe" fetch="join" name="equipe">
-      <column name="id_equipe"/>
-    </many-to-one>
-    <many-to-one class="br.com.gerpro.model.TipoUsuario" fetch="join" name="tipoUsuario">
-      <column name="id_tipo" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="br.com.gerpro.model.Periodo" fetch="join" name="periodo">
-      <column name="id_periodo"/>
-    </many-to-one>
-    <property name="nome" type="string">
-      <column length="80" name="nome" not-null="true"/>
-    </property>
-    <property name="senha" type="string">
-      <column length="10" name="senha" not-null="true"/>
-    </property>
-    <set inverse="true" name="correcaos">
-      <key>
-        <column length="8" name="matricula_professor" not-null="true"/>
-      </key>
-      <one-to-many class="br.com.gerpro.model.Correcao"/>
-    </set>
-  </class>
-  <query name="Usuario.findAll">
+    <class name="br.com.gerpro.model.Usuario" table="usuario" catalog="gerprodb">
+        <id name="matricula" type="string">
+            <column name="matricula" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join">
+            <column name="id_equipe" />
+        </many-to-one>
+        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" fetch="join">
+            <column name="id_tipo" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="80" not-null="true" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="10" not-null="true" />
+        </property>
+        <set name="correcaos" inverse="true">
+            <key>
+                <column name="matricula_professor" length="8" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.Correcao" />
+        </set>
+    </class>
+    <query name="Usuario.findAll">
              select u from Usuario u
     </query>
-  <query name="Usuario.findByName">
+    <query name="Usuario.findByName">
              select u from Usuario u where u.nome = ?
     </query>
-  <query name="Usuario.findAllUsuariosByTipo">
+    <query name="Usuario.findAllUsuariosByTipo">
              select u from Usuario u where u.tipoUsuario.nome = ?
     </query>
-  <query name="Usuario.findAlunosSemEquipe">
+    <query name="Usuario.findAlunosSemEquipe">
              select u from Usuario u where u.tipoUsuario.id = 1 and u.equipe is null
     </query>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package br.com.gerpro.model;
-// Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA
+// Generated 09/04/2009 07:15:49 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -14,7 +14,6 @@ public class Usuario  implements java.io.Serializable {
      private String matricula;
      private Equipe equipe;
      private TipoUsuario tipoUsuario;
-     private Periodo periodo;
      private String nome;
      private String senha;
      private Set correcaos = new HashSet(0);
@@ -29,11 +28,10 @@ public class Usuario  implements java.io.Serializable {
         this.nome = nome;
         this.senha = senha;
     }
-    public Usuario(String matricula, Equipe equipe, TipoUsuario tipoUsuario, Periodo periodo, String nome, String senha, Set correcaos) {
+    public Usuario(String matricula, Equipe equipe, TipoUsuario tipoUsuario, String nome, String senha, Set correcaos) {
        this.matricula = matricula;
        this.equipe = equipe;
        this.tipoUsuario = tipoUsuario;
-       this.periodo = periodo;
        this.nome = nome;
        this.senha = senha;
        this.correcaos = correcaos;
@@ -59,13 +57,6 @@ public class Usuario  implements java.io.Serializable {
     
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
-    }
-    public Periodo getPeriodo() {
-        return this.periodo;
-    }
-    
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
     }
     public String getNome() {
         return this.nome;

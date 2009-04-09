@@ -1,5 +1,5 @@
 package br.com.gerpro.model;
-// Generated 10/03/2009 16:46:54 by Hibernate Tools 3.2.1.GA
+// Generated 09/04/2009 07:15:49 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -14,31 +14,31 @@ public class Proposta  implements java.io.Serializable {
      private Integer id;
      private Equipe equipe;
      private Status status;
-     private Periodo periodo;
      private String nome;
      private String dataCriacao;
      private String dataSubmissao;
+     private String periodo;
      private Set propostaItems = new HashSet(0);
 
     public Proposta() {
     }
 
 	
-    public Proposta(Equipe equipe, Status status, Periodo periodo, String nome, String dataCriacao, String dataSubmissao) {
+    public Proposta(Equipe equipe, Status status, String nome, String dataCriacao, String dataSubmissao, String periodo) {
         this.equipe = equipe;
         this.status = status;
-        this.periodo = periodo;
         this.nome = nome;
         this.dataCriacao = dataCriacao;
         this.dataSubmissao = dataSubmissao;
+        this.periodo = periodo;
     }
-    public Proposta(Equipe equipe, Status status, Periodo periodo, String nome, String dataCriacao, String dataSubmissao, Set propostaItems) {
+    public Proposta(Equipe equipe, Status status, String nome, String dataCriacao, String dataSubmissao, String periodo, Set propostaItems) {
        this.equipe = equipe;
        this.status = status;
-       this.periodo = periodo;
        this.nome = nome;
        this.dataCriacao = dataCriacao;
        this.dataSubmissao = dataSubmissao;
+       this.periodo = periodo;
        this.propostaItems = propostaItems;
     }
    
@@ -63,13 +63,6 @@ public class Proposta  implements java.io.Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
-    public Periodo getPeriodo() {
-        return this.periodo;
-    }
-    
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
-    }
     public String getNome() {
         return this.nome;
     }
@@ -90,6 +83,13 @@ public class Proposta  implements java.io.Serializable {
     
     public void setDataSubmissao(String dataSubmissao) {
         this.dataSubmissao = dataSubmissao;
+    }
+    public String getPeriodo() {
+        return this.periodo;
+    }
+    
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
     public Set getPropostaItems() {
         return this.propostaItems;

@@ -61,11 +61,6 @@ public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDa
         return (Iterator<T>) namedQuery.iterate();
     }
 
-//    public ScrollableResults scrollFinder(Method method, final Object[] queryArgs)
-//    {
-//        final Query namedQuery = prepareQuery(method, queryArgs);
-//        return (ScrollableResults) namedQuery.scroll();
-//    }
     private Query prepareQuery(Method method, Object[] queryArgs) {
         final String queryName = getNamingStrategy().queryNameFromMethod(type, method);
         final Query namedQuery = getSession().getNamedQuery(queryName);
@@ -79,7 +74,7 @@ public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDa
     }
 
     private void setPositionalParams(Object[] queryArgs, Query namedQuery) {
-        // Set parameter. Use custom Hibernate Type if necessary
+
         if (queryArgs != null) {
             for (int i = 0; i < queryArgs.length; i++) {
                 Object arg = queryArgs[i];
@@ -94,7 +89,7 @@ public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDa
     }
 
     private void setNamedParams(String[] namedParameters, Object[] queryArgs, Query namedQuery) {
-        // Set parameter. Use custom Hibernate Type if necessary
+ 
         if (queryArgs != null) {
             for (int i = 0; i < queryArgs.length; i++) {
                 Object arg = queryArgs[i];
@@ -110,17 +105,7 @@ public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDa
                 }
             }
         }
-    }
-    /*public Session getSession()
-    {
-    boolean allowCreate = true;
-    return SessionFactoryUtils.getSession(sessionFactory, allowCreate);
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory)
-    {
-    this.sessionFactory = sessionFactory;
-    }*/
+    } 
 
     public FinderNamingStrategy getNamingStrategy() {
         return namingStrategy;
