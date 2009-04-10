@@ -193,8 +193,8 @@ CREATE TABLE `proposta` (
   `id` int(11) NOT NULL auto_increment,
   `nome` varchar(100) NOT NULL,
   `id_status` int(10) unsigned NOT NULL,
-  `data_criacao` varchar(10) NOT NULL,
-  `data_submissao` varchar(10) NOT NULL,
+  `data_criacao` date NOT NULL,
+  `data_submissao` date default NULL,
   `id_equipe` int(11) NOT NULL,
   `periodo` varchar(8) NOT NULL,
   PRIMARY KEY  (`id`),
@@ -210,8 +210,11 @@ CREATE TABLE `proposta` (
 
 /*!40000 ALTER TABLE `proposta` DISABLE KEYS */;
 INSERT INTO `proposta` (`id`,`nome`,`id_status`,`data_criacao`,`data_submissao`,`id_equipe`,`periodo`) VALUES 
- (1,'GerPro - Sistema de Geração e Apoio à Correção de PESw',1,'2008-01-01','0000-00-00',1,''),
- (2,'Teste 2 - Sistema de Teste do Gerpro',1,'2008-01-02','0000-00-00',2,'');
+ (1,'GerPro - Sistema de Geração e Apoio à Correção de PESw',1,'2009-04-09',NULL,1,''),
+ (2,'Teste 2 - Sistema de Teste do Gerpro',1,'2009-04-09',NULL,2,''),
+ (3,'Felix - voltou',1,'2009-04-09',NULL,2,' '),
+ (4,'Flamengo - campeao',1,'2009-04-09',NULL,2,' '),
+ (5,'TesteCreateProposta',1,'2009-04-09',NULL,6,' ');
 /*!40000 ALTER TABLE `proposta` ENABLE KEYS */;
 
 
