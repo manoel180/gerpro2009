@@ -25,8 +25,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  */
 public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDaoSupport
         implements GenericDao<T, PK>, FinderExecutor {
-
-    //private SessionFactory sessionFactory;
+ 
     private FinderNamingStrategy namingStrategy = new SimpleFinderNamingStrategy(); // Default. Can override in config
     private FinderArgumentTypeFactory argumentTypeFactory = new SimpleFinderArgumentTypeFactory(); // Default. Can override in config
     private Class<T> type;
@@ -36,19 +35,19 @@ public class HibernateGenericDao<T, PK extends Serializable> extends HibernateDa
     }
 
     public PK create(T o) {
-        return (PK) getHibernateTemplate().save(o);//getSession().save(o);
+        return (PK) getHibernateTemplate().save(o);
     }
 
     public T read(PK id) {
-        return (T) getHibernateTemplate().get(type, id);//getSession().get(type, id);
+        return (T) getHibernateTemplate().get(type, id);
     }
 
     public void update(T o) {
-        getHibernateTemplate().update(o);//getSession().update(o);
+        getHibernateTemplate().update(o);
     }
 
     public void delete(T o) {
-        getHibernateTemplate().delete(o);//getSession().delete(o);
+        getHibernateTemplate().delete(o);
     }    
 
     public List<T> executeFinder(Method method, final Object[] queryArgs) {

@@ -5,6 +5,7 @@
 package br.com.gerpro.dao;
 
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Status;
 import java.util.List;
 
 /**
@@ -13,6 +14,6 @@ import java.util.List;
  */
 public interface PropostaDao extends GenericDao<Proposta, Integer> {
     
-    List<Proposta> findByStatus();
+    List<Proposta> findByStatus(Status status);
     List<Proposta> findAll();
 }

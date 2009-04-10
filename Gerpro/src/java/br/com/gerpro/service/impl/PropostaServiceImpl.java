@@ -6,6 +6,7 @@ package br.com.gerpro.service.impl;
 
 import br.com.gerpro.dao.PropostaDao;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Status;
 import br.com.gerpro.service.EquipeService;
 import br.com.gerpro.service.PropostaService;
 import br.com.gerpro.service.UsuarioService;
@@ -208,8 +209,8 @@ public class PropostaServiceImpl implements PropostaService {//extends Hibernate
         return propostaDao.findAll();
     }
 
-    public List listPropostaByStatus() {
-        return propostaDao.findByStatus();
+    public List listPropostaByStatus(Status status) {
+        return propostaDao.findByStatus(status);
     }
 
     //Componentes

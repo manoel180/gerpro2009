@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 09/04/2009 07:16:06 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 09/04/2009 21:20:52 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="br.com.gerpro.model.Proposta" table="proposta" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">
@@ -17,11 +17,11 @@
         <property name="nome" type="string">
             <column name="nome" length="100" not-null="true" />
         </property>
-        <property name="dataCriacao" type="string">
+        <property name="dataCriacao" type="date">
             <column name="data_criacao" length="10" not-null="true" />
         </property>
-        <property name="dataSubmissao" type="string">
-            <column name="data_submissao" length="10" not-null="true" />
+        <property name="dataSubmissao" type="date">
+            <column name="data_submissao" length="10" />
         </property>
         <property name="periodo" type="string">
             <column name="periodo" length="8" not-null="true" />
@@ -37,6 +37,6 @@
       select p from Proposta p
     </query>
     <query name="Proposta.findByStatus">
-      select p from Proposta p where p.status.nome = ?
+      select p from Proposta p where p.status = ?
     </query>
 </hibernate-mapping>

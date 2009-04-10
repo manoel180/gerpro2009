@@ -1,7 +1,8 @@
 package br.com.gerpro.model;
-// Generated 09/04/2009 07:15:49 by Hibernate Tools 3.2.1.GA
+// Generated 09/04/2009 21:20:52 by Hibernate Tools 3.2.1.GA
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,8 +16,8 @@ public class Proposta  implements java.io.Serializable {
      private Equipe equipe;
      private Status status;
      private String nome;
-     private String dataCriacao;
-     private String dataSubmissao;
+     private Date dataCriacao;
+     private Date dataSubmissao;
      private String periodo;
      private Set propostaItems = new HashSet(0);
 
@@ -24,15 +25,14 @@ public class Proposta  implements java.io.Serializable {
     }
 
 	
-    public Proposta(Equipe equipe, Status status, String nome, String dataCriacao, String dataSubmissao, String periodo) {
+    public Proposta(Equipe equipe, Status status, String nome, Date dataCriacao, String periodo) {
         this.equipe = equipe;
         this.status = status;
         this.nome = nome;
         this.dataCriacao = dataCriacao;
-        this.dataSubmissao = dataSubmissao;
         this.periodo = periodo;
     }
-    public Proposta(Equipe equipe, Status status, String nome, String dataCriacao, String dataSubmissao, String periodo, Set propostaItems) {
+    public Proposta(Equipe equipe, Status status, String nome, Date dataCriacao, Date dataSubmissao, String periodo, Set propostaItems) {
        this.equipe = equipe;
        this.status = status;
        this.nome = nome;
@@ -70,18 +70,18 @@ public class Proposta  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getDataCriacao() {
+    public Date getDataCriacao() {
         return this.dataCriacao;
     }
     
-    public void setDataCriacao(String dataCriacao) {
+    public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
-    public String getDataSubmissao() {
+    public Date getDataSubmissao() {
         return this.dataSubmissao;
     }
     
-    public void setDataSubmissao(String dataSubmissao) {
+    public void setDataSubmissao(Date dataSubmissao) {
         this.dataSubmissao = dataSubmissao;
     }
     public String getPeriodo() {

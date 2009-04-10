@@ -7,6 +7,7 @@ package br.com.gerpro.service;
 
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Status;
 import java.util.List;
 
 /**
@@ -20,5 +21,5 @@ public interface PropostaService {
     public void updateProposta(Proposta proposta);
     public void changeStatusProposta(Proposta proposta);
     public List listAll();
-    public List listPropostaByStatus();
+    public List listPropostaByStatus(Status status);
 }
