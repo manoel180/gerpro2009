@@ -12,12 +12,16 @@
     <bean id="usuarioService" class="br.com.gerpro.service.impl.UsuarioServiceImpl">
         <property name="usuarioDao" ref="usuarioDao"/>
         <property name="tipoUsuarioDao" ref="tipoUsuarioDao"/>
+        <property name="transactionTemplate" ref="transactionTemplate"/>
     </bean>
 
     <bean id="propostaService" class="br.com.gerpro.service.impl.PropostaServiceImpl">
         <property name="usuarioService" ref="usuarioService"/>
         <property name="equipeService" ref="equipeService"/>
         <property name="propostaDao" ref="propostaDao"/>
+        <property name="statusDao" ref="statusDao"/>
+        <property name="propostaItemDao" ref="propostaItemDao"/>
+
     </bean>
 
     <bean id="equipeService" class="br.com.gerpro.service.impl.EquipeServiceImpl">
