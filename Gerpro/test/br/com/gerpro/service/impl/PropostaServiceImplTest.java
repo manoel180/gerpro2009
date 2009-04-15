@@ -2,28 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.gerpro.service.impl;
 
-import br.com.gerpro.dao.PropostaDao;
-import br.com.gerpro.dao.PropostaItemDao;
-import br.com.gerpro.dao.StatusDao;
-import br.com.gerpro.model.Proposta;
-import br.com.gerpro.model.Status;
-import br.com.gerpro.service.EquipeService;
-import br.com.gerpro.service.PropostaService;
-import br.com.gerpro.service.UsuarioService;
 import java.util.List;
 import junit.framework.TestCase;
+import br.com.gerpro.dao.EquipeDao;
+import br.com.gerpro.dao.StatusDao;
+import br.com.gerpro.model.Proposta;
+import br.com.gerpro.service.PropostaService;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- *
+ * Classe de teste unitário para a classe PropostaSeviceImpl
  * @author Marcelo
  */
 public class PropostaServiceImplTest extends TestCase {
-    
+
     public PropostaServiceImplTest(String testName) {
         super(testName);
     }
@@ -38,16 +32,21 @@ public class PropostaServiceImplTest extends TestCase {
      */
     public void testCreateProposta() {
         System.out.println("createProposta");
-        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext ( "web/WEB-INF/gerpro-service.xml" );
-        PropostaService propostaService = (PropostaService)factory.getBean("propostaService");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext("web/WEB-INF/ApplicationContext-test.xml");
+        PropostaService propostaService = (PropostaService) factory.getBean("propostaService");
+        EquipeDao equipeDao = (EquipeDao) factory.getBean("equipeDao");
+        StatusDao statusDao = (StatusDao) factory.getBean("statusDao");
 
         Proposta proposta = new Proposta();
-        proposta.setNome("TesteUnitarioDeProposta");
-
-        String expResult = "Ok";
+        proposta.setNome("TesteUnitarioDeProposta2");
+        proposta.setEquipe(equipeDao.read(6));
+        proposta.setPeriodo("2009/01");
+        proposta.setStatus(statusDao.read(1));
         String result = propostaService.createProposta(proposta);
-        assertEquals(expResult, result);
-        
+        //assertEquals(expResult, result);
+
+        System.out.println(" ***************** " + result + " ***************** ");
+
     }
 
     /**
@@ -55,11 +54,13 @@ public class PropostaServiceImplTest extends TestCase {
      */
     public void testUpdateProposta() {
         System.out.println("updateProposta");
-        Proposta proposta = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.updateProposta(proposta);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext("web/WEB-INF/ApplicationContext-test.xml");
+        PropostaService propostaService = (PropostaService) factory.getBean("propostaService");
+
+        Proposta proposta = propostaService.findById(4);
+        proposta.setNome(proposta.getNome() + " de novo");
+        propostaService.updateProposta(proposta);
+
     }
 
     /**
@@ -73,7 +74,6 @@ public class PropostaServiceImplTest extends TestCase {
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
     }*/
-
     /**
      * Test of findById method, of class PropostaServiceImpl.
      */
@@ -87,18 +87,15 @@ public class PropostaServiceImplTest extends TestCase {
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
     }*/
-
     /**
      * Test of listAll method, of class PropostaServiceImpl.
      */
     public void testListAll() {
         System.out.println("listAll");
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        List expResult = null;
-        List result = instance.listAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext("web/WEB-INF/ApplicationContext-test.xml");
+        PropostaService propostaService = (PropostaService) factory.getBean("propostaService");
+        List result = propostaService.listAll();
+        assertNotNull(result);
     }
 
     /**
@@ -106,85 +103,22 @@ public class PropostaServiceImplTest extends TestCase {
      */
     public void testListPropostaByStatus() {
         System.out.println("listPropostaByStatus");
-        Status status = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        List expResult = null;
-        List result = instance.listPropostaByStatus(status);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext("web/WEB-INF/ApplicationContext-test.xml");
+        PropostaService propostaService = (PropostaService) factory.getBean("propostaService");
+        StatusDao statusDao = (StatusDao) factory.getBean("statusDao");
+        List result = propostaService.listPropostaByStatus(statusDao.read(1));
+        assertNotNull(result);   
     }
 
-    /**
-     * Test of setEquipeService method, of class PropostaServiceImpl.
-     */
-    public void testSetEquipeService() {
-        System.out.println("setEquipeService");
-        EquipeService equipeService = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setEquipeService(equipeService);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testVerificaNomeProposta() {
+        System.out.println("verificaNomeProposta");
+        FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext("web/WEB-INF/ApplicationContext-test.xml");
+        PropostaService propostaService = (PropostaService) factory.getBean("propostaService");
+        if (propostaService.verificaNomeProposta("TesteUnitarioDeProposta")) {
+            System.out.println("Nome da Proposta já existe");
+        } else {
+            System.out.println("Nome da Proposta não existe");
+        }
+    
     }
-
-    /**
-     * Test of setPropostaDao method, of class PropostaServiceImpl.
-     */
-    public void testSetPropostaDao() {
-        System.out.println("setPropostaDao");
-        PropostaDao propostaDao = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setPropostaDao(propostaDao);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setUsuarioService method, of class PropostaServiceImpl.
-     */
-    public void testSetUsuarioService() {
-        System.out.println("setUsuarioService");
-        UsuarioService usuarioService = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setUsuarioService(usuarioService);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTransactionTemplate method, of class PropostaServiceImpl.
-     */
-    public void testSetTransactionTemplate() {
-        System.out.println("setTransactionTemplate");
-        TransactionTemplate transactionTemplate = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setTransactionTemplate(transactionTemplate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setStatusDao method, of class PropostaServiceImpl.
-     */
-    public void testSetStatusDao() {
-        System.out.println("setStatusDao");
-        StatusDao statusDao = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setStatusDao(statusDao);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPropostaItemDao method, of class PropostaServiceImpl.
-     */
-    public void testSetPropostaItemDao() {
-        System.out.println("setPropostaItemDao");
-        PropostaItemDao propostaItemDao = null;
-        PropostaServiceImpl instance = new PropostaServiceImpl();
-        instance.setPropostaItemDao(propostaItemDao);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
 }

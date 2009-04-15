@@ -42,6 +42,12 @@ public interface PropostaService {
     public void changeStatusProposta(Proposta proposta);
 
     /**
+     * Método para verificar se o nome da proposta já existe.
+     * @param string
+     */
+    public boolean verificaNomeProposta(String nome);
+
+    /**
      * Método para listar todas as propostas
      * @return List
      */

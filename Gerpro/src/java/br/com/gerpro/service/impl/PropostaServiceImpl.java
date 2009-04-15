@@ -26,30 +26,33 @@ import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
 public class PropostaServiceImpl implements PropostaService {
+    
 
     public String createProposta(final Proposta proposta) {
 
+
         transactionTemplate.execute(new TransactionCallback() {
+
 
             public Object doInTransaction(TransactionStatus ts) {
 
                 if (verificaNomeProposta(proposta.getNome())) {
-                    return "Nome de Proposta já cadastrado";
+                    
+                    System.out.println("Nome de Proposta já cadastrado");
+                    return null;
                 }
 
                 try {
 
                     Equipe equipe = proposta.getEquipe();
-                    if (equipe != null) {
-                        try {
-                            throw new PropostaSemEquipeException("Erro");
-                        } catch (PropostaSemEquipeException ex) {
-                            Logger.getLogger(PropostaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                    if (equipe == null) {
+                        System.out.println("Proposta sem equipe relacionada");
+                        return null;
+                        
                     }
 
                     Status status = proposta.getStatus();
-                    if (status != null) {
+                    if (status == null) {
                         status = statusDao.read(1);
                         proposta.setStatus(status);
                     }
@@ -84,7 +87,7 @@ public class PropostaServiceImpl implements PropostaService {
 
             }
         });
-        return "Ok";
+        return null;
     }
 
     public void updateProposta(final Proposta proposta) {
@@ -117,8 +120,8 @@ public class PropostaServiceImpl implements PropostaService {
      *
      * @param proposta
      */
-    private boolean verificaNomeProposta(String nome) {
-        List<Proposta> propostasCadastradas = propostaDao.findByName("%" + nome + "%");
+    public boolean verificaNomeProposta(String nome) {
+        List<Proposta> propostasCadastradas = propostaDao.findAll();
 
         for (Proposta propostaDeVarredura : propostasCadastradas) {
             if (nome.toUpperCase().equals(propostaDeVarredura.getNome().toUpperCase())) {
@@ -143,7 +146,7 @@ public class PropostaServiceImpl implements PropostaService {
     //Componentes
     private PropostaDao propostaDao;
     private EquipeService equipeService;
-   // private UsuarioService usuarioService;
+    private UsuarioService usuarioService;
     private TransactionTemplate transactionTemplate;
     private StatusDao statusDao;
     private PropostaItemDao propostaItemDao;
@@ -156,8 +159,8 @@ public class PropostaServiceImpl implements PropostaService {
         this.propostaDao = propostaDao;
     }
 
-    /*public void setUsuarioService(UsuarioService usuarioService) {
-    this.usuarioService = usuarioService;   }*/
+    public void setUsuarioService(UsuarioService usuarioService) {
+    this.usuarioService = usuarioService;   }
 
     public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
         this.transactionTemplate = transactionTemplate;
