@@ -6,6 +6,7 @@ import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.service.UsuarioService;
 import java.util.List;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /** 
  * @author M2R
@@ -71,6 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     //Componente
     private UsuarioDao usuarioDao;
     private TipoUsuarioDao tipoUsuarioDao;
+    private TransactionTemplate transactionTemplate;
 
     public void setUsuarioDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;
@@ -79,4 +81,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void setTipoUsuarioDao(TipoUsuarioDao tipoUsuarioDao) {
         this.tipoUsuarioDao = tipoUsuarioDao;
     }
+
+    public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+        this.transactionTemplate = transactionTemplate;
+    }
+
+    
 }

@@ -15,5 +15,6 @@ import java.util.List;
 public interface PropostaDao extends GenericDao<Proposta, Integer> {
     
     List<Proposta> findByStatus(Status status);
+    List<Proposta> findByName(String nome);
     List<Proposta> findAll();
 }

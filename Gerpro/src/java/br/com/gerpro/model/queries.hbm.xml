@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2009 21:20:52 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>    
+     <query name="Equipe.findAll">
+      select e from Equipe e
+  </query>
+  <query name="Proposta.findAll">
+      select p from Proposta p
+    </query>
+    <query name="Proposta.findByName">
+      select p from Proposta p where p.nome = ?
+    </query>
+    <query name="Proposta.findByStatus">
+      select p from Proposta p where p.status = ?
+    </query>
+    <query name="Usuario.findAll">
+             select u from Usuario u
+    </query>
+    <query name="Usuario.findByName">
+             select u from Usuario u where u.nome = ?
+    </query>
+    <query name="Usuario.findAllUsuariosByTipo">
+             select u from Usuario u where u.tipoUsuario.nome = ?
+    </query>
+    <query name="Usuario.findAlunosSemEquipe">
+             select u from Usuario u where u.tipoUsuario.id = 1 and u.equipe is null
+    </query>
+</hibernate-mapping>

@@ -4,18 +4,18 @@
  */
 package br.com.gerpro.controller;
 
-import br.com.gerpro.model.Proposta;
-import br.com.gerpro.service.impl.PropostaServiceImpl;
 import java.util.List;
+import br.com.gerpro.model.Proposta;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.ModelAndView;
+import br.com.gerpro.service.impl.PropostaServiceImpl;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  *
- * @author M2R
+ * @author M3R
  */
 public class CadastroPropostaFormMultiController extends MultiActionController {
 
@@ -38,7 +38,7 @@ public class CadastroPropostaFormMultiController extends MultiActionController {
 
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response, Proposta propostaForm) {
         ServletRequestDataBinder binder = new ServletRequestDataBinder(propostaForm);
-        propostaService.saveProposta(propostaForm);
+        propostaService.createProposta(propostaForm);
         binder.bind(request);
         return new ModelAndView("salvo");        
     }

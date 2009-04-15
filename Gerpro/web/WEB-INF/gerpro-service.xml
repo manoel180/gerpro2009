@@ -21,6 +21,7 @@
         <property name="propostaDao" ref="propostaDao"/>
         <property name="statusDao" ref="statusDao"/>
         <property name="propostaItemDao" ref="propostaItemDao"/>
+        <property name="transactionTemplate" ref="transactionTemplate"/>
 
     </bean>
 

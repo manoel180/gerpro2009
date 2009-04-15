@@ -15,6 +15,7 @@ import br.com.gerpro.service.EquipeService;
 import br.com.gerpro.service.PropostaService;
 import br.com.gerpro.service.UsuarioService;
 import br.com.gerpro.exceptions.PropostaSemEquipeException;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,20 +25,16 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-/**
- *
- * @author msouza
- */
 public class PropostaServiceImpl implements PropostaService {
 
-    public void createProposta(final Proposta proposta) {
+    public String createProposta(final Proposta proposta) {
 
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus ts) {
 
-                if (proposta.getPropostaItems() == null) {
-                    proposta.setPropostaItems(new HashSet<PropostaItem>());
+                if (verificaNomeProposta(proposta.getNome())) {
+                    return "Nome de Proposta já cadastrado";
                 }
 
                 try {
@@ -58,12 +55,9 @@ public class PropostaServiceImpl implements PropostaService {
                     }
 
 
-                    /*Set<PropostaItem> attachedPropostaItems = new HashSet<PropostaItem>();
-                    for (PropostaItem propostaItemsPropostaItemToAttach : proposta.getPropostaItems()) {
-                    propostaItemsPropostaItemToAttach =
-                    (PropostaItem) getSession().get(propostaItemsPropostaItemToAttach.getClass(), propostaItemsPropostaItemToAttach.getId());//em.getReference(propostaItemsPropostaItemToAttach.getClass(), propostaItemsPropostaItemToAttach.getId());
-                    attachedPropostaItems.add(propostaItemsPropostaItemToAttach);
-                    }                    proposta.setPropostaItems(attachedPropostaItems);*/
+                    Set<PropostaItem> itensDaProposta = new HashSet<PropostaItem>();
+                    proposta.setPropostaItems(itensDaProposta);
+                    proposta.setDataCriacao(new Date());
 
                     propostaDao.create(proposta);
 
@@ -90,86 +84,52 @@ public class PropostaServiceImpl implements PropostaService {
 
             }
         });
+        return "Ok";
     }
 
-    public void saveProposta(final Proposta proposta) {
+    public void updateProposta(final Proposta proposta) {
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus ts) {
-                propostaDao.create(proposta);
-
 
 
                 try {
-                    /*List consultaProposta = propostaDao.findByName(proposta.getNome());
-                    if (consultaProposta == null) {
-                    propostaDao.save(proposta);
-                    } else {
-                    return "Nome de proposta já cadastrado";
-                    }*/
-
-
-
-
-
-
-
+                    if (verificaNomeProposta(proposta.getNome())) {
+                        return "Nome de Proposta já cadastrado";
+                    }
+                    propostaDao.update(proposta);
 
                 } catch (Exception e) {
                     ts.isRollbackOnly();
                 }
 
-            return null;
-
-
+                return null;
             }
         });
     }
 
-    /*public void saveProposta(final Proposta proposta){//, final Equipe equipe, final List alunos) {
-    hibernateTemplate.execute(new HibernateCallback() {
-
-    public Object doInHibernate(Session session)
-    throws HibernateException, SQLException {
-
-    try {
-    //List consultaProposta =
-    if(!(propostaDao.list().contains(proposta))){
-    //if (consultaProposta == null) {
-    propostaDao.create(proposta);
-    } else {
-    return "Nome de proposta já cadastrado";
-    }
-
-    Iterator iterator = alunos.iterator();
-    while (iterator.hasNext()) {
-    Aluno aluno = (Aluno) iterator.next();
-    alunoService.updateAluno(aluno);
-    }
-
-    session.getTransaction().commit();
-
-    } catch (Exception e) {
-    session.getTransaction().rollback();
-    }
-    return null;
-    }
-    });
-    }*/
-    public void deleteProposta(Proposta proposta) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void updateProposta(Proposta proposta) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    
     public void changeStatusProposta(Proposta proposta) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Proposta findById(int id) {//Proposta proposta){
-        return propostaDao.read(id);//proposta.getId());
+    /**
+     *
+     * @param proposta
+     */
+    private boolean verificaNomeProposta(String nome) {
+        List<Proposta> propostasCadastradas = propostaDao.findByName("%" + nome + "%");
+
+        for (Proposta propostaDeVarredura : propostasCadastradas) {
+            if (nome.toUpperCase().equals(propostaDeVarredura.getNome().toUpperCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Proposta findById(int id) {
+        return propostaDao.read(id);
     }
 
     public List listAll() {
@@ -183,7 +143,7 @@ public class PropostaServiceImpl implements PropostaService {
     //Componentes
     private PropostaDao propostaDao;
     private EquipeService equipeService;
-    private UsuarioService usuarioService;
+   // private UsuarioService usuarioService;
     private TransactionTemplate transactionTemplate;
     private StatusDao statusDao;
     private PropostaItemDao propostaItemDao;
@@ -196,9 +156,8 @@ public class PropostaServiceImpl implements PropostaService {
         this.propostaDao = propostaDao;
     }
 
-    public void setUsuarioService(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
+    /*public void setUsuarioService(UsuarioService usuarioService) {
+    this.usuarioService = usuarioService;   }*/
 
     public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
         this.transactionTemplate = transactionTemplate;
