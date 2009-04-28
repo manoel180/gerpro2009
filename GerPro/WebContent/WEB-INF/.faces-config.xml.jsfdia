@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#ManterProposta#PesquisarProposta.jsp"
+  PATH="/ManterProposta/PesquisarProposta.jsp" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ManterProposta#PesquisarProposta.jsp:0"
+   NAME="item" PATH="/ManterProposta/PesquisarProposta.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="incluir::#ManterProposta#CadastroProposta.jsp" NAME="output"
+    PATH="/ManterProposta/CadastroProposta.jsp"
+    TARGET="rules:#ManterProposta#CadastroProposta.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="alterar::#ManterProposta#AlterarProposta.jsp" NAME="output1"
+    PATH="/ManterProposta/AlterarProposta.jsp"
+    TARGET="rules:#ManterProposta#AlterarProposta.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#ManterProposta#PesquisarProposta.jsp"
+    NAME="output2" PATH="/ManterProposta/PesquisarProposta.jsp"
+    TARGET="rules:#ManterProposta#PesquisarProposta.jsp"
+    TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ManterProposta#AlterarProposta.jsp"
+  PATH="/ManterProposta/AlterarProposta.jsp" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterProposta#CadastroProposta.jsp"
+  PATH="/ManterProposta/CadastroProposta.jsp" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#PesquisarEquipe.jsp"
+  PATH="/ManterEquipe/PesquisarEquipe.jsp" SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ManterEquipe#PesquisarEquipe.jsp:0"
+   NAME="item" PATH="/ManterEquipe/PesquisarEquipe.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="incluir::#ManterEquipe#CadastroEquipe.jsp"
+    NAME="output" PATH="/ManterEquipe/CadastroEquipe.jsp"
+    TARGET="rules:#ManterEquipe#CadastroEquipe.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="alterar::#ManterEquipe#AlterarEquipe.jsp"
+    NAME="output1" PATH="/ManterEquipe/AlterarEquipe.jsp"
+    TARGET="rules:#ManterEquipe#AlterarEquipe.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#ManterEquipe#PesquisarEquipe.jsp" NAME="output2"
+    PATH="/ManterEquipe/PesquisarEquipe.jsp"
+    TARGET="rules:#ManterEquipe#PesquisarEquipe.jsp" TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#CadastroEquipe.jsp"
+  PATH="/ManterEquipe/CadastroEquipe.jsp" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#AlterarEquipe.jsp"
+  PATH="/ManterEquipe/AlterarEquipe.jsp" SHAPE="272,497,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
