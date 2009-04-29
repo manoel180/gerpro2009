@@ -7,9 +7,9 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> "Pesquisar Equipes" </title>
+<title>Pesquisar Equipes</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css" >
+<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css" >
 
 </head>
 <f:view>
@@ -53,9 +53,9 @@
 						<h:outputText value="Opções" />
 						
 					</f:facet>
-					<h:commandButton image="/imagens/delete.png"
+					<h:commandButton value="Excluir"
 						action="#{equipeBean.excluir}" />
-					<h:commandButton image="/imagens/editar.png"
+					<h:commandButton value="Editar"
 						action="#{equipeBean.preperarEdicao}" />
 				</h:column>
 			</rich:dataTable>

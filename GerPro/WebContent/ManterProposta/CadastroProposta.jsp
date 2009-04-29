@@ -1,3 +1,4 @@
+<%@page	contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -8,8 +9,7 @@
 <head>
 <title>Cadastro de Propostas</title>
 <!--Chamada ao arquivo CSS -->
-<!-- link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css" -->
+<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
 
 <f:view>

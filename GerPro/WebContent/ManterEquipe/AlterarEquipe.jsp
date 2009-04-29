@@ -6,17 +6,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
-<title>Cadastro de Categorias</title>
+<title>Cadastro de Equipes</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
+<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
 
 <f:view>
 	<h:form>
-		<div align="center"><h:outputLabel value="ALTERAR CATEGORIAS"	styleClass="titulo"/></div>
+		<div align="center"><h:outputLabel value="Alterar Equipes"	styleClass="titulo"/></div>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="5" cellpadding="5">
-				<h:outputText value="Descrição:" />
+				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1"
 					value="#{equipeBean.equipe.nome}" /> 
 				<h:commandButton value="Salvar" action="#{equipeBean.alterar}" 
@@ -28,7 +28,7 @@
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
 					<h:commandButton action="#{equipeBean.prepararBean}"
-						value="Ir para o listar categorias" />
+						value="Ir para a lista de equipes" />
 						
 						</h:panelGroup>
 			</h:panelGrid>
