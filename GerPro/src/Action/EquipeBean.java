@@ -1,18 +1,19 @@
-package Action;
+package br.com.gerpro.action;
 
 import java.util.List;
 
 import javax.faces.component.UIData;
 
-import Dao.FacadeEquipe;
-import Dao.Impl.daoEquipe;
-import Model.Equipe;
+import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.model.Equipe;
+
 
 public class EquipeBean {
 	private UIData objDatatableEquipe;// componente da tela - JSP
 	private List<Equipe> listaEquipe;
 	private Equipe equipe = new Equipe();
-	private FacadeEquipe daoEquipe = new daoEquipe();
+	private FacadeEquipe daoEquipe = new EquipeDao();
 	
 	public String prepararBean() {
 

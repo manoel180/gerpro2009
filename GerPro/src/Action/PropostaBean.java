@@ -1,4 +1,4 @@
-package Action;
+package br.com.gerpro.action;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,23 +7,24 @@ import java.util.List;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
-import Dao.FacadeEquipe;
-import Dao.FacadeProposta;
-import Dao.FacadeStatus;
-import Dao.Impl.daoEquipe;
-import Dao.Impl.daoProposta;
-import Dao.Impl.daoStatus;
-import Model.Equipe;
-import Model.Proposta;
-import Model.Status;
+import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.dao.FacadeStatus;
+import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.dao.impl.PropostaDao;
+import br.com.gerpro.dao.impl.StatusDao;
+import br.com.gerpro.model.Equipe;
+import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Status;
+
 
 public class PropostaBean {
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
 	private Proposta proposta = new Proposta();
-	private FacadeProposta daoProposta = new daoProposta() ;
-	private FacadeEquipe daoEquipe = new daoEquipe();
-	private FacadeStatus daoStatus = new daoStatus();
+	private FacadeProposta daoProposta = new PropostaDao() ;
+	private FacadeEquipe daoEquipe = new EquipeDao();
+	private FacadeStatus daoStatus = new StatusDao();
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();
 	
