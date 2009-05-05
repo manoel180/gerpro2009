@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="br.com.gerpro.model.Proposta" table="proposta" catalog="gerprodb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join"  lazy="false">
+            <column name="id_equipe" not-null="true" />
+        </many-to-one>
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join">
+            <column name="id_status" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="100" not-null="true" />
+        </property>
+        <property name="dataCriacao" type="date">
+            <column name="data_criacao" length="10" not-null="true" />
+        </property>
+        <property name="dataSubmissao" type="date">
+            <column name="data_submissao" length="10" />
+        </property>
+        <property name="periodo" type="string">
+            <column name="periodo" length="8" not-null="true" />
+        </property>
+        <set name="propostaItems" inverse="true">
+            <key>
+                <column name="id_proposta" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.PropostaItem" />
+        </set>
+    </class>
+</hibernate-mapping>
