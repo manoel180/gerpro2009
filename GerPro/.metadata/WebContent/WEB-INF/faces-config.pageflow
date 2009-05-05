@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12400664967180" configfile="/GerPro/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/PesquisarProposta" id="pf12400797590610" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" outlinks="pf12400797590611 pf12400797590612 pf12400797590613" inlinks="pf12400797590613" path="/ManterProposta/PesquisarProposta.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/CadastroProposta" id="pf12400797590614" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf12400797590611" path="/ManterProposta/CadastroProposta.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/AlterarProposta" id="pf12400797590615" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf12400797590612" path="/ManterProposta/AlterarProposta.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/PesquisarEquipe" id="pf12400797590616" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf12400797590617 pf12400797590618 pf12400797590619" inlinks="pf12400797590619 pf12404421767500" path="/ManterEquipe/PesquisarEquipe.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/CadastroEquipe" id="pf124007975906111" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf12400797590617" path="/ManterEquipe/CadastroEquipe.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/AlterarEquipe" id="pf124007975906112" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" inlinks="pf12400797590618" path="/ManterEquipe/AlterarEquipe.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf12404421767501" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf12404421767500" path="/*"/>
-  <links id="pf12400797590611" target="pf12400797590614" source="pf12400797590610" outcome="incluir"/>
-  <links id="pf12400797590612" target="pf12400797590615" source="pf12400797590610" outcome="alterar"/>
-  <links id="pf12400797590613" target="pf12400797590610" source="pf12400797590610" outcome="visualizar"/>
-  <links id="pf12400797590617" target="pf124007975906111" source="pf12400797590616" outcome="incluir"/>
-  <links id="pf12400797590618" target="pf124007975906112" source="pf12400797590616" outcome="alterar"/>
-  <links id="pf12400797590619" target="pf12400797590616" source="pf12400797590616" outcome="visualizar"/>
-  <links id="pf12404421767500" target="pf12400797590616" source="pf12404421767501" outcome="go_manterEquipe"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/PesquisarProposta" x="122" y="178" id="pf12400797590610" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" path="/ManterProposta/PesquisarProposta.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/CadastroProposta" x="122" y="562" id="pf12400797590614" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" path="/ManterProposta/CadastroProposta.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/AlterarProposta" x="122" y="2098" id="pf12400797590615" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" path="/ManterProposta/AlterarProposta.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/PesquisarEquipe" x="122" y="2482" id="pf12400797590616" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/ManterEquipe/PesquisarEquipe.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/CadastroEquipe" x="122" y="3299" id="pf124007975906111" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" path="/ManterEquipe/CadastroEquipe.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/AlterarEquipe" x="122" y="3731" id="pf124007975906112" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" path="/ManterEquipe/AlterarEquipe.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/PesquisarEquipe.xhtml" x="338" y="2866" id="pf12415157262500" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" outlinks="pf12415157262501 pf12415157262502 pf12415157262503" inlinks="pf12415157262503 pf12415157262504" path="/ManterEquipe/PesquisarEquipe.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/PesquisarProposta.xhtml" x="122" y="4162" id="pf12415157262505" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" outlinks="pf12415157262506 pf12415157262507 pf12415157262508" inlinks="pf12415157262508" path="/ManterProposta/PesquisarProposta.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/CadastroProposta.xhtml" x="338" y="3970" id="pf12415157262509" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf12415157262506" path="/ManterProposta/CadastroProposta.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterProposta/AlterarProposta.xhtml" x="338" y="4354" id="pf124151572625010" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" inlinks="pf12415157262507" path="/ManterProposta/AlterarProposta.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/CadastroEquipe.xhtml" x="554" y="2674" id="pf124151572625011" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf12415157262501" path="/ManterEquipe/CadastroEquipe.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ManterEquipe/AlterarEquipe.xhtml" x="554" y="3058" id="pf124151572625012" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" inlinks="pf12415157262502" path="/ManterEquipe/AlterarEquipe.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf124151572625013" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf124151572625014 pf124151572625015 pf124151572625016 pf12415157262504" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="Aluno/homeAluno.xhtml" id="pf124151572625017" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf124151572625014" path="/Aluno/homeAluno.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Professor/homeProfessor.xhtml" id="pf124151572625018" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf124151572625015" path="/Professor/homeProfessor.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Coordenador/homeCoordenador.xhtml" id="pf124151572625019" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf124151572625016" path="/Coordenador/homeCoordenador.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf124151572625020" outlinks="pf124151572625021" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="Coordenador/AltProposta.xhtml" id="pf124151572625022" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf124151572625021" path="/Coordenador/AltProposta.xhtml"/>
+  <links id="pf12415157262506" target="pf12415157262509" source="pf12415157262505" outcome="incluir"/>
+  <links id="pf12415157262507" target="pf124151572625010" source="pf12415157262505" outcome="alterar"/>
+  <links id="pf12415157262501" target="pf124151572625011" source="pf12415157262500" outcome="incluir"/>
+  <links id="pf12415157262502" target="pf124151572625012" source="pf12415157262500" outcome="alterar"/>
+  <links id="pf12415157262508" target="pf12415157262505" source="pf12415157262505" outcome="visualizar">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf12415157262503" target="pf12415157262500" source="pf12415157262500" outcome="visualizar">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf124151572625014" target="pf124151572625017" source="pf124151572625013" outcome="homeAluno"/>
+  <links id="pf124151572625015" target="pf124151572625018" source="pf124151572625013" outcome="homeProfessor"/>
+  <links id="pf124151572625016" target="pf124151572625019" source="pf124151572625013" outcome="homeCoordenador"/>
+  <links id="pf12415157262504" target="pf12415157262500" source="pf124151572625013" outcome="go_manterEquipe"/>
+  <links id="pf124151572625021" target="pf124151572625022" source="pf124151572625020" outcome="go_altproposta"/>
 </pageflow:Pageflow>
