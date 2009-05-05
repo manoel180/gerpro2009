@@ -1,4 +1,4 @@
-package Dao.Impl;
+package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
@@ -8,25 +8,26 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import Dao.FacadeProposta;
-import Model.Proposta;
-import Util.HibernateUtil;
+import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.model.Equipe;
+import br.com.gerpro.util.HibernateUtil;
 
 
-public class daoProposta implements FacadeProposta {
+
+public class EquipeDao implements FacadeEquipe {
 
 	
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(Proposta proposta) {
+	public void alterar(Equipe equipe) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(proposta);
+			session.update(equipe);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
 		} catch (Exception e) {
@@ -40,13 +41,13 @@ public class daoProposta implements FacadeProposta {
 
 	//Funcionando
 	@Override
-	public void inserir(Proposta proposta) {
+	public void inserir(Equipe equipe) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.save(proposta);
+			session.save(equipe);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
 		} catch (Exception e) {
@@ -58,13 +59,13 @@ public class daoProposta implements FacadeProposta {
 		}
 	}
 	@Override
-	public List<Proposta> listar() {
+	public List<Equipe> listar() {
 
-		List<Proposta> result = null;
+		List<Equipe> result = null;
 		
 		Session session = HibernateUtil.getSession();
 		
-		Query q = session.createQuery(" from Proposta ");
+		Query q = session.createQuery(" from Equipe ");
 		
 		result = q.list();
 		
@@ -73,13 +74,13 @@ public class daoProposta implements FacadeProposta {
 	}
 	//Consulta 1
 	@Override
-	public List<Proposta> listarOrdemAlfabetica() {
+	public List<Equipe> listarOrdemAlfabetica() {
 
-		List<Proposta> result = null;
+		List<Equipe> result = null;
 		
 		Session session = HibernateUtil.getSession();
 		
-		Query q = session.createQuery(" from Proposta order by nome ");
+		Query q = session.createQuery(" from Equipe order by nome ");
 		
 		result = q.list();
 		
@@ -91,13 +92,13 @@ public class daoProposta implements FacadeProposta {
 	//consulta 2
 	//Lista por letra
 	@Override
-	public List<Proposta> listar2() {
+	public List<Equipe> listar2() {
 
-		List<Proposta> result = null;
+		List<Equipe> result = null;
 		
 		Session session = HibernateUtil.getSession();
 		
-		Query q = session.createQuery(" from Proposta order by status ");
+		Query q = session.createQuery(" from Equipe order by nome ");
 		
 		result = q.list();
 		
@@ -107,30 +108,17 @@ public class daoProposta implements FacadeProposta {
 		
 	//consulta 3
 	//consulta
-	@SuppressWarnings("unchecked")
 	@Override	
-	public List<Proposta> listarPorNome(String nomeProposta) {
+	public List<Equipe> listarPorNome(String nomeEquippe) {
 		// TODO Auto-generated method stub
-		List<Proposta> result = null;
+		List<Equipe> result = null;
 		
 		Session session = HibernateUtil.getSession();
 		
-		//Query q = session.createQuery("from Proposta where Nome like  :parametro");
-		
-		Query q = session.createQuery(
-				" FROM Proposta " 
-				);		
-		//q.setParameter("parametro", nomeProposta+"%");
+		Query q = session.createQuery("from Equipe where Nome like  :parametro");
+		q.setParameter("parametro", nomeEquippe+"%");
 		
 		result = q.list();
-		
-		for (Proposta proposta : result) {
-			proposta.getEquipe().getNome();
-			
-		}
-			
-		
-		
 		
 		session.close();
 		return result;
@@ -139,26 +127,26 @@ public class daoProposta implements FacadeProposta {
 	   
 
 	@Override
-	public  Proposta procurarPorId(int id) {
+	public  Equipe procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
-		Proposta result = null;
+		Equipe result = null;
 
 		Session session = HibernateUtil.getSession();
-		result = (Proposta) session.get(Proposta.class, id);
+		result = (Equipe) session.get(Equipe.class, id);
 	
 		session.close();
 		return result;
 	}
 
 	@Override
-	public Proposta procurarPorNome(String Nome) {
+	public Equipe procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
-		Proposta result = null;
+		Equipe result = null;
 
 		Session session = HibernateUtil.getSession();
-		result = (Proposta) session.get(Proposta.class, Nome);
+		result = (Equipe) session.get(Equipe.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");
 		}
@@ -167,14 +155,14 @@ public class daoProposta implements FacadeProposta {
 	}
 	
 	@Override
-	public  void remover(Proposta proposta) {
+	public  void remover(Equipe equipe) {
 
 		try {
 			session=null;
 			tx = null;
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.delete(proposta);
+			session.delete(equipe);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Eliminado com sucesso");
 		} catch (Exception e) {

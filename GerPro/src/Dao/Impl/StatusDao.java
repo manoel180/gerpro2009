@@ -1,4 +1,4 @@
-package Dao.Impl;
+package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
@@ -8,12 +8,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import Dao.FacadeStatus;
-import Model.Status;
-import Util.HibernateUtil;
+import br.com.gerpro.dao.FacadeStatus;
+import br.com.gerpro.model.Status;
+import br.com.gerpro.util.HibernateUtil;
 
 
-public class daoStatus implements FacadeStatus {
+
+public class StatusDao implements FacadeStatus {
 
 	
 	private static	Session session = null;
