@@ -1,4 +1,4 @@
-package Model;
+package br.com.gerpro.model;
 
 // Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
 

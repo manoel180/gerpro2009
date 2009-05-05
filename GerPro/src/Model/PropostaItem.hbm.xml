@@ -3,8 +3,8 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="Model.PropostaItem" table="proposta_item" catalog="gerprodb">
-        <composite-id name="id" class="Model.PropostaItemId">
+    <class name="br.com.gerpro.model.PropostaItem" table="proposta_item" catalog="gerprodb">
+        <composite-id name="id" class="br.com.gerpro.model.PropostaItemId">
             <key-property name="idProposta" type="int">
                 <column name="id_proposta" />
             </key-property>
@@ -12,13 +12,13 @@
                 <column name="id_item" />
             </key-property>
         </composite-id>
-        <many-to-one name="item" class="Model.Item" update="false" insert="false" fetch="select">
+        <many-to-one name="item" class="br.com.gerpro.model.Item" update="false" insert="false" fetch="select">
             <column name="id_item" not-null="true" />
         </many-to-one>
-        <many-to-one name="proposta" class="Model.Proposta" update="false" insert="false" fetch="select">
+        <many-to-one name="proposta" class="br.com.gerpro.model.Proposta" update="false" insert="false" fetch="select">
             <column name="id_proposta" not-null="true" />
         </many-to-one>
-        <many-to-one name="status" class="Model.Status" fetch="select">
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="select">
             <column name="id_status" />
         </many-to-one>
         <property name="conteudoItem" type="string">
@@ -29,21 +29,21 @@
                 <column name="id_proposta" not-null="true" />
                 <column name="id_item" not-null="true" />
             </key>
-            <one-to-many class="Model.Cronograma" />
+            <one-to-many class="br.com.gerpro.model.Cronograma" />
         </set>
         <set name="listaFuncaos" inverse="true">
             <key>
                 <column name="id_proposta" not-null="true" />
                 <column name="id_item" not-null="true" />
             </key>
-            <one-to-many class="Model.ListaFuncao" />
+            <one-to-many class="br.com.gerpro.model.ListaFuncao" />
         </set>
         <set name="correcaos" inverse="true">
             <key>
                 <column name="id_proposta" not-null="true" />
                 <column name="id_item" not-null="true" />
             </key>
-            <one-to-many class="Model.Correcao" />
+            <one-to-many class="br.com.gerpro.model.Correcao" />
         </set>
     </class>
 </hibernate-mapping>

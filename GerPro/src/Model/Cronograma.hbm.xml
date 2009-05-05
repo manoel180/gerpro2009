@@ -3,8 +3,8 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="Model.Cronograma" table="cronograma" catalog="gerprodb">
-        <composite-id name="id" class="Model.CronogramaId">
+    <class name="br.com.gerpro.model.Cronograma" table="cronograma" catalog="gerprodb">
+        <composite-id name="id" class="br.com.gerpro.model.CronogramaId">
             <key-property name="idProposta" type="int">
                 <column name="id_proposta" />
             </key-property>
@@ -15,7 +15,7 @@
                 <column name="numero_sequencia" />
             </key-property>
         </composite-id>
-        <many-to-one name="propostaItem" class="Model.PropostaItem" update="false" insert="false" fetch="select">
+        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" update="false" insert="false" fetch="select">
             <column name="id_proposta" not-null="true" />
             <column name="id_item" not-null="true" />
         </many-to-one>

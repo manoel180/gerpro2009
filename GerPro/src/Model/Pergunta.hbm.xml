@@ -3,12 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="Model.Pergunta" table="pergunta" catalog="gerprodb">
+    <class name="br.com.gerpro.model.Pergunta" table="pergunta" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="item" class="Model.Item" fetch="select">
+        <many-to-one name="item" class="br.com.gerpro.model.Item" fetch="select">
             <column name="id_item" />
         </many-to-one>
         <property name="descricao" type="string">
@@ -18,7 +18,7 @@
             <key>
                 <column name="id_pergunta" not-null="true" />
             </key>
-            <one-to-many class="Model.Correcao" />
+            <one-to-many class="br.com.gerpro.model.Correcao" />
         </set>
     </class>
 </hibernate-mapping>

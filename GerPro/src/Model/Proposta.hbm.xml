@@ -3,15 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="Model.Proposta" table="proposta" catalog="gerprodb">
+    <class name="br.com.gerpro.model.Proposta" table="proposta" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="equipe" class="Model.Equipe" fetch="join"  lazy="false">
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join"  lazy="false">
             <column name="id_equipe" not-null="true" />
         </many-to-one>
-        <many-to-one name="status" class="Model.Status" fetch="join">
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join">
             <column name="id_status" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
@@ -30,7 +30,7 @@
             <key>
                 <column name="id_proposta" not-null="true" />
             </key>
-            <one-to-many class="Model.PropostaItem" />
+            <one-to-many class="br.com.gerpro.model.PropostaItem" />
         </set>
     </class>
 </hibernate-mapping>

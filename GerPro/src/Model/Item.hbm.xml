@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="Model.Item" table="item" catalog="gerprodb">
+    <class name="br.com.gerpro.model.Item" table="item" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -15,13 +15,13 @@
             <key>
                 <column name="id_item" />
             </key>
-            <one-to-many class="Model.Pergunta" />
+            <one-to-many class="br.com.gerpro.model.Pergunta" />
         </set>
         <set name="propostaItems" inverse="true">
             <key>
                 <column name="id_item" not-null="true" />
             </key>
-            <one-to-many class="Model.PropostaItem" />
+            <one-to-many class="br.com.gerpro.model.PropostaItem" />
         </set>
     </class>
 </hibernate-mapping>
