@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/templates/layoutIndex.xhtml">
+	<div id="contentIndex"><ui:define name="loginForm">
+		<h:form>
+			<h:panelGrid columns="2" border="1" rules="groups">
+				<f:facet name="header" >
+					<h:outputText  value="Login" />
+				</f:facet>
+
+				<h:outputText value="Matricula*" />
+				<h:inputText id="matricula" required="true"
+					value="#{usuarioBean.usuario.matricula}">
+				</h:inputText>
+
+				<h:outputText value="Senha*:" />
+				<h:inputSecret id="senha" required="true"
+					value="#{usuarioBean.usuario.senha}">
+				</h:inputSecret>
+				<h:commandButton value="Entrar" action="#{usuarioBean.logar}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define></div>
+</ui:composition></html>

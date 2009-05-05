@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pesquisar Equipes</title>
+<!--Chamada ao arquivo CSS -->
+<!--  link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css" -->
+
+</head>
+<f:view>
+	<h:form id="form1">
+	<div align="center"><h:outputLabel value="PESQUISAR EQUIPES"	styleClass="titulo"/></div>
+		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
+			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
+				<h:outputText value="Nome:" />
+				<h:inputText id="txtdesc"
+					value="#{equipeBean.equipe.nome}" />
+				<h:commandButton value="Pesquisar"
+					action="#{equipeBean.pesquisar}"/> 
+				<h:commandButton value="Novo"
+					action="#{equipeBean.preperarInclusao}"/>
+			</h:panelGrid>
+			
+		</rich:simpleTogglePanel>
+	</h:form>
+	<h:form id="form2">
+		<rich:simpleTogglePanel label="Resultado da Pesquisa">
+			<rich:dataTable var="eqp" id="listaequipe"
+				value="#{equipeBean.listaEquipe}"
+				binding="#{equipeBean.objDatatableEquipe}" rows="10"
+				width="550px" align="center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cod" />
+					</f:facet>
+					<h:outputText value="#{eqp.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Equipe" />
+					</f:facet>
+					<h:outputText value="#{eqp.nome}"
+					style="color:red; font-weight:bold; font-" />
+					
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Op��es" />
+						
+					</f:facet>
+					<h:commandButton value="Excluir"
+						action="#{equipeBean.excluir}" />
+					<h:commandButton value="Editar"
+						action="#{equipeBean.preperarEdicao}" />
+				</h:column>
+			</rich:dataTable>
+		</rich:simpleTogglePanel>
+	</h:form>
+</f:view>
+</html>

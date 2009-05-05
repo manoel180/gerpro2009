@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+
+<head>
+<title>Cadastro de Equipes</title>
+<!--Chamada ao arquivo CSS -->
+<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
+</link>
+</head>
+
+<f:view>
+	<h:form>
+		<div align="center"><h:outputLabel value="Alterar Equipes"	styleClass="titulo"/></div>
+		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
+			<h:panelGrid columns="5" cellpadding="5">
+				<h:outputText value="Nome:" />
+				<h:inputText id="txtdesc1"
+					value="#{equipeBean.equipe.nome}" /> 
+				<h:commandButton value="Salvar" action="#{equipeBean.alterar}" 
+				style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset"/>
+			</h:panelGrid>
+		</rich:simpleTogglePanel>
+	
+		<h:panelGrid columns="1" width="90%" border="0">
+			<h:panelGrid columns="1" border="0">
+				<h:panelGroup>
+					<h:commandButton action="#{equipeBean.prepararBean}"
+						value="Ir para a lista de equipes" />
+						
+						</h:panelGroup>
+			</h:panelGrid>
+		</h:panelGrid>
+	</h:form>
+</f:view>
+</html>

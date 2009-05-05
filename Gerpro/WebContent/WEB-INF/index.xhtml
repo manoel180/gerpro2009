@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/templates/layoutIndex.xhtml">
+	<tr>
+		<td>
+		<div id="imageIndex">
+		<ui:define name="contentIndex">
+			<img src="/images/topbanner.png" />
+		</ui:define>
+		</div>
+		</td>
+
+		<td>
+		<div id="contentIndex"><ui:define name="contentIndex">
+			<h:form >
+				<tr>
+					<td height="25">Matricula:<br />
+					<h:inputText id="matricula" /> *</td>
+				</tr>
+				<tr>
+					<td height="25">Senha:<br />
+					<h:inputSecret id="senha" /> *</td>
+				</tr>
+				<td><h:commandButton value="Entrar" action="Submit" /></td>				
+			</h:form>
+
+		</ui:define></div>
+		</td>
+	</tr>
+</ui:composition>
+</html>
