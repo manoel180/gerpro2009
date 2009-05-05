@@ -1,4 +1,4 @@
-package Util;
+package br.com.gerpro.util;
 
 
 import javax.swing.JOptionPane;
@@ -14,7 +14,7 @@ public class HibernateUtil {
     static {
         try {
             // Cria uma sessão a partir do arquivo hibernate.cfg.xml
-            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            sessionFactory = new Configuration().configure("br/com/gerpro/util/hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
         	JOptionPane.showMessageDialog(null, "Falha ao conectar com o Banco de Dados");
             throw new ExceptionInInitializerError(ex);
