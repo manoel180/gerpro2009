@@ -66,44 +66,6 @@
  <file-system NAME="lib-richfaces-ui-3.2.2.SR1.jar"
   location="D:\Cod_FonteS\GerPro\WebContent\WEB-INF\lib\richfaces-ui-3.2.2.SR1.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
- <file-system NAME="lib-annotations-api.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\annotations-api.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-catalina-ant.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\catalina-ant.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-catalina-ha.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\catalina-ha.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-catalina-tribes.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\catalina-tribes.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-catalina.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\catalina.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-el-api.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\el-api.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jasper-el.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\jasper-el.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jasper-jdt.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\jasper-jdt.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jasper.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\jasper.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jsp-api.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\jsp-api.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-servlet-api.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\servlet-api.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-tomcat-coyote.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\tomcat-coyote.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-tomcat-dbcp.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\tomcat-dbcp.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-tomcat-i18n-es.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\tomcat-i18n-es.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-tomcat-i18n-fr.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\tomcat-i18n-fr.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-tomcat-i18n-ja.jar"
-  location="D:\Donwloads\Orientacão Objetos\Plugins Eclipse 3.4\apache-tomcat-6.0.18\lib\tomcat-i18n-ja.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jsf-api-1.2.jar"
-  location="D:\Donwloads\Orientacão Objetos\eclipse 3.3\plugins\com.icesoft.eclipse.sunri_1.1.2.200810101024\lib\jsf.1.2\jsf-api-1.2.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jsf-impl-1.2.jar"
-  location="D:\Donwloads\Orientacão Objetos\eclipse 3.3\plugins\com.icesoft.eclipse.sunri_1.1.2.200810101024\lib\jsf.1.2\jsf-impl-1.2.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-jstl-1.2.jar"
-  location="D:\Donwloads\Orientacão Objetos\eclipse 3.3\plugins\com.icesoft.eclipse.sunri_1.1.2.200810101024\lib\jsf.1.2\jstl-1.2.jar" model-entity="FileSystemJar"/>
  <file-system NAME="src" location="%workspace.home%/../../src" model-entity="FileSystemFolder"/>
  <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
   <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
