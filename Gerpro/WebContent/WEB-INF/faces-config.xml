@@ -1,105 +1,141 @@
 <?xml version="1.0"?>
-
-<!DOCTYPE faces-config PUBLIC
-  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
-  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd" >
-
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+                              "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
 <faces-config>
-	<managed-bean>
-		<managed-bean-name>propostaBean</managed-bean-name>
-		<managed-bean-class>
-			br.com.gerpro.action.PropostaBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+ <managed-bean>
+  <managed-bean-name>propostaBean</managed-bean-name>
+  <managed-bean-class>br.com.gerpro.action.PropostaBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>equipeBean</managed-bean-name>
+  <managed-bean-class>br.com.gerpro.action.EquipeBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>usuarioBean</managed-bean-name>
+  <managed-bean-class>br.com.gerpro.action.UsuarioBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <from-view-id>/*</from-view-id>
+  <navigation-case>
+   <from-outcome>homeAluno</from-outcome>
+   <to-view-id>/Aluno/homeAluno.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>homeProfessor</from-outcome>
+   <to-view-id>/Professor/homeProfessor.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>homeCoordenador</from-outcome>
+   <to-view-id>/Coordenador/homeCoordenador.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>go_manterEquipe</from-outcome>
+   <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- Navegação do Aluno -->
+ <navigation-rule>
 
-	<managed-bean>
-		<managed-bean-name>equipeBean</managed-bean-name>
-		<managed-bean-class>
-			br.com.gerpro.action.EquipeBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+  <navigation-case>
+   <from-outcome>cronograma</from-outcome>
+   <to-view-id>/Aluno/cronogramaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>justificativa</from-outcome>
+   <to-view-id>/Aluno/justificativaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listaFuncao</from-outcome>
+   <to-view-id>/Aluno/listaFuncaoForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>metodologia</from-outcome>
+   <to-view-id>/Aluno/metodologiaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>missaoProduto</from-outcome>
+   <to-view-id>/Aluno/missaoProdutoForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>submeterProposta</from-outcome>
+   <to-view-id>/Aluno/submeterPropostaForm.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- Navegação do Professor -->
+ <navigation-rule>
 
-	<managed-bean>
-		<managed-bean-name>usuarioBean</managed-bean-name>
-		<managed-bean-class>
-			br.com.gerpro.action.UsuarioBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-
-	<navigation-rule>
-		<from-view-id>/*</from-view-id>
-		<navigation-case>
-			<from-outcome>homeAluno</from-outcome>
-			<to-view-id>/Aluno/homeAluno.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>homeProfessor</from-outcome>
-			<to-view-id>/Professor/homeProfessor.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>homeCoordenador</from-outcome>
-			<to-view-id>/Coordenador/homeCoordenador.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_manterEquipe</from-outcome>
-			<to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>		
-		<navigation-case>
-			<from-outcome>go_altproposta</from-outcome>
-			<to-view-id>/Coordenador/AltProposta.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-
-
-	<!-- NavegaÃ§ao das pagina Proposta -->
-	<navigation-rule>
-		<from-view-id>
-			/ManterProposta/PesquisarProposta.xhtml
-		</from-view-id>
-		<navigation-case>
-			<from-outcome>incluir</from-outcome>
-			<to-view-id>
-				/ManterProposta/CadastroProposta.xhtml
-			</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>alterar</from-outcome>
-			<to-view-id>
-				/ManterProposta/AlterarProposta.xhtml
-			</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>visualizar</from-outcome>
-			<to-view-id>
-				/ManterProposta/PesquisarProposta.xhtml
-			</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<!-- NavegaÃ§ao das pagina Equipe -->
-	<navigation-rule>
-		<from-view-id>/ManterEquipe/PesquisarEquipe.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>incluir</from-outcome>
-			<to-view-id>/ManterEquipe/CadastroEquipe.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>alterar</from-outcome>
-			<to-view-id>/ManterEquipe/AlterarEquipe.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>visualizar</from-outcome>
-			<to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<application>
-		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
-	</application>
+  <navigation-case>
+   <from-outcome>corrigirCronograma</from-outcome>
+   <to-view-id>/Professor/cronogramaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>corrigirJustificativa</from-outcome>
+   <to-view-id>/Professor/justificativaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>corrigirListaFuncao</from-outcome>
+   <to-view-id>/Professor/listaFuncaoForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>corrigirMetodologia</from-outcome>
+   <to-view-id>/Professor/metodologiaForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>corrigirMissaoProduto</from-outcome>
+   <to-view-id>/Professor/missaoProdutoForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>submeterCorrecao</from-outcome>
+   <to-view-id>/Professor/submeterCorrecaoForm.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <!-- Navegação do Coordenador -->
+ <navigation-rule>
+  <navigation-case>
+   <from-outcome>go_altproposta</from-outcome>
+   <to-view-id>/Coordenador/AltProposta.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <!-- NavegaÃ§ao das pagina Proposta -->
+ <navigation-rule>
+  <from-view-id>/ManterProposta/PesquisarProposta.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>incluir</from-outcome>
+   <to-view-id>/ManterProposta/CadastroProposta.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>alterar</from-outcome>
+   <to-view-id>/ManterProposta/AlterarProposta.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>visualizar</from-outcome>
+   <to-view-id>/ManterProposta/PesquisarProposta.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- NavegaÃ§ao das pagina Equipe -->
+ <navigation-rule>
+  <from-view-id>/ManterEquipe/PesquisarEquipe.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>incluir</from-outcome>
+   <to-view-id>/ManterEquipe/CadastroEquipe.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>alterar</from-outcome>
+   <to-view-id>/ManterEquipe/AlterarEquipe.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>visualizar</from-outcome>
+   <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+ </application>
 </faces-config>

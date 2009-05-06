@@ -1,46 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#ManterProposta#PesquisarProposta.jsp"
-  PATH="/ManterProposta/PesquisarProposta.jsp" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#ManterProposta#PesquisarProposta.jsp:0"
-   NAME="item" PATH="/ManterProposta/PesquisarProposta.jsp" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="homeAluno::#Aluno#homeAluno.xhtml"
+    NAME="output" PATH="/Aluno/homeAluno.xhtml"
+    TARGET="rules:#Aluno#homeAluno.xhtml" TITLE="homeAluno" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="incluir::#ManterProposta#CadastroProposta.jsp" NAME="output"
-    PATH="/ManterProposta/CadastroProposta.jsp"
-    TARGET="rules:#ManterProposta#CadastroProposta.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+    ID="homeProfessor::#Professor#homeProfessor.xhtml" NAME="output1"
+    PATH="/Professor/homeProfessor.xhtml"
+    TARGET="rules:#Professor#homeProfessor.xhtml" TITLE="homeProfessor" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="alterar::#ManterProposta#AlterarProposta.jsp" NAME="output1"
-    PATH="/ManterProposta/AlterarProposta.jsp"
-    TARGET="rules:#ManterProposta#AlterarProposta.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+    ID="homeCoordenador::#Coordenador#homeCoordenador.xhtml"
+    NAME="output2" PATH="/Coordenador/homeCoordenador.xhtml"
+    TARGET="rules:#Coordenador#homeCoordenador.xhtml"
+    TITLE="homeCoordenador" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="visualizar::#ManterProposta#PesquisarProposta.jsp"
-    NAME="output2" PATH="/ManterProposta/PesquisarProposta.jsp"
-    TARGET="rules:#ManterProposta#PesquisarProposta.jsp"
+    ID="go_manterEquipe::#ManterEquipe#PesquisarEquipe.xhtml"
+    NAME="output3" PATH="/ManterEquipe/PesquisarEquipe.xhtml"
+    TARGET="rules:#ManterEquipe#PesquisarEquipe.xhtml"
+    TITLE="go_manterEquipe" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,737,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cronograma::#Aluno#cronogramaForm.xhtml"
+    NAME="output" PATH="/Aluno/cronogramaForm.xhtml"
+    TARGET="rules:#Aluno#cronogramaForm.xhtml" TITLE="cronograma" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="justificativa::#Aluno#justificativaForm.xhtml" NAME="output1"
+    PATH="/Aluno/justificativaForm.xhtml"
+    TARGET="rules:#Aluno#justificativaForm.xhtml" TITLE="justificativa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listaFuncao::#Aluno#listaFuncaoForm.xhtml"
+    NAME="output2" PATH="/Aluno/listaFuncaoForm.xhtml"
+    TARGET="rules:#Aluno#listaFuncaoForm.xhtml" TITLE="listaFuncao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="metodologia::#Aluno#metodologiaForm.xhtml"
+    NAME="output3" PATH="/Aluno/metodologiaForm.xhtml"
+    TARGET="rules:#Aluno#metodologiaForm.xhtml" TITLE="metodologia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="missaoProduto::#Aluno#missaoProdutoForm.xhtml" NAME="output4"
+    PATH="/Aluno/missaoProdutoForm.xhtml"
+    TARGET="rules:#Aluno#missaoProdutoForm.xhtml" TITLE="missaoProduto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="submeterProposta::#Aluno#submeterPropostaForm.xhtml"
+    NAME="output5" PATH="/Aluno/submeterPropostaForm.xhtml"
+    TARGET="rules:#Aluno#submeterPropostaForm.xhtml"
+    TITLE="submeterProposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ManterProposta#PesquisarProposta.xhtml"
+  PATH="/ManterProposta/PesquisarProposta.xhtml" SHAPE="32,849,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ManterProposta#PesquisarProposta.xhtml:0"
+   NAME="item" PATH="/ManterProposta/PesquisarProposta.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="incluir::#ManterProposta#CadastroProposta.xhtml" NAME="output"
+    PATH="/ManterProposta/CadastroProposta.xhtml"
+    TARGET="rules:#ManterProposta#CadastroProposta.xhtml"
+    TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="alterar::#ManterProposta#AlterarProposta.xhtml" NAME="output1"
+    PATH="/ManterProposta/AlterarProposta.xhtml"
+    TARGET="rules:#ManterProposta#AlterarProposta.xhtml" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#ManterProposta#PesquisarProposta.xhtml"
+    NAME="output2" PATH="/ManterProposta/PesquisarProposta.xhtml"
+    TARGET="rules:#ManterProposta#PesquisarProposta.xhtml"
     TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#ManterProposta#AlterarProposta.jsp"
-  PATH="/ManterProposta/AlterarProposta.jsp" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#ManterProposta#CadastroProposta.jsp"
-  PATH="/ManterProposta/CadastroProposta.jsp" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#ManterEquipe#PesquisarEquipe.jsp"
-  PATH="/ManterEquipe/PesquisarEquipe.jsp" SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#ManterEquipe#PesquisarEquipe.jsp:0"
-   NAME="item" PATH="/ManterEquipe/PesquisarEquipe.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="incluir::#ManterEquipe#CadastroEquipe.jsp"
-    NAME="output" PATH="/ManterEquipe/CadastroEquipe.jsp"
-    TARGET="rules:#ManterEquipe#CadastroEquipe.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="alterar::#ManterEquipe#AlterarEquipe.jsp"
-    NAME="output1" PATH="/ManterEquipe/AlterarEquipe.jsp"
-    TARGET="rules:#ManterEquipe#AlterarEquipe.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#PesquisarEquipe.xhtml"
+  PATH="/ManterEquipe/PesquisarEquipe.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ManterEquipe#PesquisarEquipe.xhtml:0"
+   NAME="item" PATH="/ManterEquipe/PesquisarEquipe.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="incluir::#ManterEquipe#CadastroEquipe.xhtml"
+    NAME="output" PATH="/ManterEquipe/CadastroEquipe.xhtml"
+    TARGET="rules:#ManterEquipe#CadastroEquipe.xhtml" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="alterar::#ManterEquipe#AlterarEquipe.xhtml"
+    NAME="output1" PATH="/ManterEquipe/AlterarEquipe.xhtml"
+    TARGET="rules:#ManterEquipe#AlterarEquipe.xhtml" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="visualizar::#ManterEquipe#PesquisarEquipe.jsp" NAME="output2"
-    PATH="/ManterEquipe/PesquisarEquipe.jsp"
-    TARGET="rules:#ManterEquipe#PesquisarEquipe.jsp" TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+    ID="visualizar::#ManterEquipe#PesquisarEquipe.xhtml" NAME="output2"
+    PATH="/ManterEquipe/PesquisarEquipe.xhtml"
+    TARGET="rules:#ManterEquipe#PesquisarEquipe.xhtml"
+    TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#ManterEquipe#CadastroEquipe.jsp"
-  PATH="/ManterEquipe/CadastroEquipe.jsp" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#ManterEquipe#AlterarEquipe.jsp"
-  PATH="/ManterEquipe/AlterarEquipe.jsp" SHAPE="272,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#homeProfessor.xhtml"
+  PATH="/Professor/homeProfessor.xhtml" SHAPE="288,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Professor#homeProfessor.xhtml:0" NAME="item"
+   PATH="/Professor/homeProfessor.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="go_altproposta::#Coordenador#AltProposta.xhtml" NAME="output"
+    PATH="/Coordenador/AltProposta.xhtml"
+    TARGET="rules:#Coordenador#AltProposta.xhtml" TITLE="go_altproposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ManterProposta#CadastroProposta.xhtml"
+  PATH="/ManterProposta/CadastroProposta.xhtml" SHAPE="272,865,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Coordenador#AltProposta.xhtml"
+  PATH="/Coordenador/AltProposta.xhtml" SHAPE="240,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Coordenador#homeCoordenador.xhtml"
+  PATH="/Coordenador/homeCoordenador.xhtml" SHAPE="288,353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterProposta#AlterarProposta.xhtml"
+  PATH="/ManterProposta/AlterarProposta.xhtml" SHAPE="272,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#homeAluno.xhtml"
+  PATH="/Aluno/homeAluno.xhtml" SHAPE="288,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#AlterarEquipe.xhtml"
+  PATH="/ManterEquipe/AlterarEquipe.xhtml" SHAPE="528,625,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ManterEquipe#CadastroEquipe.xhtml"
+  PATH="/ManterEquipe/CadastroEquipe.xhtml" SHAPE="528,449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#missaoProdutoForm.xhtml"
+  PATH="/Aluno/missaoProdutoForm.xhtml" SHAPE="304,1985,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#submeterPropostaForm.xhtml"
+  PATH="/Aluno/submeterPropostaForm.xhtml" SHAPE="304,2097,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#justificativaForm.xhtml"
+  PATH="/Aluno/justificativaForm.xhtml" SHAPE="304,1649,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#listaFuncaoForm.xhtml"
+  PATH="/Aluno/listaFuncaoForm.xhtml" SHAPE="304,1761,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#cronogramaForm.xhtml"
+  PATH="/Aluno/cronogramaForm.xhtml" SHAPE="304,1377,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#metodologiaForm.xhtml"
+  PATH="/Aluno/metodologiaForm.xhtml" SHAPE="304,1873,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#justificativaForm.xhtml"
+  PATH="/Professor/justificativaForm.xhtml" SHAPE="560,673,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#cronogramaForm.xhtml"
+  PATH="/Professor/cronogramaForm.xhtml" SHAPE="560,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#missaoProdutoForm.xhtml"
+  PATH="/Professor/missaoProdutoForm.xhtml" SHAPE="560,1073,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#metodologiaForm.xhtml"
+  PATH="/Professor/metodologiaForm.xhtml" SHAPE="560,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#listaFuncaoForm.xhtml"
+  PATH="/Professor/listaFuncaoForm.xhtml" SHAPE="560,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#submeterCorrecaoForm.xhtml"
+  PATH="/Professor/submeterCorrecaoForm.xhtml" SHAPE="560,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,1681,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirCronograma::#Professor#cronogramaForm.xhtml"
+    NAME="output" PATH="/Professor/cronogramaForm.xhtml"
+    TARGET="rules:#Professor#cronogramaForm.xhtml"
+    TITLE="corrigirCronograma" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirJustificativa::#Professor#justificativaForm.xhtml"
+    NAME="output1" PATH="/Professor/justificativaForm.xhtml"
+    TARGET="rules:#Professor#justificativaForm.xhtml"
+    TITLE="corrigirJustificativa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirListaFuncao::#Professor#listaFuncaoForm.xhtml"
+    NAME="output2" PATH="/Professor/listaFuncaoForm.xhtml"
+    TARGET="rules:#Professor#listaFuncaoForm.xhtml"
+    TITLE="corrigirListaFuncao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirMetodologia::#Professor#metodologiaForm.xhtml"
+    NAME="output3" PATH="/Professor/metodologiaForm.xhtml"
+    TARGET="rules:#Professor#metodologiaForm.xhtml"
+    TITLE="corrigirMetodologia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirMissaoProduto::#Professor#missaoProdutoForm.xhtml"
+    NAME="output4" PATH="/Professor/missaoProdutoForm.xhtml"
+    TARGET="rules:#Professor#missaoProdutoForm.xhtml"
+    TITLE="corrigirMissaoProduto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="submeterCorrecao::#Professor#submeterCorrecaoForm.xhtml"
+    NAME="output5" PATH="/Professor/submeterCorrecaoForm.xhtml"
+    TARGET="rules:#Professor#submeterCorrecaoForm.xhtml"
+    TITLE="submeterCorrecao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

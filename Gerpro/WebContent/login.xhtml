@@ -25,6 +25,7 @@
 					value="#{usuarioBean.usuario.senha}">
 				</h:inputSecret>
 				<h:commandButton value="Entrar" action="#{usuarioBean.logar}" />
+				<%=session.put("usuario",usuario);%>
 			</h:panelGrid>
 		</h:form>
 	</ui:define></div>

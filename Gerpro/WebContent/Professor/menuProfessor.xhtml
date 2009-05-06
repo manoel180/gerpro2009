@@ -8,54 +8,63 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <link href="/css/estilos.css" rel="stylesheet" type="text/css" />
+<ui:insert name="titulo"></ui:insert>
 </head>
-<table>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="login.htm" class="categorylink">Tela Inicial</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="listaAlunos.htm" class="categorylink">Lista de Alunos</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="listaProfessores.htm" class="categorylink">Lista de Professores</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroProfessor.htm" class="categorylink">Cadastro de Professores</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroAluno.htm" class="categorylink">Cadastro de Alunos</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroProposta.htm" class="categorylink">Cadastro de Propostas</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="alocarPropostas.htm" class="categorylink">Alocar Propostas</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="relatorios.htm" class="categorylink">Relatórios</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="index.htm" class="categorylink">Logoff</a>
-        </td>
-    </tr>
-</table>
+<body>
 
+<h:form>
+	<table>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Tela Inicial"
+				action="homeProfessor"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Missão do Produto" action="corrigirMissaoProduto"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Lista de Função" action="corrigirListaFuncao"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Justificativa" action="corrigirJustificativa"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Metodologia"
+				action="corrigirMetodologia"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Cronograma"
+				action="corrigirCronograma"></h:commandLink></td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Submeter Correção" action="submeterCorrecao"></h:commandLink>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Logoff"
+				action="index.jsf"></h:commandLink></td>
+		</tr>
+
+	</table>
+
+</h:form>
+
+</body>
 </html>
-

@@ -6,96 +6,66 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<link href="/css/estilos.css" rel="stylesheet" type="text/css" />
+<ui:insert name="titulo"></ui:insert>
+</head>
+<body>
 
-<table>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="bemVindoAluno.htm" class="categorylink">Tela Inicial</a>
-        </td>
-    </tr>
+<h:form>
+	<table>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Tela Inicial"
+				action="homeAluno"></h:commandLink></td>
+		</tr>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="missaoProduto.htm" class="categorylink">Missão do Produto</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Missão do Produto" action="missaoProduto"></h:commandLink></td>
+		</tr>
 
-     <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="listaFuncao.htm" class="categorylink">Lista de Função</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Lista de Função" action="listaFuncao"></h:commandLink></td>
+		</tr>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="justificativa.htm" class="categorylink">Justificativa</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Justificativa" action="justificativa"></h:commandLink></td>
+		</tr>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="metodologia.htm" class="categorylink">Metodologia</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Metodologia"
+				action="metodologia"></h:commandLink></td>
+		</tr>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cronograma.htm" class="categorylink">Cronograma</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Cronograma"
+				action="cronograma"></h:commandLink></td>
+		</tr>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="submeterProposta.htm" class="categorylink">Submeter Proposta</a>
-        </td>
-    </tr>
-<!--
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="listaProfessores.htm" class="categorylink">Lista de Professores</a>
-        </td>
-    </tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink
+				value="Submeter Proposta" action="submeterProposta"></h:commandLink>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top" class="txt1"
+				style="padding-left: 12px;"><h:commandLink value="Logoff"
+				action="index.jsf"></h:commandLink></td>
+		</tr>
 
-      <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroProfessor.htm" class="categorylink">Cadastro de Professores</a>
-        </td>
-    </tr>
+	</table>
 
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroAluno.htm" class="categorylink">Cadastro de Alunos</a>
-        </td>
-    </tr>
+</h:form>
 
-
-
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="cadastroProposta.htm" class="categorylink">Cadastro de Propostas</a>
-        </td>
-    </tr>
-
-
-  
-
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="alocarPropostas.htm" class="categorylink">Alocar Propostas</a>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="relatorios.htm" class="categorylink">RelatÃ³rios</a>
-        </td>
-    </tr>
-
-    <tr>
-        <td align="left" valign="top" class="txt1" style="padding-left:12px;">
-            <a href="index.htm" class="categorylink">Logoff</a>
-        </td>
-    </tr>  -->
-</table>
-
+</body>
 
 </html>

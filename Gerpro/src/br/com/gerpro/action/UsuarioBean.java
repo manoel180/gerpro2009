@@ -9,10 +9,13 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Usuario;
+import br.com.gerpro.util.ApplicationSecurityManager;
 
 
 
@@ -21,6 +24,8 @@ public class UsuarioBean{
 	private List<Usuario> listaUsuarios;
 	private Usuario usuario = new Usuario();
 	private FacadeUsuario usuarioDao = new UsuarioDao();
+	private HttpServletRequest requestScope; 
+	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	
 	public String prepararBean() {
 		usuario = new Usuario();
@@ -69,12 +74,10 @@ public class UsuarioBean{
 	}
 	
 	public String logar(){
-		System.out.println("Passei por aqui  - UsuarioBean!!!");
-		//(Usuario) objDatatableUsuario.getRowData();
+//		applicationSecurityManager.setUser(request, usuario);
+//		Usuario usuario = (Usuario) get
+//		getRequestScope().put("cidade", cidade);
 		
-		if (usuario==null){
-			System.out.println("usuario  � null");
-		}
 		return usuarioDao.logar(usuario);
 	}
 
