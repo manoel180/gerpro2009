@@ -73,15 +73,12 @@ public class UsuarioBean{
 		return prepararBean();
 	}
 	
-<<<<<<< .mine
-	public String logar(){		
-		//(Usuario) objDatatableUsuario.getRowData();
-=======
+
 	public String logar(){
-//		applicationSecurityManager.setUser(request, usuario);
-//		Usuario usuario = (Usuario) get
+		//applicationSecurityManager.setUser(request, usuario);
+	//	Usuario usuario = (Usuario) get
 //		getRequestScope().put("cidade", cidade);
->>>>>>> .r132
+
 		
 		return usuarioDao.logar(usuario);
 	}
