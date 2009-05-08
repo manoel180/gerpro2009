@@ -7,10 +7,10 @@
 	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
 
 <head>
-<title>Pesquisar Categorias</title>
+<title>Propostas</title>
 <!--Chamada ao arquivo CSS -->
 <link rel="stylesheet" type="text/css"
-	href="WEB-INF/css/estilos.css">
+	href="/css/estilos.css">
 	</link>
 </head>
 <f:view>
@@ -19,7 +19,7 @@
 			styleClass="titulo" /></div>
 		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
 			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
-				<h:outputText value="DescriÃ§Ã£o:" />
+				<h:outputText value="Descrição:" />
 				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
 				<h:commandButton value="Pesquisar"
 					action="#{propostaBean.pesquisar}"/>
@@ -58,7 +58,7 @@
 
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Opï¿½ï¿½es" />
+						<h:outputText value="Opções" />
 
 					</f:facet>
 					<h:commandButton image="/imagens/delete.png"

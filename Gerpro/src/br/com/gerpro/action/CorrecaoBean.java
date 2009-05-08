@@ -6,6 +6,7 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
+
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.model.Correcao;
@@ -24,6 +25,7 @@ public class CorrecaoBean {
 	public String prepararBean() {
 
 		correcao = new Correcao();
+		List <Correcao> listaCorrecoesBanco = correcaoDao.procurarPorIdProposta(1);
 		
 	
 		return null;//"go_manterEquipe";
