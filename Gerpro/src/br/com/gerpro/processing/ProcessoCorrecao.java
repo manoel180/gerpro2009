@@ -3,10 +3,13 @@
  */
 package br.com.gerpro.processing;
 
+import java.util.List;
+
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
+import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
 
 /**
@@ -22,13 +25,17 @@ public class ProcessoCorrecao {
 		/**
 		 * Verifica  se existem correcoes para uma proposta
 		 */		
-		propostaBanco = propostaDao.procurarPorId(propostaView.getId());
+		List<Correcao> listaCorrecoesRealizadas = correcaoDao.procurarPorIdProposta(propostaView.getId());
 		
-		//if (propostaBanco.getPropostaItems().) {
+		if (listaCorrecoesRealizadas.isEmpty()) {
+			System.out.println("Não há correções");
+			return false;
 			
-		//}
+			
+		}else
+			System.out.println("Há correções");
 				
-		return null;
+		return true;
 		
 	}
 
