@@ -6,9 +6,7 @@ package br.com.gerpro.processing;
 import java.util.List;
 
 import br.com.gerpro.dao.FacadeCorrecao;
-import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.CorrecaoDao;
-import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
 
@@ -16,12 +14,8 @@ import br.com.gerpro.model.Proposta;
  * @author msouza
  *
  */
-public class ProcessoCorrecao implements IProcessoCorrecao {		
-	
-	
-	
-	
-	/**
+public class ProcessoCorrecao implements IProcessoCorrecao {
+	/* (non-Javadoc)
 	 * @see br.com.gerpro.processing.IProcessoCorrecao#verificaCorrecoesAnteriores(br.com.gerpro.model.Proposta)
 	 */
 	public int verificaCorrecoesAnteriores(Proposta propostaView){
@@ -44,12 +38,18 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoCorrecao#compararCorrecaoItem(br.com.gerpro.model.Correcao, java.util.List)
+	 */
 	@Override
 	public void compararCorrecaoItem(Correcao correcao, List<Correcao> listaBanco) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoCorrecao#executar(br.com.gerpro.model.Correcao)
+	 */
 	@Override
 	public void executar(Correcao correcao) {
 		/**
