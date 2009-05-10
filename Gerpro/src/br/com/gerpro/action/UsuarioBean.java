@@ -9,8 +9,9 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
-import javax.servlet.http.HttpServlet;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.UsuarioDao;
@@ -65,7 +66,6 @@ public class UsuarioBean{
 		}
 		return "visualizar";
 	}
-
 	
 	public String excluir() {
 		usuario = (Usuario) objDatatableUsuario.getRowData();
@@ -74,13 +74,15 @@ public class UsuarioBean{
 	}
 	
 
+	@SuppressWarnings("deprecation")
 	public String logar(){
-		//applicationSecurityManager.setUser(request, usuario);
-	//	Usuario usuario = (Usuario) get
-//		getRequestScope().put("cidade", cidade);
-
+		String  homeUsuario = "home" + usuarioDao.logar(usuario);
 		
-		return usuarioDao.logar(usuario);
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		session.putValue("usuario", usuario);		
+		return homeUsuario;
 	}
 
 	/*

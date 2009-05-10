@@ -6,6 +6,7 @@ package br.com.gerpro.dao;
 import java.util.List;
 
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Usuario;
 
 
 /**
@@ -28,7 +29,7 @@ public interface FacadeProposta {
 
 	public List<Proposta> listarOrdemAlfabetica();
 
-	public List<Proposta> listar2();
+	public List<Proposta> listarPorProfessor(Usuario usuario);
 	
 	public Proposta procurarPorNome(String Nome);
 }

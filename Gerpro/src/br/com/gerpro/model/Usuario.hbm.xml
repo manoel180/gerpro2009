@@ -8,10 +8,10 @@
             <column name="matricula" length="8" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="select">
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join">
             <column name="id_equipe" />
         </many-to-one>
-        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" fetch="select">
+        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" fetch="join">
             <column name="id_tipo" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
@@ -20,7 +20,7 @@
         <property name="senha" type="string">
             <column name="senha" length="10" not-null="true" />
         </property>
-        <set name="correcaos" inverse="true">
+        <set name="correcaos" inverse="true" fetch="join">
             <key>
                 <column name="matricula_professor" length="8" not-null="true" />
             </key>
