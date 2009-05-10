@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+
+<head>
+<title>Propostas</title>
+<!--Chamada ao arquivo CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/css/estilos.css">
+	</link>
+</head>
+<f:view>
+	<h:form id="form1">
+		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
+			styleClass="titulo" /></div>
+		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
+			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
+				<h:outputText value="Descrição:" />
+				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
+				<h:commandButton value="Pesquisar"
+					action="#{propostaBean.pesquisar}"/>
+				<h:commandButton value="Novo"
+					action="#{propostaBean.preperarInclusao}"/>
+			</h:panelGrid>
+
+		</rich:simpleTogglePanel>
+	</h:form>
+	<h:form id="form2">
+		<rich:simpleTogglePanel label="Resultado da Pesquisa">
+			<rich:dataTable var="prop" id="listapropostas"
+				value="#{propostaBean.listaProposta}"
+				binding="#{propostaBean.objDatatableProposta}" rows="10"
+				width="550px" align="center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cod" />
+					</f:facet>
+					<h:outputText value="#{prop.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{prop.nome}"
+						style="color:red; font-weight:bold; font-" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Equipe" />
+					</f:facet>
+					<h:outputText value="#{prop.equipe.nome}"
+						style="color:red; font-weight:bold; font-" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opções" />
+
+					</f:facet>
+					<h:commandButton image="/imagens/delete.png"
+						action="#{propostaBean.excluir}" />
+					<h:commandButton image="/imagens/editar.png"
+						action="#{propostaBean.preperarEdicao}" />
+				</h:column>
+			</rich:dataTable>
+		</rich:simpleTogglePanel>
+	</h:form>
+</f:view>
+</html>
