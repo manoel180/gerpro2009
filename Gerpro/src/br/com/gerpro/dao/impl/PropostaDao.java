@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
 
 
@@ -91,16 +92,21 @@ public class PropostaDao implements FacadeProposta {
 	
 	//consulta 2
 	//Lista por letra
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Proposta> listar2() {
+	public List<Proposta> listarPorProfessor(Usuario professor){
 
 		List<Proposta> result = null;
 		
 		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from Proposta order by status ");
-		
-		result = q.list();
+				 
+		result = session.createSQLQuery(" select *" +
+				" from proposta p" +
+				" inner join correcao co on co.id_proposta = p.id" +
+				" where co.matricula_professor like ? ")
+				.addEntity(Proposta.class)
+				.setParameter(0, professor.getMatricula())
+				.list();	
 		
 		session.close();
 		return result;

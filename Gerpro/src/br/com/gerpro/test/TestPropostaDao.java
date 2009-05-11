@@ -14,7 +14,7 @@ import br.com.gerpro.model.Usuario;
 
 /**
  * @author Clã dos Souza
- *
+ * 
  */
 public class TestPropostaDao {
 
@@ -22,43 +22,19 @@ public class TestPropostaDao {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		 PropostaDao propostaDao = new PropostaDao();
-		 Usuario usuario = new Usuario();
-		 usuario.setMatricula("1");
-		 
-		 
-		 List listaPropostas = propostaDao.listarPorProfessor(usuario);
-		 Set<Correcao> correcoes = null;
-		 
-		// Iterator iterator = listaPropostas.iterator();
-		 
-		// Usuario usuarios = propostaDao.listarPorProfessor(usuario);
-		 
-		
-		 
-//		 Iterator iterator = usuarios.iterator();
-		 
-		 Proposta proposta = new Proposta();
-		 //while(iterator.hasNext()){
-	//		 usuario = (Usuario)iterator.next();
+		PropostaDao propostaDao = new PropostaDao();
+		Usuario professor = new Usuario();
+		professor.setMatricula("1");
 
-			 
-			 Iterator iterator = listaPropostas.iterator();
-			 
-			 Correcao correcao = new Correcao();
-			 
-			 while(iterator.hasNext()){
-			 //System.out.println( iterator.next());
-				 proposta = (Proposta)iterator.next();
-				 System.out.println(proposta.getNome());
-				 
-				 
-			 }
-			 
-			 
-			 
-			 
-	//	 }
+		List listaPropostas = propostaDao.listarPorProfessor(professor);
+
+		Proposta proposta = new Proposta();
+
+		Iterator<Proposta> iterator = listaPropostas.iterator();
+
+		while (iterator.hasNext()) {
+			proposta = (Proposta) iterator.next();
+			System.out.println(proposta.getNome());
+		}
 	}
-
 }

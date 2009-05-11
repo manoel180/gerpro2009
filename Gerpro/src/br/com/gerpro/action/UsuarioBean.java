@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import br.com.gerpro.dao.FacadeUsuario;
@@ -24,8 +23,7 @@ public class UsuarioBean{
 	private UIData objDatatableUsuario;// componente da tela - JSP
 	private List<Usuario> listaUsuarios;
 	private Usuario usuario = new Usuario();
-	private FacadeUsuario usuarioDao = new UsuarioDao();
-	private HttpServletRequest requestScope; 
+	private FacadeUsuario usuarioDao = new UsuarioDao();	
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	
 	public String prepararBean() {

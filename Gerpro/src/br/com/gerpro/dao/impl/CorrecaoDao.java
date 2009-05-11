@@ -3,6 +3,8 @@
  */
 package br.com.gerpro.dao.impl;
 
+import java.util.List;
+
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
 
@@ -31,7 +33,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 	/* (non-Javadoc)
 	 * @see br.com.gerpro.dao.FacadeCorrecao#procurarPorId(int)
 	 */
-	public Correcao procurarPorId(Correcao correcao) {
+	public Correcao procurarPorIdProposta(Correcao correcao) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +53,12 @@ public class CorrecaoDao implements FacadeCorrecao {
 	public void remover(Correcao correcao) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Correcao> procurarPorIdProposta(int idProposta) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

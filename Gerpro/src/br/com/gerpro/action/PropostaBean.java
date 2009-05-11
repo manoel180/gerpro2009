@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeProposta;
@@ -16,11 +18,13 @@ import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Status;
+import br.com.gerpro.model.Usuario;
 
 
 public class PropostaBean {
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
+	private List<Proposta> listaPropostaPorProfessor;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta daoProposta = new PropostaDao() ;
 	private FacadeEquipe daoEquipe = new EquipeDao();
@@ -104,10 +108,21 @@ public class PropostaBean {
 		getDaoProposta().remover(proposta);
 		return prepararBean();
 	}
+	
+	public void listaPorProfessor(){
+		
+		FacesContext context = FacesContext.getCurrentInstance();		
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");		
+		listaPropostaPorProfessor = getDaoProposta().listarPorProfessor(usuario);
+		
+	}
 
 	/*
 	 * Getters and Setters
 	 */
+	
+	
 
 	public Proposta getProposta() {
 		return proposta;
@@ -173,6 +188,15 @@ public class PropostaBean {
 
 	public void setDaoStatus(FacadeStatus daoStatus) {
 		this.daoStatus = daoStatus;
+	}
+
+	public List<Proposta> getListaPropostaPorProfessor() {
+		return listaPropostaPorProfessor;
+	}
+
+	public void setListaPropostaPorProfessor(
+			List<Proposta> listaPropostaPorProfessor) {
+		this.listaPropostaPorProfessor = listaPropostaPorProfessor;
 	}
 
 }
