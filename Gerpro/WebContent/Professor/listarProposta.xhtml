@@ -32,7 +32,7 @@
 	<h:form id="form2">
 		<rich:simpleTogglePanel label="Resultado da Pesquisa">
 			<rich:dataTable var="prop" id="listapropostas"
-				value="#{propostaBean.listaProposta}"
+				value="#{propostaBean.listaPorProfessor}"
 				binding="#{propostaBean.objDatatableProposta}" rows="10"
 				width="550px" align="center">
 				<h:column>

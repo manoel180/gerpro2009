@@ -5,9 +5,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:composition template="/templates/layoutProfessor.xhtml">
-	
-	
-
+	<div id="content"><ui:define name="conteudo">
+		<ui:include src="listarProposta.xhtml" />
+	</ui:define></div>
+		
 	</ui:composition>
 
 </html>
