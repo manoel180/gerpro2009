@@ -6,38 +6,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
 
-<head>
-<title>Propostas</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/css/estilos.css">
-	</link>
-</head>
 <f:view>
-	<h:form id="form1">
-		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
-			styleClass="titulo" /></div>
-		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
-			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
-				<h:outputText value="Descrição:" />
-				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
-				<h:commandButton value="Pesquisar"
-					action="#{propostaBean.pesquisar}"/>
-				<h:commandButton value="Novo"
-					action="#{propostaBean.preperarInclusao}"/>
-			</h:panelGrid>
-
-		</rich:simpleTogglePanel>
-	</h:form>
-	<h:form id="form2">
-		<rich:simpleTogglePanel label="Resultado da Pesquisa">
+	<h:form id="form">
+		<rich:panel label="Lista de Propostas">
 			<rich:dataTable var="prop" id="listapropostas"
 				value="#{propostaBean.listaPorProfessor}"
-				binding="#{propostaBean.objDatatableProposta}" rows="10"
-				width="550px" align="center">
+				binding="#{propostaBean.objDatatableProposta}">
+				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Cod" />
+						<h:outputText value="Código" />
 					</f:facet>
 					<h:outputText value="#{prop.id}" />
 				</h:column>
@@ -55,19 +33,25 @@
 					<h:outputText value="#{prop.equipe.nome}"
 						style="color:red; font-weight:bold; font-" />
 				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Status" />
+					</f:facet>
+					<h:outputText value="#{prop.status.nome}"
+						style="color:red; font-weight:bold; font-" />
+				</h:column>
 
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Opções" />
 
-					</f:facet>
-					<h:commandButton image="/imagens/delete.png"
-						action="#{propostaBean.excluir}" />
-					<h:commandButton image="/imagens/editar.png"
-						action="#{propostaBean.preperarEdicao}" />
+					</f:facet>						
+					<h:commandLink value="Corrigir" action="#{propostaBean.preperarEdicao}"></h:commandLink>
+						
 				</h:column>
 			</rich:dataTable>
-		</rich:simpleTogglePanel>
+		</rich:panel>
 	</h:form>
 </f:view>
 </html>
