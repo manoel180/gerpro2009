@@ -76,6 +76,9 @@ public class UsuarioBean{
 	public String logar(){
 		String  homeUsuario = "home" + usuarioDao.logar(usuario);
 		
+		System.out.println("Passei por aqui ****** Logando ****** Home do Usuário: "
+				+ homeUsuario	);
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);

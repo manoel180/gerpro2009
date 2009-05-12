@@ -119,34 +119,21 @@ public class UsuarioDao implements FacadeUsuario {
 		String pagina = null;		
 
 		session = HibernateUtil.getSession();
+		
 		result = (Usuario) session.get(Usuario.class, usuario.getMatricula());
+		
 		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Usu√°rio inv√°lido");
+			JOptionPane.showMessageDialog(null, "Usu·rio inv·lido");
 		}
 
 		if (result.getSenha().equals(usuario.getSenha())) {
-			switch (result.getTipoUsuario().getId()) {
-			case 1:
-				pagina = "homeAluno";
-				break;
-
-			case 2:
-				pagina = "homeProfessor";
-				break;
-
-			case 3:
-				pagina = "homeCoordenador";
-				break;
-
-			default:
-				break;
-			}
+			pagina = result.getTipoUsuario().getNome();
+			
 		}
 		else
-			JOptionPane.showMessageDialog(null, "Senha inv√°lida");
-			
-		session.close();
+			JOptionPane.showMessageDialog(null, "Senha inv·lida");
 		
+		session.close();		
 		return pagina;
 
 	}

@@ -24,7 +24,7 @@ import br.com.gerpro.model.Usuario;
 public class PropostaBean {
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
-	private List<Proposta> listaPropostaPorProfessor;
+	private List<Proposta> listaPorProfessor;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta daoProposta = new PropostaDao() ;
 	private FacadeEquipe daoEquipe = new EquipeDao();
@@ -113,8 +113,10 @@ public class PropostaBean {
 		
 		FacesContext context = FacesContext.getCurrentInstance();		
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		Usuario usuario = (Usuario) session.getAttribute("usuario");		
-		listaPropostaPorProfessor = getDaoProposta().listarPorProfessor(usuario);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		System.out.println("Passei por aqui ****** Listar Por Professor ****** Professor: "
+				+ usuario.getNome()	);
+		listaPorProfessor = getDaoProposta().listarPorProfessor(usuario);
 		
 	}
 
@@ -190,13 +192,13 @@ public class PropostaBean {
 		this.daoStatus = daoStatus;
 	}
 
-	public List<Proposta> getListaPropostaPorProfessor() {
-		return listaPropostaPorProfessor;
+	public List<Proposta> getListaPorProfessor() {
+		return listaPorProfessor;
 	}
 
-	public void setListaPropostaPorProfessor(
-			List<Proposta> listaPropostaPorProfessor) {
-		this.listaPropostaPorProfessor = listaPropostaPorProfessor;
+	public void setListaPorProfessor(
+			List<Proposta> listaPorProfessor) {
+		this.listaPorProfessor = listaPorProfessor;
 	}
 
 }
