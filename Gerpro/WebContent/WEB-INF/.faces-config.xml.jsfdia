@@ -166,4 +166,12 @@
     TITLE="submeterCorrecao" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,737,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="go_altproposta::#Coordenador#AltProposta.xhtml" NAME="output"
+    PATH="/Coordenador/AltProposta.xhtml"
+    TARGET="rules:#Coordenador#AltProposta.xhtml" TITLE="go_altproposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

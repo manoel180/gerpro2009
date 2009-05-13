@@ -36,6 +36,7 @@
    <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
  <!-- Navegação do Aluno -->
  <navigation-rule>
 
@@ -66,7 +67,6 @@
  </navigation-rule>
  <!-- Navegação do Professor -->
  <navigation-rule>
-
   <navigation-case>
    <from-outcome>corrigirCronograma</from-outcome>
    <to-view-id>/Professor/cronogramaForm.xhtml</to-view-id>
@@ -135,7 +135,8 @@
    <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- <application>
+ <application> 
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
- </application>
+  <message-bundle>br.com.gerpro.util.mensagens</message-bundle>
+ </application> 
 </faces-config>
