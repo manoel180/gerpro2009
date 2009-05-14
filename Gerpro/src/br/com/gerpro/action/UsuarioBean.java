@@ -79,12 +79,14 @@ public class UsuarioBean{
 		System.out.println("Passei por aqui ****** Logando ****** Home do Usuário: "
 				+ homeUsuario	);
 		
-		FacesContext context = FacesContext.getCurrentInstance();
+		//FacesContext context = FacesContext.getCurrentInstance();
 		
-		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		session.putValue("usuario", usuario);		
+		//HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		//session.putValue("usuario", usuario);		
 		return homeUsuario;
 	}
+	//TODO Retirar item Tela Inicial de todos os menus.
+	
 
 	/*
 	 * Getters and Setters

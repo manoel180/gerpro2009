@@ -12,12 +12,14 @@
 <ui:insert name="titulo"></ui:insert>
 </head>
 <body>
+<f:view>
 	<div id="container">
-		<div id="internal_container">
-			<div id="header"><ui:include src="/common/banner.xhtml" /></div>			
-			<div id="contentIndex"><ui:insert name="loginForm" /></div>			
-			<div id="footer"><ui:include src="/common/footer.xhtml" /></div>
-		</div>
+	<div id="internal_container">
+	<div id="header"><ui:include src="../common/banner.xhtml" /></div>
+	<div id="contentIndex"><ui:insert name="loginForm" /></div>
+	<div id="footer"><ui:include src="../common/footer.xhtml" /></div>
 	</div>
+	</div>
+</f:view>
 </body>
 </html>

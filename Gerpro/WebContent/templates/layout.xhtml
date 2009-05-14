@@ -8,18 +8,20 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <head>
-<link href="/css/estilos.css" rel="stylesheet" type="text/css" />
+<link href="../css/estilos.css" rel="stylesheet" type="text/css" />
 <ui:insert name="titulo"></ui:insert>
 </head>
 <body>
+<f:view>
 	<div id="container">
-		<div id="internal_container">
-			<div id="header"><ui:include src="/common/banner.xhtml" /></div>
-			<div id="navbar"><ui:include src="/common/barraStatus.xhtml" /></div>
-			<div id="menu"><ui:insert name="menu" /></div>
-			<div id="content"><ui:insert name="conteudo" /></div>
-			<div id="footer"><ui:include src="/common/footer.xhtml" /></div>
-		</div>
+	<div id="internal_container">
+	<div id="header"><ui:include src="/common/banner.xhtml" /></div>
+	<div id="navbar"><ui:include src="/common/barraStatus.xhtml" /></div>
+	<div id="menu"><ui:insert name="menu" /></div>
+	<div id="content"><ui:insert name="conteudo" /></div>
+	<div id="footer"><ui:include src="/common/footer.xhtml" /></div>
 	</div>
+	</div>
+</f:view>
 </body>
 </html>

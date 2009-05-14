@@ -23,8 +23,8 @@
    <from-outcome>homeAluno</from-outcome>
    <to-view-id>/Aluno/homeAluno.xhtml</to-view-id>
   </navigation-case>
-  <navigation-case>
-   <from-outcome>homeProfessor</from-outcome>
+  <navigation-case>  
+   <from-outcome>homeProfessor</from-outcome>   
    <to-view-id>/Professor/homeProfessor.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
@@ -39,7 +39,6 @@
  
  <!-- Navegação do Aluno -->
  <navigation-rule>
-
   <navigation-case>
    <from-outcome>cronograma</from-outcome>
    <to-view-id>/Aluno/cronogramaForm.xhtml</to-view-id>
@@ -65,6 +64,7 @@
    <to-view-id>/Aluno/submeterPropostaForm.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
  <!-- Navegação do Professor -->
  <navigation-rule>
   <navigation-case>

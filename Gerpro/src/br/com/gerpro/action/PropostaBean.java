@@ -26,15 +26,15 @@ public class PropostaBean {
 	private List<Proposta> listaProposta;
 	private List<Proposta> listaPorProfessor;
 	private Proposta proposta = new Proposta();
-	private FacadeProposta daoProposta = new PropostaDao() ;
-	private FacadeEquipe daoEquipe = new EquipeDao();
-	private FacadeStatus daoStatus = new StatusDao();
+	private FacadeProposta propostaDao = new PropostaDao() ;
+	private FacadeEquipe equipeDao = new EquipeDao();
+	private FacadeStatus statusDao = new StatusDao();
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();
 	
 	//ComboBox Equipes
 	public SelectItem[] getEquipesCombo(){
-		List<Equipe> le = getDaoEquipe().listar();
+		List<Equipe> le = getEquipeDao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
 
 		for( Equipe e : le ){
@@ -45,7 +45,7 @@ public class PropostaBean {
 	
 	//ComboBox Status
 	public SelectItem[] getStatusCombo(){
-		List<Status> le = getDaoStatus().listar();
+		List<Status> le = getStatusDao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
 
 		for( Status e : le ){
@@ -57,7 +57,8 @@ public class PropostaBean {
 	public String prepararBean() {
 
 		proposta = new Proposta();
-		listaProposta = getDaoProposta().listar();
+		listaProposta = getPropostaDao().listar();
+		listaPorProfessor = getListaPorProfessor();
 	
 		return "go_manterProposta";
 	}
@@ -73,7 +74,7 @@ public class PropostaBean {
 	}
 
 	public void pesquisar() {
-		listaProposta = getDaoProposta().listarPorNome(proposta.getNome());
+		listaProposta = getPropostaDao().listarPorNome(proposta.getNome());
 	
 	}
 
@@ -86,7 +87,7 @@ public class PropostaBean {
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
 			proposta.setPeriodo("001");			
-			getDaoProposta().inserir(proposta);
+			getPropostaDao().inserir(proposta);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,7 +96,7 @@ public class PropostaBean {
 
 	public String alterar() {
 		try {
-			getDaoProposta().alterar(proposta);
+			getPropostaDao().alterar(proposta);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,27 +106,28 @@ public class PropostaBean {
 	
 	public String excluir() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
-		getDaoProposta().remover(proposta);
+		getPropostaDao().remover(proposta);
 		return prepararBean();
 	}
 	
-	public void listaPorProfessor(){
+	public String listaPorProfessor(){
 		
-		FacesContext context = FacesContext.getCurrentInstance();		
-		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		//FacesContext context = FacesContext.getCurrentInstance();		
+		//HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		//Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Usuario usuario = new Usuario();
+		usuario.setMatricula("1");
 		System.out.println("Passei por aqui ****** Listar Por Professor ****** Professor: "
 				+ usuario.getNome()	);
-		listaPorProfessor = getDaoProposta().listarPorProfessor(usuario);
+		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
+		
+		return "listarPropostas";
 		
 	}
 
 	/*
 	 * Getters and Setters
 	 */
-	
-	
-
 	public Proposta getProposta() {
 		return proposta;
 	}
@@ -150,12 +152,12 @@ public class PropostaBean {
 		this.objDatatableProposta = objDatatableProposta;
 	}
 
-	public FacadeProposta getDaoProposta() {
-		return daoProposta;
+	public FacadeProposta getPropostaDao() {
+		return propostaDao;
 	}
 
-	public void setDaoProposta(FacadeProposta daoProposta) {
-		this.daoProposta = daoProposta;
+	public void setPropostaDao(FacadeProposta propostaDao) {
+		this.propostaDao = propostaDao;
 	}
 
 	public Equipe getEquipe() {
@@ -175,21 +177,21 @@ public class PropostaBean {
 	}
 
 
-	public FacadeEquipe getDaoEquipe() {
-		return daoEquipe;
+	public FacadeEquipe getEquipeDao() {
+		return equipeDao;
 	}
 
 
-	public void setDaoEquipe(FacadeEquipe daoEquipe) {
-		this.daoEquipe = daoEquipe;
+	public void setEquipeDao(FacadeEquipe equipeDao) {
+		this.equipeDao = equipeDao;
 	}
 
-	public FacadeStatus getDaoStatus() {
-		return daoStatus;
+	public FacadeStatus getStatusDao() {
+		return statusDao;
 	}
 
-	public void setDaoStatus(FacadeStatus daoStatus) {
-		this.daoStatus = daoStatus;
+	public void setStatusDao(FacadeStatus statusDao) {
+		this.statusDao = statusDao;
 	}
 
 	public List<Proposta> getListaPorProfessor() {

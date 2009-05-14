@@ -6,11 +6,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
-<ui:composition template="/templates/layout.xhtml">
-	<div id="menu"><ui:define name="menu">
-		<ui:include src="../Coordenador/menuCoordenador.xhtml" />
-	</ui:define></div>
-	<div id="content"><ui:insert name="conteudo" />Pagina invalida</div>
-</ui:composition>
+<f:view>
+	<ui:composition template="layout.xhtml">
+		<div id="menu"><ui:define name="menu">
+			<ui:include src="../Coordenador/menuCoordenador.xhtml" />
+		</ui:define></div>
+		<div id="content"><ui:insert name="conteudo" />Pagina invalida</div>
+	</ui:composition>
+</f:view>
 </html>

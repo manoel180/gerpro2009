@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
-<link href="/css/estilos.css" rel="stylesheet" type="text/css" />
+<link href="../css/estilos.css" rel="stylesheet" type="text/css" />
 <ui:insert name="titulo"></ui:insert>
 </head>
 <body>
@@ -16,14 +16,8 @@
 	<table>
 		<tr>
 			<td align="left" valign="top" class="txt1"
-				style="padding-left: 12px;"><h:commandLink value="Tela Inicial"
-				action="homeProfessor"></h:commandLink></td>
-		</tr>
-		
-		<tr>
-			<td align="left" valign="top" class="txt1"
 				style="padding-left: 12px;"><h:commandLink
-				value="Lista de Propostas" action="listarPropostas"></h:commandLink></td>
+				value="Lista de Propostas" action="#{propostaBean.listaPorProfessor}"></h:commandLink></td>
 		</tr>
 
 		<tr>
