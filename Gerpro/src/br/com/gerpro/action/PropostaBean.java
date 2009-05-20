@@ -58,7 +58,7 @@ public class PropostaBean {
 
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
-		listaPorProfessor = getListaPorProfessor();
+		
 	
 		return "go_manterProposta";
 	}
@@ -66,6 +66,11 @@ public class PropostaBean {
 	public String preperarInclusao() {
 		proposta = new Proposta();
 		return "incluir";
+	}
+	
+	public String prepararLista(){
+		listaPorProfessor = getListaPorProfessor();
+		return "homeProfessor";
 	}
 
 	public String preperarEdicao() {

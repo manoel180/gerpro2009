@@ -21,19 +21,19 @@
   <from-view-id>/*</from-view-id>
   <navigation-case>
    <from-outcome>homeAluno</from-outcome>
-   <to-view-id>/Aluno/homeAluno.xhtml</to-view-id>
+   <to-view-id>/Aluno/homeAluno.jsp</to-view-id>
   </navigation-case>
   <navigation-case>  
    <from-outcome>homeProfessor</from-outcome>   
-   <to-view-id>/Professor/homeProfessor.xhtml</to-view-id>
+   <to-view-id>/Professor/homeProfessor.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>homeCoordenador</from-outcome>
-   <to-view-id>/Coordenador/homeCoordenador.xhtml</to-view-id>
+   <to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>go_manterEquipe</from-outcome>
-   <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
+   <to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -41,27 +41,27 @@
  <navigation-rule>
   <navigation-case>
    <from-outcome>cronograma</from-outcome>
-   <to-view-id>/Aluno/cronogramaForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/cronogramaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>justificativa</from-outcome>
-   <to-view-id>/Aluno/justificativaForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/justificativaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>listaFuncao</from-outcome>
-   <to-view-id>/Aluno/listaFuncaoForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/listaFuncaoForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>metodologia</from-outcome>
-   <to-view-id>/Aluno/metodologiaForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/metodologiaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>missaoProduto</from-outcome>
-   <to-view-id>/Aluno/missaoProdutoForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/missaoProdutoForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>submeterProposta</from-outcome>
-   <to-view-id>/Aluno/submeterPropostaForm.xhtml</to-view-id>
+   <to-view-id>/Aluno/submeterPropostaForm.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -69,27 +69,27 @@
  <navigation-rule>
   <navigation-case>
    <from-outcome>corrigirCronograma</from-outcome>
-   <to-view-id>/Professor/cronogramaForm.xhtml</to-view-id>
+   <to-view-id>/Professor/cronogramaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>corrigirJustificativa</from-outcome>
-   <to-view-id>/Professor/justificativaForm.xhtml</to-view-id>
+   <to-view-id>/Professor/justificativaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>corrigirListaFuncao</from-outcome>
-   <to-view-id>/Professor/listaFuncaoForm.xhtml</to-view-id>
+   <to-view-id>/Professor/listaFuncaoForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>corrigirMetodologia</from-outcome>
-   <to-view-id>/Professor/metodologiaForm.xhtml</to-view-id>
+   <to-view-id>/Professor/metodologiaForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>corrigirMissaoProduto</from-outcome>
-   <to-view-id>/Professor/missaoProdutoForm.xhtml</to-view-id>
+   <to-view-id>/Professor/missaoProdutoForm.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>submeterCorrecao</from-outcome>
-   <to-view-id>/Professor/submeterCorrecaoForm.xhtml</to-view-id>
+   <to-view-id>/Professor/submeterCorrecaoForm.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -98,45 +98,41 @@
  <navigation-rule>
   <navigation-case>
    <from-outcome>go_altproposta</from-outcome>
-   <to-view-id>/Coordenador/AltProposta.xhtml</to-view-id>
+   <to-view-id>/Coordenador/AltProposta.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  
  
  <!-- NavegaÃ§ao das pagina Proposta -->
  <navigation-rule>
-  <from-view-id>/ManterProposta/PesquisarProposta.xhtml</from-view-id>
+  <from-view-id>/ManterProposta/PesquisarProposta.jsp</from-view-id>
   <navigation-case>
    <from-outcome>incluir</from-outcome>
-   <to-view-id>/ManterProposta/CadastroProposta.xhtml</to-view-id>
+   <to-view-id>/ManterProposta/CadastroProposta.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>alterar</from-outcome>
-   <to-view-id>/ManterProposta/AlterarProposta.xhtml</to-view-id>
+   <to-view-id>/ManterProposta/AlterarProposta.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>visualizar</from-outcome>
-   <to-view-id>/ManterProposta/PesquisarProposta.xhtml</to-view-id>
+   <to-view-id>/ManterProposta/PesquisarProposta.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <!-- NavegaÃ§ao das pagina Equipe -->
  <navigation-rule>
-  <from-view-id>/ManterEquipe/PesquisarEquipe.xhtml</from-view-id>
+  <from-view-id>/ManterEquipe/PesquisarEquipe.jsp</from-view-id>
   <navigation-case>
    <from-outcome>incluir</from-outcome>
-   <to-view-id>/ManterEquipe/CadastroEquipe.xhtml</to-view-id>
+   <to-view-id>/ManterEquipe/CadastroEquipe.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>alterar</from-outcome>
-   <to-view-id>/ManterEquipe/AlterarEquipe.xhtml</to-view-id>
+   <to-view-id>/ManterEquipe/AlterarEquipe.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>visualizar</from-outcome>
-   <to-view-id>/ManterEquipe/PesquisarEquipe.xhtml</to-view-id>
+   <to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
   </navigation-case>
- </navigation-rule>
- <application> 
-  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
-  <message-bundle>br.com.gerpro.util.mensagens</message-bundle>
- </application> 
+ </navigation-rule> 
 </faces-config>
