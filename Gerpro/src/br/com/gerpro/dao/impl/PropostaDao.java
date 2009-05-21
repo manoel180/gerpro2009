@@ -1,8 +1,13 @@
 package br.com.gerpro.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -191,6 +196,26 @@ public class PropostaDao implements FacadeProposta {
 		} finally {
 			session.close();
 		}
+	}
+	@Override
+	public JasperPrint GerarRelatorio() {
+		JasperPrint rel = null;
+		try {
+			session=null;
+			tx = null;
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			
+			//Connection con = gConexao.getConexao();
+			HashMap map = new HashMap();
+			
+			// Verificar como chamar da pasta do projeto
+			String arquivoJasper =  "D:/UNINORTE/gerpro2009/Gerpro/src/br/com/gerpro/relatorios/proposta.jasper";
+			rel = JasperFillManager.fillReport(arquivoJasper, map,session.connection());
+		} catch (JRException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+		}
+		return rel;
 	}
 
 }
