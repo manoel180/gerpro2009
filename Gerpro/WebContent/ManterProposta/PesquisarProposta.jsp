@@ -25,6 +25,7 @@
 				<h:commandButton value="Novo"
 					action="#{propostaBean.preperarInclusao}"
 					style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset" />
+					<h:commandButton value="Gerar Relatório" action="#{propostaBean.gerarRelatorio}"/>
 			</h:panelGrid>
 
 		</rich:simpleTogglePanel>
