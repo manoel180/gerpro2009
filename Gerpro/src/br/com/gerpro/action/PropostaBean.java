@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.servlet.http.HttpSession;
 
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeStatus;
@@ -31,6 +31,16 @@ public class PropostaBean {
 	private FacadeStatus statusDao = new StatusDao();
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();
+	
+	
+	
+	//Gerar Relatorio
+	public String gerarRelatorio(){
+		JasperPrint relat;
+		relat = propostaDao.GerarRelatorio();
+		JasperViewer.viewReport(relat, false);
+		return "OK";
+	}
 	
 	//ComboBox Equipes
 	public SelectItem[] getEquipesCombo(){
@@ -58,7 +68,7 @@ public class PropostaBean {
 
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
-		
+		listaPorProfessor = getListaPorProfessor();
 	
 		return "go_manterProposta";
 	}
@@ -66,11 +76,6 @@ public class PropostaBean {
 	public String preperarInclusao() {
 		proposta = new Proposta();
 		return "incluir";
-	}
-	
-	public String prepararLista(){
-		listaPorProfessor = getListaPorProfessor();
-		return "homeProfessor";
 	}
 
 	public String preperarEdicao() {
