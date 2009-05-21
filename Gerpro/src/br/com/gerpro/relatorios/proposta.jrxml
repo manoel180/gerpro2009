@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Proposta" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString>
+		<![CDATA[SELECT
+     usuario.`nome` AS usuario_nome,
+     equipe.`nome` AS equipe_nome,
+     status.`nome` AS status_nome,
+     proposta.`data_criacao` AS proposta_data_criacao,
+     proposta.`data_submissao` AS proposta_data_submissao,
+     proposta.`periodo` AS proposta_periodo,
+     proposta.`nome` AS proposta_nome
+FROM
+     `equipe` equipe INNER JOIN `proposta` proposta ON equipe.`id` = proposta.`id_equipe`
+     INNER JOIN `status` status ON proposta.`id_status` = status.`id`,
+     `usuario` usuario]]>
+	</queryString>
+	<field name="usuario_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="equipe_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proposta_data_criacao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proposta_data_submissao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proposta_periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proposta_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="equipe_nome" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{equipe_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="139" height="27" forecolor="#FFFFFF" backcolor="#000000"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[Equipe]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="139" y="0" width="416" height="27" forecolor="#FFFFFF" backcolor="#000000"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipe_nome}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="8"/>
+		</groupFooter>
+	</group>
+	<group name="proposta_nome">
+		<groupExpression><![CDATA[$F{proposta_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="1" width="139" height="27" backcolor="#CCCCFF"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[Proposta]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="139" y="1" width="416" height="27" backcolor="#CCCCFF"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{proposta_nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="27" width="555" height="1"/>
+				</line>
+				<staticText>
+					<reportElement mode="Opaque" x="290" y="29" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Data Submissão]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="5" y="29" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Data Criação]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="133" y="28" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="444" y="29" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Período]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="49"/>
+		</groupFooter>
+	</group>
+	<group name="Usuarios">
+		<groupExpression><![CDATA[$F{usuario_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="2"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="58">
+			<line>
+				<reportElement x="0" y="8" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="51" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="65" y="13" width="424" height="35"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Proposta X Equipe]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18"/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isBlankWhenNull="true">
+				<reportElement x="132" y="-1" width="111" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{status_nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="5" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{proposta_data_criacao}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="289" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{proposta_data_submissao}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="444" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{proposta_periodo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
