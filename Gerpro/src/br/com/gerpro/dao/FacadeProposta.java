@@ -35,5 +35,5 @@ public interface FacadeProposta {
 	
 	public Proposta procurarPorNome(String Nome);
 
-	public JasperPrint GerarRelatorio();
+	public JasperPrint gerarRelatorio();
 }

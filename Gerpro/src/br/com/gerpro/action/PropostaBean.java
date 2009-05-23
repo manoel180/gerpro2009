@@ -37,7 +37,7 @@ public class PropostaBean {
 	//Gerar Relatorio
 	public String gerarRelatorio(){
 		JasperPrint relat;
-		relat = propostaDao.GerarRelatorio();
+		relat = propostaDao.gerarRelatorio();
 		JasperViewer.viewReport(relat, false);
 		return "OK";
 	}

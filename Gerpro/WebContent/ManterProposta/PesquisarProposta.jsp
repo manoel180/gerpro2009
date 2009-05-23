@@ -14,8 +14,7 @@
 <f:view>
 	<h:form id="form1">
 		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
-			styleClass="titulo" /></div>
-		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
+			styleClass="titulo" /></div>		
 			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
 				<h:outputText value="Descrição:" />
 				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
@@ -28,10 +27,10 @@
 					<h:commandButton value="Gerar Relatório" action="#{propostaBean.gerarRelatorio}"/>
 			</h:panelGrid>
 
-		</rich:simpleTogglePanel>
+
 	</h:form>
 	<h:form id="form2">
-		<rich:simpleTogglePanel label="Resultado da Pesquisa">
+		
 			<rich:dataTable var="prop" id="listapropostas"
 				value="#{propostaBean.listaProposta}"
 				binding="#{propostaBean.objDatatableProposta}" rows="10"
@@ -68,6 +67,6 @@
 						action="#{propostaBean.preperarEdicao}" />
 				</h:column>
 			</rich:dataTable>
-		</rich:simpleTogglePanel>
+
 	</h:form>
 </f:view>

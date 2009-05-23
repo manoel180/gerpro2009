@@ -1,13 +1,19 @@
 package br.com.gerpro.dao.impl;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
 import javax.swing.JOptionPane;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -198,7 +204,7 @@ public class PropostaDao implements FacadeProposta {
 		}
 	}
 	@Override
-	public JasperPrint GerarRelatorio() {
+	public JasperPrint gerarRelatorio() {
 		JasperPrint rel = null;
 		try {
 			session=null;
@@ -206,12 +212,25 @@ public class PropostaDao implements FacadeProposta {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			
+		
 			//Connection con = gConexao.getConexao();
 			HashMap map = new HashMap();
 			
 			// Verificar como chamar da pasta do projeto
-			String arquivoJasper =  "D:/UNINORTE/gerpro2009/Gerpro/src/br/com/gerpro/relatorios/proposta.jasper";
-			rel = JasperFillManager.fillReport(arquivoJasper, map,session.connection());
+		//	String arquivoJasper =  System.getProperty("java.class.path") + "/br/com/gerpro/relatorios/proposta.jasper";	
+			
+
+			//String rootDir = "./br/com/gerpro/relatorios/"; 
+			java.util.Map parameters = new HashMap(); 
+			//parameters.put("rootDir", rootDir+ java.io.File.separator); 
+			ServletContext objto = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+			String path =  objto + "/br/com/gerpro/relatorios/proposta.jasper";
+//			JasperReport jasperReport =	JasperCompileManager.compileReport(arquivoJasper);
+			//JasperReport relatorio = JasperManager.loadReport(path);
+		
+			/*InputStream reportSource = this.getClass().getResourceAsStream(arquivoJasper);
+			JasperReport jasperReport2 =	JasperCompileManager.compileReport(arquivoJasper);*/
+			rel = JasperFillManager.fillReport(path, map, session.connection());
 		} catch (JRException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
