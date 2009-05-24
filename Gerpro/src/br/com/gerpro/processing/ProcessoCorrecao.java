@@ -3,59 +3,133 @@
  */
 package br.com.gerpro.processing;
 
-import java.util.List;
-
-import br.com.gerpro.dao.FacadeCorrecao;
-import br.com.gerpro.dao.impl.CorrecaoDao;
+import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
+
 
 /**
  * @author msouza
  *
  */
 public class ProcessoCorrecao implements IProcessoCorrecao {
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.processing.IProcessoCorrecao#verificaCorrecoesAnteriores(br.com.gerpro.model.Proposta)
-	 */
-	public int verificaCorrecoesAnteriores(Proposta propostaView){
-		FacadeCorrecao correcaoDao = new CorrecaoDao();
-		//FacadeProposta propostaDao = new PropostaDao();
-		//Proposta propostaBanco;
-		
-		/**
-		 * Verifica  se existem correcoes para uma proposta
-		 */		
-		List<Correcao> listaCorrecoesRealizadas = correcaoDao.procurarPorIdProposta(propostaView.getId());
-		
-		if (listaCorrecoesRealizadas.isEmpty()) {
-			System.out.println("Não há correções");
-			return 0;			
-		}else
-			System.out.println("Há correções");		
-		
-		return listaCorrecoesRealizadas.size();
-		
+	
+	private FacadeProposta propostaDao = new PropostaDao();	
+	
+	
+	/**
+	 * Processamento nº1
+	 * Algoritmo para o processamento do status da proposta com base na correção atual.
+	 */	
+	public void processaStatus(Correcao correcaoView){
+		if (
+				(correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 7)
+				|| (correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 3
+				&& correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 5
+				&& correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 6)
+				){
+			System.out.println("PROPOSTA REPROVADA");
+			//correcaoView.getPropostaItem().getProposta().getStatus().setId(5);
+			
+		}
+		else if(
+				(correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 3
+				|| correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 5
+				|| correcaoView.getResposta().getId() ==  2 && correcaoView.getPergunta().getId() == 6)
+				&& (correcaoView.getResposta().getId() ==  1 && correcaoView.getPergunta().getId() == 7)){
+			//correcaoView.getPropostaItem().getProposta().getStatus().setId(5);
+			System.out.println("PROPOSTA APROVADA COM RESSALVA");
+		}
+		else
+			System.out.println("PROPOSTA APROVADA");		
 	}
-
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.processing.IProcessoCorrecao#compararCorrecaoItem(br.com.gerpro.model.Correcao, java.util.List)
+	
+	/**
+	 * Processamento nº2
+	 * Método para calculo do status da proposta com base na nova correção. 
 	 */
+	public void calculaStatusProposta(Correcao correcaoView) {
+		Proposta propostaBD = propostaDao.procurarPorId(correcaoView.getPropostaItem().getProposta().getId());
+		
+		if(vericaSePrimeiraCorrecaodaProposta(correcaoView)){
+			propostaBD.getStatus().setId(correcaoView.getPropostaItem().getProposta().getStatus().getId());
+		}
+		else {
+			if(propostaBD.getStatus().getId() == 3){
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 3){
+					propostaBD.getStatus().setId(3);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 4){
+					propostaBD.getStatus().setId(3);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 5){
+					propostaBD.getStatus().setId(4);
+				}
+				
+				propostaDao.alterar(propostaBD);				
+				return;				
+			}
+			
+			// Se proposta do banco = APROVADA COM RESSALVA
+			if(propostaBD.getStatus().getId() == 4){
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 3){
+					propostaBD.getStatus().setId(3);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 4){
+					propostaBD.getStatus().setId(4);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 5){
+					propostaBD.getStatus().setId(5);
+				}
+				propostaDao.alterar(propostaBD);
+				return;
+			}
+			
+			// Se proposta do banco = REPROVADA
+			if(propostaBD.getStatus().getId() == 5){
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 3){
+					propostaBD.getStatus().setId(4);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 4){
+					propostaBD.getStatus().setId(5);
+				}
+				
+				if(correcaoView.getPropostaItem().getProposta().getStatus().getId() == 5){
+					propostaBD.getStatus().setId(5);
+				}
+				propostaDao.alterar(propostaBD);
+				return;
+			}
+		}
+		propostaDao.alterar(propostaBD);
+	}
+	
+	
+	
+	/**
+	 * Verifica se há correções anteriores para esta proposta
+	 */
+	public boolean vericaSePrimeiraCorrecaodaProposta(Correcao correcao){
+		if(correcao.getPropostaItem().getProposta().getStatus().getId() == 2 ){
+			return true;			
+		}		
+		return false;
+	}
+	
+	
+	
+	
 	@Override
-	public void compararCorrecaoItem(Correcao correcao, List<Correcao> listaBanco) {
+	public int verificaCorrecoesAnteriores(Proposta propostaView) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.processing.IProcessoCorrecao#executar(br.com.gerpro.model.Correcao)
-	 */
-	@Override
-	public void executar(Correcao correcao) {
-		/**
-		 * verificar se a proposta já possue correcao e quantas correções já foram feitas.
-		 */
-		
-	}
-
+	
 }

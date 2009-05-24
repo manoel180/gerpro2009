@@ -23,7 +23,7 @@ public class CorrecaoId implements java.io.Serializable {
 		this.idPergunta = idPergunta;
 	}
 
-	public int getIdProposta() {
+	public int getIdProposta() { 
 		return this.idProposta;
 	}
 
