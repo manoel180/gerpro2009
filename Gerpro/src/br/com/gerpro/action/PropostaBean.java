@@ -33,12 +33,9 @@ public class PropostaBean {
 	
 	
 	//Gerar Relatorio
-	public String gerarRelatorio(){
-		//JasperPrint relat;
+	public void gerarRelatorio(){
 		 propostaDao.gerarRelatorio();
-		//JasperViewer.viewReport(relat, false);
-		return "OK";
-	}
+		}
 	
 	//ComboBox Equipes
 	public SelectItem[] getEquipesCombo(){
@@ -78,6 +75,9 @@ public class PropostaBean {
 
 	public String preperarEdicao() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
+		status = proposta.getStatus();
+		equipe = proposta.getEquipe();
+		
 		return "alterar";
 	}
 
@@ -104,6 +104,11 @@ public class PropostaBean {
 
 	public String alterar() {
 		try {
+			
+			proposta.setPeriodo("001");
+			proposta.setStatus(status);
+			proposta.setEquipe(equipe);
+			
 			getPropostaDao().alterar(proposta);
 		} catch (Exception e) {
 			e.printStackTrace();
