@@ -7,8 +7,6 @@ import java.util.List;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeStatus;
@@ -36,9 +34,9 @@ public class PropostaBean {
 	
 	//Gerar Relatorio
 	public String gerarRelatorio(){
-		JasperPrint relat;
-		relat = propostaDao.gerarRelatorio();
-		JasperViewer.viewReport(relat, false);
+		//JasperPrint relat;
+		 propostaDao.gerarRelatorio();
+		//JasperViewer.viewReport(relat, false);
 		return "OK";
 	}
 	
