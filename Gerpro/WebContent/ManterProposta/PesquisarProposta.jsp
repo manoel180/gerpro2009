@@ -19,11 +19,9 @@
 				<h:outputText value="Descrição:" />
 				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
 				<h:commandButton value="Pesquisar"
-					action="#{propostaBean.pesquisar}"
-					style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset" />
+					action="#{propostaBean.pesquisar}" />
 				<h:commandButton value="Novo"
-					action="#{propostaBean.preperarInclusao}"
-					style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset" />
+					action="#{propostaBean.preperarInclusao}" />
 					<h:commandButton value="Gerar Relatório" action="#{propostaBean.gerarRelatorio}"/>
 			</h:panelGrid>
 
@@ -61,10 +59,10 @@
 						<h:outputText value="Opções" />
 
 					</f:facet>
-					<h:commandButton image="/imagens/delete.png"
-						action="#{propostaBean.excluir}" />
-					<h:commandButton image="/imagens/editar.png"
-						action="#{propostaBean.preperarEdicao}" />
+					<h:commandButton image="/images/delete.png"
+						action="#{propostaBean.excluir}" style="height: 40px; width: 40px"/>
+					<h:commandButton image="/images/editar.png"
+						action="#{propostaBean.preperarEdicao}" style="height: 40px; width: 40px"/>
 				</h:column>
 			</rich:dataTable>
 
