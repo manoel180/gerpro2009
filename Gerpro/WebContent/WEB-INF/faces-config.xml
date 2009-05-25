@@ -2,137 +2,157 @@
 <!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
                               "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
 <faces-config>
- <managed-bean>
-  <managed-bean-name>propostaBean</managed-bean-name>
-  <managed-bean-class>br.com.gerpro.action.PropostaBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>equipeBean</managed-bean-name>
-  <managed-bean-class>br.com.gerpro.action.EquipeBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>usuarioBean</managed-bean-name>
-  <managed-bean-class>br.com.gerpro.action.UsuarioBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <navigation-rule>
-  <from-view-id>/*</from-view-id>
-  <navigation-case>
-   <from-outcome>homeAluno</from-outcome>
-   <to-view-id>/Aluno/homeAluno.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>  
-   <from-outcome>homeProfessor</from-outcome>   
-   <to-view-id>/Professor/homeProfessor.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>homeCoordenador</from-outcome>
-   <to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>go_manterEquipe</from-outcome>
-   <to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- 
- <!-- Navegação do Aluno -->
- <navigation-rule>
-  <navigation-case>
-   <from-outcome>cronograma</from-outcome>
-   <to-view-id>/Aluno/cronogramaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>justificativa</from-outcome>
-   <to-view-id>/Aluno/justificativaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>listaFuncao</from-outcome>
-   <to-view-id>/Aluno/listaFuncaoForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>metodologia</from-outcome>
-   <to-view-id>/Aluno/metodologiaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>missaoProduto</from-outcome>
-   <to-view-id>/Aluno/missaoProdutoForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>submeterProposta</from-outcome>
-   <to-view-id>/Aluno/submeterPropostaForm.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- 
- <!-- Navegação do Professor -->
- <navigation-rule>
-  <navigation-case>
-   <from-outcome>corrigirCronograma</from-outcome>
-   <to-view-id>/Professor/cronogramaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>corrigirJustificativa</from-outcome>
-   <to-view-id>/Professor/justificativaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>corrigirListaFuncao</from-outcome>
-   <to-view-id>/Professor/listaFuncaoForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>corrigirMetodologia</from-outcome>
-   <to-view-id>/Professor/metodologiaForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>corrigirMissaoProduto</from-outcome>
-   <to-view-id>/Professor/missaoProdutoForm.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>submeterCorrecao</from-outcome>
-   <to-view-id>/Professor/submeterCorrecaoForm.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- 
- 
- <!-- Navegação do Coordenador -->
- <navigation-rule>
-  <navigation-case>
-   <from-outcome>go_altproposta</from-outcome>
-   <to-view-id>/Coordenador/AltProposta.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- 
- 
- <!-- NavegaÃ§ao das pagina Proposta -->
- <navigation-rule>
-  <from-view-id>/ManterProposta/PesquisarProposta.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>incluir</from-outcome>
-   <to-view-id>/ManterProposta/CadastroProposta.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>alterar</from-outcome>
-   <to-view-id>/ManterProposta/AlterarProposta.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>visualizar</from-outcome>
-   <to-view-id>/ManterProposta/PesquisarProposta.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <!-- NavegaÃ§ao das pagina Equipe -->
- <navigation-rule>
-  <from-view-id>/ManterEquipe/PesquisarEquipe.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>incluir</from-outcome>
-   <to-view-id>/ManterEquipe/CadastroEquipe.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>alterar</from-outcome>
-   <to-view-id>/ManterEquipe/AlterarEquipe.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>visualizar</from-outcome>
-   <to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule> 
+	<managed-bean>
+		<managed-bean-name>propostaBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.PropostaBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>equipeBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.EquipeBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>usuarioBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.UsuarioBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>homeAluno</from-outcome>
+			<to-view-id>/Aluno/homeAluno.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>homeProfessor</from-outcome>
+			<to-view-id>/Professor/homeProfessor.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>homeCoordenador</from-outcome>
+			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_manterEquipe</from-outcome>
+			<to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_manterProposta</from-outcome>
+			<to-view-id>
+				/ManterProposta/PesquisarProposta.jsp
+			</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Navegação do Aluno -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>cronograma</from-outcome>
+			<to-view-id>/Aluno/cronogramaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>justificativa</from-outcome>
+			<to-view-id>/Aluno/justificativaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaFuncao</from-outcome>
+			<to-view-id>/Aluno/listaFuncaoForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>metodologia</from-outcome>
+			<to-view-id>/Aluno/metodologiaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>missaoProduto</from-outcome>
+			<to-view-id>/Aluno/missaoProdutoForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>submeterProposta</from-outcome>
+			<to-view-id>/Aluno/submeterPropostaForm.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Navegação do Professor -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>corrigirCronograma</from-outcome>
+			<to-view-id>/Professor/cronogramaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>corrigirJustificativa</from-outcome>
+			<to-view-id>/Professor/justificativaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>corrigirListaFuncao</from-outcome>
+			<to-view-id>/Professor/listaFuncaoForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>corrigirMetodologia</from-outcome>
+			<to-view-id>/Professor/metodologiaForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>corrigirMissaoProduto</from-outcome>
+			<to-view-id>/Professor/missaoProdutoForm.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>submeterCorrecao</from-outcome>
+			<to-view-id>/Professor/submeterCorrecaoForm.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<!-- Navegação do Coordenador -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>go_altproposta</from-outcome>
+			<to-view-id>/Coordenador/AltProposta.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<!-- NavegaÃ§ao das pagina Proposta -->
+	<navigation-rule>
+		<from-view-id>
+			/ManterProposta/PesquisarProposta.jsp
+		</from-view-id>
+		<navigation-case>
+			<from-outcome>incluir</from-outcome>
+			<to-view-id>
+				/ManterProposta/CadastroProposta.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterar</from-outcome>
+			<to-view-id>/ManterProposta/AlterarProposta.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>
+				/ManterProposta/PesquisarProposta.jsp
+			</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Navegação das pagina Equipe -->
+	<navigation-rule>
+		<from-view-id>/ManterEquipe/PesquisarEquipe.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>incluir</from-outcome>
+			<to-view-id>/ManterEquipe/CadastroEquipe.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterar</from-outcome>
+			<to-view-id>/ManterEquipe/AlterarEquipe.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
