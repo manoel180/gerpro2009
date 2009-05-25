@@ -5,8 +5,6 @@ package br.com.gerpro.dao;
 
 import java.util.List;
 
-import net.sf.jasperreports.engine.JasperPrint;
-
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 
@@ -35,5 +33,5 @@ public interface FacadeProposta {
 	
 	public Proposta procurarPorNome(String Nome);
 
-	public JasperPrint gerarRelatorio();
+	public void gerarRelatorio();
 }
