@@ -1,19 +1,14 @@
 package br.com.gerpro.dao.impl;
 
-import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
 import javax.swing.JOptionPane;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -31,6 +26,7 @@ public class PropostaDao implements FacadeProposta {
 	
 	private static	Session session = null;
 	private static Transaction tx = null;
+	
 	
 	@Override
 	public void alterar(Proposta proposta) {
@@ -146,10 +142,6 @@ public class PropostaDao implements FacadeProposta {
 			proposta.getEquipe().getNome();
 			
 		}
-			
-		
-		
-		
 		session.close();
 		return result;
 	}
@@ -203,38 +195,27 @@ public class PropostaDao implements FacadeProposta {
 			session.close();
 		}
 	}
+	
 	@Override
-	public JasperPrint gerarRelatorio() {
-		JasperPrint rel = null;
+	public void gerarRelatorio() {
+		session=null;
+		tx = null;
+		
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		HashMap map = new HashMap();		
+		
+		
 		try {
-			session=null;
-			tx = null;
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			
-		
-			//Connection con = gConexao.getConexao();
-			HashMap map = new HashMap();
-			
-			// Verificar como chamar da pasta do projeto
-		//	String arquivoJasper =  System.getProperty("java.class.path") + "/br/com/gerpro/relatorios/proposta.jasper";	
-			
-
-			//String rootDir = "./br/com/gerpro/relatorios/"; 
-			java.util.Map parameters = new HashMap(); 
-			//parameters.put("rootDir", rootDir+ java.io.File.separator); 
-			ServletContext objto = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-			String path =  objto + "/br/com/gerpro/relatorios/proposta.jasper";
-//			JasperReport jasperReport =	JasperCompileManager.compileReport(arquivoJasper);
-			//JasperReport relatorio = JasperManager.loadReport(path);
-		
-			/*InputStream reportSource = this.getClass().getResourceAsStream(arquivoJasper);
-			JasperReport jasperReport2 =	JasperCompileManager.compileReport(arquivoJasper);*/
-			rel = JasperFillManager.fillReport(path, map, session.connection());
+			URL jasper  = this.getClass().getResource("/br/com/gerpro/relatorios/proposta.jasper");
+			JasperFillManager.fillReportToFile(jasper.getPath(), map, session.connection());
+			URL jrprint = this.getClass().getResource("/br/com/gerpro/relatorios/proposta.jrprint");
+			JasperViewer.viewReport(jrprint.getPath(),false, false);
 		} catch (JRException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return rel;
+		
 	}
 
 }
