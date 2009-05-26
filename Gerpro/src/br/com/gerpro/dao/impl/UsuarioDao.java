@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeUsuario;
-import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
@@ -123,7 +122,7 @@ public class UsuarioDao implements FacadeUsuario {
 		result = (Usuario) session.get(Usuario.class, usuario.getMatricula());
 		
 		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Usuário inválido");
+			JOptionPane.showMessageDialog(null, "Usuï¿½rio invï¿½lido");
 		}
 
 		if (result.getSenha().equals(usuario.getSenha())) {
@@ -131,7 +130,7 @@ public class UsuarioDao implements FacadeUsuario {
 			
 		}
 		else
-			JOptionPane.showMessageDialog(null, "Senha inválida");
+			JOptionPane.showMessageDialog(null, "Senha invï¿½lida");
 		
 		session.close();		
 		return pagina;

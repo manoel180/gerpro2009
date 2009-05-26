@@ -37,7 +37,7 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.update(proposta);
 			tx.commit();
-			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
+			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso", "GerPro - Alteração Realizada com Sucesso", 2);
 		} catch (Exception e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
