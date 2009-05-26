@@ -214,6 +214,10 @@ public class PropostaDao implements FacadeProposta {
 		} catch (JRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			tx.rollback();
+		}
+		finally{
+			session.close();
 		}
 		
 	}
