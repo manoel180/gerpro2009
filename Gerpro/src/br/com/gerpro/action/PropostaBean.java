@@ -1,7 +1,6 @@
 package br.com.gerpro.action;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
@@ -89,12 +88,8 @@ public class PropostaBean {
 	public String salvar() {
 		try {
 						
-			proposta.setDataCriacao(new Date("22/03/04"));
-			proposta.setDataSubmissao(new Date("22/03/04"));
-			
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
-			proposta.setPeriodo("001");			
 			getPropostaDao().inserir(proposta);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +100,6 @@ public class PropostaBean {
 	public String alterar() {
 		try {
 			
-			proposta.setPeriodo("001");
 			proposta.setStatus(status);
 			proposta.setEquipe(equipe);
 			
