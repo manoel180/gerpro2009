@@ -11,7 +11,7 @@
         <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join"  lazy="false">
             <column name="id_equipe" not-null="true" />
         </many-to-one>
-        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join">
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join" lazy="false">
             <column name="id_status" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">

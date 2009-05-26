@@ -12,13 +12,13 @@
                 <column name="id_item" />
             </key-property>
         </composite-id>
-        <many-to-one name="item" class="br.com.gerpro.model.Item" update="false" insert="false" fetch="select">
+        <many-to-one name="item" class="br.com.gerpro.model.Item" update="false" insert="false" lazy="false" fetch="join">
             <column name="id_item" not-null="true" />
         </many-to-one>
-        <many-to-one name="proposta" class="br.com.gerpro.model.Proposta" update="false" insert="false" fetch="select">
+        <many-to-one name="proposta" class="br.com.gerpro.model.Proposta" update="false" lazy="false" insert="false" fetch="join">
             <column name="id_proposta" not-null="true" />
         </many-to-one>
-        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="select">
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join" lazy="false">
             <column name="id_status" />
         </many-to-one>
         <property name="conteudoItem" type="string">
