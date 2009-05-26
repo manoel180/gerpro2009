@@ -1,4 +1,5 @@
-<%@page	contentType="text/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@taglib
+	uri="http://richfaces.org/rich" prefix="rich1"%><%@page	contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -23,7 +24,7 @@
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
-			<h:panelGrid columns="2" cellpadding="5" style="height: 103px">
+			<h:panelGrid columns="2" cellpadding="5" id="id1">
 				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
@@ -39,6 +40,18 @@
 				<h:selectOneMenu id="status" value="#{propostaBean.status.id}" rendered="true" required="true">					
 					<f:selectItems value="#{propostaBean.statusCombo}"/>	
 				</h:selectOneMenu>
+				
+				<h:outputText value="Data Criação:" />	
+				<rich1:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}"/>
+					
+				<h:outputText value="Data Submissão:" />	
+				<rich1:calendar id="dt_submissao" value="#{propostaBean.proposta.dataSubmissao}"/>
+					
+				<h:outputText value="Periodo:" />
+				<h:inputText id="txtperiodo" 
+					value="#{propostaBean.proposta.periodo}">
+				</h:inputText>
+				
 			</h:panelGrid>
 
 			
