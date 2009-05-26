@@ -1,5 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@taglib
-	uri="http://richfaces.org/rich" prefix="rich1"%><%@page	contentType="text/html"%>
+<%@page	contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -37,12 +36,7 @@
 				</h:column>
 								
 			</rich:dataTable>
-		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
-			
-
-			
-
-		</rich:simpleTogglePanel>
+		
 <h:commandButton value="Salvar" action="#{submeterPropostaBean.prepararBean}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
