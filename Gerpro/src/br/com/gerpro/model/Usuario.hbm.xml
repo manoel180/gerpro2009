@@ -8,10 +8,10 @@
             <column name="matricula" length="8" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" fetch="join">
+        <many-to-one name="equipe" class="br.com.gerpro.model.Equipe" lazy="false" fetch="join">
             <column name="id_equipe" />
         </many-to-one>
-        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" fetch="join">
+        <many-to-one name="tipoUsuario" class="br.com.gerpro.model.TipoUsuario" lazy="false" fetch="join">
             <column name="id_tipo" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
