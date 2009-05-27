@@ -7,10 +7,12 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeUsuario;
+import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
@@ -50,8 +52,16 @@ public class UsuarioDao implements FacadeUsuario {
 	 * @see br.com.gerpro.dao.FacadeUsuario#listar()
 	 */
 	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	List<Usuario> result = null;
+		
+		Session session = HibernateUtil.getSession();
+		
+		Query q = session.createQuery(" from Usuario ");
+		
+		result = q.list();
+		
+		session.close();
+		return result;
 	}
 
 	/*

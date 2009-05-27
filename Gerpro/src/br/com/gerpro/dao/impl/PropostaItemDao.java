@@ -108,15 +108,16 @@ public class PropostaItemDao implements FacadePropostaItem{
 		
 	//consulta 3
 	//consulta
+	@SuppressWarnings("unchecked")
 	@Override	
-	public List<PropostaItem> listarPorNome(String nomeEquippe) {
+	public List<PropostaItem> listarPorNome(String nomeEquipe) {
 		// TODO Auto-generated method stub
 		List<PropostaItem> result = null;
 		
 		Session session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from PropostaItem where Nome like  :parametro");
-		q.setParameter("parametro", nomeEquippe+"%");
+		q.setParameter("parametro", nomeEquipe+"%");
 		
 		result = q.list();
 		
@@ -133,7 +134,12 @@ public class PropostaItemDao implements FacadePropostaItem{
 		PropostaItem result = null;
 
 		Session session = HibernateUtil.getSession();
-		result = (PropostaItem) session.get(PropostaItem.class, id);
+		
+		Query q = session.createQuery("from PropostaItem where id_item='1' and id_proposta =  :parametro");
+		q.setParameter("parametro", id+"%");
+		result = (PropostaItem) q.list();
+		
+		//result = (PropostaItem) session.get(PropostaItem.class, id);
 	
 		session.close();
 		return result;
