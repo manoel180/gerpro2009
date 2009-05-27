@@ -12,21 +12,25 @@ import br.com.gerpro.dao.FacadeItem;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeStatus;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.EquipeDao;
 import br.com.gerpro.dao.impl.ItemDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
+import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Item;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.Status;
+import br.com.gerpro.model.Usuario;
 
 
 public class SubmeterPropostaBean {
 	private UIData objDatatablePropostaItem;
 	private List<PropostaItem> listaPropostaItem;
+	private List<Usuario> listaUsuarios;
 	
 	private Proposta proposta = new Proposta();
 	private Item item = new Item();
@@ -40,7 +44,7 @@ public class SubmeterPropostaBean {
 	
 	private FacadeEquipe equipeDao = new EquipeDao();
 	private FacadeStatus statusDao = new StatusDao();
-	
+	private FacadeUsuario usuarioDao = new UsuarioDao();
 	
 	
 	//Gerar Relatorio
@@ -70,12 +74,18 @@ public class SubmeterPropostaBean {
 		return itens.toArray( new SelectItem[itens.size()] );
 	}
 	
+	
+	
 	public String prepararBean() {
 
 		propitem = new PropostaItem();
 		listaPropostaItem =  getPropitemDao().listar();
+	
+		propitem = listaPropostaItem.get(1);
+		proposta = propitem.getProposta();
+		status =  proposta.getStatus();
+		equipe = proposta.getEquipe();
 		
-	//Atualizar o faces config
 		return "go_SubmeterProposta";
 	}
 
@@ -86,6 +96,7 @@ public class SubmeterPropostaBean {
 
 	public String preperarEdicao() {
 		proposta = (Proposta) objDatatablePropostaItem.getRowData();
+		
 		status = proposta.getStatus();
 		equipe = proposta.getEquipe();
 		
@@ -301,6 +312,35 @@ public class SubmeterPropostaBean {
 	 */
 	public void setStatusDao(FacadeStatus statusDao) {
 		this.statusDao = statusDao;
+	}
+
+	
+	/**
+	 * @return the usuarioDao
+	 */
+	public FacadeUsuario getUsuarioDao() {
+		return usuarioDao;
+	}
+
+	/**
+	 * @param usuarioDao the usuarioDao to set
+	 */
+	public void setUsuarioDao(FacadeUsuario usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+
+	/**
+	 * @return the listaUsuarios
+	 */
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaUsuarios the listaUsuarios to set
+	 */
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 	
