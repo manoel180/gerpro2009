@@ -3,22 +3,34 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
-import javax.swing.JOptionPane;
+import javax.persistence.PersistenceException;
 
 import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.dao.impl.PropostaDao;
+import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.model.Equipe;
+import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.PropostaItem;
+import br.com.gerpro.model.PropostaItemId;
 
 
 public class ConstruirPropostaBean {
 	private UIData objDatatableEquipe;// componente da tela - JSP
 	private List<Equipe> listaEquipe;
 	private Equipe equipe = new Equipe();
+	private Proposta proposta = new Proposta();
+	private PropostaItemId PropItemId = new PropostaItemId();
+	private PropostaItem propostaItem = new PropostaItem();
+	
 	private FacadeEquipe daoEquipe = new EquipeDao();
-	private String teste;
+	private FacadeProposta daoProposta = new PropostaDao();
+	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	
 	public String prepararBean() {
-		equipe = new Equipe();
+		
 		listaEquipe = getDaoEquipe().listar();
 	
 		return "go_ConstruirProposta";
@@ -29,7 +41,51 @@ public class ConstruirPropostaBean {
 	}
 	
 	public String prepararMissao() {
+		proposta = getDaoProposta().procurarPorId(1);
+		equipe = proposta.getEquipe();
+	
+		//Setando o Id composto do Proposta Item
+			PropItemId.setIdItem(1);
+			PropItemId.setIdProposta(1);
+			propostaItem.setId(PropItemId);
+			
 		return "construirMissao";
+	}
+	
+	public String SalvarMissao() {
+
+		equipe = proposta.getEquipe();
+			
+		try {
+			//Setando o Id composto do Proposta Item
+			PropItemId.setIdItem(1);
+				PropItemId.setIdProposta(1);
+				propostaItem.setId(PropItemId);
+				
+				getDaoPropItem().inserir(propostaItem);
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prepararBean();
+	}
+
+	public String AlterarMissao() {
+
+		equipe = proposta.getEquipe();
+			
+		try {
+			//Setando o Id composto do Proposta Item
+			PropItemId.setIdItem(1);
+				PropItemId.setIdProposta(1);
+				propostaItem.setId(PropItemId);
+				
+				getDaoPropItem().alterar(propostaItem);
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prepararBean();
 	}
 
 	public String prepararJustificativa() {
@@ -44,12 +100,10 @@ public class ConstruirPropostaBean {
 		return "construirListaFuncoes";
 	}
 	
-	public void teste(){
-		JOptionPane.showMessageDialog(null, teste);
-	}
 	
 	
-	public String preperarEdicao() {
+	
+	/*public String preperarEdicao() {
 		equipe = (Equipe) objDatatableEquipe.getRowData();
 		return "alterar";
 	}
@@ -82,18 +136,11 @@ public class ConstruirPropostaBean {
 		getDaoEquipe().remover(equipe);
 		return prepararBean();
 	}
-
+*/
 	/*
 	 * Getters and Setters
 	 */
 
-	public Equipe getEquipe() {
-		return equipe;
-	}
-
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
-	}
 
 	public void setListaEquipe(List<Equipe> listaEquipe) {
 		this.listaEquipe = listaEquipe;
@@ -120,17 +167,88 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @return the teste
+	 * @return the propostaItem
 	 */
-	public String getTeste() {
-		return teste;
+	public PropostaItem getPropostaItem() {
+		return propostaItem;
 	}
 
 	/**
-	 * @param teste the teste to set
+	 * @param propostaItem the propostaItem to set
 	 */
-	public void setTeste(String teste) {
-		this.teste = teste;
+	public void setPropostaItem(PropostaItem propostaItem) {
+		this.propostaItem = propostaItem;
 	}
+
+	/**
+	 * @return the proposta
+	 */
+	public Proposta getProposta() {
+		return proposta;
+	}
+
+	/**
+	 * @param proposta the proposta to set
+	 */
+	public void setProposta(Proposta proposta) {
+		this.proposta = proposta;
+	}
+
+	/**
+	 * @return the propItemId
+	 */
+	public PropostaItemId getPropItemId() {
+		return PropItemId;
+	}
+
+	/**
+	 * @param propItemId the propItemId to set
+	 */
+	public void setPropItemId(PropostaItemId propItemId) {
+		PropItemId = propItemId;
+	}
+
+	/**
+	 * @return the equipe
+	 */
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	/**
+	 * @param equipe the equipe to set
+	 */
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
+	/**
+	 * @return the daoProposta
+	 */
+	public FacadeProposta getDaoProposta() {
+		return daoProposta;
+	}
+
+	/**
+	 * @param daoProposta the daoProposta to set
+	 */
+	public void setDaoProposta(FacadeProposta daoProposta) {
+		this.daoProposta = daoProposta;
+	}
+
+	/**
+	 * @return the daoPropItem
+	 */
+	public FacadePropostaItem getDaoPropItem() {
+		return daoPropItem;
+	}
+
+	/**
+	 * @param daoPropItem the daoPropItem to set
+	 */
+	public void setDaoPropItem(FacadePropostaItem daoPropItem) {
+		this.daoPropItem = daoPropItem;
+	}
+
 
 }
