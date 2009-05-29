@@ -23,7 +23,13 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+	<managed-bean>
+		<managed-bean-name>construirPropostaBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.ConstruirPropostaBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>submeterPropostaBean</managed-bean-name>
 		<managed-bean-class>
@@ -31,7 +37,7 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+
 	<navigation-rule>
 		<from-view-id>/*</from-view-id>
 		<navigation-case>
@@ -60,6 +66,12 @@
 			<from-outcome>go_SubmeterProposta</from-outcome>
 			<to-view-id>
 				/SubmeterProposta/SubmeterProposta.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_ConstruirProposta</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirProposta.jsp
 			</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -152,7 +164,7 @@
 			</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<!-- Navegação das pagina Equipe -->
 	<navigation-rule>
 		<from-view-id>/ManterEquipe/PesquisarEquipe.jsp</from-view-id>
@@ -169,4 +181,39 @@
 			<to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
+	<!-- Navegação do Menu Construir Proposta-->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>construirCronograma</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirCronograma.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>construirJustificativa</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirJustificativa.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>construirListaFuncoes</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirListaFuncoes.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>construirMetodologia</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirMetodologia.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>construirMissao</from-outcome>
+			<to-view-id>
+				/ConstruirProposta/ConstruirMissao.jsp
+			</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 </faces-config>
