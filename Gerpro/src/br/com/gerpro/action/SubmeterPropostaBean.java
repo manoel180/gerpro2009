@@ -159,7 +159,7 @@ public class SubmeterPropostaBean {
 	public void setObjDatatablePropostaItem(UIData objDatatablePropostaItem) {
 		this.objDatatablePropostaItem = objDatatablePropostaItem;
 	}
-
+ 
 	/**
 	 * @return the listaPropostaItem
 	 */
