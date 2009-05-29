@@ -6,7 +6,7 @@
 
 
 <head>
-<title>Construir Proposta</title>
+<title>Funções</title>
 <!--Chamada ao arquivo CSS -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/estilos.css">
@@ -14,49 +14,42 @@
 
 
 
+
+
 <f:view>
 	<h:form>
 
-	
-
-		<div align="center">
-			<h:outputLabel value="CONSTRUIR PROPOSTA" styleClass="Titulos" /></div>
+		<div align="center"><h:outputLabel value="FUNÇÕES"
+			styleClass="Titulos" /></div>
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
-		<rich:dropDownMenu id="mn01" value="Ítens">
-			<rich:menuItem  value="Missão"/>
-			<rich:menuItem  value="Lista de Funções"/>
-			<rich:menuItem  value="Justificativa"/>
-			<rich:menuItem  value="Metodologia"/>
-			<rich:menuItem  value="Cronograma"/>
-		</rich:dropDownMenu>
+
 		<br>
+		
+		<h:panelGrid columns="3">	
+		<%@ include file="../templates/menu.jsp" %>			
 
-		<rich:simpleTogglePanel label="Dados do cadastro">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-				<h:outputText value="Missão:" />
-				<h:inputTextarea  
-					style="width: 762px; height: 57px" />
+			<rich:simpleTogglePanel label="Dados do cadastro">
+				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
+					<h:outputText value="Missão:" />
+					<h:inputTextarea style="width: 762px; height: 57px" />
 
-				<h:outputText value="Lista Funções:" />
-				<h:inputTextarea 
-					style="width: 762px; height: 57px" />
+					<h:outputText value="Lista Funções:" />
+					<h:inputTextarea style="width: 762px; height: 57px" />
 
-				<h:outputText value="Justificativa:" />
-				<h:inputTextarea 
-					style="width: 762px; height: 57px" />
+					<h:outputText value="Justificativa:" />
+					<h:inputTextarea style="width: 762px; height: 57px" />
 
-				<h:outputText value="Metodologia:" />
-				<h:inputTextarea 
-					style="width: 762px; height: 57px" />
+					<h:outputText value="Metodologia:" />
+					<h:inputTextarea style="width: 762px; height: 57px" />
 
-				<h:outputText value="Cronograma:" />
+					<h:outputText value="Cronograma:" />
 
-			</h:panelGrid>
+				</h:panelGrid>
+			</rich:simpleTogglePanel>
+		</h:panelGrid>
 
-
-		</rich:simpleTogglePanel>
 		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
@@ -68,4 +61,5 @@
 		</h:panelGrid>
 
 	</h:form>
+
 </f:view>

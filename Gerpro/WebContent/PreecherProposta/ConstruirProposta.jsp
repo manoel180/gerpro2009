@@ -1,5 +1,4 @@
-<%@taglib uri="http://richfaces.org/a4j" prefix="a4j"%><%@page
-	pageEncoding="UTF-8"%>
+<%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
@@ -27,20 +26,9 @@
 			showSummary="true" />
 
 		<br>
-		<h:panelGrid columns="2">
-			<rich:panelMenu expandMode="ajax" label="Itens">
-				<rich:panelMenuItem label="Missão"
-					action="#{construirPropostaBean.prepararMissao}" />
-				<rich:panelMenuItem label="Lista de Funções"
-					action="#{construirPropostaBean.prepararListaFuncao}" />
-				<rich:panelMenuItem label="Justificativa"
-					action="#{construirPropostaBean.prepararJustificativa}" />
-				<rich:panelMenuItem label="Metodologia"
-					action="#{construirPropostaBean.prepararMetodologia}" />
-				<rich:panelMenuItem label="Cronograma"
-					action="#{construirPropostaBean.prepararCronograma}" />
-			</rich:panelMenu>
-			
+		
+		<h:panelGrid columns="3">	
+		<%@ include file="../templates/menu.jsp" %>			
 
 			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
