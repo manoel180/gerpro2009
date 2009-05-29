@@ -3,6 +3,7 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.swing.JOptionPane;
 
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.impl.EquipeDao;
@@ -14,6 +15,7 @@ public class ConstruirPropostaBean {
 	private List<Equipe> listaEquipe;
 	private Equipe equipe = new Equipe();
 	private FacadeEquipe daoEquipe = new EquipeDao();
+	private String teste;
 	
 	public String prepararBean() {
 		equipe = new Equipe();
@@ -22,26 +24,29 @@ public class ConstruirPropostaBean {
 		return "go_ConstruirProposta";
 	}
 
-	public void preperarMetodologia() {
-		// "construirMetodologia";
+	public String prepararMetodologia() {
+		return "construirMetodologia";
 	}
 	
 	public String prepararMissao() {
 		return "construirMissao";
 	}
 
-	public String preperarJustificativa() {
+	public String prepararJustificativa() {
 		return "construirJustificativa";
 	}
 	
-	public String preperarCronograma() {
+	public String prepararCronograma() {
 		return "construirCronograma";
 	}
 	
-	public String preperarListaFuncao() {
-		return "construirListaFuncao";
+	public String prepararListaFuncao() {
+		return "construirListaFuncoes";
 	}
 	
+	public void teste(){
+		JOptionPane.showMessageDialog(null, teste);
+	}
 	
 	
 	public String preperarEdicao() {
@@ -112,6 +117,20 @@ public class ConstruirPropostaBean {
 
 	public void setDaoEquipe(FacadeEquipe daoEquipe) {
 		this.daoEquipe = daoEquipe;
+	}
+
+	/**
+	 * @return the teste
+	 */
+	public String getTeste() {
+		return teste;
+	}
+
+	/**
+	 * @param teste the teste to set
+	 */
+	public void setTeste(String teste) {
+		this.teste = teste;
 	}
 
 }
