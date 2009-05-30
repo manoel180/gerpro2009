@@ -25,12 +25,13 @@
 		<br>
 
 		<h:panelGrid columns="3">
+			
 			<%@ include file="../templates/menu.jsp"%>
-
+						
 			<rich:simpleTogglePanel label="Dados do Proposta">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					<h:outputText value="Metodologia:" />
-					<h:inputTextarea cols="250" rows="400" 
+					<h:inputTextarea cols="250" rows="25" 
 						style="width: 759px"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
@@ -48,7 +49,7 @@
 		<h:panelGrid columns="1" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
-					<h:commandButton value="Salvar" action="#{construirPropostaBean.AlterarMissao}"/>
+					<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMetodologia}"/>
 					<h:commandButton action="#{construirPropostaBean.prepararBean}"
 						value="Ir para o listar propostas" />
 				</h:panelGroup>

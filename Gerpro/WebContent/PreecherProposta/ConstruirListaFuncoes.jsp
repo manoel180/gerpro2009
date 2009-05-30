@@ -32,29 +32,63 @@
 
 			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-					<h:outputText value="Missão:" />
+					
+					<h:outputText value="Caso de Uso:" />
+					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}" style="width: 762px; height: 57px" />
+					
+
+					<h:outputText value="Descrição:" />
 					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Lista Funções:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Justificativa:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Metodologia:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Cronograma:" />
-
+					
+					<h:outputText value="Tipo de Função:" />
+					<h:selectOneMenu value="#{construirPropostaBean.listaFuncao.tipoFuncao.id}" >					
+						<f:selectItems value="#{construirPropostaBean.tipoFuncaoCombo}"/>	
+					</h:selectOneMenu>
+					
+					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addfuncao}"/>
+					
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
+		<rich:dataTable var="listafuncao" id="listafuncao" value="#{construirPropostaBean.listaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ordem"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{listafuncao.id}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Caso de Uso"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{listafuncao.uc}" style="color:red; font-weight:bold; font-"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{listafuncao.descricao}" style="color:red; font-weight:bold; font-"></h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo"></h:outputText>
+					</f:facet>
+					<h:outputText  style="color:red; font-weight:bold; font-"></h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opções"></h:outputText>
+					</f:facet>
+					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.excluir}" style="height: 40px; width: 40px"></h:commandButton>
+				</h:column>
+			</rich:dataTable><br><br><h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
-					<h:commandButton action="#{equipeBean.prepararBean}"
+					<h:commandButton action="#{propostaBean.prepararBean}"
 						value="Ir para o listar propostas" />
 				</h:panelGroup>
 			</h:panelGrid>

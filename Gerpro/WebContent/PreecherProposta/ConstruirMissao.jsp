@@ -16,8 +16,9 @@
 <f:view>
 	<h:form>
 
-		<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
-			styleClass="Titulos" /></div>
+		<div align="center">
+			<h:outputLabel value="MISSÃO PROPOSTA" styleClass="Titulos" />
+		</div>
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
@@ -48,7 +49,7 @@
 		<h:panelGrid columns="1" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
-					<h:commandButton value="Salvar" action="#{construirPropostaBean.AlterarMissao}"/>
+					<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMissao}"/>
 					<h:commandButton action="#{construirPropostaBean.prepararBean}"
 						value="Ir para o listar propostas" />
 				</h:panelGroup>
