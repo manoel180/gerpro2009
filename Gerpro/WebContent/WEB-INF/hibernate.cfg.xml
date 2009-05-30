@@ -13,6 +13,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <mapping resource="Cronograma.hbm.xml" />
         <mapping resource="Equipe.hbm.xml" />
+        <mapping resource="Artefatos.hbm.xml" />
         <mapping resource="Periodo.hbm.xml" />
         <mapping resource="Correcao.hbm.xml" />
         <mapping resource="Pergunta.hbm.xml" />

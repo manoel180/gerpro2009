@@ -17,6 +17,13 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>artefatosBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.ArtefatosBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>usuarioBean</managed-bean-name>
 		<managed-bean-class>
 			br.com.gerpro.action.UsuarioBean
@@ -55,6 +62,10 @@
 		<navigation-case>
 			<from-outcome>go_manterEquipe</from-outcome>
 			<to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
+		</navigation-case>
+			<navigation-case>
+			<from-outcome>go_manterArtefatos</from-outcome>
+			<to-view-id>/ManterArfatos/PesquisarArtefatos.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>go_manterProposta</from-outcome>
@@ -141,6 +152,29 @@
 		</navigation-case>
 	</navigation-rule>
 
+
+	<!-- NavegaÃ§ao das pagina Artefatos -->
+	<navigation-rule>
+		<from-view-id>
+			/ManterArtefatos/PesquisarArtefatos.jsp
+		</from-view-id>
+		<navigation-case>
+			<from-outcome>incluir</from-outcome>
+			<to-view-id>
+				/ManterArtefatos/CadastroArtefatos.jsp
+			</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterar</from-outcome>
+			<to-view-id>/ManterArtefatos/AlterarArtefatos.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>
+				/ManterArtefatos/PesquisarArtefatos.jsp
+			</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<!-- NavegaÃ§ao das pagina Proposta -->
 	<navigation-rule>
