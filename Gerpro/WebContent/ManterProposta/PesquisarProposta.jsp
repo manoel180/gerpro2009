@@ -37,7 +37,8 @@
 					<f:facet name="header">
 						<h:outputText value="Cod" />
 					</f:facet>
-					<h:outputText value="#{prop.id}" />
+					<h:outputText value="#{prop.id}" 
+					style="color:red; font-weight:bold; font-"  />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
