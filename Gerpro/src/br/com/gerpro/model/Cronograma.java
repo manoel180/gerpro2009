@@ -12,6 +12,7 @@ public class Cronograma implements java.io.Serializable {
 	private CronogramaId id;
 	private PropostaItem propostaItem;
 	private String nomeItem;
+	private Artefatos artefatos;
 	private Date dataInicial;
 	private Date dataFinal;
 
@@ -19,17 +20,19 @@ public class Cronograma implements java.io.Serializable {
 	}
 
 	public Cronograma(CronogramaId id, PropostaItem propostaItem,
-			String nomeItem) {
+			String nomeItem, Artefatos artefatos) {
 		this.id = id;
+		this.artefatos = artefatos;
 		this.propostaItem = propostaItem;
 		this.nomeItem = nomeItem;
 	}
 
 	public Cronograma(CronogramaId id, PropostaItem propostaItem,
-			String nomeItem, Date dataInicial, Date dataFinal) {
+			String nomeItem, Artefatos artefatos, Date dataInicial, Date dataFinal) {
 		this.id = id;
 		this.propostaItem = propostaItem;
 		this.nomeItem = nomeItem;
+		this.artefatos = artefatos;
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
 	}
@@ -44,6 +47,20 @@ public class Cronograma implements java.io.Serializable {
 
 	public PropostaItem getPropostaItem() {
 		return this.propostaItem;
+	}
+
+	/**
+	 * @return the artefatos
+	 */
+	public Artefatos getArtefatos() {
+		return artefatos;
+	}
+
+	/**
+	 * @param artefatos the artefatos to set
+	 */
+	public void setArtefatos(Artefatos artefatos) {
+		this.artefatos = artefatos;
 	}
 
 	public void setPropostaItem(PropostaItem propostaItem) {

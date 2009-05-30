@@ -19,6 +19,7 @@
   <mapping resource="br/com/gerpro/model/Pergunta.hbm.xml"/>
   <mapping resource="br/com/gerpro/model/ListaFuncao.hbm.xml"/>
   <mapping resource="br/com/gerpro/model/Equipe.hbm.xml"/>
+  <mapping resource="br/com/gerpro/model/Artefatos.hbm.xml"/>
   <mapping resource="br/com/gerpro/model/Item.hbm.xml"/>
   <mapping resource="br/com/gerpro/model/Correcao.hbm.xml"/>
   <mapping resource="br/com/gerpro/model/Proposta.hbm.xml"/>
