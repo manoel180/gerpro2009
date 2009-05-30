@@ -33,6 +33,10 @@
 			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					
+					<h:outputText value="Ordem:" />
+					<h:inputTextarea value="#{construirPropostaBean.listafuncaoid.numeroSequencia}" style="width: 762px; height: 57px" />
+					
+					
 					<h:outputText value="Caso de Uso:" />
 					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}" style="width: 762px; height: 57px" />
 					
@@ -41,7 +45,7 @@
 					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.descricao}" style="width: 762px; height: 57px" />
 					
 					<h:outputText value="Tipo de Função:" />
-					<h:selectOneMenu value="#{construirPropostaBean.tipofuncao.nome}" >					
+					<h:selectOneMenu value="#{construirPropostaBean.tipofuncao.id}" >					
 						<f:selectItems value="#{construirPropostaBean.tipoFuncaoCombo}"/>	
 					</h:selectOneMenu>
 					
@@ -56,7 +60,7 @@
 					<f:facet name="header">
 						<h:outputText value="Ordem"></h:outputText>
 					</f:facet>
-					<h:outputText value="#{listafuncao.id}"></h:outputText>
+					<h:outputText value="#{listafuncao.id.numeroSequencia}"></h:outputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
@@ -82,9 +86,9 @@
 					<f:facet name="header">
 						<h:outputText value="Opções"></h:outputText>
 					</f:facet>
-					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.excluir}" style="height: 40px; width: 40px"></h:commandButton>
+					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
-			</rich:dataTable><br><br><h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
+			</rich:dataTable><br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
