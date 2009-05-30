@@ -8,15 +8,18 @@ import javax.faces.model.SelectItem;
 import javax.persistence.PersistenceException;
 
 import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeTipoFuncao;
 import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.ListaFuncao;
+import br.com.gerpro.model.ListaFuncaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.PropostaItemId;
@@ -35,11 +38,13 @@ public class ConstruirPropostaBean {
 	private PropostaItem propostaItem = new PropostaItem();
 	private Status status = new Status();
 	private TipoFuncao tipofuncao = new TipoFuncao();
+	private ListaFuncaoId listafuncaoid = new ListaFuncaoId();
 
 	private FacadeEquipe daoEquipe = new EquipeDao();
 	private FacadeProposta daoProposta = new PropostaDao();
 	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
+	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
 	
 	
 	//ComboBox Tipo de Funçoes
@@ -53,13 +58,33 @@ public class ConstruirPropostaBean {
 		return itens.toArray( new SelectItem[itens.size()] );
 	}
 	
+	//Adiciona uma função na tabela de lista de funções
 	public void addfuncao(){
 		
+		if(tipofuncao.getId() == 1){
+			tipofuncao.setNome("Manter");
+		}
+		if(tipofuncao.getId() == 2){
+			tipofuncao.setNome("Processamento");
+		}
+		if(tipofuncao.getId() == 3){
+			tipofuncao.setNome("Relatório");
+		}
+		listafuncaoid.setIdItem(2);
+		listafuncaoid.setIdProposta(1);
+	
+		listaFuncao.setId(listafuncaoid);
 		listaFuncao.setTipoFuncao(tipofuncao);
 		lstlistaFuncao.add(listaFuncao);
+		listafuncaoid = new ListaFuncaoId();
 		listaFuncao = new ListaFuncao();
 		tipofuncao = new TipoFuncao();
 		
+	}
+	//Remover uma função da tabela de lista de funções
+	public void delfuncao(){
+		int id = objDatatableListaFuncao.getRowIndex();
+		lstlistaFuncao.remove(id);
 	}
 	
 	public String prepararBean() {
@@ -68,8 +93,6 @@ public class ConstruirPropostaBean {
 
 		return "go_ConstruirProposta";
 	}
-
-	
 
 	/*
 	 * Metodos para Missão proposta
@@ -96,7 +119,6 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdProposta(1);
 			status.setId(1);
 			propostaItem.setId(PropItemId);
-
 			getDaoPropItem().inserir(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
@@ -133,15 +155,23 @@ public class ConstruirPropostaBean {
 	public String SalvarListaFuncao() {
 
 		equipe = proposta.getEquipe();
+		
 
 		try {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(2);
 			PropItemId.setIdProposta(1);
 			status.setId(1);
-			propostaItem.setId(PropItemId);
+			//propostaItem.setListaFuncaos(lstlistaFuncao);
 			
-			getDaoPropItem().inserir(propostaItem);
+			for( ListaFuncao lf : lstlistaFuncao ){
+				getDaoListaFuncao().inserir(lf);
+				//itens.add( new SelectItem(tf.getId(),tf.getNome()));
+			}
+			
+//			getDaoPropItem().inserir(propostaItem);
+			
+			
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -525,6 +555,34 @@ public class ConstruirPropostaBean {
 	 */
 	public void setLstlistaFuncao(List<ListaFuncao> lstlistaFuncao) {
 		this.lstlistaFuncao = lstlistaFuncao;
+	}
+
+	/**
+	 * @return the daoListaFuncao
+	 */
+	public FacadeListaFuncao getDaoListaFuncao() {
+		return daoListaFuncao;
+	}
+
+	/**
+	 * @param daoListaFuncao the daoListaFuncao to set
+	 */
+	public void setDaoListaFuncao(FacadeListaFuncao daoListaFuncao) {
+		this.daoListaFuncao = daoListaFuncao;
+	}
+
+	/**
+	 * @return the listafuncaoid
+	 */
+	public ListaFuncaoId getListafuncaoid() {
+		return listafuncaoid;
+	}
+
+	/**
+	 * @param listafuncaoid the listafuncaoid to set
+	 */
+	public void setListafuncaoid(ListaFuncaoId listafuncaoid) {
+		this.listafuncaoid = listafuncaoid;
 	}
 
 
