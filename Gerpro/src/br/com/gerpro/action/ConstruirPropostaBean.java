@@ -26,7 +26,7 @@ import br.com.gerpro.model.TipoFuncao;
 public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
 	private List<Equipe> listaEquipe;
-	private List<ListaFuncao> lstlistaFuncao;
+	private List<ListaFuncao> lstlistaFuncao = new ArrayList();
 	
 	private ListaFuncao listaFuncao=new ListaFuncao();
 	private Equipe equipe = new Equipe();
@@ -54,8 +54,11 @@ public class ConstruirPropostaBean {
 	}
 	
 	public void addfuncao(){
+		
+		listaFuncao.setTipoFuncao(tipofuncao);
 		lstlistaFuncao.add(listaFuncao);
 		listaFuncao = new ListaFuncao();
+		tipofuncao = new TipoFuncao();
 		
 	}
 	
