@@ -38,10 +38,10 @@
 					
 
 					<h:outputText value="Descrição:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
+					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.descricao}" style="width: 762px; height: 57px" />
 					
 					<h:outputText value="Tipo de Função:" />
-					<h:selectOneMenu value="#{construirPropostaBean.listaFuncao.tipoFuncao.id}" >					
+					<h:selectOneMenu value="#{construirPropostaBean.tipofuncao.nome}" >					
 						<f:selectItems value="#{construirPropostaBean.tipoFuncaoCombo}"/>	
 					</h:selectOneMenu>
 					
@@ -51,7 +51,7 @@
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		<rich:dataTable var="listafuncao" id="listafuncao" value="#{construirPropostaBean.listaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
+		<rich:dataTable id="idtable" var="listafuncao" value="#{construirPropostaBean.lstlistaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Ordem"></h:outputText>
@@ -75,7 +75,7 @@
 					<f:facet name="header">
 						<h:outputText value="Tipo"></h:outputText>
 					</f:facet>
-					<h:outputText  style="color:red; font-weight:bold; font-"></h:outputText>
+					<h:outputText value="#{listafuncao.tipoFuncao.nome}" style="color:red; font-weight:bold; font-"></h:outputText>
 				</h:column>
 
 				<h:column>
