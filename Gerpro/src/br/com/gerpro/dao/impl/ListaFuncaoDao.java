@@ -28,8 +28,9 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.update(listafuncao);
+			//session.saveOrUpdate(listafuncao);
 			tx.commit();
-			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
+			JOptionPane.showMessageDialog(null, "Operação Realizada com sucesso");
 		} catch (Exception e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");

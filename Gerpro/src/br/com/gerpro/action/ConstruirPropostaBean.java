@@ -30,8 +30,8 @@ public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
 	private List<Equipe> listaEquipe;
 	private List<ListaFuncao> lstlistaFuncao = new ArrayList();
-	
-	private ListaFuncao listaFuncao=new ListaFuncao();
+
+	private ListaFuncao listaFuncao = new ListaFuncao();
 	private Equipe equipe = new Equipe();
 	private Proposta proposta = new Proposta();
 	private PropostaItemId PropItemId = new PropostaItemId();
@@ -45,48 +45,79 @@ public class ConstruirPropostaBean {
 	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
 	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
-	
-	
-	//ComboBox Tipo de Funçoes
-	public SelectItem[] getTipoFuncaoCombo(){
+
+	// ComboBox Tipo de Funçoes
+	public SelectItem[] getTipoFuncaoCombo() {
 		List<TipoFuncao> ltf = getDaoTipoFuncao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(ltf.size());
 
-		for( TipoFuncao tf : ltf ){
-			itens.add( new SelectItem(tf.getId(),tf.getNome()));
+		for (TipoFuncao tf : ltf) {
+			itens.add(new SelectItem(tf.getId(), tf.getNome()));
 		}// for end
-		return itens.toArray( new SelectItem[itens.size()] );
+		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	
-	//Adiciona uma função na tabela de lista de funções
-	public void addfuncao(){
-		
-		if(tipofuncao.getId() == 1){
-			tipofuncao.setNome("Manter");
+
+	// Adiciona uma função na tabela de lista de funções
+	public void addfuncao() {
+
+		if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
+			if (tipofuncao.getId() == 1) {
+				tipofuncao.setNome("Manter");
+			}
+			if (tipofuncao.getId() == 2) {
+				tipofuncao.setNome("Processamento");
+			}
+			if (tipofuncao.getId() == 3) {
+				tipofuncao.setNome("Relatório");
+			}
+			listafuncaoid.setIdItem(2);
+			listafuncaoid.setIdProposta(1);
+
+			listaFuncao.setId(listafuncaoid);
+			listaFuncao.setTipoFuncao(tipofuncao);
+
+			lstlistaFuncao.add(listaFuncao);
+			listafuncaoid = new ListaFuncaoId();
+			listaFuncao = new ListaFuncao();
+			tipofuncao = new TipoFuncao();
+		} 
+		else {
+			if (tipofuncao.getId() == 1) {
+				tipofuncao.setNome("Manter");
+			}
+			if (tipofuncao.getId() == 2) {
+				tipofuncao.setNome("Processamento");
+			}
+			if (tipofuncao.getId() == 3) {
+				tipofuncao.setNome("Relatório");
+			}
+			listafuncaoid.setIdItem(2);
+			listafuncaoid.setIdProposta(1);
+
+			listaFuncao.setId(listafuncaoid);
+			listaFuncao.setTipoFuncao(tipofuncao);
+
+			lstlistaFuncao.set(lstlistaFuncao.indexOf(listaFuncao),listaFuncao);
+			listafuncaoid = new ListaFuncaoId();
+			listaFuncao = new ListaFuncao();
+			tipofuncao = new TipoFuncao();
 		}
-		if(tipofuncao.getId() == 2){
-			tipofuncao.setNome("Processamento");
-		}
-		if(tipofuncao.getId() == 3){
-			tipofuncao.setNome("Relatório");
-		}
-		listafuncaoid.setIdItem(2);
-		listafuncaoid.setIdProposta(1);
-	
-		listaFuncao.setId(listafuncaoid);
-		listaFuncao.setTipoFuncao(tipofuncao);
-		lstlistaFuncao.add(listaFuncao);
-		listafuncaoid = new ListaFuncaoId();
-		listaFuncao = new ListaFuncao();
-		tipofuncao = new TipoFuncao();
-		
+
 	}
-	//Remover uma função da tabela de lista de funções
-	public void delfuncao(){
+
+	// Remover uma função da tabela de lista de funções
+	public void delfuncao() {
 		int id = objDatatableListaFuncao.getRowIndex();
 		lstlistaFuncao.remove(id);
 	}
-	
+
+	public void editfuncao() {
+
+		listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
+		listafuncaoid = listaFuncao.getId();
+		tipofuncao = listaFuncao.getTipoFuncao();
+	}
+ 
 	public String prepararBean() {
 
 		listaEquipe = getDaoEquipe().listar();
@@ -147,39 +178,33 @@ public class ConstruirPropostaBean {
 	}
 
 	public String prepararListaFuncao() {
-		
+
 		return "construirListaFuncoes";
 	}
 
-	//Pendente
+	// Percorrre a lstlistafuncao pra salvar a as listas de funcoes da proposta 
 	public String SalvarListaFuncao() {
 
 		equipe = proposta.getEquipe();
-		
 
 		try {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(2);
 			PropItemId.setIdProposta(1);
 			status.setId(1);
-			//propostaItem.setListaFuncaos(lstlistaFuncao);
-			
-			for( ListaFuncao lf : lstlistaFuncao ){
+
+			for (ListaFuncao lf : lstlistaFuncao) {
 				getDaoListaFuncao().inserir(lf);
-				//itens.add( new SelectItem(tf.getId(),tf.getNome()));
 			}
-			
-//			getDaoPropItem().inserir(propostaItem);
-			
-			
+
 		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return prepararBean();
 	}
 
-	//Pendente
+	// Pendente
 	public String AlterarListaFuncao() {
 
 		equipe = proposta.getEquipe();
@@ -199,7 +224,6 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	
 	/*
 	 * Metodos para Justificativa da proposta
 	 */
@@ -207,7 +231,7 @@ public class ConstruirPropostaBean {
 		return "construirJustificativa";
 	}
 
-	//Pendente
+	// Pendente
 	public String SalvarJustificativa() {
 
 		equipe = proposta.getEquipe();
@@ -227,7 +251,7 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	//Pendente
+	// Pendente
 	public String AlterarJustificativa() {
 
 		equipe = proposta.getEquipe();
@@ -250,7 +274,7 @@ public class ConstruirPropostaBean {
 	public String prepararMetodologia() {
 		return "construirMetodologia";
 	}
-	
+
 	public String SalvarMetodologia() {
 
 		equipe = proposta.getEquipe();
@@ -270,7 +294,7 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	//Pendente
+	// Pendente
 	public String AlterarMetodologia() {
 
 		equipe = proposta.getEquipe();
@@ -290,12 +314,11 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	
 	public String prepararCronograma() {
 		return "construirCronograma";
 	}
 
-	//Pendente
+	// Pendente
 	public String SalvarCronograma() {
 
 		equipe = proposta.getEquipe();
@@ -314,8 +337,8 @@ public class ConstruirPropostaBean {
 		}
 		return prepararBean();
 	}
-	
-	//Pendente
+
+	// Pendente
 	public String AlterarCronograma() {
 
 		equipe = proposta.getEquipe();
@@ -335,9 +358,6 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-		
-
-	
 	/*
 	 * public String preperarEdicao() { equipe = (Equipe)
 	 * objDatatableEquipe.getRowData(); return "alterar"; }
@@ -367,7 +387,6 @@ public class ConstruirPropostaBean {
 	public List<Equipe> getListaEquipe() {
 		return listaEquipe;
 	}
-
 
 	public FacadeEquipe getDaoEquipe() {
 		return daoEquipe;
@@ -482,8 +501,6 @@ public class ConstruirPropostaBean {
 		this.status = status;
 	}
 
-
-
 	/**
 	 * @return the daoTipoFuncao
 	 */
@@ -491,14 +508,13 @@ public class ConstruirPropostaBean {
 		return daoTipoFuncao;
 	}
 
-
 	/**
-	 * @param daoTipoFuncao the daoTipoFuncao to set
+	 * @param daoTipoFuncao
+	 *            the daoTipoFuncao to set
 	 */
 	public void setDaoTipoFuncao(FacadeTipoFuncao daoTipoFuncao) {
 		this.daoTipoFuncao = daoTipoFuncao;
 	}
-
 
 	/**
 	 * @return the tipofuncao
@@ -507,9 +523,9 @@ public class ConstruirPropostaBean {
 		return tipofuncao;
 	}
 
-
 	/**
-	 * @param tipofuncao the tipofuncao to set
+	 * @param tipofuncao
+	 *            the tipofuncao to set
 	 */
 	public void setTipofuncao(TipoFuncao tipofuncao) {
 		this.tipofuncao = tipofuncao;
@@ -523,7 +539,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param listaFuncao the listaFuncao to set
+	 * @param listaFuncao
+	 *            the listaFuncao to set
 	 */
 	public void setListaFuncao(ListaFuncao listaFuncao) {
 		this.listaFuncao = listaFuncao;
@@ -537,7 +554,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param objDatatableListaFuncao the objDatatableListaFuncao to set
+	 * @param objDatatableListaFuncao
+	 *            the objDatatableListaFuncao to set
 	 */
 	public void setObjDatatableListaFuncao(UIData objDatatableListaFuncao) {
 		this.objDatatableListaFuncao = objDatatableListaFuncao;
@@ -551,7 +569,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param lstlistaFuncao the lstlistaFuncao to set
+	 * @param lstlistaFuncao
+	 *            the lstlistaFuncao to set
 	 */
 	public void setLstlistaFuncao(List<ListaFuncao> lstlistaFuncao) {
 		this.lstlistaFuncao = lstlistaFuncao;
@@ -565,7 +584,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param daoListaFuncao the daoListaFuncao to set
+	 * @param daoListaFuncao
+	 *            the daoListaFuncao to set
 	 */
 	public void setDaoListaFuncao(FacadeListaFuncao daoListaFuncao) {
 		this.daoListaFuncao = daoListaFuncao;
@@ -579,11 +599,11 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param listafuncaoid the listafuncaoid to set
+	 * @param listafuncaoid
+	 *            the listafuncaoid to set
 	 */
 	public void setListafuncaoid(ListaFuncaoId listafuncaoid) {
 		this.listafuncaoid = listafuncaoid;
 	}
-
 
 }
