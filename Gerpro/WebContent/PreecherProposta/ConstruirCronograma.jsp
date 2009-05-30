@@ -32,11 +32,11 @@
 
 			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-					<h:outputText value="Missão:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
+					<h:outputText value="Data Inicial:" />
+					<rich:calendar  value="#{propostaBean.proposta.dataCriacao}"/>
 
-					<h:outputText value="Lista Funções:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
+					<h:outputText value="Data Final:" />
+					<rich:calendar  value="#{propostaBean.proposta.dataCriacao}"/>
 
 					<h:outputText value="Justificativa:" />
 					<h:inputTextarea style="width: 762px; height: 57px" />

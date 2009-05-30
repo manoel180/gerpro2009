@@ -87,6 +87,7 @@
 						<h:outputText value="Opções"></h:outputText>
 					</f:facet>
 					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delfuncao}" style="height: 40px; width: 40px"></h:commandButton>
+					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
 			</rich:dataTable><br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
 		<h:panelGrid columns="1" width="90%" border="0">
