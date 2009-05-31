@@ -13,9 +13,6 @@
 </head>
 
 
-
-
-
 <f:view>
 	<h:form>
 
@@ -32,29 +29,53 @@
 
 			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-					<h:outputText value="Data Inicial:" />
-					<rich:calendar  value="#{propostaBean.proposta.dataCriacao}"/>
-
+					
+					<h:outputText value="Data Inicial" />
+					<rich:calendar id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}"/>
+					
+					
 					<h:outputText value="Data Final:" />
-					<rich:calendar  value="#{propostaBean.proposta.dataCriacao}"/>
-
-					<h:outputText value="Justificativa:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Metodologia:" />
-					<h:inputTextarea style="width: 762px; height: 57px" />
-
-					<h:outputText value="Cronograma:" />
-
+					<rich:calendar id="dt_Fim" value="#{construirPropostaBean.cronograma.dataFinal}"/>
+						
+					<h:outputText value="Artefato:" />
+					<h:selectOneMenu value="#{construirPropostaBean.artefatos.id}" >					
+						<f:selectItems value="#{construirPropostaBean.artefatosCombo}"/>	
+					</h:selectOneMenu>
+					
+					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addfuncao}"/>
+					
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
+		<rich:dataTable id="idtable" var="lstArt" value="#{construirPropostaBean.lstArtefatos}" binding="#{construirPropostaBean.objDatatableArtefatos}" rows="10" width="550px" align="center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Artefato"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{lstArt.nome}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data Inicio"></h:outputText>
+					</f:facet>
+					<rich:calendar id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data Final"></h:outputText>
+					</f:facet>
+					<rich:calendar id="dt_Fim" value="#{construirPropostaBean.cronograma.dataFinal}"/>
+				</h:column>
+
+				
+			</rich:dataTable>
+			<br><br>
+			<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarCronograma}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
-					<h:commandButton action="#{equipeBean.prepararBean}"
+					<h:commandButton action="#{propostaBean.prepararBean}"
 						value="Ir para o listar propostas" />
 				</h:panelGroup>
 			</h:panelGrid>
