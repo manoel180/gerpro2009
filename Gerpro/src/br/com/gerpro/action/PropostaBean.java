@@ -47,17 +47,7 @@ public class PropostaBean {
 		return itens.toArray( new SelectItem[itens.size()] );
 	}
 	
-	//ComboBox Status
-	public SelectItem[] getStatusCombo(){
-		List<Status> le = getStatusDao().listar();
-		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
-
-		for( Status e : le ){
-			itens.add( new SelectItem(e.getId(),e.getNome()));
-		}// for end
-		return itens.toArray( new SelectItem[itens.size()] );
-	}
-	
+		
 	public String prepararBean() {
 
 		proposta = new Proposta();
@@ -87,7 +77,7 @@ public class PropostaBean {
 
 	public String salvar() {
 		try {
-						
+			status.setId(1);
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
 			getPropostaDao().inserir(proposta);
@@ -99,7 +89,7 @@ public class PropostaBean {
 
 	public String alterar() {
 		try {
-			
+			status.setId(1);
 			proposta.setStatus(status);
 			proposta.setEquipe(equipe);
 			

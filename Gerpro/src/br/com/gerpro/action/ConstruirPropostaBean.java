@@ -36,7 +36,7 @@ public class ConstruirPropostaBean {
 	private List<Equipe> listaEquipe;
 	private List<ListaFuncao> lstlistaFuncao = new ArrayList();
 	private List<Cronograma> lstCronograma = new ArrayList();
-	private List<Artefatos> lstArtefatos = new ArrayList();
+	private List<Artefatos> lstArtefatos = new ArrayList<Artefatos>();
 	
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
@@ -340,6 +340,8 @@ public class ConstruirPropostaBean {
 
 	public String prepararCronograma() {
 		lstArtefatos = getDaoArtefatos().listar();
+	
+	
 		return "construirCronograma";
 	}
 
