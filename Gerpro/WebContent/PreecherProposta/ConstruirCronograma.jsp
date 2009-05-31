@@ -42,7 +42,7 @@
 						<f:selectItems value="#{construirPropostaBean.artefatosCombo}"/>	
 					</h:selectOneMenu>
 					
-					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addfuncao}"/>
+					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addcronograma}"/>
 					
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
