@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
+<!-- Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="br.com.gerpro.model.Resposta" table="resposta" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">

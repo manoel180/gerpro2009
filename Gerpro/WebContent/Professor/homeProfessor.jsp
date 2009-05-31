@@ -7,7 +7,7 @@
 
 <f:view>
 	<h:form id="form">
-		<rich:panel label="Lista de Propostas">
+		<rich:panel>
 			<rich:dataTable var="prop" id="listapropostas"
 				value="#{propostaBean.listaPorProfessor}"
 				binding="#{propostaBean.objDatatableProposta}">

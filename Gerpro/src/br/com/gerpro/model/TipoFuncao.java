@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ public class TipoFuncao implements java.io.Serializable {
 	private byte id;
 	private String nome;
 	private char abreviatura;
-	private Set<ListaFuncao> listaFuncaos = new HashSet<ListaFuncao>(0);
+	private Set listaFuncaos = new HashSet(0);
 
 	public TipoFuncao() {
 	}
@@ -24,8 +24,7 @@ public class TipoFuncao implements java.io.Serializable {
 		this.abreviatura = abreviatura;
 	}
 
-	public TipoFuncao(byte id, String nome, char abreviatura,
-			Set<ListaFuncao> listaFuncaos) {
+	public TipoFuncao(byte id, String nome, char abreviatura, Set listaFuncaos) {
 		this.id = id;
 		this.nome = nome;
 		this.abreviatura = abreviatura;
@@ -56,11 +55,11 @@ public class TipoFuncao implements java.io.Serializable {
 		this.abreviatura = abreviatura;
 	}
 
-	public Set<ListaFuncao> getListaFuncaos() {
+	public Set getListaFuncaos() {
 		return this.listaFuncaos;
 	}
 
-	public void setListaFuncaos(Set<ListaFuncao> listaFuncaos) {
+	public void setListaFuncaos(Set listaFuncaos) {
 		this.listaFuncaos = listaFuncaos;
 	}
 

@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.Date;
 
@@ -11,7 +11,6 @@ public class Cronograma implements java.io.Serializable {
 
 	private CronogramaId id;
 	private PropostaItem propostaItem;
-	private String nomeItem;
 	private Artefatos artefatos;
 	private Date dataInicial;
 	private Date dataFinal;
@@ -20,18 +19,16 @@ public class Cronograma implements java.io.Serializable {
 	}
 
 	public Cronograma(CronogramaId id, PropostaItem propostaItem,
-			String nomeItem, Artefatos artefatos) {
+			Artefatos artefatos) {
 		this.id = id;
-		this.artefatos = artefatos;
 		this.propostaItem = propostaItem;
-		this.nomeItem = nomeItem;
+		this.artefatos = artefatos;
 	}
 
 	public Cronograma(CronogramaId id, PropostaItem propostaItem,
-			String nomeItem, Artefatos artefatos, Date dataInicial, Date dataFinal) {
+			Artefatos artefatos, Date dataInicial, Date dataFinal) {
 		this.id = id;
 		this.propostaItem = propostaItem;
-		this.nomeItem = nomeItem;
 		this.artefatos = artefatos;
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
@@ -49,30 +46,16 @@ public class Cronograma implements java.io.Serializable {
 		return this.propostaItem;
 	}
 
-	/**
-	 * @return the artefatos
-	 */
-	public Artefatos getArtefatos() {
-		return artefatos;
-	}
-
-	/**
-	 * @param artefatos the artefatos to set
-	 */
-	public void setArtefatos(Artefatos artefatos) {
-		this.artefatos = artefatos;
-	}
-
 	public void setPropostaItem(PropostaItem propostaItem) {
 		this.propostaItem = propostaItem;
 	}
 
-	public String getNomeItem() {
-		return this.nomeItem;
+	public Artefatos getArtefatos() {
+		return this.artefatos;
 	}
 
-	public void setNomeItem(String nomeItem) {
-		this.nomeItem = nomeItem;
+	public void setArtefatos(Artefatos artefatos) {
+		this.artefatos = artefatos;
 	}
 
 	public Date getDataInicial() {

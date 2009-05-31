@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,12 +12,12 @@ public class TipoUsuario implements java.io.Serializable {
 
 	private Integer id;
 	private String nome;
-	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set usuarios = new HashSet(0);
 
 	public TipoUsuario() {
 	}
 
-	public TipoUsuario(String nome, Set<Usuario> usuarios) {
+	public TipoUsuario(String nome, Set usuarios) {
 		this.nome = nome;
 		this.usuarios = usuarios;
 	}
@@ -38,11 +38,11 @@ public class TipoUsuario implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Set<Usuario> getUsuarios() {
+	public Set getUsuarios() {
 		return this.usuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(Set usuarios) {
 		this.usuarios = usuarios;
 	}
 

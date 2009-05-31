@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
+<!-- Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="br.com.gerpro.model.ListaFuncao" table="lista_funcao" catalog="gerprodb">
         <composite-id name="id" class="br.com.gerpro.model.ListaFuncaoId">
@@ -15,7 +15,7 @@
                 <column name="id_item" />
             </key-property>
         </composite-id>
-        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" lazy="false" update="false" insert="false" fetch="join">
+        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" update="false" insert="false" fetch="join" lazy="false">
             <column name="id_proposta" not-null="true" />
             <column name="id_item" not-null="true" />
         </many-to-one>
@@ -23,7 +23,7 @@
             <column name="Id_tipo_funcao" not-null="true" />
         </many-to-one>
         <property name="uc" type="string">
-            <column name="UC" length="50" />
+            <column name="UC" length="100" />
         </property>
         <property name="descricao" type="string">
             <column name="descricao" length="65535" />

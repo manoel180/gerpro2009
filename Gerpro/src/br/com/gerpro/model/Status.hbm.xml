@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
+<!-- Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="br.com.gerpro.model.Status" table="status" lazy="false" catalog="gerprodb">
+    <class name="br.com.gerpro.model.Status" table="status" catalog="gerprodb">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -11,15 +11,21 @@
         <property name="nome" type="string">
             <column name="nome" length="30" not-null="true" />
         </property>
+        <set name="correcaos" inverse="true">
+            <key>
+                <column name="id_status_correcao" not-null="true" />
+            </key>
+            <one-to-many class="br.com.gerpro.model.Correcao" />
+        </set>
         <set name="propostas" inverse="true">
             <key>
-                <column name="id_status" not-null="true" />
+                <column name="id_status_proposta" not-null="true" />
             </key>
             <one-to-many class="br.com.gerpro.model.Proposta" />
         </set>
         <set name="propostaItems" inverse="true">
             <key>
-                <column name="id_status" />
+                <column name="id_status_criacao" />
             </key>
             <one-to-many class="br.com.gerpro.model.PropostaItem" />
         </set>

@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,12 +13,12 @@ public class Pergunta implements java.io.Serializable {
 	private Integer id;
 	private Item item;
 	private String descricao;
-	private Set<Correcao> correcaos = new HashSet<Correcao>(0);
+	private Set correcaos = new HashSet(0);
 
 	public Pergunta() {
 	}
 
-	public Pergunta(Item item, String descricao, Set<Correcao> correcaos) {
+	public Pergunta(Item item, String descricao, Set correcaos) {
 		this.item = item;
 		this.descricao = descricao;
 		this.correcaos = correcaos;
@@ -48,11 +48,11 @@ public class Pergunta implements java.io.Serializable {
 		this.descricao = descricao;
 	}
 
-	public Set<Correcao> getCorrecaos() {
+	public Set getCorrecaos() {
 		return this.correcaos;
 	}
 
-	public void setCorrecaos(Set<Correcao> correcaos) {
+	public void setCorrecaos(Set correcaos) {
 		this.correcaos = correcaos;
 	}
 

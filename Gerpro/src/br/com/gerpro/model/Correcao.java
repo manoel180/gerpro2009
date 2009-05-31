@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ public class Correcao implements java.io.Serializable {
 
 	private CorrecaoId id;
 	private PropostaItem propostaItem;
+	private Status status;
 	private Pergunta pergunta;
 	private Resposta resposta;
 	private Usuario usuario;
@@ -20,19 +21,21 @@ public class Correcao implements java.io.Serializable {
 	public Correcao() {
 	}
 
-	public Correcao(CorrecaoId id, PropostaItem propostaItem,
+	public Correcao(CorrecaoId id, PropostaItem propostaItem, Status status,
 			Pergunta pergunta, Usuario usuario) {
 		this.id = id;
 		this.propostaItem = propostaItem;
+		this.status = status;
 		this.pergunta = pergunta;
 		this.usuario = usuario;
 	}
 
-	public Correcao(CorrecaoId id, PropostaItem propostaItem,
+	public Correcao(CorrecaoId id, PropostaItem propostaItem, Status status,
 			Pergunta pergunta, Resposta resposta, Usuario usuario,
 			String observacao, Date dataCorrecao) {
 		this.id = id;
 		this.propostaItem = propostaItem;
+		this.status = status;
 		this.pergunta = pergunta;
 		this.resposta = resposta;
 		this.usuario = usuario;
@@ -54,6 +57,14 @@ public class Correcao implements java.io.Serializable {
 
 	public void setPropostaItem(PropostaItem propostaItem) {
 		this.propostaItem = propostaItem;
+	}
+
+	public Status getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public Pergunta getPergunta() {

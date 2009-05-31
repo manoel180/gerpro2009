@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,9 @@ public class Status implements java.io.Serializable {
 
 	private Integer id;
 	private String nome;
-	private Set<Proposta> propostas = new HashSet<Proposta>(0);
-	private Set<PropostaItem> propostaItems = new HashSet<PropostaItem>(0);
+	private Set correcaos = new HashSet(0);
+	private Set propostas = new HashSet(0);
+	private Set propostaItems = new HashSet(0);
 
 	public Status() {
 	}
@@ -22,9 +23,9 @@ public class Status implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Status(String nome, Set<Proposta> propostas,
-			Set<PropostaItem> propostaItems) {
+	public Status(String nome, Set correcaos, Set propostas, Set propostaItems) {
 		this.nome = nome;
+		this.correcaos = correcaos;
 		this.propostas = propostas;
 		this.propostaItems = propostaItems;
 	}
@@ -45,19 +46,27 @@ public class Status implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Set<Proposta> getPropostas() {
+	public Set getCorrecaos() {
+		return this.correcaos;
+	}
+
+	public void setCorrecaos(Set correcaos) {
+		this.correcaos = correcaos;
+	}
+
+	public Set getPropostas() {
 		return this.propostas;
 	}
 
-	public void setPropostas(Set<Proposta> propostas) {
+	public void setPropostas(Set propostas) {
 		this.propostas = propostas;
 	}
 
-	public Set<PropostaItem> getPropostaItems() {
+	public Set getPropostaItems() {
 		return this.propostaItems;
 	}
 
-	public void setPropostaItems(Set<PropostaItem> propostaItems) {
+	public void setPropostaItems(Set propostaItems) {
 		this.propostaItems = propostaItems;
 	}
 

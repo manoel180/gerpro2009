@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,12 +12,12 @@ public class PropostaItem implements java.io.Serializable {
 
 	private PropostaItemId id;
 	private Item item;
-	private Proposta proposta;
 	private Status status;
+	private Proposta proposta;
 	private String conteudoItem;
-	private Set<Cronograma> cronogramas = new HashSet<Cronograma>(0);
-	private Set<ListaFuncao> listaFuncaos = new HashSet<ListaFuncao>(0);
-	private Set<Correcao> correcaos = new HashSet<Correcao>(0);
+	private Set cronogramas = new HashSet(0);
+	private Set listaFuncaos = new HashSet(0);
+	private Set correcaos = new HashSet(0);
 
 	public PropostaItem() {
 	}
@@ -28,13 +28,13 @@ public class PropostaItem implements java.io.Serializable {
 		this.proposta = proposta;
 	}
 
-	public PropostaItem(PropostaItemId id, Item item, Proposta proposta,
-			Status status, String conteudoItem, Set<Cronograma> cronogramas,
-			Set<ListaFuncao> listaFuncaos, Set<Correcao> correcaos) {
+	public PropostaItem(PropostaItemId id, Item item, Status status,
+			Proposta proposta, String conteudoItem, Set cronogramas,
+			Set listaFuncaos, Set correcaos) {
 		this.id = id;
 		this.item = item;
-		this.proposta = proposta;
 		this.status = status;
+		this.proposta = proposta;
 		this.conteudoItem = conteudoItem;
 		this.cronogramas = cronogramas;
 		this.listaFuncaos = listaFuncaos;
@@ -57,20 +57,20 @@ public class PropostaItem implements java.io.Serializable {
 		this.item = item;
 	}
 
-	public Proposta getProposta() {
-		return this.proposta;
-	}
-
-	public void setProposta(Proposta proposta) {
-		this.proposta = proposta;
-	}
-
 	public Status getStatus() {
 		return this.status;
 	}
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Proposta getProposta() {
+		return this.proposta;
+	}
+
+	public void setProposta(Proposta proposta) {
+		this.proposta = proposta;
 	}
 
 	public String getConteudoItem() {
@@ -81,27 +81,27 @@ public class PropostaItem implements java.io.Serializable {
 		this.conteudoItem = conteudoItem;
 	}
 
-	public Set<Cronograma> getCronogramas() {
+	public Set getCronogramas() {
 		return this.cronogramas;
 	}
 
-	public void setCronogramas(Set<Cronograma> cronogramas) {
+	public void setCronogramas(Set cronogramas) {
 		this.cronogramas = cronogramas;
 	}
 
-	public Set<ListaFuncao> getListaFuncaos() {
+	public Set getListaFuncaos() {
 		return this.listaFuncaos;
 	}
 
-	public void setListaFuncaos(Set<ListaFuncao> listaFuncaos) {
+	public void setListaFuncaos(Set listaFuncaos) {
 		this.listaFuncaos = listaFuncaos;
 	}
 
-	public Set<Correcao> getCorrecaos() {
+	public Set getCorrecaos() {
 		return this.correcaos;
 	}
 
-	public void setCorrecaos(Set<Correcao> correcaos) {
+	public void setCorrecaos(Set correcaos) {
 		this.correcaos = correcaos;
 	}
 

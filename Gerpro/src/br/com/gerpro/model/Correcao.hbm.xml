@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/04/2009 12:04:58 by Hibernate Tools 3.2.2.GA -->
+<!-- Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="br.com.gerpro.model.Correcao" table="correcao" catalog="gerprodb">
         <composite-id name="id" class="br.com.gerpro.model.CorrecaoId">
@@ -18,17 +18,20 @@
                 <column name="id_pergunta" />
             </key-property>
         </composite-id>
-        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" update="false" insert="false" fetch="join">
+        <many-to-one name="propostaItem" class="br.com.gerpro.model.PropostaItem" update="false" insert="false" fetch="join" lazy="false">
             <column name="id_proposta" not-null="true" />
             <column name="id_item" not-null="true" />
         </many-to-one>
-        <many-to-one name="pergunta" class="br.com.gerpro.model.Pergunta" update="false" insert="false" fetch="join">
+        <many-to-one name="status" class="br.com.gerpro.model.Status" fetch="join" lazy="false">
+            <column name="id_status_correcao" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pergunta" class="br.com.gerpro.model.Pergunta" update="false" insert="false" fetch="join" lazy="false">
             <column name="id_pergunta" not-null="true" />
         </many-to-one>
-        <many-to-one name="resposta" class="br.com.gerpro.model.Resposta" fetch="join">
+        <many-to-one name="resposta" class="br.com.gerpro.model.Resposta" fetch="join" lazy="false">
             <column name="resposta" />
         </many-to-one>
-        <many-to-one name="usuario" class="br.com.gerpro.model.Usuario" update="false" insert="false" fetch="join">
+        <many-to-one name="usuario" class="br.com.gerpro.model.Usuario" update="false" insert="false" fetch="join" lazy="false">
             <column name="matricula_professor" length="8" not-null="true" />
         </many-to-one>
         <property name="observacao" type="string">

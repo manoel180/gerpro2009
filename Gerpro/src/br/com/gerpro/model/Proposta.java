@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +18,7 @@ public class Proposta implements java.io.Serializable {
 	private Date dataCriacao;
 	private Date dataSubmissao;
 	private String periodo;
-	private Set<PropostaItem> propostaItems = new HashSet<PropostaItem>(0);
+	private Set propostaItems = new HashSet(0);
 
 	public Proposta() {
 	}
@@ -34,7 +34,7 @@ public class Proposta implements java.io.Serializable {
 
 	public Proposta(Equipe equipe, Status status, String nome,
 			Date dataCriacao, Date dataSubmissao, String periodo,
-			Set<PropostaItem> propostaItems) {
+			Set propostaItems) {
 		this.equipe = equipe;
 		this.status = status;
 		this.nome = nome;
@@ -100,11 +100,11 @@ public class Proposta implements java.io.Serializable {
 		this.periodo = periodo;
 	}
 
-	public Set<PropostaItem> getPropostaItems() {
+	public Set getPropostaItems() {
 		return this.propostaItems;
 	}
 
-	public void setPropostaItems(Set<PropostaItem> propostaItems) {
+	public void setPropostaItems(Set propostaItems) {
 		this.propostaItems = propostaItems;
 	}
 

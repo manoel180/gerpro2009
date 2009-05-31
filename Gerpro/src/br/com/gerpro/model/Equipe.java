@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class Equipe implements java.io.Serializable {
 
 	private Integer id;
 	private String nome;
-	private Set<Proposta> propostas = new HashSet<Proposta>(0);
-	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set propostas = new HashSet(0);
+	private Set usuarios = new HashSet(0);
 
 	public Equipe() {
 	}
@@ -22,7 +22,7 @@ public class Equipe implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Equipe(String nome, Set<Proposta> propostas, Set<Usuario> usuarios) {
+	public Equipe(String nome, Set propostas, Set usuarios) {
 		this.nome = nome;
 		this.propostas = propostas;
 		this.usuarios = usuarios;
@@ -44,19 +44,19 @@ public class Equipe implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Set<Proposta> getPropostas() {
+	public Set getPropostas() {
 		return this.propostas;
 	}
 
-	public void setPropostas(Set<Proposta> propostas) {
+	public void setPropostas(Set propostas) {
 		this.propostas = propostas;
 	}
 
-	public Set<Usuario> getUsuarios() {
+	public Set getUsuarios() {
 		return this.usuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(Set usuarios) {
 		this.usuarios = usuarios;
 	}
 

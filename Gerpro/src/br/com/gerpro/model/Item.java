@@ -1,6 +1,6 @@
 package br.com.gerpro.model;
 
-// Generated 18/04/2009 12:04:57 by Hibernate Tools 3.2.2.GA
+// Generated 31/05/2009 15:44:42 by Hibernate Tools 3.2.2.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class Item implements java.io.Serializable {
 
 	private Integer id;
 	private String nome;
-	private Set<Pergunta> perguntas = new HashSet<Pergunta>(0);
-	private Set<PropostaItem> propostaItems = new HashSet<PropostaItem>(0);
+	private Set perguntas = new HashSet(0);
+	private Set propostaItems = new HashSet(0);
 
 	public Item() {
 	}
@@ -22,8 +22,7 @@ public class Item implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Item(String nome, Set<Pergunta> perguntas,
-			Set<PropostaItem> propostaItems) {
+	public Item(String nome, Set perguntas, Set propostaItems) {
 		this.nome = nome;
 		this.perguntas = perguntas;
 		this.propostaItems = propostaItems;
@@ -45,19 +44,19 @@ public class Item implements java.io.Serializable {
 		this.nome = nome;
 	}
 
-	public Set<Pergunta> getPerguntas() {
+	public Set getPerguntas() {
 		return this.perguntas;
 	}
 
-	public void setPerguntas(Set<Pergunta> perguntas) {
+	public void setPerguntas(Set perguntas) {
 		this.perguntas = perguntas;
 	}
 
-	public Set<PropostaItem> getPropostaItems() {
+	public Set getPropostaItems() {
 		return this.propostaItems;
 	}
 
-	public void setPropostaItems(Set<PropostaItem> propostaItems) {
+	public void setPropostaItems(Set propostaItems) {
 		this.propostaItems = propostaItems;
 	}
 
