@@ -7,16 +7,19 @@ import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 import javax.persistence.PersistenceException;
 
+import br.com.gerpro.dao.FacadeArtefatos;
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeTipoFuncao;
+import br.com.gerpro.dao.impl.ArtefatosDao;
 import br.com.gerpro.dao.impl.EquipeDao;
 import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
+import br.com.gerpro.model.Artefatos;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.ListaFuncao;
 import br.com.gerpro.model.ListaFuncaoId;
@@ -24,23 +27,31 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Status;
+import br.com.gerpro.model.Cronograma;
 import br.com.gerpro.model.TipoFuncao;
 
 public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
+	private UIData objDatatableArtefatos;
 	private List<Equipe> listaEquipe;
 	private List<ListaFuncao> lstlistaFuncao = new ArrayList();
+	private List<Cronograma> lstCronograma = new ArrayList();
+	private List<Artefatos> lstArtefatos = new ArrayList();
+	
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
+	private Artefatos artefatos = new Artefatos();
 	private Equipe equipe = new Equipe();
+	private Cronograma cronograma = new Cronograma();
 	private Proposta proposta = new Proposta();
 	private PropostaItemId PropItemId = new PropostaItemId();
 	private PropostaItem propostaItem = new PropostaItem();
 	private Status status = new Status();
 	private TipoFuncao tipofuncao = new TipoFuncao();
 	private ListaFuncaoId listafuncaoid = new ListaFuncaoId();
-
+	
 	private FacadeEquipe daoEquipe = new EquipeDao();
+	private FacadeArtefatos daoArtefatos = new ArtefatosDao();
 	private FacadeProposta daoProposta = new PropostaDao();
 	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
@@ -57,6 +68,18 @@ public class ConstruirPropostaBean {
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 
+	// ComboBox Artefatos
+	public SelectItem[] getArtefatosCombo() {
+		List<Artefatos> lart = getDaoArtefatos().listar();
+		List<SelectItem> itens = new ArrayList<SelectItem>(lart.size());
+
+		for (Artefatos art : lart) {
+			itens.add(new SelectItem(art.getId(), art.getNome()));
+		}// for end
+		return itens.toArray(new SelectItem[itens.size()]);
+	}
+
+	
 	// Adiciona uma função na tabela de lista de funções
 	public void addfuncao() {
 
@@ -111,6 +134,7 @@ public class ConstruirPropostaBean {
 		lstlistaFuncao.remove(id);
 	}
 
+	// Seleciona uma função da tabela de lista de funções para a alteracao
 	public void editfuncao() {
 
 		listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
@@ -315,6 +339,7 @@ public class ConstruirPropostaBean {
 	}
 
 	public String prepararCronograma() {
+		lstArtefatos = getDaoArtefatos().listar();
 		return "construirCronograma";
 	}
 
@@ -604,6 +629,90 @@ public class ConstruirPropostaBean {
 	 */
 	public void setListafuncaoid(ListaFuncaoId listafuncaoid) {
 		this.listafuncaoid = listafuncaoid;
+	}
+
+	/**
+	 * @return the artefatos
+	 */
+	public Artefatos getArtefatos() {
+		return artefatos;
+	}
+
+	/**
+	 * @param artefatos the artefatos to set
+	 */
+	public void setArtefatos(Artefatos artefatos) {
+		this.artefatos = artefatos;
+	}
+
+	/**
+	 * @return the daoArtefatos
+	 */
+	public FacadeArtefatos getDaoArtefatos() {
+		return daoArtefatos;
+	}
+
+	/**
+	 * @param daoArtefatos the daoArtefatos to set
+	 */
+	public void setDaoArtefatos(FacadeArtefatos daoArtefatos) {
+		this.daoArtefatos = daoArtefatos;
+	}
+
+	/**
+	 * @return the objDatatableArtefatos
+	 */
+	public UIData getObjDatatableArtefatos() {
+		return objDatatableArtefatos;
+	}
+
+	/**
+	 * @param objDatatableArtefatos the objDatatableArtefatos to set
+	 */
+	public void setObjDatatableArtefatos(UIData objDatatableArtefatos) {
+		this.objDatatableArtefatos = objDatatableArtefatos;
+	}
+
+	/**
+	 * @return the lstArtefatos
+	 */
+	public List<Artefatos> getLstArtefatos() {
+		return lstArtefatos;
+	}
+
+	/**
+	 * @param lstArtefatos the lstArtefatos to set
+	 */
+	public void setLstArtefatos(List<Artefatos> lstArtefatos) {
+		this.lstArtefatos = lstArtefatos;
+	}
+
+	/**
+	 * @return the lstCronograma
+	 */
+	public List<Cronograma> getLstCronograma() {
+		return lstCronograma;
+	}
+
+	/**
+	 * @param lstCronograma the lstCronograma to set
+	 */
+	public void setLstCronograma(List<Cronograma> lstCronograma) {
+		this.lstCronograma = lstCronograma;
+	}
+
+	/**
+	 * @return the cronograma
+	 */
+	public Cronograma getCronograma() {
+		return cronograma;
+	}
+
+	/**
+	 * @param cronograma the cronograma to set
+	 */
+	public void setCronograma(Cronograma cronograma) {
+		this.cronograma = cronograma;
 	}
 
 }
