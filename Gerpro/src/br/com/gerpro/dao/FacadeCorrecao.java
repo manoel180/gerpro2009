@@ -21,5 +21,7 @@ public interface FacadeCorrecao {
 	public void alterar (Correcao correcao);
 	
 	public Correcao procurarPorNomeProfessor(String Nome);
+	
+	public List<Correcao> procurarPorCorrecao(Correcao correcaoId);
 
 }
