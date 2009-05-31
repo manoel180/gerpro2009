@@ -51,22 +51,28 @@
 			<from-outcome>homeAluno</from-outcome>
 			<to-view-id>/Aluno/homeAluno.jsp</to-view-id>
 		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>homeProfessor</from-outcome>
 			<to-view-id>/Professor/homeProfessor.jsp</to-view-id>
 		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>homeCoordenador</from-outcome>
 			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
 		</navigation-case>
+			
+		<navigation-case>
+			<from-outcome>go_manterArtefatos</from-outcome>
+			<to-view-id>/ManterArtefatos/PesquisarArtefatos.jsp</to-view-id>
+		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>go_manterEquipe</from-outcome>
 			<to-view-id>/ManterEquipe/PesquisarEquipe.jsp</to-view-id>
 		</navigation-case>
-			<navigation-case>
-			<from-outcome>go_manterArtefatos</from-outcome>
-			<to-view-id>/ManterArfatos/PesquisarArtefatos.jsp</to-view-id>
-		</navigation-case>
+	
+		
 		<navigation-case>
 			<from-outcome>go_manterProposta</from-outcome>
 			<to-view-id>
