@@ -36,16 +36,14 @@
 					<f:selectItems value="#{propostaBean.equipesCombo}"/>	
 				</h:selectOneMenu>
 
-				<h:outputText value="Status:" />
-				<h:selectOneMenu id="status" value="#{propostaBean.status.id}" rendered="true" required="true">					
-					<f:selectItems value="#{propostaBean.statusCombo}"/>	
-				</h:selectOneMenu>
+				
+				
 				
 				<h:outputText value="Data Criação:" />	
 				<rich1:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}"/>
 					
-				<h:outputText value="Data Submissão:" />	
-				<rich1:calendar id="dt_submissao" value="#{propostaBean.proposta.dataSubmissao}"/>
+					
+				
 					
 				<h:outputText value="Periodo:" />
 				<h:inputText id="txtperiodo" 
