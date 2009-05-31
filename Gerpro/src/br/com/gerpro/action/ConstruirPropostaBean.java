@@ -141,6 +141,78 @@ public class ConstruirPropostaBean {
 		tipofuncao = listaFuncao.getTipoFuncao();
 	}
  
+	
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	// Adiciona uma função na tabela de lista de funções
+	public void addCronograma() {
+
+		if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
+			if (tipofuncao.getId() == 1) {
+				tipofuncao.setNome("Manter");
+			}
+			if (tipofuncao.getId() == 2) {
+				tipofuncao.setNome("Processamento");
+			}
+			if (tipofuncao.getId() == 3) {
+				tipofuncao.setNome("Relatório");
+			}
+			listafuncaoid.setIdItem(2);
+			listafuncaoid.setIdProposta(1);
+
+			listaFuncao.setId(listafuncaoid);
+			listaFuncao.setTipoFuncao(tipofuncao);
+
+			lstlistaFuncao.add(listaFuncao);
+			listafuncaoid = new ListaFuncaoId();
+			listaFuncao = new ListaFuncao();
+			tipofuncao = new TipoFuncao();
+		} 
+		else {
+			if (tipofuncao.getId() == 1) {
+				tipofuncao.setNome("Manter");
+			}
+			if (tipofuncao.getId() == 2) {
+				tipofuncao.setNome("Processamento");
+			}
+			if (tipofuncao.getId() == 3) {
+				tipofuncao.setNome("Relatório");
+			}
+			listafuncaoid.setIdItem(2);
+			listafuncaoid.setIdProposta(1);
+
+			listaFuncao.setId(listafuncaoid);
+			listaFuncao.setTipoFuncao(tipofuncao);
+
+			lstlistaFuncao.set(lstlistaFuncao.indexOf(listaFuncao),listaFuncao);
+			listafuncaoid = new ListaFuncaoId();
+			listaFuncao = new ListaFuncao();
+			tipofuncao = new TipoFuncao();
+		}
+
+	}
+
+	// Remover uma função da tabela de lista de funções
+	public void delCronograma() {
+		int id = objDatatableListaFuncao.getRowIndex();
+		lstlistaFuncao.remove(id);
+	}
+
+	// Seleciona uma função da tabela de lista de funções para a alteracao
+	public void editCronograma() {
+
+		listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
+		listafuncaoid = listaFuncao.getId();
+		tipofuncao = listaFuncao.getTipoFuncao();
+	}
+	
+	
+	
+	
+	
+	
+	
 	public String prepararBean() {
 
 		listaEquipe = getDaoEquipe().listar();
