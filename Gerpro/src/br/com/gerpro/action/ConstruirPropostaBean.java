@@ -20,6 +20,7 @@ import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
 import br.com.gerpro.model.Artefatos;
+import br.com.gerpro.model.Cronograma;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.ListaFuncao;
 import br.com.gerpro.model.ListaFuncaoId;
@@ -27,17 +28,15 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Status;
-import br.com.gerpro.model.Cronograma;
 import br.com.gerpro.model.TipoFuncao;
 
 public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
 	private UIData objDatatableArtefatos;
 	private List<Equipe> listaEquipe;
-	private List<ListaFuncao> lstlistaFuncao = new ArrayList();
-	private List<Cronograma> lstCronograma = new ArrayList();
+	private List<ListaFuncao> lstlistaFuncao = new ArrayList<ListaFuncao>();
+	private List<Cronograma> lstCronograma = new ArrayList<Cronograma>();
 	private List<Artefatos> lstArtefatos = new ArrayList<Artefatos>();
-	
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
 	private Artefatos artefatos = new Artefatos();
@@ -340,7 +339,7 @@ public class ConstruirPropostaBean {
 
 	public String prepararCronograma() {
 		lstArtefatos = getDaoArtefatos().listar();
-	
+		
 	
 		return "construirCronograma";
 	}
@@ -348,6 +347,7 @@ public class ConstruirPropostaBean {
 	// Pendente
 	public String SalvarCronograma() {
 
+		
 		equipe = proposta.getEquipe();
 
 		try {
@@ -356,7 +356,8 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdProposta(1);
 			status.setId(1);
 			propostaItem.setId(PropItemId);
-
+			
+			
 			getDaoPropItem().inserir(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
