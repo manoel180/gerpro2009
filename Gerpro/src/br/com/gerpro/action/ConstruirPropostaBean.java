@@ -146,10 +146,15 @@ public class ConstruirPropostaBean {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// Adiciona uma função na tabela de lista de funções
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	public void addCronograma() {
 
-		if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
-			if (tipofuncao.getId() == 1) {
+		if (lstCronograma.indexOf(cronograma) == -1) {
+			for (Artefatos artefato : lstArtefatos) {
+				artefato.setNome(artefatos.getNome());
+			}
+			
+			if (cronograma.getArtefatos().getId() == (lstCronograma.indexOf(cronograma))) {
 				tipofuncao.setNome("Manter");
 			}
 			if (tipofuncao.getId() == 2) {
@@ -162,8 +167,8 @@ public class ConstruirPropostaBean {
 			listafuncaoid.setIdProposta(1);
 
 			listaFuncao.setId(listafuncaoid);
+			
 			listaFuncao.setTipoFuncao(tipofuncao);
-
 			lstlistaFuncao.add(listaFuncao);
 			listafuncaoid = new ListaFuncaoId();
 			listaFuncao = new ListaFuncao();

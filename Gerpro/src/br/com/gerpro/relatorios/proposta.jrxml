@@ -10,7 +10,8 @@
      status.`nome` AS status_nome
 FROM
      `equipe` equipe INNER JOIN `proposta` proposta ON equipe.`id` = proposta.`id_equipe`
-     INNER JOIN `status` status ON proposta.`id_status` = status.`id`
+     INNER JOIN `status` status ON proposta.`id_status_proposta` = status.`id`
+     AND status.`id` = proposta.`id_status_proposta`
 ORDER BY
      equipe.`nome` ASC]]>
 	</queryString>
@@ -126,7 +127,7 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[Data Submissão]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="139" y="60" width="416" height="20"/>
 				<textElement>
 					<font size="12"/>
