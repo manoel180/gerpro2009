@@ -7,53 +7,61 @@
 
 <head>
 <link href="/css/estilos.css" rel="stylesheet" type="text/css" />
-<ui:insert name="titulo"></ui:insert>
 </head>
+<f:view>
+	<h:form>
+		<div align="center"><h:outputLabel value="Submeter Correção" styleClass="titulo" /></div>
+		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true" showSummary="true" />
+		<br>
+		<br>
+		<rich:dataTable var="itens" id="listapropostasitens"
+			value="#{submeterPropostaBean.listaPropostaItem}"
+			binding="#{submeterPropostaBean.objDatatablePropostaItem}" rows="10"
+			width="550px" align="center">
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Item"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{itens.item.nome}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Status"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{itens.status.nome}"
+					style="color:red; font-weight:bold; font-"></h:outputText>
+			</h:column>
 
-<h:form>
-	<tr>
-		<h3>Submeter Proposta</h3>
-	</tr>
-	<table>
-		<tr>
-			<table border="1">
-				<tr>
-					<th>Itens</th>
-					<th>Status</th>
-				</tr>
-				<tr>
-					<th><input type="text" value="Missao do produto" /></th>
-					<td><input type="text" value="" /></td>
-				</tr>
+		</rich:dataTable>
 
-				<tr>
-					<td><input type="text" value="Lista de Funcões" /></td>
-					<td><input type="text" value="" /></td>
-				</tr>
+		<h:commandButton value="Visualizar"
+			action="#{submeterPropostaBean.prepararBean}" />
+		<h:commandButton value="Submeter"
+			action="#{submeterPropostaBean.prepararBean}" />
+		<h:commandButton action="#{propostaBean.prepararBean}"
+			value="Ir para o listar propostas" />
+		<br>
 
-				<tr>
-					<td><input type="text" value="Justificativa" /></td>
-					<td><input type="text" value="" /></td>
-				</tr>
+		<rich:simpleTogglePanel label="Informações">
+			<h:panelGrid columns="4" cellpadding="5">
+				<h:outputLabel value="Nome:" />
+				<h:outputLabel value="#{submeterPropostaBean.equipe.nome}" />
 
-				<tr>
-					<td><input type="text" value="Metodologia" /></td>
-					<td><input type="text" value="" /></td>
-				</tr>
+				<h:outputLabel value="Data Limite:" />
+				<h:outputLabel
+					value="#{submeterPropostaBean.proposta.dataSubmissao}" />
 
-				<tr>
-					<td><input type="text" value="Cronograma" /></td>
-					<td><input type="text" value="" /></td>
-				</tr>
+				<h:outputLabel value="Componentes:" />
+				<h:inputTextarea
+					value="#{submeterPropostaBean.listaUsuarios.Usuario.nome}"
+					readonly="true" />
 
-			</table>
-		<tr>
-			<a href="submeterProposta.htm" onclick="submit()">Submeter</a>
-		</tr>	
-	</table>
-</h:form>
+				<h:outputLabel value="Status:" />
+				<h:outputLabel value="#{submeterPropostaBean.propitem.status.nome}" />
 
+			</h:panelGrid>
+		</rich:simpleTogglePanel>
 
-
-
-
+	</h:form>
+</f:view>

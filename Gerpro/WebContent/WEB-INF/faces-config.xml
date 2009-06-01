@@ -85,10 +85,19 @@
 				/SubmeterProposta/SubmeterProposta.jsp
 			</to-view-id>
 		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>go_ConstruirProposta</from-outcome>
 			<to-view-id>
 				/ConstruirProposta/ConstruirProposta.jsp
+			</to-view-id>
+		</navigation-case>
+		
+		<!-- Teste  Nao mexa  Marcelo -->
+			<navigation-case>
+			<from-outcome>listarPropostas</from-outcome>
+			<to-view-id>
+				/Professor/listarProposta.jsp
 			</to-view-id>
 		</navigation-case>
 	</navigation-rule>
