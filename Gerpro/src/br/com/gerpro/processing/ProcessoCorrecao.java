@@ -7,53 +7,42 @@ import java.util.List;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeProposta;
-import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeStatus;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
-import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
-import br.com.gerpro.model.Status;
 
 /**
  * @author M3R
  * 
  */
-public class ProcessoCorrecao {
-
-	private FacadePropostaItem propostaItemDao = new PropostaItemDao();
+public class ProcessoCorrecao implements IProcessoCorrecao {
+	
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
 	private List<Correcao> listaCorrecao = null;
 	private FacadeStatus statusDao = new StatusDao();
 	
 
-	/**
-	 * Processamento nº1 Algoritmo para o processamento do status da proposta
-	 * com base na correção atual.
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoCorrecao#calcularStatusPropostaAtual(br.com.gerpro.model.Correcao)
 	 */
 	public void calcularStatusPropostaAtual(Correcao correcao) {
 		listaCorrecao = correcaoDao.procurarPorCorrecao(correcao);
 		
 		correcao = listaCorrecao.get(1);
 		
-		Proposta proposta = propostaDao.procurarPorId(correcao.getPropostaItem().getProposta().getId());
-
-		Status status = new Status();
-		
+		Proposta proposta = propostaDao.procurarPorId(correcao.getPropostaItem().getProposta().getId());		
 
 		for (Correcao correcaoView : listaCorrecao) {
 			System.out.println(correcaoView.getPergunta().getId() + " "
 					+ correcaoView.getResposta().getId());
 			
 			//Verificação de proposta reprovada
-			if (correcaoView.getResposta().getId() == 2 && correcaoView.getPergunta().getId() == 7){
-				System.out.println("PROPOSTA REPROVADA");
-				status.setId(5);
-				status = statusDao.procurarPorId(status.getId());
-				proposta.setStatus(status);		
+			if (correcaoView.getResposta().getId() == 2 && correcaoView.getPergunta().getId() == 7){				
+				proposta.setStatus(statusDao.procurarPorId(5));		
 				calcularStatusFinalProposta(proposta);		
 				return;
 			}
@@ -68,11 +57,8 @@ public class ProcessoCorrecao {
 								
 								//Terceiro FOR
 								for (Correcao correcaoView4 : listaCorrecao) {
-									if(	correcaoView4.getResposta().getId() == 2 && correcaoView4.getPergunta().getId() == 6){
-										System.out.println("PROPOSTA REPROVADA");										
-										status.setId(5);
-										status = statusDao.procurarPorId(status.getId());
-										proposta.setStatus(status);		
+									if(	correcaoView4.getResposta().getId() == 2 && correcaoView4.getPergunta().getId() == 6){																			
+										proposta.setStatus(statusDao.procurarPorId(5));		
 										calcularStatusFinalProposta(proposta);		
 										return;										
 										
@@ -94,31 +80,22 @@ public class ProcessoCorrecao {
 						|| correcaoView1.getResposta().getId() == 2  && correcaoView1.getPergunta().getId() == 5
 						|| correcaoView1.getResposta().getId() == 2  && correcaoView1.getPergunta().getId() == 6){
 						
-						System.out.println("PROPOSTA APROVADA COM RESSALVA");						
-						status.setId(4);
-						status = statusDao.procurarPorId(status.getId());
-						proposta.setStatus(status);		
-						calcularStatusFinalProposta(proposta);		
-						
+						proposta.setStatus(statusDao.procurarPorId(4));		
+						calcularStatusFinalProposta(proposta);						
 						return;										
 						
 					}//Fim do if
 				}//fim do FOR 		
 				
 			}
-			}//Fim do FOR GLOBAL			
-
-		System.out.println("PROPOSTA APROVADA");		
-		status.setId(3);
-		status = statusDao.procurarPorId(status.getId());
-		proposta.setStatus(status);		
+		}//Fim do FOR GLOBAL		
+		proposta.setStatus(statusDao.procurarPorId(3));		
 		calcularStatusFinalProposta(proposta);		
 
 	}
 
-	/**
-	 * Processamento nº2 Método para calculo do status da proposta com base na
-	 * nova correção.
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoCorrecao#calcularStatusFinalProposta(br.com.gerpro.model.Proposta)
 	 */
 	public void calcularStatusFinalProposta(Proposta propostaView) {
 		
@@ -131,10 +108,7 @@ public class ProcessoCorrecao {
 		 * Caso seja a primeira correcao da proposta,
 		 * o sistema atualiza o status da proposta com o status da proposta atual
 		 */
-		if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {
-			
-			System.out.println("Primeira Correção ****************************");			
-			
+		if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {			
 			propostaBD.setStatus(propostaView.getStatus());
 			propostaDao.alterar(propostaBD);
 		}
@@ -215,27 +189,13 @@ public class ProcessoCorrecao {
 		//propostaDao.alterar(propostaBD);
 	}
 
-	/***************************************************************************
-	 * Verifica se há correções anteriores para esta proposta
-	 * 
-	 * @param correcao
-	 * @return
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoCorrecao#vericaSePrimeiraCorrecaodaProposta(br.com.gerpro.model.Proposta)
 	 */
 	public boolean vericaSePrimeiraCorrecaodaProposta(Proposta proposta) {
 		if (proposta.getStatus().getId() == 2) {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * 
-	 * @param propostaView
-	 * @return
-	 */
-	public int verificaCorrecoesAnteriores(Proposta propostaView) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-}
+	}	
+}//Fim da classe 
