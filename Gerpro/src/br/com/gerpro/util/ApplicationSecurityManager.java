@@ -8,25 +8,42 @@ package br.com.gerpro.util;
  *
  */
 
-import javax.servlet.http.HttpServletRequest;
+import javax.faces.context.FacesContext;
+
+import br.com.gerpro.model.Usuario;
 
 
 public class ApplicationSecurityManager
 {
-    public static final String USER = "user";
+    public static final String USER = "usuario";
+    /*private FacesContext context = FacesContext.getCurrentInstance();
+    private HttpSession session = (HttpSession) context.getExternalContext().getSession(false);*/
 
-    public Object getEmployee(HttpServletRequest request)
-    {
-        return request.getSession(true).getAttribute(USER);
+    public Usuario getUsuario(){
+    	
+        // HttpSession session = (HttpSession) context.getExternalContext().getSession(false);    							
+        //return (Usuario) session.getAttribute(USER);
+    	
+    	return (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(USER);
     }
 
-    public void setEmployee(HttpServletRequest request, Object usuario)
+    public void setUsuario(Object usuario)
     {
-        request.getSession(true).setAttribute(USER, usuario);
+    	/*FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+    	session.setAttribute(USER, usuario);*/
+    	
+    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(USER,usuario);    	
+    	System.out.println("Usuario ***********" + usuario.toString());
     }
 
-    public void removeEmployee(HttpServletRequest request)
+    public void removeUsuario()
     {
-        request.getSession(true).removeAttribute(USER);
+//    	FacesContext context = FacesContext.getCurrentInstance();
+//        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+    	
+    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(USER);
+    	
+    	//session.removeAttribute(USER);
     }
 }

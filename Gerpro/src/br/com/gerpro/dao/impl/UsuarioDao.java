@@ -12,8 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeUsuario;
-import br.com.gerpro.model.Equipe;
-import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
 
@@ -26,22 +24,14 @@ public class UsuarioDao implements FacadeUsuario {
 	private static Session session = null;
 	private static Transaction tx = null;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.gerpro.dao.FacadeUsuario#alterar(br.com.gerpro.model.Usuario)
-	 */
-	public void alterar(Usuario usuario) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see br.com.gerpro.dao.FacadeUsuario#inserir(br.com.gerpro.model.Usuario)
+	 * @see br.com.gerpro.dao.FacadeUsuario#salvar(br.com.gerpro.model.Usuario)
 	 */
-	public void inserir(Usuario usuario) {
+	public void salvar(Usuario usuario) {
 		// TODO Auto-generated method stub
 
 	}
@@ -62,17 +52,7 @@ public class UsuarioDao implements FacadeUsuario {
 		
 		session.close();
 		return result;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.gerpro.dao.FacadeUsuario#listar2()
-	 */
-	public List<Usuario> listar2() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	}	
 
 	/*
 	 * (non-Javadoc)
@@ -99,9 +79,12 @@ public class UsuarioDao implements FacadeUsuario {
 	 * 
 	 * @see br.com.gerpro.dao.FacadeUsuario#procurarPorMatricula(java.lang.String)
 	 */
-	public Status procurarPorMatricula(String matricula) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario procurarPorMatricula(String matricula) {
+		session = HibernateUtil.getSession();		
+		Usuario usuario = (Usuario)session.get(Usuario.class, matricula);		
+		session.close();
+		return usuario;
+		
 	}
 
 	/*
@@ -109,7 +92,7 @@ public class UsuarioDao implements FacadeUsuario {
 	 * 
 	 * @see br.com.gerpro.dao.FacadeUsuario#procurarPorNome(java.lang.String)
 	 */
-	public Status procurarPorNome(String nome) {
+	public Usuario procurarPorNome(String nome) {
 		// TODO Auto-generated method stub
 		return null;
 	}

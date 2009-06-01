@@ -16,6 +16,7 @@ import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
+import br.com.gerpro.util.ApplicationSecurityManager;
 
 
 public class PropostaBean {
@@ -28,6 +29,7 @@ public class PropostaBean {
 	private FacadeStatus statusDao = new StatusDao();
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();
+	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	
 	
 	
@@ -107,15 +109,8 @@ public class PropostaBean {
 		return prepararBean();
 	}
 	
-	public String listaPorProfessor(){
-		
-		//FacesContext context = FacesContext.getCurrentInstance();		
-		//HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		//Usuario usuario = (Usuario) session.getAttribute("usuario");
-		Usuario usuario = new Usuario();
-		usuario.setMatricula("1");
-		System.out.println("Passei por aqui ****** Listar Por Professor ****** Professor: "
-				+ usuario.getNome()	);
+	public String listaPorProfessor(){		
+		Usuario usuario = applicationSecurityManager.getUsuario();		
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
 		
 		return "listarPropostas";

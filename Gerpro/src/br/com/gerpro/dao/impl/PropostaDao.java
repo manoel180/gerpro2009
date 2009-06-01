@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
@@ -105,15 +106,19 @@ public class PropostaDao implements FacadeProposta {
 
 		List<Proposta> result = null;
 		
-		Session session = HibernateUtil.getSession();
-				 
-		result = session.createSQLQuery(" select *" +
+		Session session = HibernateUtil.getSession();	
+		
+		 		
+		
+		//Funcionando mas duplicando linhas
+		  result = session.createSQLQuery(" select *" +
 				" from proposta p" +
 				" inner join correcao co on co.id_proposta = p.id" +
 				" where co.matricula_professor like ? ")
 				.addEntity(Proposta.class)
 				.setParameter(0, professor.getMatricula())
 				.list();	
+		
 		
 		session.close();
 		return result;

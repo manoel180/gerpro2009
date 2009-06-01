@@ -49,7 +49,7 @@ public class UsuarioBean{
 
 	public String salvar() {
 		try {
-			getUsuarioDao().inserir(usuario);
+			getUsuarioDao().salvar(usuario);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,7 +58,7 @@ public class UsuarioBean{
 
 	public String alterar() {
 		try {
-			getUsuarioDao().alterar(usuario);
+			getUsuarioDao().salvar(usuario);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,19 +70,22 @@ public class UsuarioBean{
 		getUsuarioDao().remover(usuario);
 		return prepararBean();
 	}
-	
 
-	@SuppressWarnings("deprecation")
 	public String logar(){
 		String  homeUsuario = "home" + usuarioDao.logar(usuario);
+		
+		System.out.println("Passei por aqui ****** MATRICULA DO USUARIO ******: " + usuario.getMatricula());
 		
 		System.out.println("Passei por aqui ****** Logando ****** Home do Usuário: "
 				+ homeUsuario	);
 		
-		//FacesContext context = FacesContext.getCurrentInstance();
+		usuario = usuarioDao.procurarPorMatricula(usuario.getMatricula());
 		
-		//HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		//session.putValue("usuario", usuario);		
+		System.out.println("Passei por aqui ****** MATRICULA DO USUARIO ******: " + usuario.getMatricula());
+		
+		
+		
+		applicationSecurityManager.setUsuario(usuario);		
 		return homeUsuario;
 	}
 	//TODO Retirar item Tela Inicial de todos os menus.

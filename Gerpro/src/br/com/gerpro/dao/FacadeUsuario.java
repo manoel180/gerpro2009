@@ -10,13 +10,11 @@ import br.com.gerpro.model.Usuario;
 
 
 public interface FacadeUsuario {
-	public void inserir(Usuario usuario);
+	public void salvar(Usuario usuario);
 
-	public Status procurarPorMatricula(String matricula);
+	public Usuario procurarPorMatricula(String matricula);
 
-	public void remover(Usuario usuario);
-
-	public void alterar(Usuario usuario);
+	public void remover(Usuario usuario);	
 
 	public List<Usuario> listar();
 
@@ -24,9 +22,7 @@ public interface FacadeUsuario {
 
 	public List<Usuario> listarPorOrdemAlfabetica();
 
-	public List<Usuario> listar2();
-
-	public Status procurarPorNome(String nome);
+	public Usuario procurarPorNome(String nome);
 	
 	public String logar(Usuario usuario);
 
