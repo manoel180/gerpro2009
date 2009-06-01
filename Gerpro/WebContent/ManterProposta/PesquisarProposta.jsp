@@ -20,9 +20,8 @@
 				<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
 				<h:commandButton value="Pesquisar"
 					action="#{propostaBean.pesquisar}" />
-				<h:commandButton value="Novo"
-					action="#{propostaBean.preperarInclusao}" />
-					<h:commandButton value="Gerar Relatório" action="#{propostaBean.gerarRelatorio}"/>
+				<h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
+					<h:commandButton value="Gerar Relatório" action="#{relatorioBean.gerarRelatorioProposta}" onclick="submit()"/>
 			</h:panelGrid>
 
 
