@@ -55,6 +55,8 @@
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
+		
+		<rich:panel>
 		<rich:dataTable id="idtable" var="listafuncao" value="#{construirPropostaBean.lstlistaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
 				<h:column>
 					<f:facet name="header">
@@ -89,7 +91,13 @@
 					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
-			</rich:dataTable><br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
+			</rich:dataTable>
+			<rich:datascroller  boundaryControls="auto" stepControls="auto"  align="center" for="idtable" maxPages="10"
+            page="#{dataTableScrollerBean.scrollerPage}" />
+        <rich:spacer height="30" />
+        
+        </rich:panel>
+			<br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>

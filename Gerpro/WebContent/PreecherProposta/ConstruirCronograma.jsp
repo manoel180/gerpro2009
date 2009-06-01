@@ -31,7 +31,10 @@
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					
 					<h:outputText value="Data Inicial" />
-					<rich:calendar id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}"/>
+					<rich:calendar  id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}" 
+					direction="auto" firstWeekDay="1" popup="true" showWeekDaysBar="true" showWeeksBar="false"
+					 todayControlMode="scroll" datePattern="dd/M/yyyy"  showHeader="true" limitToList="true" 
+					 locale="pt" minDaysInFirstWeek="6" />
 					
 					
 					<h:outputText value="Data Final:" />
@@ -42,33 +45,41 @@
 						<f:selectItems value="#{construirPropostaBean.artefatosCombo}"/>	
 					</h:selectOneMenu>
 					
-					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addcronograma}"/>
+					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addCronograma}"/>
 					
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		<rich:dataTable id="idtable" var="lstArt" value="#{construirPropostaBean.lstArtefatos}" binding="#{construirPropostaBean.objDatatableArtefatos}" rows="10" width="550px" align="center">
+		<rich:dataTable id="idtable" var="lstCronograma" value="#{construirPropostaBean.lstCronograma}" binding="#{construirPropostaBean.objDatatableCronograma}" rows="10" width="550px" align="center">
+				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Artefato"></h:outputText>
+						<h:outputText value="Data Inicial"></h:outputText>
 					</f:facet>
-					<h:outputText value="#{lstArt.nome}"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Data Inicio"></h:outputText>
-					</f:facet>
-					<rich:calendar id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}"/>
+					<h:outputText value="#{lstCronograma.dataInicial}" style="color:red; font-weight:bold; font-"></h:outputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Data Final"></h:outputText>
 					</f:facet>
-					<rich:calendar id="dt_Fim" value="#{construirPropostaBean.cronograma.dataFinal}"/>
+					<h:outputText value="#{lstCronograma.dataFinal}" style="color:red; font-weight:bold; font-"></h:outputText>
 				</h:column>
 
-				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Eventos/Artefatos"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{lstCronograma.artefatos.nome}" style="color:red; font-weight:bold; font-"></h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opções"></h:outputText>
+					</f:facet>
+					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delCronograma}" style="height: 40px; width: 40px"></h:commandButton>
+					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editCronograma}" style="height: 40px; width: 40px"></h:commandButton>
+				</h:column>
 			</rich:dataTable>
 			<br><br>
 			<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarCronograma}" />
