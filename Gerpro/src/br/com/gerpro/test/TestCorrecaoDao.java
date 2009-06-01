@@ -12,6 +12,7 @@ import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Status;
+import br.com.gerpro.processing.IProcessoCorrecao;
 import br.com.gerpro.processing.ProcessoCorrecao;
 
 /**
@@ -29,7 +30,7 @@ public class TestCorrecaoDao {
 
 		PropostaDao propostaDao = new PropostaDao();
 
-		ProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
+		IProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
 
 		CorrecaoId correcaoId = new CorrecaoId();
 		correcaoId.setIdProposta(1);
