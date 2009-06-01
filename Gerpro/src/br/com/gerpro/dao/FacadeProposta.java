@@ -5,6 +5,8 @@ package br.com.gerpro.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 
@@ -34,4 +36,6 @@ public interface FacadeProposta {
 	public Proposta procurarPorNome(String Nome);
 
 	public void gerarRelatorio();
+
+	public void printPdfUISub(HttpServletResponse httpResponse) throws Exception;
 }
