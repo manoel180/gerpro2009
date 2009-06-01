@@ -1,11 +1,13 @@
 package br.com.gerpro.action;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 import javax.persistence.PersistenceException;
+import javax.swing.JOptionPane;
 
 import br.com.gerpro.dao.FacadeArtefatos;
 import br.com.gerpro.dao.FacadeEquipe;
@@ -21,6 +23,7 @@ import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
 import br.com.gerpro.model.Artefatos;
 import br.com.gerpro.model.Cronograma;
+import br.com.gerpro.model.CronogramaId;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.ListaFuncao;
 import br.com.gerpro.model.ListaFuncaoId;
@@ -32,7 +35,7 @@ import br.com.gerpro.model.TipoFuncao;
 
 public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
-	private UIData objDatatableArtefatos;
+	private UIData objDatatableCronograma;
 	private List<Equipe> listaEquipe;
 	private List<ListaFuncao> lstlistaFuncao = new ArrayList<ListaFuncao>();
 	private List<Cronograma> lstCronograma = new ArrayList<Cronograma>();
@@ -42,13 +45,14 @@ public class ConstruirPropostaBean {
 	private Artefatos artefatos = new Artefatos();
 	private Equipe equipe = new Equipe();
 	private Cronograma cronograma = new Cronograma();
+	private CronogramaId cronogramaId = new CronogramaId();
 	private Proposta proposta = new Proposta();
 	private PropostaItemId PropItemId = new PropostaItemId();
 	private PropostaItem propostaItem = new PropostaItem();
 	private Status status = new Status();
 	private TipoFuncao tipofuncao = new TipoFuncao();
 	private ListaFuncaoId listafuncaoid = new ListaFuncaoId();
-	
+
 	private FacadeEquipe daoEquipe = new EquipeDao();
 	private FacadeArtefatos daoArtefatos = new ArtefatosDao();
 	private FacadeProposta daoProposta = new PropostaDao();
@@ -147,32 +151,33 @@ public class ConstruirPropostaBean {
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// Adiciona uma função na tabela de lista de funções
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("deprecation")
 	public void addCronograma() {
-
+		lstArtefatos = getDaoArtefatos().listar();
 		if (lstCronograma.indexOf(cronograma) == -1) {
+			
 			for (Artefatos artefato : lstArtefatos) {
-				artefato.setNome(artefatos.getNome());
+				if(artefatos.getId().equals(artefato.getId())){					
+					artefatos.setNome(artefato.getNome());	
+				}
 			}
-			
-			if (cronograma.getArtefatos().getId() == (lstCronograma.indexOf(cronograma))) {
-				tipofuncao.setNome("Manter");
-			}
-			if (tipofuncao.getId() == 2) {
-				tipofuncao.setNome("Processamento");
-			}
-			if (tipofuncao.getId() == 3) {
-				tipofuncao.setNome("Relatório");
-			}
-			listafuncaoid.setIdItem(2);
-			listafuncaoid.setIdProposta(1);
 
-			listaFuncao.setId(listafuncaoid);
-			
-			listaFuncao.setTipoFuncao(tipofuncao);
-			lstlistaFuncao.add(listaFuncao);
-			listafuncaoid = new ListaFuncaoId();
-			listaFuncao = new ListaFuncao();
-			tipofuncao = new TipoFuncao();
+			if(cronograma.getDataInicial().compareTo(cronograma.getDataFinal())==1
+					|| (cronograma.getDataInicial().before(new Date()))==true 
+					&& 	cronograma.getDataInicial().compareTo(new Date())==1){
+						JOptionPane.showMessageDialog(null, "Data Inicial maior que a data final");
+			}else{
+				cronogramaId.setIdItem(5);
+				cronogramaId.setIdProposta(1);
+	
+				cronograma.setId(cronogramaId);
+				
+				cronograma.setArtefatos(artefatos);
+				lstCronograma.add(cronograma);
+				cronogramaId = new CronogramaId();
+				cronograma = new Cronograma();
+				artefatos = new Artefatos();
+			}
 		} 
 		else {
 			if (tipofuncao.getId() == 1) {
@@ -415,7 +420,7 @@ public class ConstruirPropostaBean {
 	}
 
 	public String prepararCronograma() {
-		lstArtefatos = getDaoArtefatos().listar();
+		//lstArtefatos = getDaoArtefatos().listar();
 		
 	
 		return "construirCronograma";
@@ -739,20 +744,7 @@ public class ConstruirPropostaBean {
 		this.daoArtefatos = daoArtefatos;
 	}
 
-	/**
-	 * @return the objDatatableArtefatos
-	 */
-	public UIData getObjDatatableArtefatos() {
-		return objDatatableArtefatos;
-	}
-
-	/**
-	 * @param objDatatableArtefatos the objDatatableArtefatos to set
-	 */
-	public void setObjDatatableArtefatos(UIData objDatatableArtefatos) {
-		this.objDatatableArtefatos = objDatatableArtefatos;
-	}
-
+	
 	/**
 	 * @return the lstArtefatos
 	 */
@@ -793,6 +785,34 @@ public class ConstruirPropostaBean {
 	 */
 	public void setCronograma(Cronograma cronograma) {
 		this.cronograma = cronograma;
+	}
+
+	/**
+	 * @return the cronogramaId
+	 */
+	public CronogramaId getCronogramaId() {
+		return cronogramaId;
+	}
+
+	/**
+	 * @param cronogramaId the cronogramaId to set
+	 */
+	public void setCronogramaId(CronogramaId cronogramaId) {
+		this.cronogramaId = cronogramaId;
+	}
+
+	/**
+	 * @return the objDatatableCronograma
+	 */
+	public UIData getObjDatatableCronograma() {
+		return objDatatableCronograma;
+	}
+
+	/**
+	 * @param objDatatableCronograma the objDatatableCronograma to set
+	 */
+	public void setObjDatatableCronograma(UIData objDatatableCronograma) {
+		this.objDatatableCronograma = objDatatableCronograma;
 	}
 
 }
