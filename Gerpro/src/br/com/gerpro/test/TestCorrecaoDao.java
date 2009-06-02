@@ -6,6 +6,7 @@ package br.com.gerpro.test;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.model.Correcao;
@@ -28,7 +29,7 @@ public class TestCorrecaoDao {
 
 		CorrecaoDao correcaoDao = new CorrecaoDao();
 
-		PropostaDao propostaDao = new PropostaDao();
+		FacadeProposta propostaDao = new PropostaDao();
 
 		IProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
 

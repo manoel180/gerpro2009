@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
@@ -22,7 +23,7 @@ public class TestPropostaDao {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PropostaDao propostaDao = new PropostaDao();
+		FacadeProposta propostaDao = new PropostaDao();
 		Usuario professor = new Usuario();
 		professor.setMatricula("1");
 
