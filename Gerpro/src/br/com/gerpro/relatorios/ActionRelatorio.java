@@ -9,23 +9,23 @@
 
 package br.com.gerpro.relatorios;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.faces.FacesException;
 import javax.faces.application.StateManager;
 import javax.faces.context.FacesContext;
-import javax.faces.model.ListDataModel;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.classic.Session;
-
 import net.sf.jasperreports.engine.JasperRunManager;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import br.com.gerpro.util.HibernateUtil;
 
 /**
  *
@@ -34,34 +34,19 @@ import net.sf.jasperreports.engine.JasperRunManager;
 public class ActionRelatorio{
     
     //Usados para a conex�o com o banco de dados
-    private static Connection con = null;
-    private static String driver = "com.mysql.jdbc.Driver";
-    private static String endereco = "jdbc:mysql://localhost/gerprodb";
-    private static String user = "root";
-    private static String pass = "123";
+    //private static Connection con = null;
+    //private static String driver = "com.mysql.jdbc.Driver";
+    //private static String endereco = "jdbc:mysql://localhost/gerprodb";
+    ///private static String user = "root";
+    //private static String pass = "123";
+	private static	Session session = null;
+	private static Transaction tx = null;
+	
     
+	
+	
      String tmp = this.getClass().getResource("/br/com/gerpro/relatorios").getPath();
     
-    //Lista de paciente a ser exibida
-    //private ListDataModel listaParturiente;
-    
-    //Nome para consulta
-   // private String nomeConsulta;
-    
-    //Objeto do tipo PacienteFacade para realizar trasa��o de salvar atualizar etc
-    //ParturienteDAO pacDAO;
-    
-    //Data inicial;
-    //private java.util.Date dt_inicial;
-    
-    //Data fiinal
-   // private java.util.Date dt_final;
-    
-    //Formatador de data
-   // private Formatador formatador;
-    
-    //Recebe o valor da compara��o entre as datas.
-    //private int comparadorData;
     
     /**
      * <p>Prefixo do nome do recurso para relat�rios compilados.</p>
@@ -129,7 +114,7 @@ public class ActionRelatorio{
                 
                 try{
                     
-                    conexao();
+        //            conexao();
                     jasperReport("proposta",params);
                     
                 }catch(Exception e){
@@ -144,9 +129,12 @@ public class ActionRelatorio{
     
     public void jasperReport(String nome, Map params){
         
-        try {
+    	session = HibernateUtil.getSession();
+    	tx = session.beginTransaction();
+    	
+    	try {
             
-            byte[] pdf = JasperRunManager.runReportToPdf(SUB+nome+SUFFIX, params, con);
+            byte[] pdf = JasperRunManager.runReportToPdf(SUB+nome+SUFFIX, params, session.connection());
             
             FacesContext faces = FacesContext.getCurrentInstance();
             HttpServletResponse response = (HttpServletResponse)faces.getExternalContext().getResponse();
@@ -174,22 +162,17 @@ public class ActionRelatorio{
             
             throw new FacesException(e);
             
+        }finally{
+        	 session.close();
         }
         
         
-        try {
-            
-            con.close();
-            
-        } catch (SQLException ex) {
-            
-            System.out.println(ex.getMessage());
-        }
+           
         
     }
     
     //Cria a conexao
-    public void conexao(){
+/*    public void conexao(){
         
         try{
             if (con == null || con.isClosed()){
@@ -203,7 +186,7 @@ public class ActionRelatorio{
         }
     }
     
-    
+*/    
     //Fun��o para realizar busca de Parturiente
     /*public String pesquisarParturiente(){
         

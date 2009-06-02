@@ -65,8 +65,9 @@
 						action="#{propostaBean.preperarEdicao}" style="height: 40px; width: 40px"/>
 				</h:column>
 			</rich:dataTable>
-			<rich:datascroller  boundaryControls="auto" stepControls="auto"  align="center" for="listapropostas" maxPages="10"
-            page="#{dataTableScrollerBean.scrollerPage}" />
+			<rich:datascroller  align="center" for="listapropostas" maxPages="10"
+            page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" 
+   />
         <rich:spacer height="30" />
 
 	</h:form>
