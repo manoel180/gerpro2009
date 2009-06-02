@@ -3,6 +3,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
+<%@taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
@@ -11,24 +12,23 @@
 <link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
 <f:view>
+
 	<h:form id="form1">
 		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
 			styleClass="titulo" /></div>
+		    
 		<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
 			<h:outputText value="Descrição:" />
 			<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
 			<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
-			<h:commandButton value="Novo"
-				action="#{propostaBean.preperarInclusao}" />
-			<h:commandButton value="Gerar Relatório"
-				action="#{relatorioBean.gerarRelatorioProposta}" onclick="submit()" />
+			<h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
+			<h:commandButton  value="Gerar Relatório" action="#{relatorioBean.gerarRelatorioProposta}" />
 		</h:panelGrid>
-
-
+	
 	</h:form>
 	<h:form id="form2">
 
-		<rich:dataTable var="prop" id="listapropostas"
+		<rich:dataTable var="prop" id="listapropostas" rendered="true"
 			value="#{propostaBean.listaProposta}"
 			binding="#{propostaBean.objDatatableProposta}" rows="10"
 			width="550px" align="center">
@@ -67,4 +67,5 @@
 		<rich:spacer height="30" />
 
 	</h:form>
+
 </f:view>
