@@ -9,8 +9,7 @@
 
 package br.com.gerpro.relatorios;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +18,7 @@ import javax.faces.application.StateManager;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 
 import net.sf.jasperreports.engine.JasperRunManager;
 
@@ -41,7 +41,7 @@ public class ActionRelatorio{
     //private static String pass = "123";
 	private static	Session session = null;
 	private static Transaction tx = null;
-	
+	private ImageIcon logo = new ImageIcon(getClass().getResource("/br/com/gerpro/relatorios/logo.jpg"));  
     
 	
 	
@@ -105,6 +105,7 @@ public class ActionRelatorio{
         
             
             Map<String,Object> params = new HashMap<String,Object>();
+            params.put("logo", logo.getImage());  
             /*params.put("data_inicio",getDt_inicial());
             params.put("data_fim",getDt_final());
             */
