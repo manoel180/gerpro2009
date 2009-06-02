@@ -92,8 +92,7 @@
 					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
 			</rich:dataTable>
-			<rich:datascroller  boundaryControls="auto" stepControls="auto"  align="center" for="idtable" maxPages="10"
-            page="#{dataTableScrollerBean.scrollerPage}" />
+			<rich:datascroller  align="center" for="idtable" maxPages="10"  fastControls="show"  />
         <rich:spacer height="30" />
         
         </rich:panel>
