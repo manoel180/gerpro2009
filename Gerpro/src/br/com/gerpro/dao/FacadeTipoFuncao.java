@@ -14,13 +14,11 @@ import br.com.gerpro.model.TipoFuncao;
  */
 public interface FacadeTipoFuncao {
 	
-	public void inserir (TipoFuncao tipofuncao);
+	public void salvar (TipoFuncao tipofuncao);
 	
 	public TipoFuncao procurarPorId(int idEquipe);
 	
 	public void remover (TipoFuncao tipofuncao);
-	
-	public void alterar (TipoFuncao tipofuncao);
 	
 	public List<TipoFuncao> listar();
 

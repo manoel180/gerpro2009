@@ -21,13 +21,13 @@ public class PropostaItemDao implements FacadePropostaItem{
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(PropostaItem propitem) {
+	public void salvar(PropostaItem propitem) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(propitem);
+			session.saveOrUpdate(propitem);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
 		} catch (Exception e) {
@@ -39,25 +39,6 @@ public class PropostaItemDao implements FacadePropostaItem{
 		}
 	}
 
-	//Funcionando
-	@Override
-	public void inserir(PropostaItem propitem) {
-		// TODO Auto-generated method stub
-	
-		try {
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			session.save(propitem);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
-		} catch (Exception e) {
-			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
-		} finally {
-			session.close();
-		}
-	}
 	@Override
 	public List<PropostaItem> listar() {
 
@@ -72,42 +53,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		session.close();
 		return result;
 	}
-	//Consulta 1
-	@Override
-	public List<PropostaItem> listarOrdemAlfabetica() {
-
-		List<PropostaItem> result = null;
 		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from PropostaItem order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-		
-	}
-	
-	//consulta 2
-	//Lista por letra
-	@Override
-	public List<PropostaItem> listar2() {
-
-		List<PropostaItem> result = null;
-		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from PropostaItem order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-	}
-		
-	//consulta 3
-	//consulta
 	@SuppressWarnings("unchecked")
 	@Override	
 	public List<PropostaItem> listarPorNome(String nomeEquipe) {

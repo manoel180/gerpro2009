@@ -21,13 +21,13 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(TipoFuncao tipofuncao) {
+	public void salvar(TipoFuncao tipofuncao) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(tipofuncao);
+			session.saveOrUpdate(tipofuncao);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
 		} catch (Exception e) {
@@ -39,25 +39,6 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		}
 	}
 
-	//Funcionando
-	@Override
-	public void inserir(TipoFuncao tipofuncao) {
-		// TODO Auto-generated method stub
-	
-		try {
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			session.save(tipofuncao);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
-		} catch (Exception e) {
-			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
-		} finally {
-			session.close();
-		}
-	}
 	@Override
 	public List<TipoFuncao> listar() {
 

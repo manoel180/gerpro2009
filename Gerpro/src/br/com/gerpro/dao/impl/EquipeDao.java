@@ -21,13 +21,13 @@ public class EquipeDao implements FacadeEquipe {
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(Equipe equipe) {
+	public void salvar(Equipe equipe) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(equipe);
+			session.saveOrUpdate(equipe);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
 		} catch (Exception e) {
@@ -40,25 +40,6 @@ public class EquipeDao implements FacadeEquipe {
 		}
 	}
 
-	//Funcionando
-	@Override
-	public void inserir(Equipe equipe) {
-		// TODO Auto-generated method stub
-	
-		try {
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			session.save(equipe);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
-		} catch (Exception e) {
-			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
-		} finally {
-			session.close();
-		}
-	}
 	@Override
 	public List<Equipe> listar() {
 
@@ -73,42 +54,9 @@ public class EquipeDao implements FacadeEquipe {
 		session.close();
 		return result;
 	}
-	//Consulta 1
-	@Override
-	public List<Equipe> listarOrdemAlfabetica() {
 
-		List<Equipe> result = null;
 		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from Equipe order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-		
-	}
-	
-	//consulta 2
-	//Lista por letra
-	@Override
-	public List<Equipe> listar2() {
-
-		List<Equipe> result = null;
-		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from Equipe order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-	}
-		
-	//consulta 3
-	//consulta
+			
 	@Override	
 	public List<Equipe> listarPorNome(String nomeEquippe) {
 		// TODO Auto-generated method stub

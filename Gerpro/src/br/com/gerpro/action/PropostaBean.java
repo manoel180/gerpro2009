@@ -33,11 +33,7 @@ public class PropostaBean {
 	
 	
 	
-	//Gerar Relatorio
-	public void gerarRelatorio(){
-		 propostaDao.gerarRelatorio();
-		}
-	
+
 	//ComboBox Equipes
 	public SelectItem[] getEquipesCombo(){
 		List<Equipe> le = getEquipeDao().listar();
@@ -82,20 +78,7 @@ public class PropostaBean {
 			status.setId(1);
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
-			getPropostaDao().inserir(proposta);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
-
-	public String alterar() {
-		try {
-			status.setId(1);
-			proposta.setStatus(status);
-			proposta.setEquipe(equipe);
-			
-			getPropostaDao().alterar(proposta);
+			getPropostaDao().salvar(proposta);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

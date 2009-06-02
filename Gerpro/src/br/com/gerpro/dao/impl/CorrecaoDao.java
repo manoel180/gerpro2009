@@ -10,11 +10,9 @@ import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
-import org.hibernate.criterion.Restrictions;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
-import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.util.HibernateUtil;
 
 /**
@@ -25,21 +23,6 @@ public class CorrecaoDao implements FacadeCorrecao {
 	private static	Session session = null;
 	private static Transaction tx = null;
 
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.dao.FacadeCorrecao#alterar(br.com.gerpro.model.Correcao)
-	 */
-	public void alterar(Correcao correcao) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.dao.FacadeCorrecao#inserir(br.com.gerpro.model.Correcao)
-	 */
-	public void inserir(Correcao correcao) {
-		// TODO Auto-generated method stub
-
-	}
 
 	/* (non-Javadoc)
 	 * @see br.com.gerpro.dao.FacadeCorrecao#procurarPorId(int)
@@ -102,9 +85,12 @@ public class CorrecaoDao implements FacadeCorrecao {
 		}
 		return null;
 	}
+
+	@Override
+	public void salvar(Correcao correcao) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
-
-
-

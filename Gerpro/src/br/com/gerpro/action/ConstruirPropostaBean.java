@@ -255,7 +255,7 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdProposta(1);
 			status.setId(1);
 			propostaItem.setId(PropItemId);
-			getDaoPropItem().inserir(propostaItem);
+			getDaoPropItem().salvar(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -274,7 +274,7 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdProposta(1);
 			propostaItem.setId(PropItemId);
 			propostaItem.setStatus(status);
-			getDaoPropItem().alterar(propostaItem);
+			getDaoPropItem().salvar(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -299,31 +299,11 @@ public class ConstruirPropostaBean {
 			status.setId(1);
 
 			for (ListaFuncao lf : lstlistaFuncao) {
-				getDaoListaFuncao().inserir(lf);
+				getDaoListaFuncao().salvar(lf);
 			}
 
 		} catch (PersistenceException e) {
 			
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
-
-	// Pendente
-	public String AlterarListaFuncao() {
-
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(2);
-			status.setId(2);
-			PropItemId.setIdProposta(1);
-			propostaItem.setId(PropItemId);
-			propostaItem.setStatus(status);
-			getDaoPropItem().alterar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return prepararBean();
@@ -348,7 +328,7 @@ public class ConstruirPropostaBean {
 			status.setId(1);
 			propostaItem.setId(PropItemId);
 
-			getDaoPropItem().inserir(propostaItem);
+			getDaoPropItem().salvar(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -356,25 +336,7 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	// Pendente
-	public String AlterarJustificativa() {
 
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(3);
-			status.setId(2);
-			PropItemId.setIdProposta(1);
-			propostaItem.setId(PropItemId);
-			propostaItem.setStatus(status);
-			getDaoPropItem().alterar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
 
 	public String prepararMetodologia() {
 		return "construirMetodologia";
@@ -391,7 +353,7 @@ public class ConstruirPropostaBean {
 			status.setId(1);
 			propostaItem.setId(PropItemId);
 
-			getDaoPropItem().inserir(propostaItem);
+			getDaoPropItem().salvar(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -399,26 +361,7 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	// Pendente
-	public String AlterarMetodologia() {
-
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(4);
-			status.setId(2);
-			PropItemId.setIdProposta(1);
-			propostaItem.setId(PropItemId);
-			propostaItem.setStatus(status);
-			getDaoPropItem().alterar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
-
+	
 	public String prepararCronograma() {
 		//lstArtefatos = getDaoArtefatos().listar();
 		
@@ -440,7 +383,7 @@ public class ConstruirPropostaBean {
 			propostaItem.setId(PropItemId);
 			
 			
-			getDaoPropItem().inserir(propostaItem);
+			getDaoPropItem().salvar(propostaItem);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -448,25 +391,6 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	// Pendente
-	public String AlterarCronograma() {
-
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(5);
-			status.setId(2);
-			PropItemId.setIdProposta(1);
-			propostaItem.setId(PropItemId);
-			propostaItem.setStatus(status);
-			getDaoPropItem().alterar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
 
 	/*
 	 * public String preperarEdicao() { equipe = (Equipe)

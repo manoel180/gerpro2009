@@ -40,7 +40,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 			System.out.println(correcaoView.getPergunta().getId() + " "
 					+ correcaoView.getResposta().getId());
 			
-			//Verificação de proposta reprovada
+			//Verificaï¿½ï¿½o de proposta reprovada
 			if (correcaoView.getResposta().getId() == 2 && correcaoView.getPergunta().getId() == 7){				
 				proposta.setStatus(statusDao.procurarPorId(5));		
 				calcularStatusFinalProposta(proposta);		
@@ -72,7 +72,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 				}//fim do primeiro FOR
 			
 			
-			//Verificação de proposta aprovada com ressalva
+			//Verificaï¿½ï¿½o de proposta aprovada com ressalva
 			if (correcaoView.getResposta().getId() == 1 && correcaoView.getPergunta().getId() == 7){
 				for (Correcao correcaoView1 : listaCorrecao) {
 					
@@ -110,7 +110,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 		 */
 		if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {			
 			propostaBD.setStatus(propostaView.getStatus());
-			propostaDao.alterar(propostaBD);
+			propostaDao.salvar(propostaBD);
 		}
 		else {
 			if (propostaBD.getStatus().getId() == 3) {
@@ -135,7 +135,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					
 				}
 
-				propostaDao.alterar(propostaBD);
+				propostaDao.salvar(propostaBD);
 				return;
 			}
 
@@ -158,7 +158,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					propostaBD.setStatus(statusDao.procurarPorId(5));
 					//propostaBD.getStatus().setId(5);
 				}
-				propostaDao.alterar(propostaBD);
+				propostaDao.salvar(propostaBD);
 				return;
 			}
 
@@ -182,7 +182,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					propostaBD.setStatus(statusDao.procurarPorId(5));
 					//propostaBD.getStatus().setId(5);
 				}
-				propostaDao.alterar(propostaBD);
+				propostaDao.salvar(propostaBD);
 				return;
 			}
 		}

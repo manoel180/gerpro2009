@@ -21,13 +21,13 @@ public class ItemDao implements FacadeItem {
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(Item item) {
+	public void salvar(Item item) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(item);
+			session.saveOrUpdate(item);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
 		} catch (Exception e) {
@@ -39,25 +39,6 @@ public class ItemDao implements FacadeItem {
 		}
 	}
 
-	//Funcionando
-	@Override
-	public void inserir(Item item) {
-		// TODO Auto-generated method stub
-	
-		try {
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			session.save(item);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
-		} catch (Exception e) {
-			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
-		} finally {
-			session.close();
-		}
-	}
 	@Override
 	public List<Item> listar() {
 
@@ -72,42 +53,7 @@ public class ItemDao implements FacadeItem {
 		session.close();
 		return result;
 	}
-	//Consulta 1
-	@Override
-	public List<Item> listarOrdemAlfabetica() {
-
-		List<Item> result = null;
-		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from Item order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-		
-	}
-	
-	//consulta 2
-	//Lista por letra
-	@Override
-	public List<Item> listar2() {
-
-		List<Item> result = null;
-		
-		Session session = HibernateUtil.getSession();
-		
-		Query q = session.createQuery(" from Item order by nome ");
-		
-		result = q.list();
-		
-		session.close();
-		return result;
-	}
-		
-	//consulta 3
-	//consulta
+			
 	@Override	
 	public List<Item> listarPorNome(String nomeEquippe) {
 		// TODO Auto-generated method stub

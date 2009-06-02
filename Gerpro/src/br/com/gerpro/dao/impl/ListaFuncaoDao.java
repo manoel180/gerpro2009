@@ -21,13 +21,13 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 	private static Transaction tx = null;
 	
 	@Override
-	public void alterar(ListaFuncao listafuncao) {
+	public void salvar(ListaFuncao listafuncao) {
 		// TODO Auto-generated method stub
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(listafuncao);
+			session.saveOrUpdate(listafuncao);
 			//session.saveOrUpdate(listafuncao);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Operação Realizada com sucesso");
@@ -40,25 +40,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		}
 	}
 
-	//Funcionando
-	@Override
-	public void inserir(ListaFuncao listafuncao) {
-		// TODO Auto-generated method stub
 	
-		try {
-			session = HibernateUtil.getSession();
-			tx = session.beginTransaction();
-			session.save(listafuncao);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "\"Cadastrado com Sucesso\"");
-		} catch (Exception e) {
-			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
-		} finally {
-			session.close();
-		}
-	}
 	@Override
 	public List<ListaFuncao> listar() {
 

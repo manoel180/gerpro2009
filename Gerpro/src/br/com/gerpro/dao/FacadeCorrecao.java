@@ -12,13 +12,11 @@ import br.com.gerpro.model.Correcao;
  *
  */
 public interface FacadeCorrecao {
-	public void inserir (Correcao correcao);
+	public void salvar (Correcao correcao);
 	
 	public List<Correcao> procurarPorIdProposta(int idProposta);
 	
 	public void remover (Correcao correcao);
-	
-	public void alterar (Correcao correcao);
 	
 	public Correcao procurarPorNomeProfessor(String Nome);
 	

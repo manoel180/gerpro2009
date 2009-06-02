@@ -43,20 +43,11 @@ public class CorrecaoBean {
 
 	public String salvar() {
 		try {
-			getCorrecaoDao().inserir(correcao);
+			getCorrecaoDao().salvar(correcao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return prepararBean();
-	}
-
-	public String alterar() {
-		try {
-			getCorrecaoDao().alterar(correcao);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "visualizar";
 	}
 
 	

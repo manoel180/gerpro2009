@@ -39,20 +39,11 @@ public class EquipeBean {
 
 	public String salvar() {
 		try {
-			getDaoEquipe().inserir(equipe);
+			getDaoEquipe().salvar(equipe);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return prepararBean();
-	}
-
-	public String alterar() {
-		try {
-			getDaoEquipe().alterar(equipe);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "visualizar";
 	}
 
 	

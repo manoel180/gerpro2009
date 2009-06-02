@@ -5,8 +5,6 @@ package br.com.gerpro.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 
@@ -17,25 +15,18 @@ import br.com.gerpro.model.Usuario;
  */
 public interface FacadeProposta {
 	
-	public void inserir (Proposta proposta);
+	public void salvar (Proposta proposta);
 	
 	public Proposta procurarPorId(int idProposta);
 	
 	public void remover (Proposta proposta);
 	
-	public void alterar (Proposta proposta);
-	
 	public List<Proposta> listar();
 
 	public List<Proposta> listarPorNome(String nomeProposta);
-
-	public List<Proposta> listarOrdemAlfabetica();
 
 	public List<Proposta> listarPorProfessor(Usuario usuario);
 	
 	public Proposta procurarPorNome(String Nome);
 
-	public void gerarRelatorio();
-
-	public void printPdfUISub(HttpServletResponse httpResponse) throws Exception;
 }

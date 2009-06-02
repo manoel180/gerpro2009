@@ -9,13 +9,11 @@ import br.com.gerpro.model.ListaFuncao;
  *
  */
 public interface FacadeListaFuncao {
-	public void inserir (ListaFuncao listafuncao);
+	public void salvar (ListaFuncao listafuncao);
 	
 	public ListaFuncao procurarPorId(int idlistafuncao);
 	
 	public void remover (ListaFuncao listafuncao);
-	
-	public void alterar (ListaFuncao listafuncao);
 	
 	public List<ListaFuncao> listar();
 

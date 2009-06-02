@@ -5,7 +5,6 @@ package br.com.gerpro.dao;
 
 import java.util.List;
 
-import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 
 
@@ -19,8 +18,6 @@ public interface FacadeUsuario {
 	public List<Usuario> listar();
 
 	public List<Usuario> listarPorNome(String nomeStatus);
-
-	public List<Usuario> listarPorOrdemAlfabetica();
 
 	public Usuario procurarPorNome(String nome);
 	

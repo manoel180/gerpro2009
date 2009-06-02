@@ -39,20 +39,11 @@ public class ArtefatosBean {
 
 	public String salvar() {
 		try {
-			getDaoArtefatos().inserir(artefatos);
+			getDaoArtefatos().salvar(artefatos);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return prepararBean();
-	}
-
-	public String alterar() {
-		try {
-			getDaoArtefatos().alterar(artefatos);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "visualizar";
 	}
 
 	
