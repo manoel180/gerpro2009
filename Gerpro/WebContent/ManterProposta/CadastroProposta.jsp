@@ -10,7 +10,7 @@
 <head>
 <title>Cadastro de Propostas</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 
 <f:view>
@@ -19,7 +19,7 @@
 		<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
 			styleClass="titulo" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
+		<h:messages layout="list" styleClass="" showDetail="true"
 			showSummary="true" />
 		<br>
 		<br>
@@ -33,21 +33,18 @@
 				
 				<h:outputText value="Equipe:" />
 				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}" rendered="true" required="true">					
-					<f:selectItems value="#{propostaBean.equipesCombo}"/>	
+					<f:selectItems value="#{propostaBean.equipesCombo}"/>
+					<f:attribute name="fieldRef" value="Equipe" />	
 				</h:selectOneMenu>
-
-				
-				
 				
 				<h:outputText value="Data Criação:" />	
-				<rich1:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}"/>
-					
-					
-				
-					
+				<rich1:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}" required="true">
+					<f:attribute name="fieldRef" value="Data Criação" />
+				</rich1:calendar>
+	
 				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo" 
-					value="#{propostaBean.proposta.periodo}">
+				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}">
+					<f:attribute name="fieldRef" value="P" />
 				</h:inputText>
 				
 			</h:panelGrid>
