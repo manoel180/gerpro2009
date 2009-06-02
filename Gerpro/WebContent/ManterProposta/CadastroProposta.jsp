@@ -1,9 +1,8 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@taglib
-	uri="http://richfaces.org/rich" prefix="rich1"%><%@page	contentType="text/html"%>
+<%@page	contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
+<%@taglib prefix="rich" uri="http://richfaces.ajax4jsf.org/rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -38,9 +37,9 @@
 				</h:selectOneMenu>
 				
 				<h:outputText value="Data Criação:" />	
-				<rich1:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}" required="true">
+				<rich:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}" required="true">
 					<f:attribute name="fieldRef" value="Data Criação" />
-				</rich1:calendar>
+				</rich:calendar>
 	
 				<h:outputText value="Periodo:" />
 				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}">
@@ -52,7 +51,9 @@
 			
 
 		</rich:simpleTogglePanel>
-<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+			<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+	</h:form>
+	<h:form>
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
@@ -61,6 +62,6 @@
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:panelGrid>
-		
 	</h:form>
+
 </f:view>
