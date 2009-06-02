@@ -55,7 +55,7 @@
 			
 
 		</rich:simpleTogglePanel>
-<h:commandButton value="Salvar" action="#{propostaBean.alterar}" />
+<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>

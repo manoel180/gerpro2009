@@ -19,7 +19,7 @@
 				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1"
 					value="#{artefatosBean.artefatos.nome}" /> 
-				<h:commandButton value="Salvar" action="#{artefatosBean.alterar}" 
+				<h:commandButton value="Salvar" action="#{artefatosBean.salvar}" 
 				style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset"/>
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
