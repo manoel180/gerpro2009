@@ -17,7 +17,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  * Esta classe tem como objetivo implementar um gráfico 
- * com o resultado de várias cruzamentos de informação
+ * com o resultado de várioss cruzamentos de informacao
  * tais como:
  * 
  * Quantidade de Propostas Entregue
