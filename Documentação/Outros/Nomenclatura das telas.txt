@@ -1,0 +1,43 @@
+CASO DE USO NUMEROS.
+TELA LOGIN E SENHA-TLlogSENHA.
+--------------------------------------
+Telas COORDENADOR-UC01- MANTER PROPOSTA.
+TELAS
+TELA MENU - TLmenuCoord
+TELA MANTER PROPOSTAS -TLmanProp.
+TELA PESQUISAR - TLpesqProp
+TELA ALTERAR - TLaltProp
+TELA Novo -TLcadProp.
+
+TELA MENU RELATORIO - TLrelat.
+TELA RELATORIO PROPOSTA X EQUIPE- TLrelat01
+TELA RELATORIO PORCENTAGEM AP E RP - TLrelat02.
+
+--------------------------------------
+UC02- CONSTRUIR PROPOSTAS.
+TELAS
+
+TELA LOGIN E SENHA-TLlogSENHA.
+MENU ITENS-TLmenuAluno
+TELA CONSTRUIR MISSAO-TLconstIt01
+TELA CONSTRUIR LISTA DE FUNCOES-TLconstIt02
+TELA CONSTRUIR justificativa-TLconstIt03
+TELA CONSTRUIR METODOLOGIA-TLconstIt04
+TELA CONSTRUIR CRONOGRAMA-TLconstIt05
+--------------------------------------
+
+UC03.CORRIGIR PROPOSTA-PROFESSOR.
+TELAS
+TELA Menu itens-TLmenuProf.
+LISTA DE PROPOSTA-TLlistProp.
+corrigir missao-TLitc01.
+corrigir lista de funcao-TLitc02
+corrigir justificativa-TLict03.
+corrigir metodologia-TLitc04.
+corrigir crnograma-TLitc05
+--------------------------------------
+
+UC04.SUBMETER CORRECAO-PROFESSOR.
+TELAS.
+SUBMETER CORRECAO-TLsubCor.
+
