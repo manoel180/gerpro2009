@@ -122,6 +122,20 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
+	@Override
+	public List<Proposta> listarPorEquipe(String nomeEquipe) {
+	List<Proposta> result = null;
+
+		Session session = HibernateUtil.getSession();
+
+		// Funcionando mas duplicando linhas
+		result = session.createQuery("from Proposta as proposta" + " where proposta.equipe.nome " +
+				"like '"+ nomeEquipe +"%'" ).list();
+		//q.setParameter("parametro", nomeEquipe + "%");
+
+		session.close();
+		return result;
+	}
 	/* (non-Javadoc)
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
 	 */

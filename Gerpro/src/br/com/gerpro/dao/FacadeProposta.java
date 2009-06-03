@@ -24,13 +24,15 @@ public interface FacadeProposta {
 	public abstract void remover(Proposta proposta);
 
 	/***************************************************************************
-	 * Método para retornar a lista de propostas concluídas e submetidas pelos
+	 * Mï¿½todo para retornar a lista de propostas concluï¿½das e submetidas pelos
 	 * alunos.
 	 * 
-	 * @return Lista de propostas com status "Concluída"
+	 * @return Lista de propostas com status "Concluï¿½da"
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public abstract List listarPropostasConcluidas();
+
+	public abstract List<Proposta> listarPorEquipe(String nomeEquipe);
 
 }

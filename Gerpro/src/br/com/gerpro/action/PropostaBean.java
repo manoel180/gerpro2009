@@ -30,6 +30,8 @@ public class PropostaBean {
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
+	private String tipo = new String();
+	private String busca = new String();
 	
 	
 	
@@ -47,7 +49,8 @@ public class PropostaBean {
 	
 		
 	public String prepararBean() {
-
+		tipo = "1";
+		busca = null;
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
 		listaPorProfessor = getListaPorProfessor();
@@ -69,7 +72,22 @@ public class PropostaBean {
 	}
 
 	public void pesquisar() {
-		listaProposta = getPropostaDao().listarPorNome(proposta.getNome());
+		if(tipo.equals("1"))
+		{
+			listaProposta = new ArrayList<Proposta>();
+			proposta = getPropostaDao().procurarPorId(Integer.parseInt(busca.toString()));
+			listaProposta.add(proposta);
+		}
+		if(tipo.equals("2"))
+		{
+			listaProposta = getPropostaDao().listarPorNome(busca.toString());
+		}
+		if(tipo.equals("3"))
+		{
+			equipe.setNome(busca.toString());
+			listaProposta = getPropostaDao().listarPorEquipe(equipe.getNome());
+		}
+		
 	
 	}
 
@@ -176,6 +194,38 @@ public class PropostaBean {
 	public void setListaPorProfessor(
 			List<Proposta> listaPorProfessor) {
 		this.listaPorProfessor = listaPorProfessor;
+	}
+
+
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	/**
+	 * @return the busca
+	 */
+	public String getBusca() {
+		return busca;
+	}
+
+
+	/**
+	 * @param busca the busca to set
+	 */
+	public void setBusca(String busca) {
+		this.busca = busca;
 	}
 
 }

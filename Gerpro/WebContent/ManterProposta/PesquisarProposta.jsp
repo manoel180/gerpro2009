@@ -16,21 +16,33 @@
 	<h:form id="form1">
 		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
 			styleClass="titulo" /></div>
-		    
-		<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
+		   <div align="center"> 
+		<h:panelGrid columns="2" cellpadding="10" rowClasses="2" >
+		<rich:simpleTogglePanel label="Pesquisa">
+			<h:selectOneRadio value="#{propostaBean.tipo}" >
+				<f:selectItem itemLabel="Cod" itemValue="1" />
+				<f:selectItem itemLabel="Nome" itemValue="2" />				
+				<f:selectItem itemLabel="Equipe" itemValue="3"/>
+			</h:selectOneRadio>
 			<h:outputText value="Descrição:" />
-			<h:inputText id="txtdesc" value="#{propostaBean.proposta.nome}" />
+			<h:inputText id="txtdesc" value="#{propostaBean.busca}" />
 			<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
+		</rich:simpleTogglePanel>
+		
+		<rich:panel style="width: 217px" header="Opções">
 			<h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
-			<h:commandButton  value="Gerar Relatório" action="#{relatorioBean.gerarRelatorioProposta}" />
+			<br>
+			<h:commandButton  value="Gerar Relatório" action="#{relatorioBean.gerarRelatorioProposta}"/>
+		</rich:panel>
+		
 		</h:panelGrid>
-	
+	</div>
 	</h:form>
 	<h:form id="form2">
 
 		<rich:dataTable var="prop" id="listapropostas" rendered="true"
 			value="#{propostaBean.listaProposta}"
-			binding="#{propostaBean.objDatatableProposta}" rows="10"
+			binding="#{propostaBean.objDatatableProposta}" rows="5"
 			width="550px" align="center">
 			<rich:column sortBy="#{prop.id}">
 				<f:facet name="header">
@@ -62,7 +74,7 @@
 					style="height: 40px; width: 40px" />
 			</h:column>
 		</rich:dataTable>
-		<rich:datascroller align="center" for="listapropostas" maxPages="10"
+		<rich:datascroller align="center" for="listapropostas" maxPages="5"
 			page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 		<rich:spacer height="30" />
 
