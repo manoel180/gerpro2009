@@ -5,14 +5,18 @@ package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.Proposta;
 import br.com.gerpro.util.HibernateUtil;
 
 /**
@@ -88,9 +92,43 @@ public class CorrecaoDao implements FacadeCorrecao {
 
 	@Override
 	public void salvar(Correcao correcao) {
-		// TODO Auto-generated method stub
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.saveOrUpdate(correcao);
+			tx.commit();
+			JOptionPane.showMessageDialog(null,
+					"Alteração Realizada com sucesso",
+					"GerPro - Alteração Realizada com Sucesso", 2);
+		} catch (HibernateException e) {
+			tx.rollback();
+			JOptionPane.showMessageDialog(null, "Erro",
+					"GerPro - Ocorreu um erro" + e, 1);
+			e.printStackTrace();
+		} catch (PersistenceException e) {
+			tx.rollback();
+			JOptionPane.showMessageDialog(null, "Erro",
+					"GerPro - Ocorreu um erro" + e, 1);
+			e.printStackTrace();
+		} catch (Exception e) {
+			tx.rollback();
+			JOptionPane.showMessageDialog(null, "Erro",
+					"GerPro - Ocorreu um erro" + e, 1);
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 		
 	}
 	
+	public void inserirConjuntoDeCorrecao(int idProposta, String matriculaProfessor){		
+		List<Proposta> result = null;
+		Session session = HibernateUtil.getSession();
+		session.getNamedQuery("inserirConjuntoDeCorrecoes")
+			.setInteger("id_proposta", idProposta)
+			.setString("matricula_professor", matriculaProfessor)
+			.executeUpdate();
 
+		session.close();		
+	}
 }
