@@ -34,10 +34,19 @@ public class ProcessoAlocarProposta {
 	private List<Correcao> listaCorrecao = new ArrayList<Correcao>();
 	private FacadeStatus statusDao = new StatusDao();
 
+	/***************************************************************************
+	 * Método que executa o processo de alocar dinamicamente propostas com o
+	 * status "Concluído" aos professores selecionados pelo coordenador para
+	 * corrigi-las
+	 * 
+	 * @param professoresSelecionados
+	 * @param emGrupo
+	 */
+
 	public void alocaProposta(List professoresSelecionados, boolean emGrupo) {
 
 		List<Proposta> listaPropostasConcluidas = propostaDao
-				.listarPropostasConcluidas();		
+				.listarPropostasConcluidas();
 
 		// Verifica se existe proposta na lista
 		if (listaPropostasConcluidas.isEmpty()) {
@@ -46,28 +55,28 @@ public class ProcessoAlocarProposta {
 
 		} else {// Existe proposta na lista
 			if (professoresSelecionados.size() == 1) { // Existe apenas um
-														// professor selecionado
-														// para correcao
-				
+				// professor selecionado
+				// para correcao
+
 				Usuario professor = (Usuario) professoresSelecionados.get(0);
-				for (Proposta proposta : listaPropostasConcluidas) {					
-					
-					//Gera as correcoes para a proposta
+				for (Proposta proposta : listaPropostasConcluidas) {
+
+					// Gera as correcoes para a proposta
 					geraCorrecao(professor, proposta);
-					
-					//Atualiza o status da proposta para "Em correcao"
+
+					// Atualiza o status da proposta para "Em correcao"
 					proposta.setStatus(statusDao.procurarPorId(2));
 					propostaDao.salvar(proposta);
-					
+
 				}
 			} else {// Exite mais de um professor para a correcao
 
 				if (isCorrecaoEmGrupo()) { // Caso a correcao seja em grupo
 					if (professoresSelecionados.size() == 2) {// Existe 2
-																// professores
-																// selecionados
-																// para a
-																// correcao
+						// professores
+						// selecionados
+						// para a
+						// correcao
 						Usuario professor1 = (Usuario) professoresSelecionados
 								.get(0);
 						Usuario professor2 = (Usuario) professoresSelecionados
@@ -77,20 +86,20 @@ public class ProcessoAlocarProposta {
 						for (Proposta proposta : listaPropostasConcluidas) {
 							geraCorrecao(professor1, proposta);
 							geraCorrecao(professor2, proposta);
-							
-							//Atualiza o status da proposta para "Em correcao"
+
+							// Atualiza o status da proposta para "Em correcao"
 							proposta.setStatus(statusDao.procurarPorId(2));
 							propostaDao.salvar(proposta);
 						}
 					}
 				} else { // Caso a correcao não seja em grupo
 					if (professoresSelecionados.size() == 2) {// Existe 2
-																// professores
-																// selecionados
-																// para a
-																// correcao
+						// professores
+						// selecionados
+						// para a
+						// correcao
 						if (listaPropostasConcluidas.size() % 2 == 0) { // Caso
-																		// a
+							// a
 							// qtde de
 							// propostas
 							// seja PAR
@@ -109,10 +118,13 @@ public class ProcessoAlocarProposta {
 								geraCorrecao((Usuario) professoresSelecionados
 										.get(index), listaPropostasConcluidas
 										.get(i));
-								
-								//Atualiza o status da proposta para "Em correcao"								
-								listaPropostasConcluidas.get(i).setStatus(statusDao.procurarPorId(2));
-								propostaDao.salvar(listaPropostasConcluidas.get(i));
+
+								// Atualiza o status da proposta para "Em
+								// correcao"
+								listaPropostasConcluidas.get(i).setStatus(
+										statusDao.procurarPorId(2));
+								propostaDao.salvar(listaPropostasConcluidas
+										.get(i));
 								if (index == 0) {
 									index++;
 								} else
@@ -132,11 +144,14 @@ public class ProcessoAlocarProposta {
 								geraCorrecao((Usuario) professoresSelecionados
 										.get(index), listaPropostasConcluidas
 										.get(i));
-								
-								//Atualiza o status da proposta para "Em correcao"								
-								listaPropostasConcluidas.get(i).setStatus(statusDao.procurarPorId(2));
-								propostaDao.salvar(listaPropostasConcluidas.get(i));
-								
+
+								// Atualiza o status da proposta para "Em
+								// correcao"
+								listaPropostasConcluidas.get(i).setStatus(
+										statusDao.procurarPorId(2));
+								propostaDao.salvar(listaPropostasConcluidas
+										.get(i));
+
 								if (index == 0) {
 									index++;
 								} else
@@ -149,8 +164,8 @@ public class ProcessoAlocarProposta {
 							// Aloca a ultima proposta aleatoriamente para o
 							geraCorrecao((Usuario) professoresSelecionados
 									.get(seletor.nextInt(2)), proposta);
-							
-							//Atualiza o status da proposta para "Em correcao"								
+
+							// Atualiza o status da proposta para "Em correcao"
 							proposta.setStatus(statusDao.procurarPorId(2));
 							propostaDao.salvar(proposta);
 						}
@@ -168,15 +183,14 @@ public class ProcessoAlocarProposta {
 	 * @return void
 	 */
 	public void geraCorrecao(Usuario professor, Proposta proposta) {
-		
-		//Constroi objetos do tipo Correcao e persiste em banco
+
+		// Constroi objetos do tipo Correcao e persiste em banco
 		for (int idPergunta = 1; idPergunta <= 8; idPergunta++) {
-			
+
 			CorrecaoId correcaoId = new CorrecaoId();
 			correcaoId.setIdPergunta(idPergunta);
 			correcaoId.setIdProposta(proposta.getId());
 			correcaoId.setMatriculaProfessor(professor.getMatricula());
-			
 
 			// Switch para preencher informações sobre a pergunta
 			switch (idPergunta) {
@@ -208,15 +222,22 @@ public class ProcessoAlocarProposta {
 				break;
 			}
 
+			// Seta o id criado no objeto correcao
 			correcao.setId(correcaoId);
-			correcao.setStatus(statusDao.procurarPorId(2));
-			correcaoDao.salvar(correcao);
 
-			
+			// Seta o novo status da correcao
+			correcao.setStatus(statusDao.procurarPorId(2));
+
+			// Persiste a correcao no banco de dados
+			correcaoDao.salvar(correcao);
 		}
 
 	}
 
+	/**
+	 * Métodos Get e Set para os objetos da classe.
+	 * 
+	 */
 	public int getQtdeProfessoresSelecionados() {
 		return qtdeProfessoresSelecionados;
 	}
@@ -258,4 +279,3 @@ public class ProcessoAlocarProposta {
 	}
 
 }
-
