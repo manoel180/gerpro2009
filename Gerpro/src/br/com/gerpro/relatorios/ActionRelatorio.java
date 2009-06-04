@@ -77,31 +77,19 @@ public class ActionRelatorio {
 	public void gerarRelatorioResultadosProposta() {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		CriarGrafico Grafico = new CriarGrafico();
+		CriarGrafico grafico = new CriarGrafico();
 		ArrayList nomes = new ArrayList();
         ArrayList valores = new ArrayList();
         Image imagen;
-	/*	
-		JPanel painel = new JPanel();
-        JFrame frame = new JFrame();
-        ScrollPane scroll = new ScrollPane(1);
-      */  
+
         nomes.addAll(new ListaResultados().preecherNomes());
         valores.addAll(new ListaResultados().preecherValores());
        
-        imagen = CriarGrafico.pizza3DStatic(nomes,valores,"Título do Gráfico").getScaledInstance(400, 600, 0);//.getSubimage(0, 100,300, 150);
+        imagen = grafico.pizza3DStatic(nomes,valores,"Título do Gráfico").getScaledInstance(600, 800, 0);//.getSubimage(0, 100,300, 150);
         params.put("logo", logo.getImage());
         params.put("imagen", imagen);
 		gerarRelatorioPDF("Resultado_Propostas", params);
 		
-        /*painel.add();
-        scroll.add(painel);
-	frame.getContentPane().add(scroll);
-	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	frame.setTitle("Título Geral");
-	frame.setPreferredSize(new Dimension(750, 520));
-	frame.pack();
-	frame.setVisible(true);*/
 	}
 
 	private void gerarRelatorioPDF(String nome, Map params) {

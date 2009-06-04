@@ -20,7 +20,7 @@ FROM
 		<band/>
 	</background>
 	<title>
-		<band height="70">
+		<band height="294">
 			<image scaleImage="FillFrame" vAlign="Middle" isLazy="true" onErrorType="Icon">
 				<reportElement key="image" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="-22" y="-18" width="598" height="66"/>
 				<imageExpression class="java.awt.Image"><![CDATA[$P{logo}]]></imageExpression>
@@ -45,14 +45,11 @@ FROM
 		</band>
 	</title>
 	<pageHeader>
-		<band/>
-	</pageHeader>
-	<summary>
-		<band height="298" isSplitAllowed="false">
-			<image scaleImage="FillFrame">
-				<reportElement key="image-1" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="34" y="28" width="500" height="182" isPrintInFirstWholeBand="true"/>
+		<band>
+			<image scaleImage="FillFrame" isUsingCache="true">
+				<reportElement key="image-1" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" mode="Opaque" x="0" y="-182" width="555" height="182"/>
 				<imageExpression class="java.awt.Image"><![CDATA[$P{imagen}]]></imageExpression>
 			</image>
 		</band>
-	</summary>
+	</pageHeader>
 </jasperReport>
