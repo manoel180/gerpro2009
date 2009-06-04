@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@taglib
+<%@taglib
 	uri="http://richfaces.org/rich" prefix="rich1"%><%@page	contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
