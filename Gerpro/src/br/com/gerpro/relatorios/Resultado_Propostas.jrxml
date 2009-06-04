@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Resultado_Propostas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<queryString language="SQL">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Resultado_Propostas" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" whenResourceMissingType="Error">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="logo" class="java.awt.Image" isForPrompting="false"/>
+	<parameter name="imagen" class="java.lang.Object" isForPrompting="false"/>
+	<queryString>
 		<![CDATA[SELECT
-     count(*)as Total,
-     status.`nome` AS status_nome,
-     proposta.`id_status_proposta` AS proposta_id_status_proposta,
      proposta.`periodo` AS proposta_periodo
 FROM
-     status
-     INNER JOIN `proposta` proposta ON status.`id` = proposta.`id_status_proposta`
-WHERE
-    proposta.`id_status_proposta` = '3' AND proposta.`periodo` = '1']]>
+     `proposta` proposta]]>
 	</queryString>
-	<field name="Total" class="java.lang.Long">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="status_nome" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="proposta_id_status_proposta" class="java.lang.Long">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="proposta_periodo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -28,7 +20,7 @@ WHERE
 		<band/>
 	</background>
 	<title>
-		<band height="58">
+		<band height="70">
 			<image scaleImage="FillFrame" vAlign="Middle" isLazy="true" onErrorType="Icon">
 				<reportElement key="image" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="-22" y="-18" width="598" height="66"/>
 				<imageExpression class="java.awt.Image"><![CDATA[$P{logo}]]></imageExpression>
@@ -38,153 +30,29 @@ WHERE
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Serif" size="24" isBold="true" isItalic="true" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[Resultado TCC]]></text>
+				<text><![CDATA[Resultado Propostas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="50" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{proposta_periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="50" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Periodo]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band/>
 	</pageHeader>
-	<columnHeader>
-		<band/>
-	</columnHeader>
-	<detail>
-		<band height="264">
-			<staticText>
-				<reportElement x="0" y="0" width="139" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Total]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="139" y="0" width="416" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Total}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="20" width="139" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[status_nome]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="139" y="20" width="416" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{status_nome}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="40" width="139" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[proposta_id_status_proposta]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="139" y="40" width="416" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{proposta_id_status_proposta}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="60" width="139" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[proposta_periodo]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="139" y="60" width="416" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{proposta_periodo}]]></textFieldExpression>
-			</textField>
-			<bar3DChart>
-				<chart isShowLegend="true" renderType="image" theme="eye.candy.sixties">
-					<reportElement x="0" y="107" width="552" height="157"/>
-					<chartTitle position="Top"/>
-					<chartSubtitle/>
-					<chartLegend position="Top"/>
-				</chart>
-				<categoryDataset>
-					<categorySeries>
-						<seriesExpression><![CDATA[$F{proposta_id_status_proposta}]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{status_nome}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{Total}]]></valueExpression>
-					</categorySeries>
-				</categoryDataset>
-				<bar3DPlot>
-					<plot backgroundAlpha="0.5"/>
-					<categoryAxisFormat>
-						<axisFormat>
-							<labelFont/>
-							<tickLabelFont/>
-						</axisFormat>
-					</categoryAxisFormat>
-					<valueAxisFormat>
-						<axisFormat>
-							<labelFont/>
-							<tickLabelFont/>
-						</axisFormat>
-					</valueAxisFormat>
-				</bar3DPlot>
-			</bar3DChart>
-		</band>
-	</detail>
-	<columnFooter>
-		<band/>
-	</columnFooter>
-	<pageFooter>
-		<band height="26">
-			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
-			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageFooter>
 	<summary>
-		<band/>
+		<band height="298" isSplitAllowed="false">
+			<image scaleImage="FillFrame">
+				<reportElement key="image-1" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="34" y="28" width="500" height="182" isPrintInFirstWholeBand="true"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagen}]]></imageExpression>
+			</image>
+		</band>
 	</summary>
 </jasperReport>

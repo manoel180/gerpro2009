@@ -9,6 +9,8 @@
 
 package br.com.gerpro.relatorios;
 
+import java.awt.Image;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,11 +26,13 @@ import net.sf.jasperreports.engine.JasperRunManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import br.com.gerpro.processing.CriarGrafico;
+import br.com.gerpro.processing.ListaResultados;
 import br.com.gerpro.util.HibernateUtil;
 
 /**
  * 
- * @author vista
+ * @author M3R
  */
 public class ActionRelatorio {
 
@@ -40,17 +44,15 @@ public class ActionRelatorio {
 	String path = this.getClass().getResource("/br/com/gerpro/relatorios")
 			.getPath();
 
-	/**
-	 * <p>
+	/** 
 	 * Prefixo do nome do recurso para relat�rios compilados.
-	 * </p>
 	 */
 	private String SUB = path;
 
 	/**
-	 * <p>
+	 * 
 	 * Sufixo do nome do recurso para relat�rios compilados.
-	 * </p>
+	 * 
 	 */
 	private static final String SUFFIX = ".jasper";
 
@@ -64,15 +66,42 @@ public class ActionRelatorio {
 		 */
 
 		try {
-
 			gerarRelatorioPDF("proposta", params);
-
 		} catch (Exception e) {
 
 			System.err.println(e.getMessage());
-
 		}
-//		return "";
+	}
+	
+	
+	public void gerarRelatorioResultadosProposta() {
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		CriarGrafico Grafico = new CriarGrafico();
+		ArrayList nomes = new ArrayList();
+        ArrayList valores = new ArrayList();
+        Image imagen;
+	/*	
+		JPanel painel = new JPanel();
+        JFrame frame = new JFrame();
+        ScrollPane scroll = new ScrollPane(1);
+      */  
+        nomes.addAll(new ListaResultados().preecherNomes());
+        valores.addAll(new ListaResultados().preecherValores());
+       
+        imagen = CriarGrafico.pizza3DStatic(nomes,valores,"Título do Gráfico").getScaledInstance(400, 600, 0);//.getSubimage(0, 100,300, 150);
+        params.put("logo", logo.getImage());
+        params.put("imagen", imagen);
+		gerarRelatorioPDF("Resultado_Propostas", params);
+		
+        /*painel.add();
+        scroll.add(painel);
+	frame.getContentPane().add(scroll);
+	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	frame.setTitle("Título Geral");
+	frame.setPreferredSize(new Dimension(750, 520));
+	frame.pack();
+	frame.setVisible(true);*/
 	}
 
 	private void gerarRelatorioPDF(String nome, Map params) {
@@ -100,19 +129,12 @@ public class ActionRelatorio {
 			StateManager stateManager = (StateManager) faces.getApplication()
 					.getStateManager();
 			stateManager.saveSerializedView(faces);
-
 			faces.responseComplete();
-
 		} catch (RuntimeException e) {
-
 			throw e;
-
 		} catch (Exception e) {
-
 			System.out.println(e.getMessage());
-
 			throw new FacesException(e);
-
 		} finally {
 			session.close();
 		}
