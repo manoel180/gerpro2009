@@ -24,7 +24,6 @@ public class ListaResultados {
 	 private List listavalores = new ArrayList();
 	 private VoPropostas voProposta;
 	 
-	 
 	 private FacadeProposta propostaDao = new PropostaDao();
 
 	 /* 
@@ -32,6 +31,7 @@ public class ListaResultados {
 	  */
 	 
 	 public List preecherNomes(){
+		 listapropostas=new ArrayList();
 		 listapropostas.add("Aprovados");//,preecherListaAprovados()));
 		 listapropostas.add("Aprovados com ressalva");//,preecherListaAprovadosRessalva()));
 		 listapropostas.add("Reprovados");//,preecherListaReprovados()));
@@ -39,16 +39,18 @@ public class ListaResultados {
 		 return listapropostas;
 	 }
 	 public List preecherValores(){
-		 listapropostas.add(preecherListaAprovados());
-		 listapropostas.add(preecherListaAprovadosRessalva());
-		 listapropostas.add(preecherListaReprovados());
+		 listavalores=new ArrayList();
+		 listavalores.add(preecherListaAprovados());
+		 listavalores.add(preecherListaAprovadosRessalva());
+		 listavalores.add(preecherListaReprovados());
 		 
-		 return listapropostas;
+		 return listavalores;
 	 }
 	 
 	private float preecherListaAprovados(){
+		propostaDao = new PropostaDao();
 		 count = 0;
-		 List<Proposta> lp = getPropostaDao().listar();
+		 List<Proposta> lp = propostaDao.listar();
 		 int tmp = lp.size();
 		total =0;
 			for( Proposta p : lp ){
@@ -56,28 +58,33 @@ public class ListaResultados {
 					count++;
 				}
 			}
+			
 			total = (count/tmp)*100;
+			
 			return total;
 	 }
 	 
 	 private float preecherListaReprovados(){
+		 propostaDao = new PropostaDao();
 		 count = 0;
-		 total = 0;
-		 List<Proposta> lp = getPropostaDao().listar();
+		 total = 0 ;
+		 List<Proposta> lp = propostaDao.listar();
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==5){
 					count++;
 				}
 			}
-			total = (count/tmp)*100;
+			
+			total = (count/tmp)*100;			
 			return total;
 	 }
 	 
 	private float preecherListaAprovadosRessalva(){
-		 count = 0;
+		propostaDao = new PropostaDao(); 
+		count = 0;
 		 total = 0;
-		 List<Proposta> lp = getPropostaDao().listar();
+		 List<Proposta> lp = propostaDao.listar();
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==4){

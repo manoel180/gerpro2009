@@ -1,8 +1,8 @@
 package br.com.gerpro.processing;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -76,12 +76,8 @@ public class CriarGrafico implements ICriarGrafico {
 
 				VoPropostas modelo = (VoPropostas) iterator.next();
 
-				defaultCategoryDataset.addValue(modelo.getTotal(),
-
-				modelo.getPropostas(), modelo.getPropostas().substring(0, 3)); // verificar
-				// o pq
-				// do
-				// substring
+				defaultCategoryDataset.addValue(modelo.getTotal(), modelo
+						.getPropostas(), modelo.getPropostas().substring(0, 3));
 
 			}
 
@@ -235,7 +231,8 @@ public class CriarGrafico implements ICriarGrafico {
 
 				VoPropostas modelo = (VoPropostas) iterator.next();
 
-				defaultCategoryDataset.addValue(modelo.getTotal(), null, modelo.getPropostas().substring(0, 2)); // substring(0,
+				defaultCategoryDataset.addValue(modelo.getTotal(), null, modelo
+						.getPropostas().substring(0, 2)); // substring(0,
 				// 3)verificar o pq
 				// do substring
 
@@ -260,38 +257,49 @@ public class CriarGrafico implements ICriarGrafico {
 
 	}
 
-
-	private static Image pizza3D(ArrayList nome, ArrayList
-			valor,	String tituloGrafico, float transparencia, String tipo){
-		Image buf = null;
+	/**
+	 * 
+	 * Gera um grafico de pizza 3D
+	 * 
+	 */
+	private BufferedImage pizza3D(ArrayList nome, ArrayList valor,
+			String tituloGrafico, float transparencia, String tipo) {
+		BufferedImage buf = null;
 		DefaultPieDataset data = new DefaultPieDataset();
+		DecimalFormat digitos = new DecimalFormat("00.00");
+		
+		for (int i = 0; i < nome.toArray().length; i++) {
 
-		for(int i = 0; i < nome.toArray().length; i++){
-		data.setValue("" + nome.get(i).toString(),
-		new Double(valor.get(i).toString()));
+			data.setValue(digitos.format(valor.get(i)) + "% \n"
+					+ nome.get(i).toString(), new Double(valor.get(i)
+					.toString()));
+
 		}
 
-		JFreeChart chart = ChartFactory.createPieChart3D (tituloGrafico,
-		data, true, true, true);
+		JFreeChart chart = ChartFactory.createPieChart3D(tituloGrafico, data,
+				true, false, true);
 
-		java.awt.Color cor = new java.awt.Color(200, 200, 200);
+		java.awt.Color cor = new java.awt.Color(255, 255, 255);
 		chart.setBackgroundPaint(cor);
+
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
 		plot.setLabelLinksVisible(true);
-		plot.setNoDataMessage("Não existem dados para serem exibidos " + "no gráfico");
+
+		plot
+				.setNoDataMessage("Não existem dados para serem exibidos no gráfico");
 
 		plot.setStartAngle(90);
 		plot.setDirection(Rotation.CLOCKWISE);
 
 		plot.setForegroundAlpha(transparencia);
-		plot.setInteriorGap(0.20);
+		plot.setInteriorGap(0.10);
 
-//		ChartPanel chartPanel = new ChartPanel(chart);
-		 buf = chart.createBufferedImage(400, 250);
-			return buf;
-			}
-	
-	public static Image pizza3DStatic(ArrayList nome, ArrayList valor, String tituloGrafico){
-			return pizza3D(nome, valor, tituloGrafico, 0.1f, "Static");
-			}
+		buf = chart.createBufferedImage(600, 400);
+		return buf;
+	}
+
+	public BufferedImage pizza3DStatic(ArrayList nome, ArrayList valor,
+			String tituloGrafico) {
+		return pizza3D(nome, valor, tituloGrafico, 1f, "Dynamic");// Static
+	}
 }

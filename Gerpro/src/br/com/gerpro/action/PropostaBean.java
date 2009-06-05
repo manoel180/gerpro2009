@@ -32,8 +32,8 @@ public class PropostaBean {
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private String tipo = new String();
 	private String busca = new String();
-	
-	
+	private boolean viewDes = false;
+	private boolean viewint = true;
 	
 
 	//ComboBox Equipes
@@ -44,6 +44,13 @@ public class PropostaBean {
 		for( Equipe e : le ){
 			itens.add( new SelectItem(e.getId(),e.getNome()));
 		}// for end
+		return itens.toArray( new SelectItem[itens.size()] );
+	}
+	public SelectItem[] getItensPesqCombo(){
+		List<SelectItem> itens = new ArrayList<SelectItem>(3);
+		itens.add( new SelectItem(1,"Cód."));
+		itens.add( new SelectItem(2,"Nome"));
+		itens.add( new SelectItem(3,"Equipe"));
 		return itens.toArray( new SelectItem[itens.size()] );
 	}
 	
@@ -71,7 +78,29 @@ public class PropostaBean {
 		return "alterar";
 	}
 
+	public void alterarComponente() {
+		if(tipo.equals("1"))
+		{
+			viewDes = false;
+			viewint= true;
+			
+		}
+		if(tipo.equals("2"))
+		{
+			viewDes = true;
+			viewint= false;
+		}
+		if(tipo.equals("3")){
+			viewDes = true;
+			viewint= false;
+		}
+				
+		
+	
+	}
+	
 	public void pesquisar() {
+		alterarComponente();
 		if(tipo.equals("1"))
 		{
 			listaProposta = new ArrayList<Proposta>();
@@ -227,5 +256,38 @@ public class PropostaBean {
 	public void setBusca(String busca) {
 		this.busca = busca;
 	}
+
+
+	/**
+	 * @return the viewDes
+	 */
+	public boolean isViewDes() {
+		return viewDes;
+	}
+
+
+	/**
+	 * @param viewDes the viewDes to set
+	 */
+	public void setViewDes(boolean viewDes) {
+		this.viewDes = viewDes;
+	}
+
+
+	/**
+	 * @return the viewint
+	 */
+	public boolean isViewint() {
+		return viewint;
+	}
+
+
+	/**
+	 * @param viewint the viewint to set
+	 */
+	public void setViewint(boolean viewint) {
+		this.viewint = viewint;
+	}
+
 
 }

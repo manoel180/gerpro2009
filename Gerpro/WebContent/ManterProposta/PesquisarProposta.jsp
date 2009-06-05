@@ -16,18 +16,27 @@
 		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
 			styleClass="titulo" /></div>
 		   <div align="center"> 
+		   
 		<h:panelGrid columns="2" cellpadding="10" rowClasses="2" >
+		<h:messages tooltip="true" layout="list"  showDetail="true" showSummary="true" rendered="true"/>
+		<br>
 		<rich:simpleTogglePanel label="Pesquisa">
-		<a4j:log level="ERROR" ></a4j:log>
-			<h:selectOneRadio value="#{propostaBean.tipo}"  >
-				<f:selectItem itemLabel="Cod" itemValue="1" />
-				<f:selectItem itemLabel="Nome" itemValue="2" />				
-				<f:selectItem itemLabel="Equipe" itemValue="3"/>
-			</h:selectOneRadio>
-			<h:outputText value="Descrição:" />
-			<h:inputText id="txtdesc" value="#{propostaBean.busca}">
-			</h:inputText>
-			<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
+			<h:panelGrid columns="3">
+				<h:selectOneMenu value="#{propostaBean.tipo}" >
+					<f:selectItems value="#{propostaBean.itensPesqCombo}" />
+					<a4j:support event="onchange" ajaxSingle="true"
+						action="#{propostaBean.alterarComponente}"
+						reRender="txtdesc,txtdescint"/>
+				</h:selectOneMenu>
+				<h:outputText value="Descrição:" />
+					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
+				</h:inputText>
+				
+				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
+					<f:converter />
+				</rich:inputNumberSpinner>
+					<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
+			</h:panelGrid>
 		</rich:simpleTogglePanel>
 		
 		<rich:panel style="width: 217px" header="Opções">

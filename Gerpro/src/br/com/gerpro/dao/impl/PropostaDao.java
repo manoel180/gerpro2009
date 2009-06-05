@@ -60,7 +60,8 @@ public class PropostaDao implements FacadeProposta {
 	 */
 	@Override
 	public List<Proposta> listar() {
-
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		List<Proposta> result = null;
 
 		Session session = HibernateUtil.getSession();
@@ -70,6 +71,7 @@ public class PropostaDao implements FacadeProposta {
 		result = q.list();
 
 		session.close();
+
 		return result;
 	}
 

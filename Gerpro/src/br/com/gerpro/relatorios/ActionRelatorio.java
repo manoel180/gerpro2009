@@ -80,12 +80,12 @@ public class ActionRelatorio {
 		CriarGrafico grafico = new CriarGrafico();
 		ArrayList nomes = new ArrayList();
         ArrayList valores = new ArrayList();
-        Image imagen;
+        Image imagen = null;
 
         nomes.addAll(new ListaResultados().preecherNomes());
         valores.addAll(new ListaResultados().preecherValores());
        
-        imagen = grafico.pizza3DStatic(nomes,valores,"Título do Gráfico").getScaledInstance(600, 800, 0);//.getSubimage(0, 100,300, 150);
+        imagen = grafico.pizza3DStatic(nomes,valores,"Resultados das Propostas").getScaledInstance(600, 800, 0);//.getSubimage(0, 100,300, 150);
         params.put("logo", logo.getImage());
         params.put("imagen", imagen);
 		gerarRelatorioPDF("Resultado_Propostas", params);
