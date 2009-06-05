@@ -18,13 +18,12 @@ import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
-
 public class PropostaBean {
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
 	private List<Proposta> listaPorProfessor;
 	private Proposta proposta = new Proposta();
-	private FacadeProposta propostaDao = new PropostaDao() ;
+	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeEquipe equipeDao = new EquipeDao();
 	private FacadeStatus statusDao = new StatusDao();
 	private Equipe equipe = new Equipe();
@@ -34,34 +33,33 @@ public class PropostaBean {
 	private String busca = new String();
 	private boolean viewDes = false;
 	private boolean viewint = true;
-	
 
-	//ComboBox Equipes
-	public SelectItem[] getEquipesCombo(){
+	// ComboBox Equipes
+	public SelectItem[] getEquipesCombo() {
 		List<Equipe> le = getEquipeDao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
 
-		for( Equipe e : le ){
-			itens.add( new SelectItem(e.getId(),e.getNome()));
+		for (Equipe e : le) {
+			itens.add(new SelectItem(e.getId(), e.getNome()));
 		}// for end
-		return itens.toArray( new SelectItem[itens.size()] );
+		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	public SelectItem[] getItensPesqCombo(){
+
+	public SelectItem[] getItensPesqCombo() {
 		List<SelectItem> itens = new ArrayList<SelectItem>(3);
-		itens.add( new SelectItem(1,"Cód."));
-		itens.add( new SelectItem(2,"Nome"));
-		itens.add( new SelectItem(3,"Equipe"));
-		return itens.toArray( new SelectItem[itens.size()] );
+		itens.add(new SelectItem(1, "Cód."));
+		itens.add(new SelectItem(2, "Nome"));
+		itens.add(new SelectItem(3, "Equipe"));
+		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	
-		
+
 	public String prepararBean() {
 		tipo = "1";
 		busca = null;
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
 		listaPorProfessor = getListaPorProfessor();
-	
+
 		return "go_manterProposta";
 	}
 
@@ -74,50 +72,44 @@ public class PropostaBean {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		status = proposta.getStatus();
 		equipe = proposta.getEquipe();
-		
+
 		return "alterar";
 	}
 
 	public void alterarComponente() {
-		if(tipo.equals("1"))
-		{
+		if (tipo.equals("1")) {
 			viewDes = false;
-			viewint= true;
-			
+			viewint = true;
+			setBusca("0");
 		}
-		if(tipo.equals("2"))
-		{
+		if (tipo.equals("2")||tipo.equals("3")) {
 			viewDes = true;
-			viewint= false;
+			viewint = false;
+			setBusca("");
 		}
-		if(tipo.equals("3")){
-			viewDes = true;
-			viewint= false;
-		}
-				
-		
-	
+
 	}
-	
+
 	public void pesquisar() {
 		alterarComponente();
-		if(tipo.equals("1"))
-		{
-			listaProposta = new ArrayList<Proposta>();
-			proposta = getPropostaDao().procurarPorId(Integer.parseInt(busca.toString()));
-			listaProposta.add(proposta);
+		if (tipo.equals("1")) {
+			if (busca.equals("")) {
+				setBusca("0");
+			} 
+				listaProposta = new ArrayList<Proposta>();
+				proposta = getPropostaDao().procurarPorId(
+						Integer.parseInt(busca.toString()));
+				listaProposta.add(proposta);
+			
 		}
-		if(tipo.equals("2"))
-		{
+		if (tipo.equals("2")) {
 			listaProposta = getPropostaDao().listarPorNome(busca.toString());
 		}
-		if(tipo.equals("3"))
-		{
+		if (tipo.equals("3")) {
 			equipe.setNome(busca.toString());
 			listaProposta = getPropostaDao().listarPorEquipe(equipe.getNome());
 		}
-		
-	
+
 	}
 
 	public String salvar() {
@@ -132,19 +124,18 @@ public class PropostaBean {
 		return prepararBean();
 	}
 
-	
 	public String excluir() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		getPropostaDao().remover(proposta);
 		return prepararBean();
 	}
-	
-	public String listaPorProfessor(){		
-		Usuario usuario = applicationSecurityManager.getUsuario();		
+
+	public String listaPorProfessor() {
+		Usuario usuario = applicationSecurityManager.getUsuario();
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
-		
+
 		return "listarPropostas";
-		
+
 	}
 
 	/*
@@ -198,11 +189,9 @@ public class PropostaBean {
 		this.status = status;
 	}
 
-
 	public FacadeEquipe getEquipeDao() {
 		return equipeDao;
 	}
-
 
 	public void setEquipeDao(FacadeEquipe equipeDao) {
 		this.equipeDao = equipeDao;
@@ -220,11 +209,9 @@ public class PropostaBean {
 		return listaPorProfessor;
 	}
 
-	public void setListaPorProfessor(
-			List<Proposta> listaPorProfessor) {
+	public void setListaPorProfessor(List<Proposta> listaPorProfessor) {
 		this.listaPorProfessor = listaPorProfessor;
 	}
-
 
 	/**
 	 * @return the tipo
@@ -233,14 +220,13 @@ public class PropostaBean {
 		return tipo;
 	}
 
-
 	/**
-	 * @param tipo the tipo to set
+	 * @param tipo
+	 *            the tipo to set
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
 
 	/**
 	 * @return the busca
@@ -249,14 +235,13 @@ public class PropostaBean {
 		return busca;
 	}
 
-
 	/**
-	 * @param busca the busca to set
+	 * @param busca
+	 *            the busca to set
 	 */
 	public void setBusca(String busca) {
 		this.busca = busca;
 	}
-
 
 	/**
 	 * @return the viewDes
@@ -265,14 +250,13 @@ public class PropostaBean {
 		return viewDes;
 	}
 
-
 	/**
-	 * @param viewDes the viewDes to set
+	 * @param viewDes
+	 *            the viewDes to set
 	 */
 	public void setViewDes(boolean viewDes) {
 		this.viewDes = viewDes;
 	}
-
 
 	/**
 	 * @return the viewint
@@ -281,13 +265,12 @@ public class PropostaBean {
 		return viewint;
 	}
 
-
 	/**
-	 * @param viewint the viewint to set
+	 * @param viewint
+	 *            the viewint to set
 	 */
 	public void setViewint(boolean viewint) {
 		this.viewint = viewint;
 	}
-
 
 }

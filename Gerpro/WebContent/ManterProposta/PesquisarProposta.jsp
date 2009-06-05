@@ -21,21 +21,22 @@
 		<h:messages tooltip="true" layout="list"  showDetail="true" showSummary="true" rendered="true"/>
 		<br>
 		<rich:simpleTogglePanel label="Pesquisa">
-			<h:panelGrid columns="3">
+			<h:panelGrid columns="3" id="pg">
 				<h:selectOneMenu value="#{propostaBean.tipo}" >
 					<f:selectItems value="#{propostaBean.itensPesqCombo}" />
 					<a4j:support event="onchange" ajaxSingle="true"
 						action="#{propostaBean.alterarComponente}"
-						reRender="txtdesc,txtdescint"/>
+						reRender="pg"/>
 				</h:selectOneMenu>
 				<h:outputText value="Descrição:" />
 					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
 				</h:inputText>
 				
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
-					<f:converter />
+					<f:convertNumber  integerOnly="true" type="number"/>
 				</rich:inputNumberSpinner>
 					<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
+			
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
 		
