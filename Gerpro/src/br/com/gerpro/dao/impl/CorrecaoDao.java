@@ -9,7 +9,6 @@ import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
@@ -97,9 +96,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(correcao);
 			tx.commit();
-			JOptionPane.showMessageDialog(null,
-					"Alteração Realizada com sucesso",
-					"GerPro - Alteração Realizada com Sucesso", 2);
+			System.out.println("Altera��o realizada com sucesso");
 		} catch (HibernateException e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Erro",

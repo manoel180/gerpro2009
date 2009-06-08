@@ -3,7 +3,6 @@
  */
 package br.com.gerpro.processing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,7 +30,6 @@ public class ProcessoAlocarProposta {
 	private int qtdePropostasPorProfessor;
 	private boolean correcaoEmGrupo;
 	private Correcao correcao = new Correcao();
-	private List<Correcao> listaCorrecao = new ArrayList<Correcao>();
 	private FacadeStatus statusDao = new StatusDao();
 
 	/***************************************************************************
@@ -43,10 +41,11 @@ public class ProcessoAlocarProposta {
 	 * @param emGrupo
 	 */
 
-	public void alocaProposta(List professoresSelecionados, boolean emGrupo) {
+	@SuppressWarnings("unchecked")
+	public void alocaProposta(List professoresSelecionados, boolean correcaoEmGrupo) {
+		setCorrecaoEmGrupo(correcaoEmGrupo);
 
-		List<Proposta> listaPropostasConcluidas = propostaDao
-				.listarPropostasConcluidas();
+		List<Proposta> listaPropostasConcluidas = propostaDao.listarPropostasConcluidas();
 
 		// Verifica se existe proposta na lista
 		if (listaPropostasConcluidas.isEmpty()) {
@@ -54,7 +53,7 @@ public class ProcessoAlocarProposta {
 			return;
 
 		} else {// Existe proposta na lista
-			if (professoresSelecionados.size() == 1) { // Existe apenas um
+			if (professoresSelecionados.size() == 1) { // Existe apenas um				
 				// professor selecionado
 				// para correcao
 
@@ -71,87 +70,90 @@ public class ProcessoAlocarProposta {
 				}
 			} else {// Exite mais de um professor para a correcao
 
-				if (isCorrecaoEmGrupo()) { // Caso a correcao seja em grupo
-					if (professoresSelecionados.size() == 2) {// Existe 2
-						// professores
-						// selecionados
-						// para a
-						// correcao
-						Usuario professor1 = (Usuario) professoresSelecionados
-								.get(0);
-						Usuario professor2 = (Usuario) professoresSelecionados
-								.get(1);
-						// Aloca as proposta dinamicamente para os dois
-						// professores
-						for (Proposta proposta : listaPropostasConcluidas) {
-							geraCorrecao(professor1, proposta);
-							geraCorrecao(professor2, proposta);
+				if (isCorrecaoEmGrupo()) { // Caso a correcao seja em grupo					
 
-							// Atualiza o status da proposta para "Em correcao"
-							proposta.setStatus(statusDao.procurarPorId(2));
-							propostaDao.salvar(proposta);
-						}
+					Usuario professor1 = (Usuario) professoresSelecionados
+							.get(0);
+					Usuario professor2 = (Usuario) professoresSelecionados
+							.get(1);
+					// Aloca as proposta dinamicamente para os dois
+					// professores
+					for (Proposta proposta : listaPropostasConcluidas) {
+						geraCorrecao(professor1, proposta);
+						geraCorrecao(professor2, proposta);
+
+						// Atualiza o status da proposta para "Em correcao"
+						proposta.setStatus(statusDao.procurarPorId(2));
+						propostaDao.salvar(proposta);
 					}
-				} else { // Caso a correcao não seja em grupo
-					if (professoresSelecionados.size() == 2) {// Existe 2
+
+				} else { // Caso a correcao seja individual,a quantidade de propostas é dividas pelo numero de professores
+					if (listaPropostasConcluidas.size() % 2 == 0) { // Caso
+						// a
+						// qtde de
+						// propostas
+						// seja PAR
+
+						// Loop para alocar dinamicamente propostas entre os
 						// professores
-						// selecionados
-						// para a
-						// correcao
-						if (listaPropostasConcluidas.size() % 2 == 0) { // Caso
-							// a
-							// qtde de
+						int index = 0;
+						for (int i = 0; i < listaPropostasConcluidas.size(); i++) {
+							geraCorrecao((Usuario) professoresSelecionados.get(index)
+									, listaPropostasConcluidas.get(i));
+							System.out.println("");
+
+							// Atualiza o status da proposta para "Em
+							// correcao"
+							listaPropostasConcluidas.get(i).setStatus(
+									statusDao.procurarPorId(2));
+							propostaDao.salvar(listaPropostasConcluidas.get(i));
+							if (index == 0) {
+								index++;
+							} else
+								index--;
+
+						}
+
+					} else { // Caso a qtde de propostas seja ÍMPAR
+						// Retira a primeira proposta da lista						
+						if (listaPropostasConcluidas.size() == 1) {// Caso o
+							// numero de
 							// propostas
-							// seja PAR
+							// concluiidas
+							// seja
+							// igual a 1
+							for (int i = 0; i < professoresSelecionados.size(); i++) {
 
-							// Calcula a quantidade de propostas a serem
-							// corrigidas
-							// por professor
-							double temp = listaPropostasConcluidas.size()
-									/ professoresSelecionados.size();
-							double numPropostaPorProfessor = Math.floor(temp);
-
-							// Loop para alocar dinamicamente propostas entre os
-							// professores
-							int index = 0;
-							for (int i = 0; i < listaPropostasConcluidas.size(); i++) {
 								geraCorrecao((Usuario) professoresSelecionados
-										.get(index), listaPropostasConcluidas
-										.get(i));
-
-								// Atualiza o status da proposta para "Em
-								// correcao"
-								listaPropostasConcluidas.get(i).setStatus(
-										statusDao.procurarPorId(2));
-								propostaDao.salvar(listaPropostasConcluidas
-										.get(i));
-								if (index == 0) {
-									index++;
-								} else
-									index--;
+										.get(i), listaPropostasConcluidas
+										.get(0));
 
 							}
 
-						} else { // Caso a qtde de propostas seja ÍMPAR
-							// Retira a primeira proposta da lista
+							// Atualiza o status da proposta para "Em
+							// correcao"
+							listaPropostasConcluidas.get(0).setStatus(
+									statusDao.procurarPorId(2));
+							propostaDao.salvar(listaPropostasConcluidas.get(0));
+
+						} else {
 							Proposta proposta = listaPropostasConcluidas.get(0);
 							listaPropostasConcluidas.remove(0);
 
 							// Loop para alocar dinamicamente propostas entre os
 							// professores
+
 							int index = 0;
-							for (int i = 1; i < listaPropostasConcluidas.size(); i++) {
-								geraCorrecao((Usuario) professoresSelecionados
-										.get(index), listaPropostasConcluidas
-										.get(i));
+							for (int i = 0; i < listaPropostasConcluidas.size(); i++) {
+								geraCorrecao((Usuario) professoresSelecionados.get(index)
+										, listaPropostasConcluidas.get(i));
+								System.out.println("");
 
 								// Atualiza o status da proposta para "Em
 								// correcao"
 								listaPropostasConcluidas.get(i).setStatus(
 										statusDao.procurarPorId(2));
-								propostaDao.salvar(listaPropostasConcluidas
-										.get(i));
-
+								propostaDao.salvar(listaPropostasConcluidas.get(i));
 								if (index == 0) {
 									index++;
 								} else
@@ -168,12 +170,11 @@ public class ProcessoAlocarProposta {
 							// Atualiza o status da proposta para "Em correcao"
 							proposta.setStatus(statusDao.procurarPorId(2));
 							propostaDao.salvar(proposta);
+
 						}
 					}
 				}
-
 			}
-
 		}
 	}
 
@@ -192,7 +193,7 @@ public class ProcessoAlocarProposta {
 			correcaoId.setIdProposta(proposta.getId());
 			correcaoId.setMatriculaProfessor(professor.getMatricula());
 
-			// Switch para preencher informações sobre a pergunta
+			// Switch para preencher informações sobre o item
 			switch (idPergunta) {
 			case 1:
 				correcaoId.setIdItem(6);

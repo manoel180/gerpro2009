@@ -20,7 +20,9 @@ public class PropostaDao implements FacadeProposta {
 	private static Session session = null;
 	private static Transaction tx = null;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#salvar(br.com.gerpro.model.Proposta)
 	 */
 	@Override
@@ -32,9 +34,7 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(proposta);
 			tx.commit();
-			JOptionPane.showMessageDialog(null,
-					"Altera√ß√£o Realizada com sucesso",
-					"GerPro - Altera√ß√£o Realizada com Sucesso", 2);
+			System.out.println("AlteraÁ„o realizada com sucesso");
 		} catch (HibernateException e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Erro",
@@ -51,17 +51,20 @@ public class PropostaDao implements FacadeProposta {
 					"GerPro - Ocorreu um erro" + e, 1);
 			e.printStackTrace();
 		} finally {
+
 			session.close();
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listar()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proposta> listar() {
-		session = HibernateUtil.getSession();
-		tx = session.beginTransaction();
+
 		List<Proposta> result = null;
 
 		Session session = HibernateUtil.getSession();
@@ -71,11 +74,12 @@ public class PropostaDao implements FacadeProposta {
 		result = q.list();
 
 		session.close();
-
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPorProfessor(br.com.gerpro.model.Usuario)
 	 */
 	@SuppressWarnings("unchecked")
@@ -98,7 +102,9 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPorNome(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
@@ -124,21 +130,26 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proposta> listarPorEquipe(String nomeEquipe) {
-	List<Proposta> result = null;
+		List<Proposta> result = null;
 
 		Session session = HibernateUtil.getSession();
 
 		// Funcionando mas duplicando linhas
-		result = session.createQuery("from Proposta as proposta" + " where proposta.equipe.nome " +
-				"like '"+ nomeEquipe +"%'" ).list();
-		//q.setParameter("parametro", nomeEquipe + "%");
+		result = session.createQuery(
+				"from Proposta as proposta" + " where proposta.equipe.nome "
+						+ "like '" + nomeEquipe + "%'").list();
+		// q.setParameter("parametro", nomeEquipe + "%");
 
 		session.close();
 		return result;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
 	 */
 	@Override
@@ -154,7 +165,9 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorNome(java.lang.String)
 	 */
 	@Override
@@ -166,13 +179,15 @@ public class PropostaDao implements FacadeProposta {
 		Session session = HibernateUtil.getSession();
 		result = (Proposta) session.get(Proposta.class, Nome);
 		if (result == null) {
-			JOptionPane.showMessageDialog(null, "N√£o encontrado");
+			System.out.println("Proposta n„o encontrada");
 		}
 		session.close();
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#remover(br.com.gerpro.model.Proposta)
 	 */
 	@Override
@@ -185,7 +200,7 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.delete(proposta);
 			tx.commit();
-			JOptionPane.showMessageDialog(null, "Eliminado com sucesso");
+			System.out.println("Proposta excluida com sucesso");
 		} catch (HibernateException e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Erro" + e,
@@ -207,7 +222,9 @@ public class PropostaDao implements FacadeProposta {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPropostasConcluidas()
 	 */
 	@SuppressWarnings("unchecked")
