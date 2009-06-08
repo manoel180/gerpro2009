@@ -37,13 +37,14 @@
 				</h:selectOneMenu>
 				
 				<h:outputText value="Data Criação:" />	
+				<rich:toolTip for="dt_criacao" followMouse="true" zorder="90" value="Inserir uma data de Criação da Proposta"></rich:toolTip>
 				<rich:calendar id="dt_criacao" value="#{propostaBean.proposta.dataCriacao}" required="true">
 					<f:attribute name="fieldRef" value="Data Criação" />
 				</rich:calendar>
 	
 				<h:outputText value="Periodo:" />
 				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}">
-					<f:attribute name="fieldRef" value="P" />
+					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
 				
 			</h:panelGrid>

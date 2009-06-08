@@ -294,25 +294,7 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	// falta verificar
-	public String AlterarMissao() {
 
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(1);
-			status.setId(2);
-			PropItemId.setIdProposta(1);
-			propostaItem.setId(PropItemId);
-			propostaItem.setStatus(status);
-			getDaoPropItem().salvar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
 
 	public String prepararListaFuncao() {
 		proposta = getDaoProposta().procurarPorId(
