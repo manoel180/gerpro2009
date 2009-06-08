@@ -37,22 +37,7 @@
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		<rich:simpleTogglePanel label="Dados da Equipe">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-				<h:outputText value="Proposta:" />
-				<h:outputText value="#{construirPropostaBean.proposta.nome}" />
-				<h:outputText value="Equipe:" />
-				<h:outputText value="#{construirPropostaBean.proposta.equipe.nome}" />
-			</h:panelGrid>
-		</rich:simpleTogglePanel>
-		<h:panelGrid columns="1" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarJustificativa}"/>
-					<h:commandButton action="#{construirPropostaBean.prepararBean}"
-						value="Ir para o listar propostas" />
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
+		
+		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarJustificativa}" /><%@include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
 </f:view>

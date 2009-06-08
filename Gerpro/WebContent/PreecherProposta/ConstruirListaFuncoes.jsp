@@ -56,33 +56,35 @@
 		</h:panelGrid>
 
 		
-		<rich:panel>
+		
 		<rich:dataTable id="idtable" var="listafuncao" value="#{construirPropostaBean.lstlistaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
-				<h:column>
+				<rich:column sortBy="#{listafuncao.id.numeroSequencia}">
 					<f:facet name="header">
-						<h:outputText value="Ordem"></h:outputText>
+						<h:outputText value="Ordem" />
 					</f:facet>
-					<h:outputText value="#{listafuncao.id.numeroSequencia}"></h:outputText>
-				</h:column>
-				<h:column>
+					<h:outputText value="#{listafuncao.id.numeroSequencia}" />
+				</rich:column>
+				
+				<rich:column sortBy="#{listafuncao.uc}">
 					<f:facet name="header">
-						<h:outputText value="Caso de Uso"></h:outputText>
+						<h:outputText value="Caso de Uso" />
 					</f:facet>
-					<h:outputText value="#{listafuncao.uc}" style="color:red; font-weight:bold; font-"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Descrição"></h:outputText>
-					</f:facet>
-					<h:outputText value="#{listafuncao.descricao}" style="color:red; font-weight:bold; font-"></h:outputText>
-				</h:column>
+					<h:outputText value="#{listafuncao.uc}" />
+				</rich:column>
 
-				<h:column>
+				<rich:column sortBy="#{listafuncao.descricao}">
 					<f:facet name="header">
-						<h:outputText value="Tipo"></h:outputText>
+						<h:outputText value="Descrição" />
 					</f:facet>
-					<h:outputText value="#{listafuncao.tipoFuncao.nome}" style="color:red; font-weight:bold; font-"></h:outputText>
-				</h:column>
+					<h:outputText value="#{listafuncao.descricao}" />
+				</rich:column>
+
+				<rich:column sortBy="#{listafuncao.tipoFuncao.nome}">
+					<f:facet name="header">
+						<h:outputText value="Tipo" />
+					</f:facet>
+					<h:outputText value="#{listafuncao.tipoFuncao.nome}" />
+				</rich:column>
 
 				<h:column>
 					<f:facet name="header">
@@ -95,16 +97,8 @@
 			<rich:datascroller  align="center" for="idtable" maxPages="10"  fastControls="show"  />
         <rich:spacer height="30" />
         
-        </rich:panel>
 			<br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
-		<h:panelGrid columns="1" width="90%" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton action="#{propostaBean.prepararBean}"
-						value="Ir para o listar propostas" />
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
+		<br><%@include file="../common/bannerPropostaEquipe.jsp"%>
 
 	</h:form>
 
