@@ -11,8 +11,13 @@
 <link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
 <f:view>
+<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
 	
-	<h:form id="form1">
+	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
+	<rich:toolTip for="txtdescint" followMouse="true" zorder="90" value="Informe o código da proposta"/>
+	
+	
+<h:form id="form1">	
 		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
 			styleClass="titulo" /></div>
 		   <div align="center"> 
@@ -22,21 +27,22 @@
 		<br>
 		<rich:simpleTogglePanel label="Pesquisa">
 			<h:panelGrid columns="3" id="pg">
-				<h:selectOneMenu value="#{propostaBean.tipo}" >
+
+				<h:selectOneMenu id="tipobusca" value="#{propostaBean.tipo}" >
 					<f:selectItems value="#{propostaBean.itensPesqCombo}" />
 					<a4j:support event="onchange" ajaxSingle="true"
 						action="#{propostaBean.alterarComponente}"
 						reRender="pg"/>
 				</h:selectOneMenu>
+					
 				<h:outputText value="Descrição:" />
 					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
 				</h:inputText>
-				
+					
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
 					<f:convertNumber  integerOnly="true" type="number"/>
 				</rich:inputNumberSpinner>
 					<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
-			
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
 		
@@ -79,10 +85,15 @@
 				<f:facet name="header">
 					<h:outputText value="Opções" />
 				</f:facet>
-				<h:commandButton image="/images/delete.png" alt="Excluir Proposta"
+				
+				<rich:toolTip for="btnexcluir" followMouse="true" zorder="90" value="Remove uma proposta"/>
+				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>
+				<h:commandButton image="/images/delete.png" id="btnexcluir"
 					action="#{propostaBean.excluir}" style="height: 40px; width: 40px" />
+				
+			
 				<h:commandButton image="/images/editar.png"
-					action="#{propostaBean.preperarEdicao}" alt="Editar Proposta"
+					action="#{propostaBean.preperarEdicao}" id="btnalterar" 
 					style="height: 40px; width: 40px" />
 				<h:commandButton value="Construir Proposta"
 					action="#{propostaBean.irConstruirProposta}" alt="Construir Proposta"
