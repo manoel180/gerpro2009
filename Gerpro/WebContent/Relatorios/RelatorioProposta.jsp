@@ -25,11 +25,8 @@
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<rich:panel focus="txtdesc1" label="Dados do cadastro" >
-				<h:outputText value="Equipe:" />
-				<h:inputText id="txtdesc1" required="true"
-					value="#{}">
-					<f:attribute name="fieldRef" value="Proposta" />
-				</h:inputText>
+				
+				
 						
 			</rich:panel>
 			<h:panelGrid columns="2" cellpadding="5" id="id1">

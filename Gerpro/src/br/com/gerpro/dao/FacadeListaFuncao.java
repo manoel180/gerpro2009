@@ -11,7 +11,7 @@ import br.com.gerpro.model.ListaFuncao;
 public interface FacadeListaFuncao {
 	public void salvar (ListaFuncao listafuncao);
 	
-	public ListaFuncao procurarPorId(int idlistafuncao);
+	public List<ListaFuncao> procurarPorId(int idProposta, int idItem);
 	
 	public void remover (ListaFuncao listafuncao);
 	

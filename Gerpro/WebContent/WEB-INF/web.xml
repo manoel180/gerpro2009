@@ -7,7 +7,7 @@
 	<!-- Configuração do RichFaces -->
 	<context-param>
 		<param-name>org.richfaces.SKIN</param-name>
-		<param-value>blueSky</param-value>
+		<param-value>glassX</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>

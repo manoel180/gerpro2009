@@ -76,14 +76,18 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 	   
 
 	@Override
-	public  ListaFuncao procurarPorId(int id) {
+	public List<ListaFuncao> procurarPorId(int idProposta, int idItem) {
 		// TODO Auto-generated method stub
-
-		ListaFuncao result = null;
-
+		List<ListaFuncao> result = null;
+		
 		Session session = HibernateUtil.getSession();
-		result = (ListaFuncao) session.get(ListaFuncao.class, id);
-	
+		Query q = session.createQuery("from ListaFuncao where id_proposta = :idProposta and " +
+				"id_item = :idItem");
+		q.setParameter("idProposta", idProposta);
+		q.setParameter("idItem", idItem);
+		
+		result = q.list();
+		
 		session.close();
 		return result;
 	}

@@ -6,19 +6,36 @@ import java.util.List;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
+import br.com.gerpro.dao.FacadeArtefatos;
 import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeStatus;
+import br.com.gerpro.dao.FacadeTipoFuncao;
+import br.com.gerpro.dao.impl.ArtefatosDao;
 import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
+import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
+import br.com.gerpro.dao.impl.TipoFuncaoDao;
+import br.com.gerpro.model.Artefatos;
+import br.com.gerpro.model.Cronograma;
+import br.com.gerpro.model.CronogramaId;
 import br.com.gerpro.model.Equipe;
+import br.com.gerpro.model.ListaFuncao;
+import br.com.gerpro.model.ListaFuncaoId;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.PropostaItem;
+import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Status;
+import br.com.gerpro.model.TipoFuncao;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
 public class PropostaBean {
+
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
 	private List<Proposta> listaPorProfessor;
@@ -34,6 +51,15 @@ public class PropostaBean {
 	private boolean viewDes = false;
 	private boolean viewint = true;
 
+	//Variaveis proposta item
+	private PropostaItemId PropItemId = new PropostaItemId();
+	private PropostaItem propostaItem = new PropostaItem();
+	
+	private FacadeProposta daoProposta = new PropostaDao();
+	private FacadePropostaItem daoPropItem = new PropostaItemDao();
+	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
+	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
+	
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
 		List<Equipe> le = getEquipeDao().listar();
@@ -54,7 +80,7 @@ public class PropostaBean {
 	}
 
 	public String prepararBean() {
-		tipo = "1";
+		tipo = "2";
 		busca = null;
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
@@ -76,6 +102,15 @@ public class PropostaBean {
 		return "alterar";
 	}
 
+	public String irConstruirProposta(){
+		proposta = (Proposta) objDatatableProposta.getRowData();
+		ApplicationSecurityManager.PROPOSTA = proposta.getId().toString();
+		
+		return new ConstruirPropostaBean().prepararBean();
+		
+	}
+	
+	
 	public void alterarComponente() {
 		if (tipo.equals("1")) {
 			viewDes = false;
@@ -91,7 +126,7 @@ public class PropostaBean {
 	}
 
 	public void pesquisar() {
-		alterarComponente();
+	
 		if (tipo.equals("1")) {
 			if (busca.equals("")) {
 				setBusca("0");
@@ -117,7 +152,22 @@ public class PropostaBean {
 			status.setId(1);
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
-			getPropostaDao().salvar(proposta);
+			
+			
+			if(proposta.getId()==null){
+				getPropostaDao().salvar(proposta);
+			//Adiciona os Itens a proposta criada
+				for(int i=1;i<=6;i++){
+					PropItemId.setIdItem(i);
+					PropItemId.setIdProposta(proposta.getId());
+					status.setId(1);
+					propostaItem.setStatus(status);
+					propostaItem.setId(PropItemId);
+					getDaoPropItem().salvar(propostaItem);
+				}
+			}else{
+				getPropostaDao().salvar(proposta);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -271,6 +321,62 @@ public class PropostaBean {
 	 */
 	public void setViewint(boolean viewint) {
 		this.viewint = viewint;
+	}
+
+	/**
+	 * @return the daoProposta
+	 */
+	public FacadeProposta getDaoProposta() {
+		return daoProposta;
+	}
+
+	/**
+	 * @param daoProposta the daoProposta to set
+	 */
+	public void setDaoProposta(FacadeProposta daoProposta) {
+		this.daoProposta = daoProposta;
+	}
+
+	/**
+	 * @return the daoPropItem
+	 */
+	public FacadePropostaItem getDaoPropItem() {
+		return daoPropItem;
+	}
+
+	/**
+	 * @param daoPropItem the daoPropItem to set
+	 */
+	public void setDaoPropItem(FacadePropostaItem daoPropItem) {
+		this.daoPropItem = daoPropItem;
+	}
+
+	/**
+	 * @return the daoTipoFuncao
+	 */
+	public FacadeTipoFuncao getDaoTipoFuncao() {
+		return daoTipoFuncao;
+	}
+
+	/**
+	 * @param daoTipoFuncao the daoTipoFuncao to set
+	 */
+	public void setDaoTipoFuncao(FacadeTipoFuncao daoTipoFuncao) {
+		this.daoTipoFuncao = daoTipoFuncao;
+	}
+
+	/**
+	 * @return the daoListaFuncao
+	 */
+	public FacadeListaFuncao getDaoListaFuncao() {
+		return daoListaFuncao;
+	}
+
+	/**
+	 * @param daoListaFuncao the daoListaFuncao to set
+	 */
+	public void setDaoListaFuncao(FacadeListaFuncao daoListaFuncao) {
+		this.daoListaFuncao = daoListaFuncao;
 	}
 
 }

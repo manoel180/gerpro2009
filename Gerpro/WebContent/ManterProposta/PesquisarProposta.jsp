@@ -52,23 +52,23 @@
 	</h:form>
 	<h:form id="form2">
 
-		<rich:dataTable var="prop" id="listapropostas" rendered="true"
-			value="#{propostaBean.listaProposta}"
+		<rich:dataTable var="prop" id="listapropostas" frame="box"  rendered="true"
+			 value="#{propostaBean.listaProposta}" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
 			width="550px" align="center">
-			<rich:column sortBy="#{prop.id}">
+			<rich:column width="5%" sortBy="#{prop.id}">
 				<f:facet name="header">
 					<h:outputText value="Cod" />
 				</f:facet>
 				<h:outputText value="#{prop.id}" />
 			</rich:column>
-			<rich:column sortBy="#{prop.nome}">
+			<rich:column width="60%" sortBy="#{prop.nome}">
 				<f:facet name="header">
 					<h:outputText value="Proposta" />
 				</f:facet>
 				<h:outputText value="#{prop.nome}" />
 			</rich:column>
-			<rich:column sortBy="#{prop.equipe.nome}">
+			<rich:column width="15%" sortBy="#{prop.equipe.nome}">
 				<f:facet name="header">
 					<h:outputText value="Equipe" />
 				</f:facet>
@@ -84,6 +84,9 @@
 				<h:commandButton image="/images/editar.png"
 					action="#{propostaBean.preperarEdicao}" alt="Editar Proposta"
 					style="height: 40px; width: 40px" />
+				<h:commandButton value="Construir Proposta"
+					action="#{propostaBean.irConstruirProposta}" alt="Construir Proposta"
+					 />
 			</h:column>
 		</rich:dataTable>
 		<rich:datascroller align="center" for="listapropostas" maxPages="5"

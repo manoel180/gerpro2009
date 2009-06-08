@@ -10,6 +10,8 @@ import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.model.PropostaItem;
+
+import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.util.HibernateUtil;
 
 
@@ -90,6 +92,20 @@ public class PropostaItemDao implements FacadePropostaItem{
 		session.close();
 		return result;
 	}
+	@Override
+	public  PropostaItem procurarPorProposta(PropostaItemId id) {
+
+		PropostaItem result = null;
+		Session session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		
+		
+		result = (PropostaItem) session.get(PropostaItem.class, id);
+	
+		session.close();
+		return result;
+	}
+	
 
 	@Override
 	public PropostaItem procurarPorNome(String Nome) {
