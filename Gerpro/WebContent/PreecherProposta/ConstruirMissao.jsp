@@ -31,8 +31,8 @@
 			<rich:simpleTogglePanel label="Dados do Proposta">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					<h:outputText value="Missão:" />
-					<h:inputTextarea cols="100" rows="10" tabindex="20"
-						style="width: 759px"
+					<rich:editor height="300" width="700"  
+						style="width: 769px"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>

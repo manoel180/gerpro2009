@@ -14,8 +14,6 @@
 
 
 <f:view>
-	<h:form>
-
 		<div align="center"><h:outputLabel value="CRONOGRAMA"
 			styleClass="Titulos" /></div>
 
@@ -28,17 +26,24 @@
 		<%@ include file="../templates/menu.jsp" %>			
 
 			<rich:simpleTogglePanel label="Dados do cadastro">
+			<h:form id="form1">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					
+					<rich:toolTip for="dt_Inicio" followMouse="true" zorder="90" value="Inserir uma data de Inicio"></rich:toolTip>
 					<h:outputText value="Data Inicial" />
 					<rich:calendar  id="dt_Inicio" value="#{construirPropostaBean.cronograma.dataInicial}" 
 					direction="auto" firstWeekDay="1" popup="true" showWeekDaysBar="true" showWeeksBar="false"
 					 todayControlMode="scroll" datePattern="dd/M/yyyy"  showHeader="true" limitToList="true" 
-					 locale="pt" minDaysInFirstWeek="6" />
+					 locale="pt" minDaysInFirstWeek="6" required="true">
+					  <f:attribute name="fieldRef" value="Data Inicial" /> 
+					</rich:calendar>
 					
-					
+					<rich:toolTip for="dt_Fim" followMouse="true" zorder="90" value="Inserir uma data final"></rich:toolTip>
 					<h:outputText value="Data Final:" />
-					<rich:calendar id="dt_Fim" value="#{construirPropostaBean.cronograma.dataFinal}"/>
+					<rich:calendar id="dt_Fim" value="#{construirPropostaBean.cronograma.dataFinal}"
+					direction="auto" firstWeekDay="1" popup="true" showWeekDaysBar="true" showWeeksBar="false"
+					 todayControlMode="scroll" datePattern="dd/M/yyyy"  showHeader="true" limitToList="true" 
+					 locale="pt" minDaysInFirstWeek="6" />
 						
 					<h:outputText value="Artefato:" />
 					<h:selectOneMenu value="#{construirPropostaBean.artefatos.id}" >					
@@ -48,22 +53,28 @@
 					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addCronograma}"/>
 					
 				</h:panelGrid>
+				</h:form>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
+		<h:form id="form2">
 		<rich:dataTable id="idtable" var="lstCronograma" value="#{construirPropostaBean.lstCronograma}" binding="#{construirPropostaBean.objDatatableCronograma}" rows="10" width="550px" align="center">
 				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Data Inicial"></h:outputText>
 					</f:facet>
-					<h:outputText value="#{lstCronograma.dataInicial}" style="color:red; font-weight:bold; font-"></h:outputText>
-				</h:column>
+					<h:outputText value="#{lstCronograma.dataInicial}" style="color:red; font-weight:bold; font-">
+						<f:convertDateTime locale="pt" timeZone="pt"/>
+					</h:outputText>
+			</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Data Final"></h:outputText>
 					</f:facet>
-					<h:outputText value="#{lstCronograma.dataFinal}" style="color:red; font-weight:bold; font-"></h:outputText>
+					<h:outputText value="#{lstCronograma.dataFinal}" style="color:red; font-weight:bold; font-">
+						<f:convertDateTime locale="pt" timeZone="pt"/>
+					</h:outputText>
 				</h:column>
 
 				<h:column>
@@ -77,11 +88,12 @@
 					<f:facet name="header">
 						<h:outputText value="Opções"></h:outputText>
 					</f:facet>
-					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delCronograma}" style="height: 40px; width: 40px"></h:commandButton>
 					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editCronograma}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
 			</rich:dataTable>
+			</h:form >
 			<br><br>
+			<h:form>
 			<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarCronograma}" />
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
@@ -91,7 +103,5 @@
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:panelGrid>
-
-	</h:form>
-
+</h:form>
 </f:view>
