@@ -16,8 +16,8 @@
 <f:view>
 	<h:form>
 
-		<div align="center"><h:outputLabel value="JUSTIFICATIVA PROPOSTA"
-			styleClass="Titulos" /></div>
+		<div align="center"><h:outputLabel
+			value="JUSTIFICATIVA PROPOSTA" styleClass="Titulos" /></div>
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
@@ -30,14 +30,19 @@
 			<rich:simpleTogglePanel label="Dados do Proposta">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					<h:outputText value="Justificativa:" />
-					<rich:editor height="300" width="700"  
+					<rich:toolTip for="idjust" followMouse="true" zorder="90"
+						value="Inserir justificativa a proposta" />
+					<rich:editor id="idjust" height="300" width="700"
 						style="width: 769px"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-
-		
-		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarJustificativa}" /><%@include file="../common/bannerPropostaEquipe.jsp"%>
+	<rich:toolTip for="btnSalvar" followMouse="true" zorder="90"
+						value="Salvar Justificativa"/>
+		<h:commandButton id="btnSalvar" value="Salvar"
+			action="#{construirPropostaBean.SalvarJustificativa}" />
+			<br>
+			<%@include	file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
 </f:view>

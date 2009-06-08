@@ -77,14 +77,18 @@
 				<f:facet name="header">
 					<h:outputText value="Data Inicial" />
 				</f:facet>
-				<h:outputText value="#{lstCronograma.dataInicial}" />
+				<h:outputText value="#{lstCronograma.dataInicial}" >
+				<f:convertDateTime dateStyle="short" type="date" pattern="dd/MM/yyyy"/>
+				</h:outputText>
 			</rich:column>
 
 			<rich:column sortBy="#{lstCronograma.dataFinal}">
 				<f:facet name="header">
 					<h:outputText value="Data Final" />
 				</f:facet>
-				<h:outputText value="#{lstCronograma.dataFinal}" />
+				<h:outputText value="#{lstCronograma.dataFinal}" >
+					<f:convertDateTime dateStyle="short" type="date" pattern="dd/MM/yyyy"/>
+				</h:outputText>
 			</rich:column>
 
 			<rich:column width="5%" sortBy="#{lstCronograma.artefatos.nome}">
