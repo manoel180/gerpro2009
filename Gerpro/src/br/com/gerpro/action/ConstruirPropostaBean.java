@@ -102,7 +102,7 @@ public class ConstruirPropostaBean {
 				tipofuncao.setNome("Relatório");
 			}
 			listafuncaoid.setIdItem(2);
-			listafuncaoid.setIdProposta(1);
+			listafuncaoid.setIdProposta(proposta.getId());
 
 			listaFuncao.setId(listafuncaoid);
 			listaFuncao.setTipoFuncao(tipofuncao);
@@ -122,7 +122,7 @@ public class ConstruirPropostaBean {
 				tipofuncao.setNome("Relatório");
 			}
 			listafuncaoid.setIdItem(2);
-			listafuncaoid.setIdProposta(1);
+			listafuncaoid.setIdProposta(proposta.getId());
 
 			listaFuncao.setId(listafuncaoid);
 			listaFuncao.setTipoFuncao(tipofuncao);
@@ -185,7 +185,7 @@ public class ConstruirPropostaBean {
 			} else {
 				//Adiciona um cronograma a lista
 				cronogramaId.setIdItem(5);
-				cronogramaId.setIdProposta(1);
+				cronogramaId.setIdProposta(proposta.getId());
 
 				cronograma.setId(cronogramaId);
 
@@ -221,7 +221,7 @@ public class ConstruirPropostaBean {
 						"Data Inicial maior que a data final");
 			} else {
 				cronogramaId.setIdItem(5);
-				cronogramaId.setIdProposta(1);
+				cronogramaId.setIdProposta(proposta.getId());
 
 				cronograma.setId(cronogramaId);
 

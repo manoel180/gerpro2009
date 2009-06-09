@@ -47,10 +47,11 @@ public class ListaResultados {
 		 return listavalores;
 	 }
 	 
+	 //Verificar a lista de aprovados
 	private float preecherListaAprovados(){
 		propostaDao = new PropostaDao();
 		 count = 0;
-		 List<Proposta> lp = propostaDao.listar();
+		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
 		 int tmp = lp.size();
 		total =0;
 			for( Proposta p : lp ){
@@ -64,11 +65,12 @@ public class ListaResultados {
 			return total;
 	 }
 	 
+	//Verificar as propostas reprovadas no periodo
 	 private float preecherListaReprovados(){
 		 propostaDao = new PropostaDao();
 		 count = 0;
 		 total = 0 ;
-		 List<Proposta> lp = propostaDao.listar();
+		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==5){
@@ -79,12 +81,13 @@ public class ListaResultados {
 			total = (count/tmp)*100;			
 			return total;
 	 }
-	 
+	
+	//Verificar as propostas reprovadas com ressalva no periodo
 	private float preecherListaAprovadosRessalva(){
 		propostaDao = new PropostaDao(); 
 		count = 0;
 		 total = 0;
-		 List<Proposta> lp = propostaDao.listar();
+		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==4){

@@ -35,4 +35,10 @@ public interface FacadeProposta {
 
 	public abstract List<Proposta> listarPorEquipe(String nomeEquipe);
 
+	/**
+	 * @param periodo
+	 * @return List<Proposta>
+	 */
+	public List<Proposta> listarPorPeriodo(String periodo);
+
 }

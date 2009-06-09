@@ -34,7 +34,7 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(proposta);
 			tx.commit();
-			System.out.println("Alteração realizada com sucesso");
+			System.out.println("Alteraï¿½ï¿½o realizada com sucesso");
 		} catch (HibernateException e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Erro",
@@ -165,6 +165,29 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
+	 /* 
+	  * (non-Javadoc)
+	  * 
+	  *  @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
+	  */
+	@Override
+	public List<Proposta> listarPorPeriodo(String periodo) {
+		// TODO Auto-generated method stub
+
+		List<Proposta> result = null;
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		
+		result = session.createQuery(
+				"from Proposta as proposta where proposta.status.id = 3 or proposta.status.id = 4 or proposta.status.id = 5"
+						+ " and proposta.periodo = '"+periodo
+						+ "' Group by proposta.id").list();
+		tx.commit();
+		session.close();
+	
+		return result;
+	}
+	 
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -179,7 +202,7 @@ public class PropostaDao implements FacadeProposta {
 		Session session = HibernateUtil.getSession();
 		result = (Proposta) session.get(Proposta.class, Nome);
 		if (result == null) {
-			System.out.println("Proposta não encontrada");
+			System.out.println("Proposta nï¿½o encontrada");
 		}
 		session.close();
 		return result;
