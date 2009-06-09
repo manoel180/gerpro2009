@@ -23,7 +23,7 @@
 	<br>
 
 	<h:panelGrid columns="5">
-		<%@ include file="../templates/menu.jsp"%>
+		<%@ include file="menu.jsp"%>
 		<rich:simpleTogglePanel width="600px" label="Dados do cadastro">
 			<h:form id="form1">
 				<h:panelGrid columns="1">

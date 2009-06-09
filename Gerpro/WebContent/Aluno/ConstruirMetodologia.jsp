@@ -26,7 +26,7 @@
 
 		<h:panelGrid columns="3">
 			
-			<%@ include file="../templates/menu.jsp"%>
+			<%@ include file="menu.jsp"%>
 						
 			<rich:simpleTogglePanel label="Dados do Proposta">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
