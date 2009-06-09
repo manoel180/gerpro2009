@@ -69,14 +69,11 @@ public class CorrecaoDao implements FacadeCorrecao {
 				
 				listaCorrecao = session.createCriteria(Correcao.class)
 							.add(Example.create(correcao)).list();
-
-				tx.commit();				
+				tx.commit();
 			}
 			else
-				System.out.println("Erro na sessao");
-			
-			
-			JOptionPane.showMessageDialog(null, "****************************");
+				System.out.println("Erro na sessao");		
+		
 			return listaCorrecao;
 			
 		} catch (Exception e) {
@@ -118,14 +115,5 @@ public class CorrecaoDao implements FacadeCorrecao {
 		
 	}
 	
-	public void inserirConjuntoDeCorrecao(int idProposta, String matriculaProfessor){		
-		List<Proposta> result = null;
-		Session session = HibernateUtil.getSession();
-		session.getNamedQuery("inserirConjuntoDeCorrecoes")
-			.setInteger("id_proposta", idProposta)
-			.setString("matricula_professor", matriculaProfessor)
-			.executeUpdate();
-
-		session.close();		
-	}
+	
 }

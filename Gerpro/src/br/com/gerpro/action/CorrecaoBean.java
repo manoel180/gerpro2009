@@ -10,25 +10,29 @@ import javax.faces.component.UIData;
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Usuario;
+import br.com.gerpro.util.ApplicationSecurityManager;
 
 /**
  * @author M3R
- *
+ * 
  */
 public class CorrecaoBean {
-	
+
 	private UIData objDatatableCorrecao;// componente da tela - JSP
 	private List<Correcao> listaCorrecao;
-	private Correcao correcao = new	Correcao();
+	private Correcao correcao = new Correcao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
-	
+	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
+
 	public String prepararBean() {
 
 		correcao = new Correcao();
-		List <Correcao> listaCorrecoesBanco = correcaoDao.procurarPorIdProposta(1);
-		
-	
-		return null;//"go_manterEquipe";
+		List<Correcao> listaCorrecoesBanco = correcaoDao
+				.procurarPorIdProposta(1);
+
+		return null;// "go_manterEquipe";
 	}
 
 	public String preperarInclusao() {
@@ -39,7 +43,7 @@ public class CorrecaoBean {
 	public String preperarEdicao() {
 		correcao = (Correcao) objDatatableCorrecao.getRowData();
 		return "alterar";
-	}	
+	}
 
 	public String salvar() {
 		try {
@@ -50,16 +54,33 @@ public class CorrecaoBean {
 		return prepararBean();
 	}
 
-	
 	public String excluir() {
 		correcao = (Correcao) objDatatableCorrecao.getRowData();
 		getCorrecaoDao().remover(correcao);
 		return prepararBean();
 	}
-	
-	
-	private String comparar(){
+
+	public boolean propostaEmCorrecao() {
+
+		Usuario usuario = applicationSecurityManager.getUsuario();
+		//Proposta proposta = (Proposta) objDatatableProposta.getRowData();
+				
+		listaCorrecao = getCorrecaoDao().procurarPorCorrecao(correcao);
+		int contadorItensCorridos = 0;
+		for (Correcao correcao : listaCorrecao) {
+			if(correcao.getStatus().getId() == 7){
+				contadorItensCorridos++;
+			}			
+		}
 		
+		if(contadorItensCorridos == 8){
+			return true;
+		}
+		return false;
+	}
+
+	private String comparar() {
+
 		return null;
 	}
 

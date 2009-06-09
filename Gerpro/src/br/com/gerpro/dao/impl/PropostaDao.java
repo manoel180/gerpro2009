@@ -94,7 +94,8 @@ public class PropostaDao implements FacadeProposta {
 		result = session.createSQLQuery(
 				" select *" + " from proposta p"
 						+ " inner join correcao co on co.id_proposta = p.id"
-						+ " where co.matricula_professor like ? ").addEntity(
+						+ " where co.matricula_professor like ? "
+						+ " group by p.id ").addEntity(
 				Proposta.class).setParameter(0, professor.getMatricula())
 				.list();
 

@@ -37,9 +37,9 @@
     PATH="/Professor/CorrigirMissao.jsp"
     TARGET="rules:#Professor#CorrigirMissao.jsp" TITLE="corrigirMissao" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="listarPropostas::#Professor#ListarProposta.jsp" NAME="output6"
-    PATH="/Professor/ListarProposta.jsp" SHAPE="-1,64"
-    TARGET="rules:#Professor#ListarProposta.jsp" TITLE="listarPropostas" model-entity="JSFProcessItemOutput"/>
+    ID="listarPropostas::#Professor#listarProposta.jsp" NAME="output6"
+    PATH="/Professor/listarProposta.jsp" SHAPE="-1,64"
+    TARGET="rules:#Professor#listarProposta.jsp" TITLE="listarPropostas" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
     ID="go_SubmeterProposta::#Professor#SubmeterProposta.jsp"
     NAME="output7" PATH="/Professor/SubmeterProposta.jsp" SHAPE="-1,72"
@@ -202,6 +202,6 @@
   PATH="/Professor/CorrigirMetodologia.jsp" SHAPE="304,625,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Professor#CorrigirMissao.jsp"
   PATH="/Professor/CorrigirMissao.jsp" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#Professor#ListarProposta.jsp"
-  PATH="/Professor/ListarProposta.jsp" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#listarProposta.jsp"
+  PATH="/Professor/listarProposta.jsp" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

@@ -5,8 +5,6 @@ package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -41,6 +39,7 @@ public class UsuarioDao implements FacadeUsuario {
 	 * 
 	 * @see br.com.gerpro.dao.FacadeUsuario#listar()
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Usuario> listar() {
 	List<Usuario> result = null;
 		
@@ -105,28 +104,5 @@ public class UsuarioDao implements FacadeUsuario {
 	public void remover(Usuario usuario) {
 		// TODO Auto-generated method stub
 	}
-
-	public String logar(Usuario usuario) {
-		Usuario result = null;
-		String pagina = null;		
-
-		session = HibernateUtil.getSession();
-		
-		result = (Usuario) session.get(Usuario.class, usuario.getMatricula());
-		
-		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Usu�rio inv�lido");
-		}
-
-		if (result.getSenha().equals(usuario.getSenha())) {
-			pagina = result.getTipoUsuario().getNome();
-			
-		}
-		else
-			JOptionPane.showMessageDialog(null, "Senha inv�lida");
-		
-		session.close();		
-		return pagina;
-
-	}
+	
 }

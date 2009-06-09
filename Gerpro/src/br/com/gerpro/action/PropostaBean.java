@@ -6,31 +6,26 @@ import java.util.List;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
-import br.com.gerpro.dao.FacadeArtefatos;
+import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeStatus;
 import br.com.gerpro.dao.FacadeTipoFuncao;
-import br.com.gerpro.dao.impl.ArtefatosDao;
+import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.EquipeDao;
 import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
-import br.com.gerpro.model.Artefatos;
-import br.com.gerpro.model.Cronograma;
-import br.com.gerpro.model.CronogramaId;
+import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Equipe;
-import br.com.gerpro.model.ListaFuncao;
-import br.com.gerpro.model.ListaFuncaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Status;
-import br.com.gerpro.model.TipoFuncao;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
@@ -38,6 +33,7 @@ public class PropostaBean {
 
 	private UIData objDatatableProposta;
 	private List<Proposta> listaProposta;
+	private List<Correcao> listaCorrecao;
 	private List<Proposta> listaPorProfessor;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta propostaDao = new PropostaDao();
@@ -59,6 +55,8 @@ public class PropostaBean {
 	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
 	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
+	private FacadeCorrecao daoCorrecao = new CorrecaoDao();
+	
 	
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
@@ -186,7 +184,8 @@ public class PropostaBean {
 
 		return "listarPropostas";
 
-	}
+	}	
+	
 
 	/*
 	 * Getters and Setters
@@ -378,5 +377,25 @@ public class PropostaBean {
 	public void setDaoListaFuncao(FacadeListaFuncao daoListaFuncao) {
 		this.daoListaFuncao = daoListaFuncao;
 	}
+
+	public List<Correcao> getListaCorrecao() {
+		return listaCorrecao;
+	}
+
+	public void setListaCorrecao(List<Correcao> listaCorrecao) {
+		this.listaCorrecao = listaCorrecao;
+	}
+
+	public FacadeCorrecao getDaoCorrecao() {
+		return daoCorrecao;
+	}
+
+	public void setDaoCorrecao(FacadeCorrecao daoCorrecao) {
+		this.daoCorrecao = daoCorrecao;
+	}
+	
+	
+	
+	
 
 }

@@ -119,6 +119,8 @@
   location="C:\Documents and Settings\msouza\Meus documentos\Faculdade\Projeto GerPro\Gerpro\Gerpro\WebContent\WEB-INF\lib\jfreechart-1.0.13-swt.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib-richfaces-ui-3.3.1.GA.jar"
   location="C:\Documents and Settings\msouza\Meus documentos\Faculdade\Projeto GerPro\Gerpro\Gerpro\WebContent\WEB-INF\lib\richfaces-ui-3.3.1.GA.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-glassX-3.3.1.GA.jar"
+  location="C:\Documents and Settings\msouza\Meus documentos\Faculdade\Projeto GerPro\Gerpro\Gerpro\WebContent\WEB-INF\lib\glassX-3.3.1.GA.jar" model-entity="FileSystemJar"/>
  <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
   <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
    model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>

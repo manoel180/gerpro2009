@@ -32,6 +32,7 @@ public interface FacadeProposta {
 	 */
 	@SuppressWarnings("unchecked")
 	public abstract List listarPropostasConcluidas();
+	
 
 	public abstract List<Proposta> listarPorEquipe(String nomeEquipe);
 

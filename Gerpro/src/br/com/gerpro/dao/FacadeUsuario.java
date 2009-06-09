@@ -20,7 +20,4 @@ public interface FacadeUsuario {
 	public List<Usuario> listarPorNome(String nomeStatus);
 
 	public Usuario procurarPorNome(String nome);
-	
-	public String logar(Usuario usuario);
-
 }

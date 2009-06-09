@@ -9,11 +9,11 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
@@ -72,19 +72,23 @@ public class UsuarioBean{
 	}
 
 	public String logar(){
-		String  homeUsuario = "home" + usuarioDao.logar(usuario);
+		String  homeUsuario = "home";		 
+		Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario.getMatricula());
 		
-		System.out.println("Passei por aqui ****** MATRICULA DO USUARIO ******: " + usuario.getMatricula());
-		
-		System.out.println("Passei por aqui ****** Logando ****** Home do Usuário: "
-				+ homeUsuario	);
-		
-		usuario = usuarioDao.procurarPorMatricula(usuario.getMatricula());
-		
-		System.out.println("Passei por aqui ****** MATRICULA DO USUARIO ******: " + usuario.getMatricula());
-		
-		
-		
+		if (usuario == null) {
+			JOptionPane.showMessageDialog(null, "Usuário inválido");
+			return null;
+		}else{
+			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
+				homeUsuario += usuarioBD.getTipoUsuario().getNome();				
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Senha inválida");
+				return null;
+			}				
+		}	
+				
 		applicationSecurityManager.setUsuario(usuario);		
 		return homeUsuario;
 	}
