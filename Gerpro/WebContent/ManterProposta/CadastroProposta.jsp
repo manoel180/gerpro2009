@@ -21,17 +21,21 @@
 		<h:messages layout="list" styleClass="" showDetail="true"
 			showSummary="true" />
 		<br>
-		<br><rich:toolTip for="dt_criacao" followMouse="true" zorder="90" value="Inserir uma data de Criação da Proposta"></rich:toolTip>
+		<br>
+		<rich:toolTip for="txtdesc1" followMouse="true" zorder="90" value="Inserir um nome da Proposta"/>
+		<rich:toolTip for="equipe" followMouse="true" zorder="90" value="Selecione uma equipe"/>
+		<rich:toolTip for="dt_criacao" followMouse="true" zorder="90" value="Inserir uma data de Criação da Proposta"/>
+		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90" value="Inserir um Periodo"/>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="2" cellpadding="5" id="id1">
 				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
-					<f:attribute name="fieldRef" value="Proposta" />
+					<f:attribute name="fieldRef" value="Nome" />
 				</h:inputText>
 				
 				<h:outputText value="Equipe:" />
-				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}" rendered="true" required="true">					
+				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}" rendered="true">					
 					<f:selectItems value="#{propostaBean.equipesCombo}"/>
 					<f:attribute name="fieldRef" value="Equipe" />	
 				</h:selectOneMenu>
@@ -43,7 +47,7 @@
 				</rich:calendar>
 	
 				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}">
+				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}" required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
 				
