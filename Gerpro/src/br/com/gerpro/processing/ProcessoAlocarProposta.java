@@ -163,7 +163,7 @@ public class ProcessoAlocarProposta {
 							// Cria um objeto para escolha randomica
 							Random seletor = new Random();
 
-							// Aloca a ultima proposta aleatoriamente para o
+							// Aloca a ultima proposta aleatoriamente para o professor escolhido
 							geraCorrecao((Usuario) professoresSelecionados
 									.get(seletor.nextInt(2)), proposta);
 
