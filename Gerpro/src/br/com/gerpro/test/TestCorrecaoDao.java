@@ -34,13 +34,14 @@ public class TestCorrecaoDao {
 		IProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
 
 		CorrecaoId correcaoId = new CorrecaoId();
+		
 		correcaoId.setIdProposta(1);
 
 		correcaoId.setMatriculaProfessor("1");
 
 		correcao.setId(correcaoId);
 
-		processoCorrecao.calcularStatusPropostaAtual(correcao);
+		//processoCorrecao.calcularStatusPropostaAtual(correcao);
 
 	}
 

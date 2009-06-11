@@ -1,4 +1,4 @@
-<%@page	pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>

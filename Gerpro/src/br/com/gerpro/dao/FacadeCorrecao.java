@@ -6,6 +6,8 @@ package br.com.gerpro.dao;
 import java.util.List;
 
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Usuario;
 
 /**
  * @author M3R
@@ -20,6 +22,6 @@ public interface FacadeCorrecao {
 	
 	public Correcao procurarPorNomeProfessor(String Nome);
 	
-	public List<Correcao> procurarPorCorrecao(Correcao correcaoId);
+	public List<Correcao> procurarPorCorrecao(Usuario professor, Proposta proposta);//Correcao correcaoId);
 
 }

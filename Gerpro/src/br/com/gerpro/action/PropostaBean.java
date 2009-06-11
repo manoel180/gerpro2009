@@ -92,12 +92,18 @@ public class PropostaBean {
 		return "incluir";
 	}
 
-	public String preperarEdicao() {
+	public String prepararEdicao() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		status = proposta.getStatus();
 		equipe = proposta.getEquipe();
 
 		return "alterar";
+	}
+	
+	public String prepararCorrecao() {
+		proposta = (Proposta) objDatatableProposta.getRowData();
+		applicationSecurityManager.setProposta(proposta);
+		return new CorrecaoBean().preperarCorrecao();
 	}
 
 	public String irConstruirProposta(){

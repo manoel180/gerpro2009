@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
@@ -23,13 +23,13 @@
 		<tr>
 			<td align="left" valign="top" class="txt1"
 				style="padding-left: 12px;"><h:commandLink
-				value="Missï¿½o do Produto" action="corrigirMissaoProduto"></h:commandLink></td>
+				value="Missão do Produto" action="corrigirMissaoProduto"></h:commandLink></td>
 		</tr>
 
 		<tr>
 			<td align="left" valign="top" class="txt1"
 				style="padding-left: 12px;"><h:commandLink
-				value="Lista de Funï¿½ï¿½o" action="corrigirListaFuncao"></h:commandLink></td>
+				value="Lista de Função" action="corrigirListaFuncao"></h:commandLink></td>
 		</tr>
 
 		<tr>
@@ -53,7 +53,7 @@
 		<tr>
 			<td align="left" valign="top" class="txt1"
 				style="padding-left: 12px;"><h:commandLink
-				value="Submeter Correï¿½ï¿½o" action="submeterCorrecao"></h:commandLink>
+				value="Submeter Correção" action="submeterCorrecao"></h:commandLink>
 			</td>
 		</tr>
 		<tr>

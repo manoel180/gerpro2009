@@ -22,7 +22,7 @@ import br.com.gerpro.model.Usuario;
  *         proposta aos professores Que farão a correção das mesmas.
  * 
  */
-public class ProcessoAlocarProposta {
+public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
 	private int qtdeProfessoresSelecionados;
@@ -32,13 +32,8 @@ public class ProcessoAlocarProposta {
 	private Correcao correcao = new Correcao();
 	private FacadeStatus statusDao = new StatusDao();
 
-	/***************************************************************************
-	 * Método que executa o processo de alocar dinamicamente propostas com o
-	 * status "Concluído" aos professores selecionados pelo coordenador para
-	 * corrigi-las
-	 * 
-	 * @param professoresSelecionados
-	 * @param emGrupo
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#alocaProposta(java.util.List, boolean)
 	 */
 
 	@SuppressWarnings("unchecked")
@@ -178,10 +173,8 @@ public class ProcessoAlocarProposta {
 		}
 	}
 
-	/***************************************************************************
-	 * Método para geração de Correcoes para um dado professor
-	 * 
-	 * @return void
+	/* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#geraCorrecao(br.com.gerpro.model.Usuario, br.com.gerpro.model.Proposta)
 	 */
 	public void geraCorrecao(Usuario professor, Proposta proposta) {
 

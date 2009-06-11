@@ -10,7 +10,10 @@ import javax.faces.component.UIData;
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.CorrecaoId;
+import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
@@ -29,8 +32,7 @@ public class CorrecaoBean {
 	public String prepararBean() {
 
 		correcao = new Correcao();
-		List<Correcao> listaCorrecoesBanco = correcaoDao
-				.procurarPorIdProposta(1);
+		List<Correcao> listaCorrecoesBanco = correcaoDao.procurarPorIdProposta(1);
 
 		return null;// "go_manterEquipe";
 	}
@@ -43,6 +45,13 @@ public class CorrecaoBean {
 	public String preperarEdicao() {
 		correcao = (Correcao) objDatatableCorrecao.getRowData();
 		return "alterar";
+	}
+	
+	public String preperarCorrecao() {
+		Proposta proposta = applicationSecurityManager.getProposta();
+		Status status = proposta.getStatus();
+		Equipe equipe = proposta.getEquipe();
+		return "corrigirProposta";
 	}
 
 	public String salvar() {
@@ -58,31 +67,28 @@ public class CorrecaoBean {
 		correcao = (Correcao) objDatatableCorrecao.getRowData();
 		getCorrecaoDao().remover(correcao);
 		return prepararBean();
-	}
+	}	
 
-	public boolean propostaEmCorrecao() {
+	public boolean propostaEmCorrecao(Proposta proposta) {
 
-		Usuario usuario = applicationSecurityManager.getUsuario();
-		//Proposta proposta = (Proposta) objDatatableProposta.getRowData();
-				
-		listaCorrecao = getCorrecaoDao().procurarPorCorrecao(correcao);
-		int contadorItensCorridos = 0;
-		for (Correcao correcao : listaCorrecao) {
-			if(correcao.getStatus().getId() == 7){
-				contadorItensCorridos++;
-			}			
-		}
+		Usuario professor = applicationSecurityManager.getUsuario();		
 		
-		if(contadorItensCorridos == 8){
-			return true;
+		listaCorrecao = getCorrecaoDao().procurarPorCorrecao(professor, proposta);
+
+		int contadorItensCorridos = 0;
+
+		for (Correcao correcao : listaCorrecao) {
+			System.out.println("Status = " + correcao.getStatus().getNome());
+			if (correcao.getStatus().getId() == 7) {
+				contadorItensCorridos++;
+			}
 		}
-		return false;
-	}
 
-	private String comparar() {
-
-		return null;
-	}
+		if (contadorItensCorridos == 8) {
+			return false;
+		}
+		return true;
+	}	
 
 	public UIData getObjDatatableCorrecao() {
 		return objDatatableCorrecao;

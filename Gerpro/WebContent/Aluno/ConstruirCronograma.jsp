@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
@@ -17,7 +17,7 @@
 	<div align="center"><h:outputLabel value="CRONOGRAMA"
 		styleClass="Titulos" /></div>
 
-	<h:messages layout="list" styleClass="ObrigatÃ³rio" showDetail="true"
+	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
 
 	<br>
@@ -59,7 +59,7 @@
 						<f:selectItems value="#{construirPropostaBean.artefatosCombo}" />
 					</h:selectOneMenu>
 					<rich:toolTip for="btnAdicionar" followMouse="true" zorder="90"
-						value="Adicionar na lista de funÃ§Ãµes"/>
+						value="Adicionar na lista de funções"/>
 					<h:commandButton id="btnAdicionar" value="Adicionar"
 						action="#{construirPropostaBean.addCronograma}" />
 
@@ -100,7 +100,7 @@
 
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="OpÃ§Ãµes"></h:outputText>
+					<h:outputText value="Opções"></h:outputText>
 				</f:facet>
 				<h:commandButton image="/images/editar.png"
 					action="#{construirPropostaBean.editCronograma}"

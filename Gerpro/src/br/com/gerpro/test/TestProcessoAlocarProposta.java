@@ -3,11 +3,10 @@ package br.com.gerpro.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeUsuario;
-import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Usuario;
+import br.com.gerpro.processing.IProcessoAlocarProposta;
 import br.com.gerpro.processing.ProcessoAlocarProposta;
 
 public class TestProcessoAlocarProposta {	
@@ -16,7 +15,7 @@ public class TestProcessoAlocarProposta {
 		
 		FacadeUsuario usuarioDao = new UsuarioDao();
 		
-		ProcessoAlocarProposta alocar = new ProcessoAlocarProposta();
+		IProcessoAlocarProposta alocar = new ProcessoAlocarProposta();
 		
 		boolean emGrupo = false;
 		

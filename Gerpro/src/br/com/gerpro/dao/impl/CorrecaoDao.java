@@ -16,6 +16,7 @@ import org.hibernate.criterion.Example;
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
 
 /**
@@ -59,16 +60,22 @@ public class CorrecaoDao implements FacadeCorrecao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Correcao> procurarPorCorrecao(Correcao correcao) {
+	public List<Correcao> procurarPorCorrecao(Usuario professor, Proposta proposta) {
 		List<Correcao> listaCorrecao = null;;
 		
 		try {
 			session = HibernateUtil.getSession();
 			if(session.isOpen()){
-				tx = session.beginTransaction();
-				
-				listaCorrecao = session.createCriteria(Correcao.class)
-							.add(Example.create(correcao)).list();
+				tx = session.beginTransaction();				
+
+				listaCorrecao = session.createSQLQuery("select * from correcao c"
+						+ " where c.id_proposta = ?"
+						+ " and c.matricula_professor = ?")
+						.addEntity(Correcao.class)
+						.setParameter(0, proposta.getId())
+						.setParameter(1, professor.getMatricula())
+						.list();
+
 				tx.commit();
 			}
 			else
@@ -78,7 +85,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 			
 		} catch (Exception e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+			System.out.println("Ocorreu um erro");		
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -111,9 +118,6 @@ public class CorrecaoDao implements FacadeCorrecao {
 			e.printStackTrace();
 		} finally {
 			session.close();
-		}
-		
+		}		
 	}
-	
-	
 }

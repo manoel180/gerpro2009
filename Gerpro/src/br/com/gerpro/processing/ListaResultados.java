@@ -14,7 +14,7 @@ import br.com.gerpro.model.Proposta;
  * @author manoel.neto
  *
  */
-public class ListaResultados {
+public class ListaResultados implements IListaResultados {
 	
 	private float count = 0;
 	private float total = 0;
@@ -30,7 +30,10 @@ public class ListaResultados {
 	  * Adicionar os valores das consultas realizadas
 	  */
 	 
-	 public List preecherNomes(){
+	 /* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IListaResultados#preecherNomes()
+	 */
+	public List preecherNomes(){
 		 listapropostas=new ArrayList();
 		 listapropostas.add("Aprovados");//,preecherListaAprovados()));
 		 listapropostas.add("Aprovados com ressalva");//,preecherListaAprovadosRessalva()));
@@ -38,7 +41,10 @@ public class ListaResultados {
 		 
 		 return listapropostas;
 	 }
-	 public List preecherValores(){
+	 /* (non-Javadoc)
+	 * @see br.com.gerpro.processing.IListaResultados#preecherValores()
+	 */
+	public List preecherValores(){
 		 listavalores=new ArrayList();
 		 listavalores.add(preecherListaAprovados());
 		 listavalores.add(preecherListaAprovadosRessalva());
