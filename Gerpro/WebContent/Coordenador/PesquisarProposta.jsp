@@ -12,9 +12,10 @@
 </head>
 <f:view>
 <rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
-	
+	<!--  rint  -->
 	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
 	<rich:toolTip for="txtdescint" followMouse="true" zorder="90" value="Informe o código da proposta"/>
+	<rich:toolTip for="btnpesquisar" followMouse="true" zorder="90" value="Fazer pesquisa."/>
 	
 	
 <h:form id="form1">	
@@ -42,7 +43,7 @@
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
 					<f:convertNumber  integerOnly="true" type="number"/>
 				</rich:inputNumberSpinner>
-					<h:commandButton value="Pesquisar" action="#{propostaBean.pesquisar}" />
+					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
 		

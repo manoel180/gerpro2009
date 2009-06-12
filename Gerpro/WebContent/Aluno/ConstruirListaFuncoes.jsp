@@ -34,22 +34,33 @@
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					
 					<h:outputText value="Ordem:" />
-					<h:inputTextarea value="#{construirPropostaBean.listafuncaoid.numeroSequencia}" style="width: 762px; height: 57px" />
+					<!-- rint Textarea -->
+				    <rich:toolTip for="textordem" followMouse="true" zorder="90" value="clique para inserir"/>
+					<h:inputTextarea value="#{construirPropostaBean.listafuncaoid.numeroSequencia}" id="textordem" style="width: 762px; height: 57px" />
 					
 					
 					<h:outputText value="Caso de Uso:" />
-					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}" style="width: 762px; height: 57px" />
+					<!-- rint Textarea -->
+				    <rich:toolTip for="textcasouso" followMouse="true" zorder="90" value="clique para inserir"/>
+					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}"id="textcasouso" style="width: 762px; height: 57px" />
 					
 
 					<h:outputText value="Descrição:" />
-					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.descricao}" style="width: 762px; height: 57px" />
+					<!-- rint Textarea -->
+				    <rich:toolTip for="textdesc" followMouse="true" zorder="90" value="clique para inserir"/>					
+					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.descricao}" id="textdesc" style="width: 762px; height: 57px" />
 					
+					<!-- Combobox tipo de funcao -->
 					<h:outputText value="Tipo de Função:" />
-					<h:selectOneMenu value="#{construirPropostaBean.tipofuncao.id}" >					
+					<!-- rint Combo -->
+				    <rich:toolTip for="combotipofunc" followMouse="true" zorder="90" value="clique para escolher"/>					
+					<h:selectOneMenu value="#{construirPropostaBean.tipofuncao.id}"id="combotipofunc" >					
 						<f:selectItems value="#{construirPropostaBean.tipoFuncaoCombo}"/>	
 					</h:selectOneMenu>
 					
-					<h:commandButton value="Adicionar" action="#{construirPropostaBean.addfuncao}"/>
+					<!-- rint botao deletar add-->
+				    <rich:toolTip for="btnadd" followMouse="true" zorder="90" value="clique para Adicionar função"/>
+					<h:commandButton value="Adicionar" id="btnadd" action="#{construirPropostaBean.addfuncao}"/>
 					
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
@@ -57,7 +68,7 @@
 
 		
 		
-		<rich:dataTable id="idtable" var="listafuncao" value="#{construirPropostaBean.lstlistaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="10" width="550px" align="center">
+		<rich:dataTable id="idtable" var="listafuncao" value="#{construirPropostaBean.lstlistaFuncao}" binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="5" width="550px" align="center">
 				<rich:column sortBy="#{listafuncao.id.numeroSequencia}">
 					<f:facet name="header">
 						<h:outputText value="Ordem" />
@@ -90,14 +101,21 @@
 					<f:facet name="header">
 						<h:outputText value="Opções"></h:outputText>
 					</f:facet>
-					<h:commandButton image="/images/delete.png" action="#{construirPropostaBean.delfuncao}" style="height: 40px; width: 40px"></h:commandButton>
-					<h:commandButton image="/images/editar.png" action="#{construirPropostaBean.editfuncao}" style="height: 40px; width: 40px"></h:commandButton>
+					<!-- rint botao deletar e alterar-->
+				    <rich:toolTip for="btndeletar" followMouse="true" zorder="90" value="Deletar/Excluir"/>
+				    <rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar"/>
+					<h:commandButton image="/images/delete.png" id= "btndeletar" action="#{construirPropostaBean.delfuncao}" style="height: 40px; width: 40px"></h:commandButton>
+					<h:commandButton image="/images/editar.png" id="btnalterar" action="#{construirPropostaBean.editfuncao}" style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
 			</rich:dataTable>
-			<rich:datascroller  align="center" for="idtable" maxPages="10"  fastControls="show"  />
-        <rich:spacer height="30" />
-        
-			<br><br><h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarListaFuncao}" />
+			<!-- rint botao salvar-->
+			<rich:toolTip for="btnsalvar" followMouse="true" zorder="90" value="clique para Salvar"/>
+			<rich:datascroller  align="center" for="idtable" maxPages="5"  fastControls="show"  />			
+			<div align="right" style=" width : 899px;">
+        <h:commandButton value="Salvar" id="btnsalvar" action="#{construirPropostaBean.SalvarListaFuncao}" /><rich:spacer height="30" />       
+            
+		<br><br>
+		</div>
 		<br><%@include file="../common/bannerPropostaEquipe.jsp"%>
 
 	</h:form>

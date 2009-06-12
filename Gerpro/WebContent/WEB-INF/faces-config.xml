@@ -2,7 +2,7 @@
 <!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
                               "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
 <faces-config>
-<<<<<<< .mine
+
  <managed-bean>
   <managed-bean-name>propostaBean</managed-bean-name>
   <managed-bean-class>br.com.gerpro.action.PropostaBean</managed-bean-class>
@@ -188,7 +188,7 @@
  <!-- lifecycle>
   <phase-listener>br.com.gerpro.mensagens.MessageListener3</phase-listener>
  </lifecycle-->
-=======
+
 	<managed-bean>
 		<managed-bean-name>propostaBean</managed-bean-name>
 		<managed-bean-class>
@@ -400,5 +400,5 @@
 			br.com.gerpro.mensagens.MessageListener3
 		</phase-listener>
 	</lifecycle>
->>>>>>> .r350
+
 </faces-config>

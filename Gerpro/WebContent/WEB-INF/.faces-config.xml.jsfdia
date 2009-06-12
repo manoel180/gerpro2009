@@ -38,7 +38,11 @@
     TARGET="rules:#Professor#CorrigirMetodologia.jsp"
     TITLE="corrigirMetodologia" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="listarPropostas::#Professor#ListarPropostas.jsp" NAME="output5"
+    ID="corrigirMissao::#Professor#CorrigirMissao.jsp" NAME="output5"
+    PATH="/Professor/CorrigirMissao.jsp"
+    TARGET="rules:#Professor#CorrigirMissao.jsp" TITLE="corrigirMissao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listarPropostas::#Professor#ListarPropostas.jsp" NAME="output6"
     PATH="/Professor/ListarPropostas.jsp"
     TARGET="rules:#Professor#ListarPropostas.jsp"
     TITLE="listarPropostas" model-entity="JSFProcessItemOutput"/>
@@ -124,6 +128,19 @@
     PATH="/Coordenador/PesquisarProposta.jsp" SHAPE="-1,48"
     TARGET="rules:#Coordenador#PesquisarProposta.jsp" TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Coordenador#PesquisarProposta.jsp:1"
+   NAME="item1" PATH="/Coordenador/PesquisarProposta.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="incluir::#Coordenador#CadastroProposta.jsp"
+    NAME="output" PATH="/Coordenador/CadastroProposta.jsp"
+    TARGET="rules:#Coordenador#CadastroProposta.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="alterar::#Coordenador#AlterarProposta.jsp"
+    NAME="output1" PATH="/Coordenador/AlterarProposta.jsp"
+    TARGET="rules:#Coordenador#AlterarProposta.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#Coordenador#PesquisarProposta.jsp" NAME="output2"
+    PATH="/Coordenador/PesquisarProposta.jsp"
+    TARGET="rules:#Coordenador#PesquisarProposta.jsp" TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Coordenador#AlterarProposta.jsp"
   PATH="/Coordenador/AlterarProposta.jsp" SHAPE="560,3329,0,0" model-entity="JSFProcessGroup"/>
@@ -164,6 +181,29 @@
     SHAPE="-1,48" TARGET="rules:#Coordenador#PesquisarProposta.jsp"
     TITLE="go_manterProposta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Coordenador#PesquisarEquipe.jsp:1"
+   NAME="item1" PATH="/Coordenador/PesquisarEquipe.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="incluir::#Coordenador#CadastroEquipe.jsp"
+    NAME="output" PATH="/Coordenador/CadastroEquipe.jsp"
+    TARGET="rules:#Coordenador#CadastroEquipe.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="alterar::#Coordenador#AlterarEquipe.jsp"
+    NAME="output1" PATH="/Coordenador/AlterarEquipe.jsp"
+    TARGET="rules:#Coordenador#AlterarEquipe.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#Coordenador#PesquisarEquipe.jsp" NAME="output2"
+    PATH="/Coordenador/PesquisarEquipe.jsp"
+    TARGET="rules:#Coordenador#PesquisarEquipe.jsp" TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="homeCoordenador::#Coordenador#homeCoordenador.jsp"
+    NAME="output3" PATH="/Coordenador/homeCoordenador.jsp"
+    TARGET="rules:#Coordenador#homeCoordenador.jsp"
+    TITLE="homeCoordenador" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="go_manterProposta::#Coordenador#PesquisarProposta.jsp"
+    NAME="output4" PATH="/Coordenador/PesquisarProposta.jsp"
+    TARGET="rules:#Coordenador#PesquisarProposta.jsp"
+    TITLE="go_manterProposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Coordenador#AlterarEquipe.jsp"
   PATH="/Coordenador/AlterarEquipe.jsp" SHAPE="320,2769,0,0" model-entity="JSFProcessGroup"/>
@@ -189,6 +229,20 @@
     TARGET="rules:#Coordenador#PesquisarArtefatos.jsp"
     TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Coordenador#PesquisarArtefatos.jsp:1"
+   NAME="item1" PATH="/Coordenador/PesquisarArtefatos.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="incluir::#Coordenador#CadastroArtefatos.jsp"
+    NAME="output" PATH="/Coordenador/CadastroArtefatos.jsp"
+    TARGET="rules:#Coordenador#CadastroArtefatos.jsp" TITLE="incluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="alterar::#Coordenador#AlterarArtefatos.jsp"
+    NAME="output1" PATH="/Coordenador/AlterarArtefatos.jsp"
+    TARGET="rules:#Coordenador#AlterarArtefatos.jsp" TITLE="alterar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizar::#Coordenador#PesquisarArtefatos.jsp" NAME="output2"
+    PATH="/Coordenador/PesquisarArtefatos.jsp"
+    TARGET="rules:#Coordenador#PesquisarArtefatos.jsp"
+    TITLE="visualizar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Coordenador#CadastroArtefatos.jsp"
   PATH="/Coordenador/CadastroArtefatos.jsp" SHAPE="560,2865,0,0" model-entity="JSFProcessGroup"/>
@@ -208,4 +262,108 @@
   PATH="/Professor/ListarPropostas.jsp" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Professor#CorrigirProposta.jsp"
   PATH="/Professor/CorrigirProposta.jsp" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#*:1" PATH="/*" SHAPE="80,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:1" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="homeAluno::#Aluno#homeAluno.jsp"
+    NAME="output" PATH="/Aluno/homeAluno.jsp"
+    TARGET="rules:#Aluno#homeAluno.jsp" TITLE="homeAluno" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="homeProfessor::#Professor#homeProfessor.jsp"
+    NAME="output1" PATH="/Professor/homeProfessor.jsp"
+    TARGET="rules:#Professor#homeProfessor.jsp" TITLE="homeProfessor" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarProposta::#Coordenador#PesquisarProposta.jsp"
+    NAME="output2" PATH="/Coordenador/PesquisarProposta.jsp"
+    TARGET="rules:#Coordenador#PesquisarProposta.jsp"
+    TITLE="pesquisarProposta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="go_manterArtefatos::#Coordenador#PesquisarArtefatos.jsp"
+    NAME="output3" PATH="/Coordenador/PesquisarArtefatos.jsp"
+    TARGET="rules:#Coordenador#PesquisarArtefatos.jsp"
+    TITLE="go_manterArtefatos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="go_manterEquipe::#Coordenador#PesquisarEquipe.jsp"
+    NAME="output4" PATH="/Coordenador/PesquisarEquipe.jsp"
+    TARGET="rules:#Coordenador#PesquisarEquipe.jsp"
+    TITLE="go_manterEquipe" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::3" SHAPE="32,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::3" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirCronograma::#Professor#CorrigirCronograma.jsp"
+    NAME="output" PATH="/Professor/CorrigirCronograma.jsp"
+    TARGET="rules:#Professor#CorrigirCronograma.jsp"
+    TITLE="corrigirCronograma" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirJustificativa::#Professor#CorrigirJustificativa.jsp"
+    NAME="output1" PATH="/Professor/CorrigirJustificativa.jsp"
+    TARGET="rules:#Professor#CorrigirJustificativa.jsp"
+    TITLE="corrigirJustificativa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirListaFuncoes::#Professor#CorrigirListaFuncoes.jsp"
+    NAME="output2" PATH="/Professor/CorrigirListaFuncoes.jsp"
+    TARGET="rules:#Professor#CorrigirListaFuncoes.jsp"
+    TITLE="corrigirListaFuncoes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirMetodologia::#Professor#CorrigirMetodologia.jsp"
+    NAME="output3" PATH="/Professor/CorrigirMetodologia.jsp"
+    TARGET="rules:#Professor#CorrigirMetodologia.jsp"
+    TITLE="corrigirMetodologia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="corrigirMissao::#Professor#CorrigirMissao.jsp" NAME="output4"
+    PATH="/Professor/CorrigirMissao.jsp"
+    TARGET="rules:#Professor#CorrigirMissao.jsp" TITLE="corrigirMissao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listarPropostas::#Professor#listarProposta.jsp" NAME="output5"
+    PATH="/Professor/listarProposta.jsp"
+    TARGET="rules:#Professor#listarProposta.jsp" TITLE="listarPropostas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="go_SubmeterProposta::#Professor#SubmeterProposta.jsp"
+    NAME="output6" PATH="/Professor/SubmeterProposta.jsp"
+    TARGET="rules:#Professor#SubmeterProposta.jsp"
+    TITLE="go_SubmeterProposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::4" SHAPE="32,2097,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::4" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="go_altproposta::#Coordenador#AltProposta.jsp" NAME="output"
+    PATH="/Coordenador/AltProposta.jsp"
+    TARGET="rules:#Coordenador#AltProposta.jsp" TITLE="go_altproposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::5" SHAPE="32,2209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::5" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="construirCronograma::#Aluno#ConstruirCronograma.jsp"
+    NAME="output" PATH="/Aluno/ConstruirCronograma.jsp"
+    TARGET="rules:#Aluno#ConstruirCronograma.jsp"
+    TITLE="construirCronograma" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="construirJustificativa::#Aluno#ConstruirJustificativa.jsp"
+    NAME="output1" PATH="/Aluno/ConstruirJustificativa.jsp"
+    TARGET="rules:#Aluno#ConstruirJustificativa.jsp"
+    TITLE="construirJustificativa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="construirListaFuncoes::#Aluno#ConstruirListaFuncoes.jsp"
+    NAME="output2" PATH="/Aluno/ConstruirListaFuncoes.jsp"
+    TARGET="rules:#Aluno#ConstruirListaFuncoes.jsp"
+    TITLE="construirListaFuncoes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="construirMetodologia::#Aluno#ConstruirMetodologia.jsp"
+    NAME="output3" PATH="/Aluno/ConstruirMetodologia.jsp"
+    TARGET="rules:#Aluno#ConstruirMetodologia.jsp"
+    TITLE="construirMetodologia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="construirMissao::#Aluno#ConstruirMissao.jsp"
+    NAME="output4" PATH="/Aluno/ConstruirMissao.jsp"
+    TARGET="rules:#Aluno#ConstruirMissao.jsp" TITLE="construirMissao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="go_ConstruirProposta::#Aluno#ConstruirProposta.jsp"
+    NAME="output5" PATH="/Aluno/ConstruirProposta.jsp"
+    TARGET="rules:#Aluno#ConstruirProposta.jsp"
+    TITLE="go_ConstruirProposta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Professor#listarProposta.jsp"
+  PATH="/Professor/listarProposta.jsp" SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

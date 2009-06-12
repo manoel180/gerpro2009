@@ -116,17 +116,12 @@ public class PropostaDao implements FacadeProposta {
 
 		Session session = HibernateUtil.getSession();
 
-		Query q = session
-				.createQuery("from Proposta where Nome like  :parametro");
+		Query q = session.createQuery("from Proposta where Nome like  :parametro");
 
 		q.setParameter("parametro", nomeProposta + "%");
 
 		result = q.list();
 
-		for (Proposta proposta : result) {
-			proposta.getEquipe().getNome();
-
-		}
 		session.close();
 		return result;
 	}
