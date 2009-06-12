@@ -1,0 +1,12 @@
+Java *
+UML *
+Banco de DAdos*
+Mysql
+JSF
+Praxis
+eclipse *
+MVc*
+Padroes de projeto
+Hibernate *
+tomcat *
+Versionamento
