@@ -15,7 +15,6 @@
 
 <f:view>
 	<h:form>
-
 		<div align="center">
 			<h:outputLabel value="MISSÃO PROPOSTA" styleClass="Titulos" />
 		</div>
@@ -37,6 +36,6 @@
 		
 	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
 	<%@ include file="perguntasCorrecao.jsp"%>
-	<h:commandButton value="Salvar" action="#{corrigirPropostaBean.salvarCorrigirMissao}"/>
+	<h:commandButton value="Salvar" action="#{corrigirPropostaBean.salvarCorrigirMissao}" disabled="#{corrigirPropostaBean.desabilitar}"/>
 	</h:form>
 </f:view>

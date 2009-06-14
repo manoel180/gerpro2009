@@ -25,24 +25,20 @@
 		<br>
 
 		<h:panelGrid columns="3">
-			<%@ include file="../templates/menu.jsp"%>
+			<%@ include file="menu.jsp"%>
 
 			<rich:simpleTogglePanel label="Dados do Proposta">
+				
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-					<h:outputText value="Justificativa:" />
-					<rich:toolTip for="idjust" followMouse="true" zorder="90"
-						value="Inserir justificativa a proposta" />
-					<rich:editor id="idjust" height="300" width="700"
-						style="width: 769px"
-						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+					<h:outputText value="Justificativa:"/>
+					<rich:editor height="100" width="600" theme="advanced" readonly="true" style="width: 769px" value="#{corrigirPropostaBean.propostaitem.conteudoItem}"/>
 				</h:panelGrid>
+				
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-	<rich:toolTip for="btnSalvar" followMouse="true" zorder="90"
-						value="Salvar Justificativa"/>
-		<h:commandButton id="btnSalvar" value="Salvar"
-			action="#{construirPropostaBean.SalvarJustificativa}" />
 			<br>
-			<%@include	file="../common/bannerPropostaEquipe.jsp"%>
+	<jsp:directive.include file="../common/bannerCorrigirPropostaEquipe.jsp"/>
+		<jsp:directive.include file="perguntasCorrecao.jsp"/>
+		<h:commandButton value="Salvar" action="#{corrigirPropostaBean.salvarCorrigirMissao}" disabled="#{corrigirPropostaBean.desabilitar}"/>
 	</h:form>
 </f:view>

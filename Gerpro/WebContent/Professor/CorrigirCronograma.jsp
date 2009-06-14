@@ -23,95 +23,57 @@
 	<br>
 
 	<h:panelGrid columns="5">
-		<%@ include file="../templates/menu.jsp"%>
+		<%@ include file="menu.jsp"%>
 		<rich:simpleTogglePanel width="600px" label="Dados do cadastro">
-			<h:form id="form1">
-				<h:panelGrid columns="1">
+			<h:form id="form2">
+				<rich:dataTable id="idtable" var="lstCronograma"
+					value="#{corrigirPropostaBean.lstCronograma}"
+					rows="10"
+					width="550px" align="center">
+					<rich:column sortBy="#{lstCronograma.dataInicial}">
+						<f:facet name="header">
+							<h:outputText value="Data Inicial" />
+						</f:facet>
+						<h:outputText value="#{lstCronograma.dataInicial}">
+							<f:convertDateTime dateStyle="short" type="date"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</rich:column>
 
-					<rich:toolTip for="dt_Inicio" followMouse="true" zorder="90"
-						value="Inserir uma data de Inicio"/>
-					<h:outputText value="Data Inicial" />
-					<rich:calendar id="dt_Inicio"
-						value="#{construirPropostaBean.cronograma.dataInicial}"
-						direction="auto" firstWeekDay="1" popup="true"
-						showWeekDaysBar="true" showWeeksBar="false"
-						todayControlMode="scroll" datePattern="dd/M/yyyy"
-						showHeader="true" limitToList="true" locale="pt"
-						minDaysInFirstWeek="6" required="true">
-						<f:attribute name="fieldRef" value="Data Inicial" />
-					</rich:calendar>
+					<rich:column sortBy="#{lstCronograma.dataFinal}">
+						<f:facet name="header">
+							<h:outputText value="Data Final" />
+						</f:facet>
+						<h:outputText value="#{lstCronograma.dataFinal}">
+							<f:convertDateTime dateStyle="short" type="date"
+								pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</rich:column>
 
-					<rich:toolTip for="dt_Fim" followMouse="true" zorder="90"
-						value="Inserir uma data final"/>
-					<h:outputText value="Data Final:" />
-					<rich:calendar id="dt_Fim"
-						value="#{construirPropostaBean.cronograma.dataFinal}"
-						direction="auto" firstWeekDay="1" popup="true"
-						showWeekDaysBar="true" showWeeksBar="false"
-						todayControlMode="scroll" datePattern="dd/M/yyyy"
-						showHeader="true" limitToList="true" locale="pt"
-						minDaysInFirstWeek="6" />
-						
-					<rich:toolTip for="art" followMouse="true" zorder="90"
-						value="Selecione um artefato"/>
-					<h:outputText value="Artefato:" />
-					<h:selectOneMenu id="art" value="#{construirPropostaBean.artefatos.id}">
-						<f:selectItems value="#{construirPropostaBean.artefatosCombo}" />
-					</h:selectOneMenu>
-					<rich:toolTip for="btnAdicionar" followMouse="true" zorder="90"
-						value="Adicionar na lista de funções"/>
-					<h:commandButton id="btnAdicionar" value="Adicionar"
-						action="#{construirPropostaBean.addCronograma}" />
+					<rich:column width="5%" sortBy="#{lstCronograma.artefatos.nome}">
+						<f:facet name="header">
+							<h:outputText value="Eventos/Artefatos" />
+						</f:facet>
+						<h:outputText value="#{lstCronograma.artefatos.nome}" />
+					</rich:column>
 
-				</h:panelGrid>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Opções"></h:outputText>
+						</f:facet>
+
+					</h:column>
+				</rich:dataTable>
 			</h:form>
 		</rich:simpleTogglePanel>
-
 	</h:panelGrid>
-	<h:form id="form2">
-		<rich:dataTable id="idtable" var="lstCronograma"
-			value="#{construirPropostaBean.lstCronograma}"
-			binding="#{construirPropostaBean.objDatatableCronograma}" rows="10"
-			width="550px" align="center">
-			<rich:column sortBy="#{lstCronograma.dataInicial}">
-				<f:facet name="header">
-					<h:outputText value="Data Inicial" />
-				</f:facet>
-				<h:outputText value="#{lstCronograma.dataInicial}" >
-				<f:convertDateTime dateStyle="short" type="date" pattern="dd/MM/yyyy"/>
-				</h:outputText>
-			</rich:column>
-
-			<rich:column sortBy="#{lstCronograma.dataFinal}">
-				<f:facet name="header">
-					<h:outputText value="Data Final" />
-				</f:facet>
-				<h:outputText value="#{lstCronograma.dataFinal}" >
-					<f:convertDateTime dateStyle="short" type="date" pattern="dd/MM/yyyy"/>
-				</h:outputText>
-			</rich:column>
-
-			<rich:column width="5%" sortBy="#{lstCronograma.artefatos.nome}">
-				<f:facet name="header">
-					<h:outputText value="Eventos/Artefatos" />
-				</f:facet>
-				<h:outputText value="#{lstCronograma.artefatos.nome}" />
-			</rich:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Opções"></h:outputText>
-				</f:facet>
-				<h:commandButton image="/images/editar.png"
-					action="#{construirPropostaBean.editCronograma}"
-					style="height: 40px; width: 40px"></h:commandButton>
-			</h:column>
-		</rich:dataTable>
-	</h:form>
 	<br>
 	<h:form>
+		<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
+		<%@ include file="perguntasCorrecao.jsp"%>
 		<h:commandButton value="Salvar"
-			action="#{construirPropostaBean.SalvarCronograma}" />
+			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>
-	<%@ include file="../common/bannerPropostaEquipe.jsp"%>
+
 </f:view>
