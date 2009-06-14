@@ -14,7 +14,7 @@ import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
 
-import br.com.gerpro.processing.ProcessoCorrecao;
+import br.com.gerpro.processing.ProcessoSubmeterCorrecao;
 
 /**
  * @author msouza
@@ -41,9 +41,9 @@ public class TestProcessoCorrecao {
 		List<Correcao> listaCorrecao = correcaoDao.procurarPorCorrecao(professor, proposta);
 				
 
-		ProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
+		ProcessoSubmeterCorrecao processoSubmeterCorrecao = new ProcessoSubmeterCorrecao();
 		
-		processoCorrecao.calcularStatusPropostaAtual(professor, proposta);	
+		processoSubmeterCorrecao.calcularStatusPropostaAtual(professor, proposta);	
 		
 		for (Correcao cor : listaCorrecao) {
 			System.out.println("****************Id Proposta da Correcao " + cor.getId().getMatriculaProfessor());

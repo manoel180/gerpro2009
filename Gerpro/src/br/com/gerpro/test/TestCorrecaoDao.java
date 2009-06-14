@@ -13,8 +13,8 @@ import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Status;
-import br.com.gerpro.processing.IProcessoCorrecao;
-import br.com.gerpro.processing.ProcessoCorrecao;
+import br.com.gerpro.processing.IProcessoSubmeterCorrecao;
+import br.com.gerpro.processing.ProcessoSubmeterCorrecao;
 
 /**
  * @author Clã dos Souza
@@ -31,7 +31,7 @@ public class TestCorrecaoDao {
 
 		FacadeProposta propostaDao = new PropostaDao();
 
-		IProcessoCorrecao processoCorrecao = new ProcessoCorrecao();
+		IProcessoSubmeterCorrecao processoSubmeterCorrecao = new ProcessoSubmeterCorrecao();
 
 		CorrecaoId correcaoId = new CorrecaoId();
 		
