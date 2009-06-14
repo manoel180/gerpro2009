@@ -45,7 +45,7 @@ public class StatusDao implements FacadeStatus {
 		List<Status> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Status ");
 		
 		result = q.list();
@@ -61,7 +61,7 @@ public class StatusDao implements FacadeStatus {
 		List<Status> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();	
 		Query q = session.createQuery("from Status where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquippe+"%");
 		
@@ -80,6 +80,7 @@ public class StatusDao implements FacadeStatus {
 		Status result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Status) session.get(Status.class, id);
 	
 		session.close();
@@ -93,6 +94,7 @@ public class StatusDao implements FacadeStatus {
 		Status result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Status) session.get(Status.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

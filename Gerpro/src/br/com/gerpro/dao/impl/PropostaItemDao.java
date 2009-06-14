@@ -47,7 +47,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		List<PropostaItem> result = null;
 		
 		 session = HibernateUtil.getSession();
-		
+		 tx = session.beginTransaction();		
 		Query q = session.createQuery(" from PropostaItem ");
 		
 		result = q.list();
@@ -63,7 +63,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		List<PropostaItem> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from PropostaItem where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquipe+"%");
 		
@@ -82,7 +82,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		PropostaItem result = null;
 
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from PropostaItem where id_item='1' and id_proposta =  :parametro");
 		q.setParameter("parametro", id+"%");
 		result = (PropostaItem) q.list();

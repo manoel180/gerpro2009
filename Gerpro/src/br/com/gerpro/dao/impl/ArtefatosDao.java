@@ -47,7 +47,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		List<Artefatos> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Artefatos ");
 		
 		result = q.list();
@@ -63,7 +63,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		List<Artefatos> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from Artefatos where Nome like  :parametro");
 		q.setParameter("parametro", nomeArtefatos+"%");
 		
@@ -82,6 +82,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		Artefatos result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Artefatos) session.get(Artefatos.class, id);
 	
 		session.close();
@@ -95,6 +96,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		Artefatos result = null;
 
 		Session session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Artefatos) session.get(Artefatos.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

@@ -44,7 +44,7 @@ public class UsuarioDao implements FacadeUsuario {
 	List<Usuario> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Usuario ");
 		
 		result = q.list();
@@ -79,7 +79,8 @@ public class UsuarioDao implements FacadeUsuario {
 	 * @see br.com.gerpro.dao.FacadeUsuario#procurarPorMatricula(java.lang.String)
 	 */
 	public Usuario procurarPorMatricula(String matricula) {
-		session = HibernateUtil.getSession();		
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		Usuario usuario = (Usuario)session.get(Usuario.class, matricula);		
 		session.close();
 		return usuario;

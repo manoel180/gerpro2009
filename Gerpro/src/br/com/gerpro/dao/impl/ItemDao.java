@@ -45,7 +45,7 @@ public class ItemDao implements FacadeItem {
 		List<Item> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Item ");
 		
 		result = q.list();
@@ -60,7 +60,7 @@ public class ItemDao implements FacadeItem {
 		List<Item> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from Item where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquippe+"%");
 		
@@ -79,6 +79,7 @@ public class ItemDao implements FacadeItem {
 		Item result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Item) session.get(Item.class, id);
 	
 		session.close();
@@ -92,6 +93,7 @@ public class ItemDao implements FacadeItem {
 		Item result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Item) session.get(Item.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

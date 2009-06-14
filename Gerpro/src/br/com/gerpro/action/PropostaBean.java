@@ -103,7 +103,7 @@ public class PropostaBean {
 	public String prepararCorrecao() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		applicationSecurityManager.setProposta(proposta);
-		return new CorrecaoBean().preperarCorrecao();
+		return new CorrecaoBean().prepararCorrecao();
 	}
 
 	public String irConstruirProposta(){

@@ -68,7 +68,7 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 
 		session = HibernateUtil.getSession();
-
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Proposta ");
 
 		result = q.list();
@@ -89,7 +89,7 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 
 		session = HibernateUtil.getSession();
-
+		tx = session.beginTransaction();
 		// Funcionando mas duplicando linhas
 		result = session.createSQLQuery(
 				" select *" + " from proposta p"
@@ -115,7 +115,7 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 
 		session = HibernateUtil.getSession();
-
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from Proposta where Nome like  :parametro");
 
 		q.setParameter("parametro", nomeProposta + "%");
@@ -132,7 +132,7 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 
 		session = HibernateUtil.getSession();
-
+		tx = session.beginTransaction();
 		// Funcionando mas duplicando linhas
 		result = session.createQuery(
 				"from Proposta as proposta" + " where proposta.equipe.nome "
@@ -155,7 +155,7 @@ public class PropostaDao implements FacadeProposta {
 		Proposta result = null;
 
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		result = (Proposta) session.get(Proposta.class, id);
 
 		session.close();
@@ -197,6 +197,7 @@ public class PropostaDao implements FacadeProposta {
 		Proposta result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Proposta) session.get(Proposta.class, Nome);
 		if (result == null) {
 			System.out.println("Proposta n�o encontrada");
@@ -251,7 +252,7 @@ public class PropostaDao implements FacadeProposta {
 	public List listarPropostasConcluidas() {
 
 		session = HibernateUtil.getSession();
-
+		tx = session.beginTransaction();
 		List result = session.createQuery(
 				" from Proposta as proposta" + " where proposta.status.id = 6")
 				.list();

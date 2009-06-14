@@ -47,11 +47,10 @@ public class CronogramaDao implements FacadeCronograma {
 		List<Cronograma> result = null;
 		
 		session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Cronograma ");
 		
 		result = q.list();
-		
 		session.close();
 		return result;
 	}
@@ -63,7 +62,7 @@ public class CronogramaDao implements FacadeCronograma {
 		List<Cronograma> result = null;
 		
 		Session session = HibernateUtil.getSession();
-		
+		tx = session.beginTransaction();
 		Query q = session.createQuery("from Cronograma where Nome like  :parametro");
 		q.setParameter("parametro", nomecronograma+"%");
 		
@@ -99,6 +98,7 @@ public class CronogramaDao implements FacadeCronograma {
 		Cronograma result = null;
 
 		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Cronograma) session.get(Cronograma.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");
