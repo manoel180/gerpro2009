@@ -53,7 +53,7 @@
 		<tr>
 			<td align="left" valign="top" class="txt1"
 				style="padding-left: 12px;"><h:commandLink
-				value="Submeter Correção" action="submeterCorrecao"></h:commandLink>
+				value="Submeter Correção" action="#{submeterCorrecaoBean.listaPorProfessor}"></h:commandLink>
 			</td>
 		</tr>
 		<tr>
