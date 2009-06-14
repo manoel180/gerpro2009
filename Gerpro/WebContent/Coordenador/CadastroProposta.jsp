@@ -5,18 +5,31 @@
 <%@taglib prefix="rich" uri="http://richfaces.ajax4jsf.org/rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
 <head>
 <title>Cadastro de Propostas</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"> <!-- Início da DIV do Topo -->
+<div id="topo_linha"></div> <!-- DIV Linha Cinza -->
+<div id="banner"></div> <!-- DIV Banner Gerpro--></div> <!-- Fim da DIV do Topo -->
+
 
 <f:view>
+<div id="div_corpo">
+<div id="menu">
+	<br />
+	<br />
+	<%@ include file="menu.jsp"%>
+</div>
+
+<div id="content">
+
 	<h:form>
 
 		<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
-			styleClass="titulo" /></div>
+			styleClass="Titulo1" /></div>
 
 		<h:messages layout="list" styleClass="" showDetail="true"
 			showSummary="true" />
@@ -26,7 +39,7 @@
 		<rich:toolTip for="equipe" followMouse="true" zorder="90" value="Selecione uma equipe"/>
 		<rich:toolTip for="dt_criacao" followMouse="true" zorder="90" value="Inserir uma data de Criação da Proposta"/>
 		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90" value="Inserir um Periodo"/>
-		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
+		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro" style="text-align:left">
 			<h:panelGrid columns="2" cellpadding="5" id="id1">
 				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1" required="true"
@@ -50,23 +63,32 @@
 				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}" required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
+				<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
 				
 			</h:panelGrid>
 
 			
 
 		</rich:simpleTogglePanel>
-			<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+			
 	</h:form>
 	<h:form>
 		<h:panelGrid columns="1" width="90%" border="0">
 			<h:panelGrid columns="1" border="0">
 				<h:panelGroup>
-					<h:commandButton action="#{propostaBean.prepararBean}"
+					<h:commandButton  action="#{propostaBean.prepararBean}"
 						value="Ir para o listar propostas" />
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:panelGrid>
 	</h:form>
 
+
+</div>
+</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a Corre&ccedil;&atilde;o de PESw &copy; Copyright</div> 
