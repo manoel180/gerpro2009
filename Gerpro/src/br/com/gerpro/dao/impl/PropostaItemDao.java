@@ -46,7 +46,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 
 		List<PropostaItem> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		 session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from PropostaItem ");
 		
@@ -62,7 +62,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		// TODO Auto-generated method stub
 		List<PropostaItem> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from PropostaItem where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquipe+"%");
@@ -81,7 +81,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 
 		PropostaItem result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from PropostaItem where id_item='1' and id_proposta =  :parametro");
 		q.setParameter("parametro", id+"%");
@@ -96,7 +96,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 	public  PropostaItem procurarPorProposta(PropostaItemId id) {
 
 		PropostaItem result = null;
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		
 		
@@ -113,7 +113,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 
 		PropostaItem result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (PropostaItem) session.get(PropostaItem.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

@@ -12,7 +12,6 @@ import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadePergunta;
 import br.com.gerpro.model.Pergunta;
-import br.com.gerpro.model.Proposta;
 import br.com.gerpro.util.HibernateUtil;
 
 public class PerguntaDao implements FacadePergunta {
@@ -66,9 +65,8 @@ public class PerguntaDao implements FacadePergunta {
 	public List<Pergunta> listar() {
 
 		List<Pergunta> result = null;
-
-		Session session = HibernateUtil.getSession();
-
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		Query q = session.createQuery(" from Pergunta ");
 
 		result = q.list();
@@ -89,7 +87,7 @@ public class PerguntaDao implements FacadePergunta {
 		// TODO Auto-generated method stub
 		List<Pergunta> result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		Query q = session
 				.createQuery("from Pergunta where Nome like  :parametro");
@@ -113,7 +111,8 @@ public class PerguntaDao implements FacadePergunta {
 
 		Pergunta result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Pergunta) session.get(Pergunta.class, id);
 
 		session.close();
@@ -131,7 +130,8 @@ public class PerguntaDao implements FacadePergunta {
 
 		Pergunta result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Pergunta) session.get(Pergunta.class, Nome);
 		if (result == null) {
 			System.out.println("Pergunta n�o encontrada");

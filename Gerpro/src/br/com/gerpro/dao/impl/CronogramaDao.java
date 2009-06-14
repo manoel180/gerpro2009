@@ -46,7 +46,7 @@ public class CronogramaDao implements FacadeCronograma {
 
 		List<Cronograma> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Cronograma ");
 		
@@ -80,7 +80,7 @@ public class CronogramaDao implements FacadeCronograma {
 		// TODO Auto-generated method stub
 		List<Cronograma> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		tx = session.beginTransaction(); 
 		Query q = session.createQuery("from Cronograma where id_proposta = :idProposta and " +
 				"id_item = :idItem");
@@ -98,7 +98,7 @@ public class CronogramaDao implements FacadeCronograma {
 
 		Cronograma result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Cronograma) session.get(Cronograma.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

@@ -44,7 +44,7 @@ public class ItemDao implements FacadeItem {
 
 		List<Item> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Item ");
 		
@@ -59,7 +59,7 @@ public class ItemDao implements FacadeItem {
 		// TODO Auto-generated method stub
 		List<Item> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from Item where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquippe+"%");
@@ -78,7 +78,7 @@ public class ItemDao implements FacadeItem {
 
 		Item result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Item) session.get(Item.class, id);
 	
 		session.close();
@@ -91,7 +91,7 @@ public class ItemDao implements FacadeItem {
 
 		Item result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Item) session.get(Item.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

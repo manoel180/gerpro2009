@@ -43,7 +43,7 @@ public class UsuarioDao implements FacadeUsuario {
 	public List<Usuario> listar() {
 	List<Usuario> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Usuario ");
 		

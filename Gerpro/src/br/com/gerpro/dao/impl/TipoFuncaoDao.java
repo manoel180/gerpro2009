@@ -44,7 +44,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 
 		List<TipoFuncao> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from TipoFuncao ");
 		
@@ -60,7 +60,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		// TODO Auto-generated method stub
 		List<TipoFuncao> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from TipoFuncao where Nome like  :parametro");
 		q.setParameter("parametro", nomeTipoFuncao+"%");
@@ -79,7 +79,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 
 		TipoFuncao result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (TipoFuncao) session.get(TipoFuncao.class, id);
 	
 		session.close();
@@ -92,7 +92,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 
 		TipoFuncao result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (TipoFuncao) session.get(TipoFuncao.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

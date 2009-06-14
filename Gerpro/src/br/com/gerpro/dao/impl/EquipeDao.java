@@ -45,7 +45,7 @@ public class EquipeDao implements FacadeEquipe {
 
 		List<Equipe> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Equipe ");
 		
@@ -62,7 +62,7 @@ public class EquipeDao implements FacadeEquipe {
 		// TODO Auto-generated method stub
 		List<Equipe> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from Equipe where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquippe+"%");
@@ -81,7 +81,7 @@ public class EquipeDao implements FacadeEquipe {
 
 		Equipe result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Equipe) session.get(Equipe.class, id);
 	
 		session.close();
@@ -94,7 +94,7 @@ public class EquipeDao implements FacadeEquipe {
 
 		Equipe result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Equipe) session.get(Equipe.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

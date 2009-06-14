@@ -44,7 +44,7 @@ public class StatusDao implements FacadeStatus {
 
 		List<Status> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Status ");
 		
@@ -60,7 +60,7 @@ public class StatusDao implements FacadeStatus {
 		// TODO Auto-generated method stub
 		List<Status> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from Status where Nome like  :parametro");
 		q.setParameter("parametro", nomeEquippe+"%");
@@ -79,7 +79,7 @@ public class StatusDao implements FacadeStatus {
 
 		Status result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Status) session.get(Status.class, id);
 	
 		session.close();
@@ -92,7 +92,7 @@ public class StatusDao implements FacadeStatus {
 
 		Status result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Status) session.get(Status.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

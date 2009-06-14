@@ -46,7 +46,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 
 		List<ListaFuncao> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		 session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from ListaFuncao ");
 		
@@ -62,7 +62,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		// TODO Auto-generated method stub
 		List<ListaFuncao> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from ListaFuncao where Nome like  :parametro");
 		q.setParameter("parametro", nomelistafuncao+"%");
@@ -80,7 +80,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		// TODO Auto-generated method stub
 		List<ListaFuncao> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		Query q = session.createQuery("from ListaFuncao where id_proposta = :idProposta and " +
 				"id_item = :idItem");
 		q.setParameter("idProposta", idProposta);
@@ -98,7 +98,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 
 		ListaFuncao result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (ListaFuncao) session.get(ListaFuncao.class, Nome);
 		if (result == null) {
 			JOptionPane.showMessageDialog(null, "Não encontrado");

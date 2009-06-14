@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Example;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
@@ -60,7 +59,8 @@ public class CorrecaoDao implements FacadeCorrecao {
 
 		Correcao result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
 		result = (Correcao) session.get(Correcao.class, idCorrecao);
 
 		session.close();
@@ -81,6 +81,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 		
 		try {
 			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
 			if(session.isOpen()){
 				tx = session.beginTransaction();				
 

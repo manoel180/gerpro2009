@@ -67,7 +67,7 @@ public class PropostaDao implements FacadeProposta {
 
 		List<Proposta> result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 
 		Query q = session.createQuery(" from Proposta ");
 
@@ -88,7 +88,7 @@ public class PropostaDao implements FacadeProposta {
 
 		List<Proposta> result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 
 		// Funcionando mas duplicando linhas
 		result = session.createSQLQuery(
@@ -114,7 +114,7 @@ public class PropostaDao implements FacadeProposta {
 		// TODO Auto-generated method stub
 		List<Proposta> result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 
 		Query q = session.createQuery("from Proposta where Nome like  :parametro");
 
@@ -131,7 +131,7 @@ public class PropostaDao implements FacadeProposta {
 	public List<Proposta> listarPorEquipe(String nomeEquipe) {
 		List<Proposta> result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 
 		// Funcionando mas duplicando linhas
 		result = session.createQuery(
@@ -154,7 +154,8 @@ public class PropostaDao implements FacadeProposta {
 
 		Proposta result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
+		
 		result = (Proposta) session.get(Proposta.class, id);
 
 		session.close();
@@ -195,7 +196,7 @@ public class PropostaDao implements FacadeProposta {
 
 		Proposta result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Proposta) session.get(Proposta.class, Nome);
 		if (result == null) {
 			System.out.println("Proposta n�o encontrada");
@@ -249,7 +250,7 @@ public class PropostaDao implements FacadeProposta {
 	@SuppressWarnings("unchecked")
 	public List listarPropostasConcluidas() {
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 
 		List result = session.createQuery(
 				" from Proposta as proposta" + " where proposta.status.id = 6")

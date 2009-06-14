@@ -46,7 +46,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 
 		List<Artefatos> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery(" from Artefatos ");
 		
@@ -62,7 +62,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		// TODO Auto-generated method stub
 		List<Artefatos> result = null;
 		
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		
 		Query q = session.createQuery("from Artefatos where Nome like  :parametro");
 		q.setParameter("parametro", nomeArtefatos+"%");
@@ -81,7 +81,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 
 		Artefatos result = null;
 
-		Session session = HibernateUtil.getSession();
+		session = HibernateUtil.getSession();
 		result = (Artefatos) session.get(Artefatos.class, id);
 	
 		session.close();
