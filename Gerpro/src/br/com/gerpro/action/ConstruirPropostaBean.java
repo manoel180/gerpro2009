@@ -155,7 +155,6 @@ public class ConstruirPropostaBean {
 	/**
 	 * Adiciona uma função na tabela de lista de Cronograma
 	 */
-
 	@SuppressWarnings("deprecation")
 	public void addCronograma() {
 		lstArtefatos = getDaoArtefatos().listar();

@@ -15,6 +15,7 @@ import org.hibernate.criterion.Example;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
@@ -54,9 +55,24 @@ public class CorrecaoDao implements FacadeCorrecao {
 	}
 
 	@Override
-	public List<Correcao> procurarPorIdProposta(int idProposta) {
+	public Correcao procurarPorIdCorrecao(CorrecaoId idCorrecao) {
 		// TODO Auto-generated method stub
-		return null;
+
+		Correcao result = null;
+
+		Session session = HibernateUtil.getSession();
+		result = (Correcao) session.get(Correcao.class, idCorrecao);
+
+		session.close();
+		return result;
+
+		/*// Funcionando mas duplicando linhas
+		result = session.createQuery(
+				"from Correcao as c where c.status.id = 3 or proposta.status.id = 4 or proposta.status.id = 5"
+						+ " and proposta.periodo = '"+periodo*/
+			/*			+ "' Group by proposta.id").list();*/
+
+		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -100,7 +116,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(correcao);
 			tx.commit();
-			System.out.println("Alteração realizada com sucesso");
+			System.out.println("AlteraÃ§Ã£o realizada com sucesso");
 		} catch (HibernateException e) {
 			tx.rollback();
 			JOptionPane.showMessageDialog(null, "Erro",

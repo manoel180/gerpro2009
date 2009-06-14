@@ -6,6 +6,7 @@ package br.com.gerpro.dao;
 import java.util.List;
 
 import br.com.gerpro.model.Correcao;
+import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 
@@ -16,12 +17,12 @@ import br.com.gerpro.model.Usuario;
 public interface FacadeCorrecao {
 	public void salvar (Correcao correcao);
 	
-	public List<Correcao> procurarPorIdProposta(int idProposta);
+	public Correcao procurarPorIdCorrecao(CorrecaoId idCorrecao);
 	
 	public void remover (Correcao correcao);
 	
 	public Correcao procurarPorNomeProfessor(String Nome);
 	
-	public List<Correcao> procurarPorCorrecao(Usuario professor, Proposta proposta);//Correcao correcaoId);
+	public List<Correcao> procurarPorCorrecao(Usuario professor, Proposta proposta);
 
 }

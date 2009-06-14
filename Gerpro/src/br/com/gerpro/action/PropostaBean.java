@@ -84,7 +84,7 @@ public class PropostaBean {
 		listaProposta = getPropostaDao().listar();
 		listaPorProfessor = getListaPorProfessor();
 
-		return "go_manterProposta";
+		return "pesquisarProposta";
 	}
 
 	public String preperarInclusao() {

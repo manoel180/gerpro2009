@@ -21,6 +21,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.ImageIcon;
 
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 import org.hibernate.Session;
@@ -38,6 +40,7 @@ public class ActionRelatorio {
 
 	private static Session session = null;
 	private static Transaction tx = null;
+	private String periodo;
 	private ImageIcon logo = new ImageIcon(getClass().getResource(
 			"/br/com/gerpro/relatorios/logo.jpg"));
 
@@ -45,13 +48,14 @@ public class ActionRelatorio {
 			.getPath();
 
 	/** 
-	 * Prefixo do nome do recurso para relat�rios compilados.
+	 * Prefixo do nome do recurso para relatórios compilados.
 	 */
 	private String SUB = path;
 
+
 	/**
 	 * 
-	 * Sufixo do nome do recurso para relat�rios compilados.
+	 * Sufixo do nome do recurso para relatórios compilados.
 	 * 
 	 */
 	private static final String SUFFIX = ".jasper";
@@ -60,6 +64,7 @@ public class ActionRelatorio {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("logo", logo.getImage());
+		params.put("periodo", getPeriodo());
 		/*
 		 * params.put("data_inicio",getDt_inicial());
 		 * params.put("data_fim",getDt_final());
@@ -67,6 +72,7 @@ public class ActionRelatorio {
 
 		try {
 			gerarRelatorioPDF("proposta", params);
+//			gerarRelatorioHTML("proposta", params);
 		} catch (Exception e) {
 
 			System.err.println(e.getMessage());
@@ -127,6 +133,65 @@ public class ActionRelatorio {
 			session.close();
 		}
 
+	}
+
+
+	private void gerarRelatorioHTML(String nome, Map params) {
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+
+		try {
+
+			//byte[] pdf = 
+			JasperFillManager.fillReportToFile( SUB+nome+SUFFIX,params,session.connection());
+			JasperExportManager.exportReportToHtmlFile(SUB+ nome+".jrprint");
+			
+			//JasperManager.(inputStream, withPrintDialog)
+			/*String runReportToHtmlFile = JasperRunManager.runReportToHtmlFile(SUB + nome + SUFFIX,
+					params, session.connection());*/
+				
+			/*FacesContext faces = FacesContext.getCurrentInstance();
+			HttpServletResponse response = (HttpServletResponse) faces
+					.getExternalContext().getResponse();
+			response.setContentType("application/html");
+			response.setContentLength(runReportToHtmlFile.length());
+			response.setHeader("Content-disposition", "inline");
+
+			response.setHeader("Cache-Control", "cache, must-revalidate");
+			response.setHeader("Pragma", "public");
+			ServletOutputStream out = response.getOutputStream();
+			byte[] pdf = runReportToHtmlFile.getBytes();
+			out.write(pdf);
+			StateManager stateManager = (StateManager) faces.getApplication()
+					.getStateManager();
+			stateManager.saveSerializedView(faces);
+			faces.responseComplete();*/
+		} catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new FacesException(e);
+		} finally {
+			session.close();
+		}
+
+	}
+
+	
+	/**
+	 * @return the periodo
+	 */
+	public String getPeriodo() {
+		return periodo;
+	}
+
+
+	/**
+	 * @param periodo the periodo to set
+	 */
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
 	}
 
 }
