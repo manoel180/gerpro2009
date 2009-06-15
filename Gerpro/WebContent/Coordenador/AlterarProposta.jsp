@@ -7,16 +7,33 @@
 
 
 <head>
-<title>Cadastro de Propostas</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
+<title>Alterar Proposta</title>
 </head>
 
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
+
+
 <f:view>
+
+<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@ include file="menu.jsp"%>
+	</div><!--fim div menu-->
+	<div id="content">
+
 	<h:form>
 
-		<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
-			styleClass="titulo" /></div>
+		<div align="center"><h:outputLabel  value="ALTERAR PROPOSTA" 
+		styleClass="Titulo1" /></div>
 
 		<h:messages layout="list" styleClass="" showDetail="true"
 			showSummary="true" />
@@ -64,4 +81,11 @@
 		</h:panelGrid>
 	</h:form>
 
+   </div >
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
