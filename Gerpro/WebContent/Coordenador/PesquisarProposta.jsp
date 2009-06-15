@@ -26,7 +26,7 @@
 	<%@ include file="menu.jsp"%>
 	</div>
 
-	<div id="content" style=" width : 577px;">
+	<div id="content">
 
 
 <rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
@@ -37,23 +37,20 @@
 	
 	
 <h:form id="form1">	
-		<div align="center"><h:outputLabel value="PESQUISAR PROPOSTAS"
-			styleClass="titulo" /></div>
-		   <div align="center"> 
-		   
-		<h:panelGrid columns="2" cellpadding="10" rowClasses="2" >
-		<h:messages tooltip="true" layout="list"  showDetail="true" showSummary="true" rendered="true"/>
-		<br>
+	
+			<h:outputLabel styleClass="Titulo1" value="PESQUISAR PROPOSTAS"/>
+			   
+		<h:panelGrid columns="1" cellpadding="10" style="width=100%" width="100%" rowClasses="2">
+		
+		<h:messages tooltip="true" layout="list" showDetail="true" showSummary="true" rendered="true" />
 		<rich:simpleTogglePanel label="Pesquisa">
-			<h:panelGrid columns="3" id="pg">
-
+			<h:panelGrid columns="5" id="pg">
 				<h:selectOneMenu id="tipobusca" value="#{propostaBean.tipo}" >
 					<f:selectItems value="#{propostaBean.itensPesqCombo}" />
 					<a4j:support event="onchange" ajaxSingle="true"
 						action="#{propostaBean.alterarComponente}"
 						reRender="pg"/>
 				</h:selectOneMenu>
-					
 				<h:outputText value="Descrição:" />
 					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
 				</h:inputText>
@@ -61,26 +58,18 @@
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
 					<f:convertNumber  integerOnly="true" type="number"/>
 				</rich:inputNumberSpinner>
-					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" />
+					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" /><h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
 			</h:panelGrid>
-		</rich:simpleTogglePanel>
-		
-		<rich:panel style="width: 217px" header="Opções">
-			<h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
-			<br>
-			<h:commandButton  value="Gerar Relatório" onclick="submit()" action="#{relatorioBean.gerarRelatorioProposta}"/>
-			<h:commandButton disabled="false" value="Gerar Relatório Processado" action="#{relatorioBean.gerarRelatorioResultadosProposta}"/>
-		</rich:panel>
-		
+		</rich:simpleTogglePanel>		
 		</h:panelGrid>
-	</div>
+	
 	</h:form>
 	<h:form id="form2">
 
 		<rich:dataTable var="prop" id="listapropostas" frame="box"  rendered="true"
 			 value="#{propostaBean.listaProposta}" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
-			width="550px" align="center">
+			 align="center">
 			<rich:column width="5%" sortBy="#{prop.id}">
 				<f:facet name="header">
 					<h:outputText value="Cod" />
@@ -109,18 +98,13 @@
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>
 				<h:commandButton image="/images/delete.png" id="btnexcluir"
 					action="#{propostaBean.excluir}" style="height: 40px; width: 40px" />
-				
-			
 				<h:commandButton image="/images/editar.png"
 					action="#{propostaBean.prepararEdicao}" id="btnalterar" 
 					style="height: 40px; width: 40px" />
-				<h:commandButton value="Construir Proposta"
-					action="#{propostaBean.irConstruirProposta}" alt="Construir Proposta"
-					 />
+				
 			</h:column>
 		</rich:dataTable>
-		<rich:datascroller align="center" for="listapropostas" maxPages="5"
-			page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
+		<rich:datascroller align="center" for="listapropostas" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 		<rich:spacer height="30" />
 
 	</h:form>

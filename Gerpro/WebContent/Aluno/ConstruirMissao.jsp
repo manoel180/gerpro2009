@@ -44,13 +44,13 @@
 			<!-- <%@ include file="menu.jsp"%> -->
 
 			<rich:simpleTogglePanel label="Dados do Proposta" width="301" height="129">
-				<h:panelGrid columns="1" cellpadding="5" style="width: 798px" width="546">
+				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Missão:" />
 					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
 						value="Clique para inserir" />
 					
-					<rich:editor  height="300" width="700"  theme="advanced"
-						style="width: 769px" value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+					<rich:editor  height="300" theme="advanced" width="490"
+						style="width: 520px" value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
