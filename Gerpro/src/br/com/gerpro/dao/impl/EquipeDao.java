@@ -2,8 +2,10 @@ package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,15 +32,33 @@ public class EquipeDao implements FacadeEquipe {
 			session.saveOrUpdate(equipe);
 			tx.commit();
 			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
-		} catch (Exception e) {
+		} catch (HibernateException e) {
+			//JOptionPane.showMessageDialog(null, "Ocorreu um erro no Hibernate!");
+			System.out.println("*************** E " + e.toString());
+			System.out.println("*************** E" + e.toString());
+			//PropertiesLoaderImpl.getValor(chave)
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+			
+			
 			e.printStackTrace();
-		}
+		} catch (PersistenceException e) {
+			//JOptionPane.showMessageDialog(null, "Ocorreu um erro de Persistencia!");
+			tx.rollback();
+			
+			e.printStackTrace();
+			}catch (Exception e) {
+				tx.rollback();
+				//JOptionPane.showMessageDialog(null, "Ocorreu um erro Exception!");
+				
+				
+				e.printStackTrace();
+			}
+		
 		finally {
 			session.close();
 		}
 	}
+
 
 	@Override
 	public List<Equipe> listar() {

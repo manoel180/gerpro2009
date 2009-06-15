@@ -41,10 +41,12 @@ public class EquipeBean {
 		try {
 			getDaoEquipe().salvar(equipe);
 		} catch (Exception e) {
-			e.printStackTrace();
+			return new ErroBean().prepararBean("banco_indisponivel");//(PropertiesLoaderImpl.getValor(e.toString()));			
+			//e.printStackTrace();
 		}
 		return prepararBean();
 	}
+
 
 	
 	public String excluir() {
