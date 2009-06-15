@@ -7,12 +7,24 @@
 
 <head>
 <title>Construir Proposta</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"> <!-- Início da DIV do Topo -->
+<div id="topo_linha"></div> <!-- DIV Linha Cinza -->
+<div id="banner"></div> <!-- DIV Banner Gerpro--></div> <!-- Fim da DIV do Topo -->
+
 
 <f:view>
+<div id="div_corpo">
+<div id="menu">
+	<br />
+	<br />
+	<%@ include file="menu.jsp"%>
+</div>
+
+<div id="content">
 	<h:form>
 
 		<div align="center"><h:outputLabel value="CONSTRUIR PROPOSTA"
@@ -23,30 +35,14 @@
 
 		<br>
 		
-		<h:panelGrid columns="3">	
-		<%@ include file="menu.jsp" %>			
-
-			<rich:simpleTogglePanel label="Dados do cadastro">
-				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-					<h:outputText value="Missão:" />
-							
-					<h:outputText value="Lista Funções:" />
-					
-
-					<h:outputText value="Justificativa:" />
-					
-
-					<h:outputText value="Metodologia:" />
-					
-
-					<h:outputText value="Cronograma:" />
-
-				</h:panelGrid>
-			</rich:simpleTogglePanel>
-		</h:panelGrid>
-
-		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" /><br><%@include file="../common/bannerPropostaEquipe.jsp"%>
+		<br><%@include file="../common/bannerPropostaEquipe.jsp"%>
+		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
 
 	</h:form>
-
+</div>
+</div>
 </f:view>
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a Corre&ccedil;&atilde;o de PESw &copy; Copyright</div> 
