@@ -5,14 +5,14 @@
 <rich:simpleTogglePanel label="Proposta">
 	<rich:panelMenu expandMode="ajax" label="Itens">
 		<rich:panelMenuItem label="Missão"
-			 />
+			action="#{construirPropostaBean.prepararMissao}" />
 		<rich:panelMenuItem label="Lista de Funções"
-			/>
+			action="#{construirPropostaBean.prepararListaFuncao}" />
 		<rich:panelMenuItem label="Justificativa"
-			/>
+			action="#{construirPropostaBean.prepararJustificativa}" />
 		<rich:panelMenuItem label="Metodologia"
-			 />
+			action="#{construirPropostaBean.prepararMetodologia}" />
 		<rich:panelMenuItem label="Cronograma"
-			 />
+			action="#{construirPropostaBean.prepararCronograma}" />
 	</rich:panelMenu>
 </rich:simpleTogglePanel>
