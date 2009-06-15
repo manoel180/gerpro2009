@@ -23,7 +23,8 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menu.jsp"%></div>
+	<%@ include file="menu.jsp"%>
+	</div>
 
 	<div id="content">
 
@@ -36,10 +37,10 @@
 	<br>
 	<rich:toolTip for="txtdesc1" followMouse="true" zorder="90"
 		value="Inserir um nome da Proposta" /> <rich:toolTip for="equipe"
-		followMouse="true" zorder="90" value="Selecione uma equipe" /> <rich:toolTip
-		for="dt_criacao" followMouse="true" zorder="90"
-		value="Inserir uma data de Criação da Proposta" /> <rich:toolTip
-		for="txtperiodo" followMouse="true" zorder="90"
+		followMouse="true" zorder="90" value="Selecione uma equipe" /> 
+		<rich:toolTip for="dt_criacao" followMouse="true" zorder="90"
+		value="Inserir uma data de Criação da Proposta" /> 
+		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90"
 		value="Inserir um Periodo" /> <rich:simpleTogglePanel focus="txtdesc1"
 		label="Dados do cadastro" style="text-align:left">
 		<h:form>
@@ -86,7 +87,8 @@
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:panelGrid>
-	</h:form></div>
+	</h:form>
+	</div>
 	</div>
 </f:view>
 

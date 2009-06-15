@@ -7,10 +7,28 @@
 
 <head>
 <title>Pesquisar Propostas</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
+
+
 <f:view>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@ include file="menu.jsp"%>
+	</div>
+
+	<div id="content" style=" width : 577px;">
+
+
 <rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
 	<!--  rint  -->
 	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
@@ -106,5 +124,11 @@
 		<rich:spacer height="30" />
 
 	</h:form>
-
+	</div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
