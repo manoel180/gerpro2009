@@ -12,5 +12,7 @@
 		<f:selectItem itemLabel="Não" itemValue="2" />
 	</h:selectOneRadio>
 	<rich:editor  value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
-		theme="advanced"></rich:editor>
+		theme="advanced" required="true">
+		<f:attribute name="fieldRef" value="Descrição" />	
+	</rich:editor>
 </rich:simpleTogglePanel>

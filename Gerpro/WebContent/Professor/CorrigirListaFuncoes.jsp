@@ -12,20 +12,19 @@
 	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 <f:view>
-	<h:form>
+	<div align="center"><h:outputLabel value="FUNÇÕES"
+		styleClass="Titulos" /></div>
 
-		<div align="center"><h:outputLabel value="FUNÇÕES"
-			styleClass="Titulos" /></div>
+	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
+		showSummary="true" />
 
-		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
-			showSummary="true" />
+	<br>
 
-		<br>
+	<h:panelGrid columns="3">
+		<%@ include file="menu.jsp"%>
 
-		<h:panelGrid columns="3">
-			<%@ include file="menu.jsp"%>
-
-			<rich:simpleTogglePanel label="Dados do cadastro">
+		<rich:simpleTogglePanel label="Dados do cadastro">
+			<h:form>
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 
 					<rich:dataTable id="idtable" var="listafuncao"
@@ -64,13 +63,17 @@
 						fastControls="show" />
 					<rich:spacer height="30" />
 				</h:panelGrid>
-			</rich:simpleTogglePanel>
-		</h:panelGrid>
+			</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid>
 
-		<br>
+	<br>
 	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
-	<%@ include file="perguntasCorrecao.jsp"%>
-	<h:commandButton value="Salvar" action="#{corrigirPropostaBean.salvarCorrigirMissao}" disabled="#{corrigirPropostaBean.desabilitar}"/>
+	<h:form>
+		<%@ include file="perguntasCorrecao.jsp"%>
+		<h:commandButton value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
 
 	</h:form>
 

@@ -24,11 +24,11 @@
 
 	<h:panelGrid columns="5">
 		<%@ include file="menu.jsp"%>
+
 		<rich:simpleTogglePanel width="600px" label="Dados do cadastro">
-			<h:form id="form2">
+			<h:form>
 				<rich:dataTable id="idtable" var="lstCronograma"
-					value="#{corrigirPropostaBean.lstCronograma}"
-					rows="10"
+					value="#{corrigirPropostaBean.lstCronograma}" rows="10"
 					width="550px" align="center">
 					<rich:column sortBy="#{lstCronograma.dataInicial}">
 						<f:facet name="header">
@@ -57,19 +57,15 @@
 						<h:outputText value="#{lstCronograma.artefatos.nome}" />
 					</rich:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Opções"></h:outputText>
-						</f:facet>
-
-					</h:column>
 				</rich:dataTable>
 			</h:form>
 		</rich:simpleTogglePanel>
 	</h:panelGrid>
 	<br>
+
+	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
+
 	<h:form>
-		<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
 		<%@ include file="perguntasCorrecao.jsp"%>
 		<h:commandButton value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
