@@ -23,7 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menu.jsp"%>
+	<%@ include file="menuCoordenador.jsp"%>
 	</div>
 
 	<div id="content">
@@ -58,7 +58,7 @@
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
 					<f:convertNumber  integerOnly="true" type="number"/>
 				</rich:inputNumberSpinner>
-					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" /><h:commandButton value="Novo" action="#{propostaBean.preperarInclusao}" />
+					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>		
 		</h:panelGrid>

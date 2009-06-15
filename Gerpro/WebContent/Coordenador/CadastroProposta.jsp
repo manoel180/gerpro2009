@@ -23,7 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menu.jsp"%>
+	<%@ include file="menuCoordenador.jsp"%>
 	</div>
 
 	<div id="content">
