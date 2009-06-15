@@ -10,16 +10,21 @@
         iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right" 
         iconCollapsedTopGroup="chevronDown">
         
+		<rich:panelMenuGroup label="Equipe">
+			<rich:panelMenuItem label="Pesquisar" action="#{equipeBean.prepararBean}"  />
+			<rich:panelMenuItem label="Cadastrar" action="#{equipeBean.prepararInclusao}"/>
+		</rich:panelMenuGroup>
+		
+		<rich:panelMenuGroup label="Propostas">
+			<rich:panelMenuItem label="Alocar"  />
+			<rich:panelMenuItem label="Pesquisar" action="#{propostaBean.prepararBean}" />
+			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.prepararInclusao}" />
+		</rich:panelMenuGroup>
+		
 		<rich:panelMenuGroup label="Usuários">
 			<rich:panelMenuItem label="Pesquisar"  />
 			<rich:panelMenuItem label="Cadastrar"  />
 		</rich:panelMenuGroup> 
-			
-		<rich:panelMenuGroup label="Propostas">
-			<rich:panelMenuItem label="Alocar"  />
-			<rich:panelMenuItem label="Pesquisar" action="#{propostaBean.prepararBean}" />
-			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.preperarInclusao}" />
-		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Relatórios"> 
 			<rich:panelMenuItem label="Equipe x Proposta" action="go_relatorioEquipeProposta"/>

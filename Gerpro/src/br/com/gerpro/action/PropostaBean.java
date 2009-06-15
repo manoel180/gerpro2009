@@ -87,9 +87,9 @@ public class PropostaBean {
 		return "pesquisarProposta";
 	}
 
-	public String preperarInclusao() {
+	public String prepararInclusao() {
 		proposta = new Proposta();
-		return "incluir";
+		return "incluirProposta";
 	}
 
 	public String prepararEdicao() {
@@ -97,7 +97,7 @@ public class PropostaBean {
 		status = proposta.getStatus();
 		equipe = proposta.getEquipe();
 
-		return "alterar";
+		return "alterarProposta";
 	}
 	
 	public String prepararCorrecao() {

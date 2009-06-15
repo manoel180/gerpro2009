@@ -23,14 +23,14 @@ public class EquipeBean {
 		return "go_manterEquipe";
 	}
 
-	public String preperarInclusao() {
+	public String prepararInclusao() {
 		equipe = new Equipe();
-		return "incluir";
+		return "incluirEquipe";
 	}
 
-	public String preperarEdicao() {
+	public String prepararEdicao() {
 		equipe = (Equipe) objDatatableEquipe.getRowData();
-		return "alterar";
+		return "alterarEquipe";
 	}
 
 	public void pesquisar() {

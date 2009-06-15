@@ -25,12 +25,12 @@ public class ArtefatosBean {
 
 	public String preperarInclusao() {
 		artefatos = new Artefatos();
-		return "incluir";
+		return "incluirArtefatos";
 	}
 
 	public String preperarEdicao() {
 		artefatos = (Artefatos) objDatatableArtefatos.getRowData();
-		return "alterar";
+		return "alterarArtefatos";
 	}
 
 	public void pesquisar() {

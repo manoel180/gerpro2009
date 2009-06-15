@@ -22,8 +22,7 @@
 					value="#{equipeBean.equipe.nome}" />
 				<h:commandButton value="Pesquisar"
 					action="#{equipeBean.pesquisar}"/> 
-				<h:commandButton value="Novo"
-					action="#{equipeBean.preperarInclusao}"/>
+				
 			</h:panelGrid>
 			
 		</rich:simpleTogglePanel>
@@ -56,7 +55,7 @@
 					<h:commandButton value="Excluir"
 						action="#{equipeBean.excluir}" />
 					<h:commandButton value="Editar"
-						action="#{equipeBean.preperarEdicao}" />
+						action="#{equipeBean.prepararEdicao}" />
 				</h:column>
 			</rich:dataTable>
 		</rich:simpleTogglePanel>
