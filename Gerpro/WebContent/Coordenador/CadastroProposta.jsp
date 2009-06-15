@@ -21,7 +21,7 @@
 <div id="menu">
 	<br />
 	<br />
-	<!--  %@ include file="menu.jsp"%-->
+	<%@ include file="menu.jsp"%>
 </div>
 
 <div id="content">
