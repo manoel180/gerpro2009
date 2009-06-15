@@ -85,12 +85,12 @@ public class SubmeterPropostaBean {
 		return "go_SubmeterProposta";
 	}
 
-	public String preperarInclusao() {
+	public String prepararInclusao() {
 		proposta = new Proposta();
 		return "incluir";
 	}
 
-	public String preperarEdicao() {
+	public String prepararEdicao() {
 		proposta = (Proposta) objDatatablePropostaItem.getRowData();
 		
 		status = proposta.getStatus();
