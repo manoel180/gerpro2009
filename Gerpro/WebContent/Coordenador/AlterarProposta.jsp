@@ -26,7 +26,7 @@
 <div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menu.jsp"%>
+	<%@ include file="menuCoordenador.jsp"%>
 	</div><!--fim div menu-->
 	<div id="content">
 
@@ -69,16 +69,6 @@
 
 		</rich:simpleTogglePanel>
 			<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
-	</h:form>
-	<h:form>
-		<h:panelGrid columns="1" width="90%" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton action="#{propostaBean.prepararBean}"
-						value="Ir para o listar propostas" />
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
 	</h:form>
 
    </div >

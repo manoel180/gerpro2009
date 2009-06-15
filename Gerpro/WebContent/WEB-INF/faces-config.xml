@@ -280,6 +280,11 @@
 			<from-outcome>go_manterEquipe</from-outcome>
 			<to-view-id>/Coordenador/PesquisarEquipe.jsp</to-view-id>
 		</navigation-case>
+		<!-- Tela Relatório Equipe -->	
+		<navigation-case>
+			<from-outcome>go_relatorioEquipeProposta</from-outcome>
+			<to-view-id>/Relatorios/RelatorioProposta.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<!-- Navegação da Área do Professor -->
 	<navigation-rule>

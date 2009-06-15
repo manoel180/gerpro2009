@@ -22,8 +22,8 @@
 		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Relatórios"> 
-			<rich:panelMenuItem label="Equipe x Proposta"  />
-			<rich:panelMenuItem label="Média das Proposta"  />
+			<rich:panelMenuItem label="Equipe x Proposta" action="go_relatorioEquipeProposta"/>
+			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.gerarRelatorioResultadosProposta}" />
 		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Sair"/>

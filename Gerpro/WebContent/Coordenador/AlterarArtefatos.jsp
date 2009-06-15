@@ -13,25 +13,14 @@
 
 <f:view>
 	<h:form>
-		<div align="center"><h:outputLabel value="Alterar Equipes"	styleClass="titulo"/></div>
+		<div align="center"><h:outputLabel value="Alterar Artefatos"	styleClass="titulo"/></div>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="5" cellpadding="5">
 				<h:outputText value="Nome:" />
 				<h:inputText id="txtdesc1"
 					value="#{artefatosBean.artefatos.nome}" /> 
-				<h:commandButton value="Salvar" action="#{artefatosBean.salvar}" 
-				style="background-color:#D2691E;color:#FFFFFF; font-weight:bold;border: 1px outset"/>
+				<h:commandButton value="Salvar" action="#{artefatosBean.salvar}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
-	
-		<h:panelGrid columns="1" width="90%" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton action="#{artefatosBean.prepararBean}"
-						value="Ir para a lista de equipes" />
-						
-						</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
 	</h:form>
 </f:view>
