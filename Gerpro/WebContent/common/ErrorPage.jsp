@@ -10,8 +10,7 @@
 </head>
 <body>
 <f:view>	
-<h:messages />
-	<h:outputText value="#{erroBean.mensagemErro}"/>
+<h:messages id="messagemErro" binding="#{erroBean.mensagemErro}"/>
 	<br />	
 	<h:commandLink action="retornar"  immediate="true">Retornar à página anterior</h:commandLink>
 

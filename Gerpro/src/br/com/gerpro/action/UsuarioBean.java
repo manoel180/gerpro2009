@@ -75,23 +75,23 @@ public class UsuarioBean{
 		String  homeUsuario = "home";		 
 		Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario.getMatricula());
 		
-		if (usuario == null) {
-			JOptionPane.showMessageDialog(null, "Usuário inválido");
-			return null;
+		if (usuario == null) {			
+			return "erro";
+			
 		}else{
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
 				homeUsuario += usuarioBD.getTipoUsuario().getNome();				
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "Senha inválida");
-				return null;
+				return "erro";
 			}				
 		}	
 				
 		applicationSecurityManager.setUsuario(usuario);		
 		return homeUsuario;
 	}
+
 	//TODO Retirar item Tela Inicial de todos os menus.
 	
 

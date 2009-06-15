@@ -61,6 +61,10 @@
    <from-outcome>homeProfessor</from-outcome>
    <to-view-id>/Professor/homeProfessor.jsp</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>erro</from-outcome>
+   <to-view-id>/common/ErrorPage.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <!-- Navegação da Área do Professor -->
  <navigation-rule>

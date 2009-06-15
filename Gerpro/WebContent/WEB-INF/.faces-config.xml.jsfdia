@@ -8,6 +8,9 @@
    <PROCESS-ITEM-OUTPUT ID="homeProfessor::#Professor#homeProfessor.jsp"
     NAME="output1" PATH="/Professor/homeProfessor.jsp" SHAPE="-1,16"
     TARGET="rules:#Professor#homeProfessor.jsp" TITLE="homeProfessor" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="erro::#common#ErrorPage.jsp" NAME="output2"
+    PATH="/common/ErrorPage.jsp" TARGET="rules:#common#ErrorPage.jsp"
+    TITLE="erro" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
@@ -362,4 +365,6 @@
     TITLE="go_ConstruirProposta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#common#ErrorPage.jsp"
+  PATH="/common/ErrorPage.jsp" SHAPE="304,305,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
