@@ -295,10 +295,10 @@
 			<from-outcome>corrigirMissao</from-outcome>
 			<to-view-id>/Professor/CorrigirMissao.jsp</to-view-id>
 		</navigation-case>
-		<navigation-case>
+		<!-- navigation-case>
 			<from-outcome>listarPropostas</from-outcome>
 			<to-view-id>/Professor/listarProposta.jsp</to-view-id>
-		</navigation-case>
+		</navigation-case -->
 		<navigation-case>
 			<from-outcome>go_SubmeterProposta</from-outcome>
 			<to-view-id>/Professor/SubmeterProposta.jsp</to-view-id>
