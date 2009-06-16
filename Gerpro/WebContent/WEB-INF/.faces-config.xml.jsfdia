@@ -56,6 +56,11 @@
     ID="corrigirMissao::#Professor#CorrigirMissao.jsp" NAME="output5"
     PATH="/Professor/CorrigirMissao.jsp" SHAPE="-1,48"
     TARGET="rules:#Professor#CorrigirMissao.jsp" TITLE="corrigirMissao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listarPropostas::#Professor#ListarPropostas.jsp" NAME="output"
+    PATH="/Professor/ListarPropostas.jsp"
+    TARGET="rules:#Professor#ListarPropostas.jsp"
+    TITLE="listarPropostas" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules::1" SHAPE="32,2161,0,0" model-entity="JSFProcessGroup">
@@ -213,4 +218,6 @@
   PATH="/Professor/CorrigirMissao.jsp" SHAPE="304,1632,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Relatorios#RelatorioProposta.jsp"
   PATH="/Relatorios/RelatorioProposta.jsp" SHAPE="304,833,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Professor#ListarPropostas.jsp"
+  PATH="/Professor/ListarPropostas.jsp" SHAPE="304,2289,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

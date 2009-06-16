@@ -96,6 +96,10 @@
   <navigation-case>
    <from-outcome>corrigirMissao</from-outcome>
    <to-view-id>/Professor/CorrigirMissao.jsp</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   <from-outcome>listarPropostas</from-outcome>
+   <to-view-id>/Professor/ListarPropostas.jsp</to-view-id>
   </navigation-case>   
  </navigation-rule>
  <!-- Navegação da Área do Coordenador -->
