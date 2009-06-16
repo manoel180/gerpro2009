@@ -9,14 +9,12 @@ package br.com.gerpro.action;
 import java.util.List;
 
 import javax.faces.component.UIData;
-import javax.swing.JOptionPane;
 
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Proposta;
-import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
@@ -86,11 +84,12 @@ public class UsuarioBean{
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
 				homeUsuario += usuarioBD.getTipoUsuario().getNome();
 				applicationSecurityManager.setUsuario(usuarioBD);
-				if(usuarioBD.getTipoUsuario().getId()==1);
+				if(usuarioBD.getTipoUsuario().getId()==1){
 					Proposta proposta = new Proposta();
 					FacadeProposta propostaDao = new PropostaDao();
 					proposta = propostaDao.listarPorIdEquipe(usuarioBD.getEquipe().getId(), "1");
 					applicationSecurityManager.setProposta(proposta);
+				}
 			}
 			else
 			{
