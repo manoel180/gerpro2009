@@ -22,7 +22,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="../menuCoordenador.jsp"%>
+	<%@ include file="menu.jsp"%>
 	</div>
 
 	<div id="content">
@@ -38,10 +38,9 @@
 
 		<br>
 
-		<h:panelGrid columns="3">
-			<%@ include file="menu.jsp"%>
+		<h:panelGrid columns="3" >
 
-			<rich:simpleTogglePanel label="Dados do cadastro">
+			<rich:simpleTogglePanel label="Dados do cadastro" rendered="#{!construirPropostaBean.desabilitar}">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 
 					<h:outputText value="Ordem:" />
