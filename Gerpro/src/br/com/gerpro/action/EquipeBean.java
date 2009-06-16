@@ -6,6 +6,7 @@ import javax.faces.component.UIData;
 
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.mensagens.PropertiesLoaderImpl;
 import br.com.gerpro.model.Equipe;
 
 

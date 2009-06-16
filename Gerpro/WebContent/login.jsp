@@ -8,15 +8,16 @@
 <head>
 <title>Seja Bem Vindo ao GERPRO</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/gerpro.css"/>
+<link rel="stylesheet" type="text/css" href="css/gerpro.css" />
 </head>
 
 
-<div id="topo" ><!-- Início da DIV do Topo -->
-	<div id="topo_linha" ></div><!-- DIV Linha Cinza -->
-	<div id="banner"></div><!-- DIV Banner Gerpro-->
-</div><!-- Fim da DIV do Topo -->
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
 	<div id="div_corpo" align="center"><!-- Início DIV Content  -->
@@ -53,6 +54,7 @@
 	</h:form></div>
 	</div>
 </f:view>
-<div class="linkBranco"  align="center" id="rodape"><!-- Rodapé --> <br />
+<div class="linkBranco" align="center" id="rodape"><!-- Rodapé -->
+<br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

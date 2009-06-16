@@ -47,6 +47,7 @@ public class PropostaDao implements FacadeProposta {
 			e.printStackTrace();
 		} catch (Exception e) {
 			tx.rollback();
+			
 			JOptionPane.showMessageDialog(null, "Erro",
 					"GerPro - Ocorreu um erro" + e, 1);
 			e.printStackTrace();

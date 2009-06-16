@@ -39,7 +39,7 @@
 		</h:panelGrid>
 
 		
-		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMetodologia}" /><br><%@include file="../common/bannerPropostaEquipe.jsp"%>
+		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMetodologia}" /><br><%@include file=""../common/bannerSubmeterPropostaEquipe.jsp">
 
 	</h:form>
 

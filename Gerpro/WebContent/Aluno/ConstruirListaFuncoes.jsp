@@ -116,8 +116,6 @@
             
 		<br><br>
 		</div>
-		<br><%@include file="../common/bannerPropostaEquipe.jsp"%>
-
-	</h:form>
+		<br><%@include file="../common/bann"../common/bannerSubmeterPropostaEquipe.jsp">
 
 </f:view>

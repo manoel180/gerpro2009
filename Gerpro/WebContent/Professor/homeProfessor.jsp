@@ -6,7 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <f:view>
-<jsp:include page="menuProfessor.jsp"></jsp:include>
+<jsp:include page="menuProfessor_2.jsp"></jsp:include>
 	<p>
 		asiwfkhagfnasohgpiuafhdngjnadfpiuhgádofijgóiadfgknadfokngoadfng
 	godfisgpiojdsf´gj´dfiojgóijfdsóigj´dsfiojgíojfds´gijdsf

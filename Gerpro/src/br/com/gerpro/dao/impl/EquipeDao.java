@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.mensagens.PropertiesLoaderImpl;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.util.HibernateUtil;
 

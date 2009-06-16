@@ -35,7 +35,7 @@
 
 		<br>
 		
-		<br><%@include file="../common/bannerPropostaEquipe.jsp"%>
+		<br><%@include file="."../common/bannerSubmeterPropostaEquipe.jsp"
 		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
 
 	</h:form>

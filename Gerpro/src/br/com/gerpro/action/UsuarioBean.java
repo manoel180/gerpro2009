@@ -74,13 +74,15 @@ public class UsuarioBean{
 	public String logar(){
 		String  homeUsuario = "home";		 
 		Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario.getMatricula());
+		System.out.println("Listar Por Professor " + usuarioBD.getNome());
 		
 		if (usuario == null) {			
 			return "erro";
 			
 		}else{
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
-				homeUsuario += usuarioBD.getTipoUsuario().getNome();				
+				homeUsuario += usuarioBD.getTipoUsuario().getNome();
+				applicationSecurityManager.setUsuario(usuarioBD);
 			}
 			else
 			{
@@ -88,7 +90,7 @@ public class UsuarioBean{
 			}				
 		}	
 				
-		applicationSecurityManager.setUsuario(usuario);		
+				
 		return homeUsuario;
 	}
 

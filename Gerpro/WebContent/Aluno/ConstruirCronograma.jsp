@@ -122,5 +122,5 @@
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90" value="Clique para salvar"/>
 		
 	</h:form>
-	<%@ include file="../common/bannerPropostaEquipe.jsp"%>
+	<%@ include file="../common/bannerSubmeterPropostaEquipe.jsp"%>
 </f:view>

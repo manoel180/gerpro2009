@@ -10,7 +10,7 @@ public class ErroBean {
 	private String mensagemErro;
 	
 	public String prepararBean(String mensagemErro2) {		
-		mensagemErro=mensagemErro2;	
+		this.mensagemErro = "ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOO";//mensagemErro2;	
 		return "erro";
 	}
 	

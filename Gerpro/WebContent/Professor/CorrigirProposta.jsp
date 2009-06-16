@@ -25,7 +25,7 @@
 		
 		<h:panelGrid columns="3" width="890">	
 		<%@ include file="menuProfessor.jsp" %>
-		<%@include file="../common/bannerPropostaEquipe.jsp"%>			
+		<%@include file="../common/bannerSubmeterPropostaEquipe.jsp"%>			
 
 			
 		</h:panelGrid>

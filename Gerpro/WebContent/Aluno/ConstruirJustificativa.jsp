@@ -43,6 +43,6 @@
 		<h:commandButton id="btnSalvar" value="Salvar"
 			action="#{construirPropostaBean.SalvarJustificativa}" />
 			<br>
-			<%@include	file="../common/bannerPropostaEquipe.jsp"%>
+			<%@include	file=""../common/bannerSubmeterPropostaEquipe.jsp">
 	</h:form>
 </f:view>

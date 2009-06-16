@@ -57,7 +57,7 @@
 
 		
 		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMissao}" />
-	<br><!-- <%@ include file="../common/bannerPropostaEquipe.jsp"%> -->
+	<br><!-- <%@ include file="../c"../common/bannerSubmeterPropostaEquipe.jsp">
 	</h:form>
 	
 		</div>

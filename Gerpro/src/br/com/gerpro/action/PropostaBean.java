@@ -186,10 +186,12 @@ public class PropostaBean {
 
 	public String listaPorProfessor() {
 		Usuario usuario = applicationSecurityManager.getUsuario();
+
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
+		
+		
 
 		return "listarPropostas";
-
 	}	
 	
 

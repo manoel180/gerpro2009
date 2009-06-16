@@ -6,13 +6,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
-<link href="../css/estilos.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<f:view>	
-<h:messages id="messagemErro" binding="#{erroBean.mensagemErro}"/>
-	<br />	
+<f:view>
+<h:form>
+	<h:outputText  id="mensagemErro"  value="#{erroBean.mensagemErro}" rendered="true"/>		
+		
 	<h:commandLink action="retornar"  immediate="true">Retornar à página anterior</h:commandLink>
+
+</h:form>	
 
 </f:view>		
 	
