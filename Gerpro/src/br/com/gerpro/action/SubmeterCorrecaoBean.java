@@ -63,9 +63,6 @@ public class SubmeterCorrecaoBean {
 		Proposta proposta = (Proposta) applicationSecurityManager.getProposta();
 		Usuario professor = (Usuario) applicationSecurityManager.getUsuario();
 		
-		//Proposta proposta = propostaDao.procurarPorId(4);
-		//Usuario professor = usuarioDao.procurarPorMatricula("2");
-		
 		listaCorrecao = correcaoDao.procurarPorCorrecao(professor, proposta);
 				
 		status =  proposta.getStatus();
@@ -76,7 +73,7 @@ public class SubmeterCorrecaoBean {
 	
 	public String listaCorrecao(){		
 		
-		return "go_SubmeterCorrecao";
+		return "submeterCorrecao";
 	}
 	
 	

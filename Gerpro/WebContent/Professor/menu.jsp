@@ -14,5 +14,7 @@
 			action="#{corrigirPropostaBean.prepararCorrigirMetodologia}" />
 		<rich:panelMenuItem label="Cronograma"
 			action="#{corrigirPropostaBean.prepararCorrigirCronograma}" />
+		<rich:panelMenuItem label="Submeter Correção"
+			action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
 	</rich:panelMenu>
 </rich:simpleTogglePanel>

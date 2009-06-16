@@ -33,10 +33,8 @@ public class ApplicationSecurityManager
     {
     	/*FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-    	session.setAttribute(USER, usuario);*/
-    	
-    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(USER,usuario);    	
-    	System.out.println("Usuario ***********" + usuario.toString());
+    	session.setAttribute(USER, usuario);*/    	
+    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(USER,usuario);  
     }
 
     public Proposta getProposta(){
@@ -64,8 +62,8 @@ public class ApplicationSecurityManager
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
     	session.setAttribute(USER, usuario);*/
     	
-    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PROPOSTA,proposta);   	
-    	System.out.println("peguei a proposta*******" + proposta.toString());
+    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PROPOSTA,proposta);   
+
     }
 
     

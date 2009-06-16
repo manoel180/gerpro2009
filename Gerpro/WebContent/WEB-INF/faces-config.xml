@@ -33,6 +33,11 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>corrigirPropostaBean</managed-bean-name>
+  <managed-bean-class>br.com.gerpro.action.CorrecaoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
   <managed-bean-name>submeterCorrecaoBean</managed-bean-name>
   <managed-bean-class>br.com.gerpro.action.SubmeterCorrecaoBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
@@ -97,10 +102,18 @@
    <from-outcome>corrigirMissao</from-outcome>
    <to-view-id>/Professor/CorrigirMissao.jsp</to-view-id>
   </navigation-case>
-   <navigation-case>
+  <navigation-case>
    <from-outcome>listarPropostas</from-outcome>
    <to-view-id>/Professor/ListarPropostas.jsp</to-view-id>
-  </navigation-case>   
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>corrigirProposta</from-outcome>
+   <to-view-id>/Professor/CorrigirProposta.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>submeterCorrecao</from-outcome>
+   <to-view-id>/Professor/SubmeterCorrecao.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <!-- Navegação da Área do Coordenador -->
  <navigation-rule>
