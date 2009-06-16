@@ -8,18 +8,33 @@
 <head>
 <title>Cronograma</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 
 <f:view>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content"><h:form>
+
           <!-- rint dos botoes calendario data inicio e fim -->
        <rich:toolTip for="dt_Fim" followMouse="true" zorder="90" value="Inserir uma data final"/>
        <rich:toolTip for="dt_Inicio" followMouse="true" zorder="90" value="Inserir uma data de Inicio"/>
 	   				
-	<div align="center">
-	<h:outputLabel value="CRONOGRAMA" styleClass="Titulos" /></div>
+			<div align="center"><h:outputLabel value="CRONOGRAMA"
+		styleClass="Titulo1" /></div>
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
@@ -27,7 +42,7 @@
 	<br>
 
 	<h:panelGrid columns="5">
-		<%@ include file="menu.jsp"%>
+		<-- <%@ include file="menu.jsp"%> --> 
 		<rich:simpleTogglePanel rendered="#{!construirPropostaBean.desabilitar}"  width="600px" label="Dados do cadastro">
 			<h:form id="form1">
 				<h:panelGrid columns="1">
@@ -120,5 +135,13 @@
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90" value="Clique para salvar"/>
 		
 	</h:form>
-	<%@ include file="../common/bannerPropostaEquipe.jsp"%>
+		<%@include file="../common/bannerPropostaEquipe.jsp"%>	
+		</div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
