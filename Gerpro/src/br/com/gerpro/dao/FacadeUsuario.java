@@ -20,4 +20,11 @@ public interface FacadeUsuario {
 	public List<Usuario> listarPorNome(String nomeStatus);
 
 	public Usuario procurarPorNome(String nome);
+
+	
+	/**
+	 * @param id
+	 * @return
+	 */
+	public List<Usuario> listarPorEquipe(int id);
 }

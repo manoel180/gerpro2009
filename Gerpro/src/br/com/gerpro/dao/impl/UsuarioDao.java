@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadeUsuario;
+import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.HibernateUtil;
 
@@ -63,14 +64,20 @@ public class UsuarioDao implements FacadeUsuario {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.gerpro.dao.FacadeUsuario#listarPorOrdemAlfabetica()
-	 */
-	public List<Usuario> listarPorOrdemAlfabetica() {
+	@Override
+	public List<Usuario> listarPorEquipe(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Usuario> result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		// Funcionando mas duplicando linhas
+		result = session.createQuery(
+				"from Usuario as user" + " where user.equipe.id ="
+						 + id ).list();
+
+		session.close();
+		return result;
 	}
 
 	/*

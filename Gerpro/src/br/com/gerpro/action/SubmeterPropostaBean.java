@@ -84,6 +84,7 @@ public class SubmeterPropostaBean {
 		proposta = propitem.getProposta();
 		status =  proposta.getStatus();
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		verificarItens();
 		return "SubmeterProposta";
 	}
@@ -96,7 +97,7 @@ public class SubmeterPropostaBean {
 				cont++;
 			}
 		}
-		if(cont == 6){
+		if(cont == 6 || !(proposta.getStatus().getId()==6)){
 			desabilita = false;
 		}
 		else{
@@ -124,25 +125,6 @@ public class SubmeterPropostaBean {
 	
 	}
 
-	public String salvar() {
-		try {
-						
-			proposta.setEquipe(equipe);
-			proposta.setStatus(status);
-			getPropostaDao().salvar(proposta);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return prepararBean();
-	}
-
-	
-	public String excluir() {
-		proposta = (Proposta) objDatatablePropostaItem.getRowData();
-		getPropostaDao().remover(proposta);
-		return prepararBean();
-	}
-	
 	
 	
 	/*

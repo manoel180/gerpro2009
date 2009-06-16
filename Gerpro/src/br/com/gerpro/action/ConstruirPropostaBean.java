@@ -17,6 +17,7 @@ import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeTipoFuncao;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.ArtefatosDao;
 import br.com.gerpro.dao.impl.CronogramaDao;
 import br.com.gerpro.dao.impl.EquipeDao;
@@ -24,6 +25,7 @@ import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
+import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Artefatos;
 import br.com.gerpro.model.Cronograma;
 import br.com.gerpro.model.CronogramaId;
@@ -35,6 +37,7 @@ import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.TipoFuncao;
+import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
 public class ConstruirPropostaBean {
@@ -46,6 +49,7 @@ public class ConstruirPropostaBean {
 	private List<ListaFuncao> lstlistaFuncaoDel = new ArrayList<ListaFuncao>();
 	private List<Cronograma> lstCronograma = new ArrayList<Cronograma>();
 	private List<Artefatos> lstArtefatos = new ArrayList<Artefatos>();
+	private List<Usuario> listaUsuarios;
 	private ApplicationSecurityManager appSecurityManager = new ApplicationSecurityManager ();
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
@@ -60,6 +64,7 @@ public class ConstruirPropostaBean {
 	private TipoFuncao tipofuncao = new TipoFuncao();
 	private ListaFuncaoId listafuncaoid = new ListaFuncaoId();
 
+	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeEquipe daoEquipe = new EquipeDao();
 	private FacadeArtefatos daoArtefatos = new ArtefatosDao();
 	private FacadeProposta daoProposta = new PropostaDao();
@@ -274,6 +279,7 @@ public class ConstruirPropostaBean {
 
 		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(1);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
@@ -305,6 +311,7 @@ public class ConstruirPropostaBean {
 	public String prepararListaFuncao() {
 		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(2);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
@@ -352,6 +359,7 @@ public class ConstruirPropostaBean {
 		proposta = getDaoProposta().procurarPorId(
 				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(3);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
@@ -387,6 +395,7 @@ public class ConstruirPropostaBean {
 		proposta = getDaoProposta().procurarPorId(
 				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(4);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
@@ -421,6 +430,7 @@ public class ConstruirPropostaBean {
 		proposta = getDaoProposta().procurarPorId(
 				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(5);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
@@ -829,6 +839,20 @@ public class ConstruirPropostaBean {
 	 */
 	public void setDesabilitar(boolean desabilitar) {
 		this.desabilitar = desabilitar;
+	}
+
+	/**
+	 * @return the listaUsuarios
+	 */
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaUsuarios the listaUsuarios to set
+	 */
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 }
