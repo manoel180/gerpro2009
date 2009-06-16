@@ -7,16 +7,31 @@
 
 <head>
 <title>Funções</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@ include file="../menuCoordenador.jsp"%>
+	</div>
+
+	<div id="content">
+
 	<h:form>
 
 		<div align="center"><h:outputLabel value="FUNÇÕES"
-			styleClass="Titulos" /></div>
+		styleClass="Titulo1" /></div>
+
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
@@ -26,7 +41,7 @@
 		<h:panelGrid columns="3">
 			<%@ include file="menu.jsp"%>
 
-			<rich:simpleTogglePanel rendered="#{!construirPropostaBean.desabilitar}" label="Dados do cadastro">
+			<rich:simpleTogglePanel label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 
 					<h:outputText value="Ordem:" />
@@ -146,4 +161,12 @@
 		<br>
 		<%@include file="../common/bannerPropostaEquipe.jsp"%>	
 	</h:form>
+	</div>
+	</div>
+	
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
