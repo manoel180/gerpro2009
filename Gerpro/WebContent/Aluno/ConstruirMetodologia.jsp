@@ -37,7 +37,7 @@
 		<br>
 
 		<h:panelGrid columns="3">
-			<!-- <%@ include file="menu.jsp"%> -->
+		
 
 			<rich:simpleTogglePanel label="Dados do Proposta" width="300"
 				height="129" style="width: 546px">
