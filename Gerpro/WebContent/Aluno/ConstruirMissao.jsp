@@ -39,8 +39,8 @@
 		<h:panelGrid columns="3">
 			<!-- <%@ include file="menu.jsp"%> -->
 
-			<rich:simpleTogglePanel label="Dados do Proposta" width="301"
-				height="129">
+			<rich:simpleTogglePanel label="Dados do Proposta" width="300"
+				height="129" style="width: 546px">
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Missão:" />
 					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
