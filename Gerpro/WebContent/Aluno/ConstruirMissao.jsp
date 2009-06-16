@@ -28,9 +28,9 @@
 		
 	<div id="content"><h:form>
 
-		<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
-			styleClass="Titulos1" /></div>
-
+		
+		<div align="center"><h:outputLabel value="MISSAO"
+		styleClass="Titulo1" /></div>
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
 

@@ -7,44 +7,65 @@
 
 <head>
 <title>Justificativa</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
-
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
+
 
 <f:view>
-	<h:form>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content"><h:form>
 
-		<div align="center"><h:outputLabel
-			value="JUSTIFICATIVA PROPOSTA" styleClass="Titulos" /></div>
-
+		
+		<div align="center"><h:outputLabel value="JUSTIFICATIVA"
+		styleClass="Titulo1" /></div>
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
 
 		<br>
 
 		<h:panelGrid columns="3">
-			<%@ include file="menu.jsp"%>
+			<!-- <%@ include file="menu.jsp"%> -->
 
-			<rich:simpleTogglePanel label="Dados do Proposta">
-				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
+			<rich:simpleTogglePanel label="Dados do Proposta" width="300"
+				height="129" style="width: 546px">
+				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Justificativa:" />
-					<rich:toolTip for="idjust" followMouse="true" zorder="90"
-						value="Inserir justificativa a proposta" />
-					<rich:editor id="idjust" height="300" width="700"
-						style="width: 769px" theme="advanced"
-						readonly="#{construirPropostaBean.desabilitar}"
+					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
+						value="Clique para inserir" />
+
+					<rich:editor height="300" theme="advanced" width="490"
+						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-		<rich:toolTip for="btnSalvar" followMouse="true" zorder="90"
-			value="Salvar Justificativa" />
-		<h:commandButton id="btnSalvar" value="Salvar"
-			action="#{construirPropostaBean.SalvarJustificativa}"
-			disabled="#{construirPropostaBean.desabilitar}" />
+
+
+		<h:commandButton value="Salvar"
+			disabled="#{construirPropostaBean.desabilitar}"
+			action="#{construirPropostaBean.SalvarJustificativa}" />
 		<br>
-		<%@include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
+	<%@include file="../common/bannerPropostaEquipe.jsp"%>	
+		</div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
