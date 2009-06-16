@@ -24,7 +24,8 @@
 	<div id="menu"><br />
 	<br />
 	<%@include file="menu.jsp"%></div>
-
+	<br/>
+		
 	<div id="content"><h:form>
 
 		<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
@@ -57,9 +58,8 @@
 			disabled="#{construirPropostaBean.desabilitar}"
 			action="#{construirPropostaBean.SalvarMissao}" />
 		<br>
-		<%@ include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
-	
+	<%@include file="../common/bannerPropostaEquipe.jsp"%>	
 		</div>
 	</div>
 </f:view>

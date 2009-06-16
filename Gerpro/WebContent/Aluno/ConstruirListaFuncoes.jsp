@@ -25,6 +25,9 @@
 
 		<h:panelGrid columns="3">
 			<%@ include file="menu.jsp"%>
+			<br/>
+			<br/>
+				<%@include file="../common/bannerPropostaEquipe.jsp"%>	
 
 			<rich:simpleTogglePanel rendered="#{!construirPropostaBean.desabilitar}" label="Dados do cadastro">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
@@ -144,6 +147,6 @@
 		<br>
 		</div>
 		<br>
-		<%@include file="../common/bannerPropostaEquipe.jsp"%>	
+	
 	</h:form>
 </f:view>
