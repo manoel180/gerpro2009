@@ -14,5 +14,7 @@
 			action="#{construirPropostaBean.prepararMetodologia}" />
 		<rich:panelMenuItem label="Cronograma"
 			action="#{construirPropostaBean.prepararCronograma}" />
+		<rich:panelMenuItem label="Submeter"
+			action="#{submeterPropostaBean.prepararBean}" />
 	</rich:panelMenu>
 </rich:simpleTogglePanel>

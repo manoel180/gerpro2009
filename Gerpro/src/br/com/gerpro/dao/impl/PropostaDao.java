@@ -138,6 +138,22 @@ public class PropostaDao implements FacadeProposta {
 		result = session.createQuery(
 				"from Proposta as proposta" + " where proposta.equipe.nome "
 						+ "like '" + nomeEquipe + "%'").list();
+
+		session.close();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Proposta listarPorIdEquipe(int idEquipe, String periodo) {
+		Proposta result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		// Funcionando mas duplicando linhas
+		result = (Proposta) session.createQuery(
+				"from Proposta as proposta" + " where proposta.equipe.id"
+						+ "=" + idEquipe + " and proposta.periodo=" + periodo ).uniqueResult();
 		// q.setParameter("parametro", nomeEquipe + "%");
 
 		session.close();

@@ -33,16 +33,18 @@
 					<rich:toolTip for="idjust" followMouse="true" zorder="90"
 						value="Inserir justificativa a proposta" />
 					<rich:editor id="idjust" height="300" width="700"
-						style="width: 769px"
+						style="width: 769px" theme="advanced"
+						readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-	<rich:toolTip for="btnSalvar" followMouse="true" zorder="90"
-						value="Salvar Justificativa"/>
+		<rich:toolTip for="btnSalvar" followMouse="true" zorder="90"
+			value="Salvar Justificativa" />
 		<h:commandButton id="btnSalvar" value="Salvar"
-			action="#{construirPropostaBean.SalvarJustificativa}" />
-			<br>
-			<%@include	file=""../common/bannerSubmeterPropostaEquipe.jsp">
+			action="#{construirPropostaBean.SalvarJustificativa}"
+			disabled="#{construirPropostaBean.desabilitar}" />
+		<br>
+		<%@include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
 </f:view>

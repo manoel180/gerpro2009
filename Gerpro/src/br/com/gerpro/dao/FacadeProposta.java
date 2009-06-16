@@ -42,4 +42,11 @@ public interface FacadeProposta {
 	 */
 	public List<Proposta> listarPorPeriodo(String periodo);
 
+	/**
+	 * @param idEquipe
+	 * @param periodo
+	 * @return Proposta
+	 */
+	public Proposta listarPorIdEquipe(int idEquipe, String periodo);
+
 }

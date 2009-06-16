@@ -42,8 +42,8 @@
 
 		<h:commandButton value="Visualizar"
 			action="#{submeterPropostaBean.prepararBean}" />
-		<h:commandButton value="Submeter"
-			action="#{submeterPropostaBean.prepararBean}" /> <h:commandButton action="#{propostaBean.prepararBean}" value="Ir para o listar propostas" />
+		<h:commandButton value="Submeter" disabled="#{submeterPropostaBean.desabilita}"
+			action="#{submeterPropostaBean.submeterProposta}" /> <h:commandButton action="#{propostaBean.prepararBean}" value="Ir para o listar propostas" />
 		<br>
 
 		<rich:simpleTogglePanel label="Informações">		

@@ -40,11 +40,13 @@ import br.com.gerpro.util.ApplicationSecurityManager;
 public class ConstruirPropostaBean {
 	private UIData objDatatableListaFuncao;// componente da tela - JSP
 	private UIData objDatatableCronograma;
+	private boolean desabilitar;
 	private List<Equipe> listaEquipe;
 	private List<ListaFuncao> lstlistaFuncao = new ArrayList<ListaFuncao>();
 	private List<ListaFuncao> lstlistaFuncaoDel = new ArrayList<ListaFuncao>();
 	private List<Cronograma> lstCronograma = new ArrayList<Cronograma>();
 	private List<Artefatos> lstArtefatos = new ArrayList<Artefatos>();
+	private ApplicationSecurityManager appSecurityManager = new ApplicationSecurityManager ();
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
 	private Artefatos artefatos = new Artefatos();
@@ -66,6 +68,15 @@ public class ConstruirPropostaBean {
 	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
 	private FacadeCronograma daoCronograma = new CronogramaDao();
 
+	private void desabilitar() {
+		if (proposta.getStatus().getId() == 1) {
+			desabilitar = false;
+		} else {
+			desabilitar = true;
+		}
+
+	}
+	
 	// ComboBox Tipo de Funçoes
 	public SelectItem[] getTipoFuncaoCombo() {
 		List<TipoFuncao> ltf = getDaoTipoFuncao().listar();
@@ -250,10 +261,9 @@ public class ConstruirPropostaBean {
 
 	public String prepararBean() {
 
-		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
-
+		desabilitar();
 		return "go_ConstruirProposta";
 	}
 
@@ -262,14 +272,13 @@ public class ConstruirPropostaBean {
 	 */
 	public String prepararMissao() {
 
-		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		PropItemId.setIdItem(1);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
 				PropItemId);
-
+		desabilitar();
 		return "construirMissao";
 	}
 
@@ -282,7 +291,7 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(1);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(1);
+			status.setId(6);
 			propostaItem.setStatus(status);
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
@@ -293,11 +302,8 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-
-
 	public String prepararListaFuncao() {
-		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		PropItemId.setIdItem(2);
 		PropItemId.setIdProposta(proposta.getId());
@@ -306,6 +312,7 @@ public class ConstruirPropostaBean {
 		listafuncaoid.setIdItem(2);
 		listafuncaoid.setIdProposta(proposta.getId());
 		lstlistaFuncao = getDaoListaFuncao().procurarPorId(listafuncaoid.getIdProposta(),listafuncaoid.getIdItem());
+		desabilitar();
 		return "construirListaFuncoes";
 	}
 
@@ -318,7 +325,7 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(2);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(1);
+			status.setId(6);
 
 			for (ListaFuncao lf : lstlistaFuncao) {
 				getDaoListaFuncao().salvar(lf);
@@ -343,12 +350,13 @@ public class ConstruirPropostaBean {
 	 */
 	public String prepararJustificativa() {
 		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		PropItemId.setIdItem(3);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
 				PropItemId);
+		desabilitar();
 		return "construirJustificativa";
 	}
 
@@ -362,7 +370,7 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(3);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(1);
+			status.setId(6);
 			propostaItem.setStatus(status);
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
@@ -377,13 +385,13 @@ public class ConstruirPropostaBean {
 	//OK
 	public String prepararMetodologia() {
 		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		PropItemId.setIdItem(4);
 		PropItemId.setIdProposta(proposta.getId());
 		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
 				PropItemId);
-
+		desabilitar();
 		return "construirMetodologia";
 	}
 
@@ -396,7 +404,7 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(4);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(1);
+			status.setId(6);
 			propostaItem.setStatus(status);
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
@@ -411,7 +419,7 @@ public class ConstruirPropostaBean {
 	//OK
 	public String prepararCronograma() {
 		proposta = getDaoProposta().procurarPorId(
-				Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		PropItemId.setIdItem(5);
 		PropItemId.setIdProposta(proposta.getId());
@@ -420,7 +428,7 @@ public class ConstruirPropostaBean {
 		cronogramaId.setIdItem(5);
 		cronogramaId.setIdProposta(proposta.getId());
 		lstCronograma = getDaoCronograma().procurarPorId(cronogramaId.getIdProposta(),cronogramaId.getIdItem());
-		
+		desabilitar();
 		return "construirCronograma";
 	}
 
@@ -433,17 +441,11 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(5);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(1);
+			status.setId(6); //Defini o status como concluido
 
 			for (Cronograma lc : lstCronograma) {
 				getDaoCronograma().salvar(lc);
 			}
-			/*if(lstlistaFuncaoDel!=null){
-				for (ListaFuncao lf : lstlistaFuncaoDel) {
-					getDaoListaFuncao().remover(lf);
-				}
-			*/		
-			//}
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -451,24 +453,6 @@ public class ConstruirPropostaBean {
 		return prepararBean();
 	}
 
-	/*
-	 * public String preperarEdicao() { equipe = (Equipe)
-	 * objDatatableEquipe.getRowData(); return "alterar"; }
-	 * 
-	 * public void pesquisar() { listaEquipe =
-	 * getDaoEquipe().listarPorNome(equipe.getNome()); }
-	 * 
-	 * public String salvar() { try { getDaoEquipe().inserir(equipe); } catch
-	 * (Exception e) { e.printStackTrace(); } return prepararBean(); }
-	 * 
-	 * public String alterar() { try { getDaoEquipe().alterar(equipe); } catch
-	 * (Exception e) { e.printStackTrace(); } return "visualizar"; }
-	 * 
-	 * 
-	 * public String excluir() { equipe = (Equipe)
-	 * objDatatableEquipe.getRowData(); getDaoEquipe().remover(equipe); return
-	 * prepararBean(); }
-	 */
 	/*
 	 * Getters and Setters
 	 */
@@ -831,6 +815,20 @@ public class ConstruirPropostaBean {
 	 */
 	public void setDaoCronograma(FacadeCronograma daoCronograma) {
 		this.daoCronograma = daoCronograma;
+	}
+
+	/**
+	 * @return the desabilitar
+	 */
+	public boolean isDesabilitar() {
+		return desabilitar;
+	}
+
+	/**
+	 * @param desabilitar the desabilitar to set
+	 */
+	public void setDesabilitar(boolean desabilitar) {
+		this.desabilitar = desabilitar;
 	}
 
 }

@@ -23,17 +23,12 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%>
-	</div>
+	<%@include file="menu.jsp"%></div>
 
-	<div id="content">
+	<div id="content"><h:form>
 
-
-	<h:form>
-
-		<div align="center">
-			<h:outputLabel value="MISSÃO PROPOSTA" styleClass="Titulos1"/>
-		</div>
+		<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
+			styleClass="Titulos1" /></div>
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
@@ -43,21 +38,26 @@
 		<h:panelGrid columns="3">
 			<!-- <%@ include file="menu.jsp"%> -->
 
-			<rich:simpleTogglePanel label="Dados do Proposta" width="301" height="129">
+			<rich:simpleTogglePanel label="Dados do Proposta" width="301"
+				height="129">
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Missão:" />
 					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
 						value="Clique para inserir" />
-					
-					<rich:editor  height="300" theme="advanced" width="490"
-						style="width: 520px" value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+
+					<rich:editor height="300" theme="advanced" width="490"
+						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
+						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		
-		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMissao}" />
-	<br><!-- <%@ include file="../c"../common/bannerSubmeterPropostaEquipe.jsp">
+
+		<h:commandButton value="Salvar"
+			disabled="#{construirPropostaBean.desabilitar}"
+			action="#{construirPropostaBean.SalvarMissao}" />
+		<br>
+		<%@ include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
 	
 		</div>
@@ -65,6 +65,7 @@
 </f:view>
 
 
-<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

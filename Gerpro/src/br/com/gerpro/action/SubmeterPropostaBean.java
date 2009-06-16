@@ -2,6 +2,7 @@ package br.com.gerpro.action;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
@@ -25,13 +26,15 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
+import br.com.gerpro.util.ApplicationSecurityManager;
 
 
 public class SubmeterPropostaBean {
 	private UIData objDatatablePropostaItem;
 	private List<PropostaItem> listaPropostaItem;
 	private List<Usuario> listaUsuarios;
-	
+	private ApplicationSecurityManager appSecurityManager = new ApplicationSecurityManager();
+	private boolean desabilita;
 	private Proposta proposta = new Proposta();
 	private Item item = new Item();
 	private PropostaItem propitem = new PropostaItem();
@@ -75,21 +78,38 @@ public class SubmeterPropostaBean {
 	public String prepararBean() {
 
 		propitem = new PropostaItem();
-		listaPropostaItem =  getPropitemDao().listar();
+		listaPropostaItem =  getPropitemDao().listarPoridProposta(appSecurityManager.getProposta().getId());
 	
 		propitem = listaPropostaItem.get(1);
 		proposta = propitem.getProposta();
 		status =  proposta.getStatus();
 		equipe = proposta.getEquipe();
-		
-		return "go_SubmeterProposta";
+		verificarItens();
+		return "SubmeterProposta";
 	}
 
-	public String prepararInclusao() {
-		proposta = new Proposta();
-		return "incluir";
+	
+	private void verificarItens(){
+		int cont = 0;
+		for(PropostaItem propitem  : listaPropostaItem){
+			if(propitem.getStatus().getId()==6){
+				cont++;
+			}
+		}
+		if(cont == 6){
+			desabilita = false;
+		}
+		else{
+			desabilita = true;
+		}
 	}
-
+	
+	public void submeterProposta(){
+		status.setId(6);
+		proposta.setStatus(status);
+		proposta.setDataSubmissao(new Date());
+		propostaDao.salvar(proposta);
+	}
 	public String prepararEdicao() {
 		proposta = (Proposta) objDatatablePropostaItem.getRowData();
 		
@@ -324,6 +344,20 @@ public class SubmeterPropostaBean {
 	 */
 	public void setListaUsuarios(List<Usuario> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
+	}
+
+	/**
+	 * @return the desabilita
+	 */
+	public boolean isDesabilita() {
+		return desabilita;
+	}
+
+	/**
+	 * @param desabilita the desabilita to set
+	 */
+	public void setDesabilita(boolean desabilita) {
+		this.desabilita = desabilita;
 	}
 
 	

@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.gerpro.dao.FacadePropostaItem;
+import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.PropostaItem;
 
 import br.com.gerpro.model.PropostaItemId;
@@ -106,6 +107,22 @@ public class PropostaItemDao implements FacadePropostaItem{
 		return result;
 	}
 	
+	@Override
+	public  List<PropostaItem> listarPoridProposta(int id) {
+
+		List<PropostaItem> result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		
+		result = session.createQuery(
+				"from PropostaItem as propitem" + " where propitem.proposta.id"
+						+ "=" + id).list();
+		// q.setParameter("parametro", nomeEquipe + "%");
+
+		session.close();
+		return result;
+	}
 
 	@Override
 	public PropostaItem procurarPorNome(String Nome) {

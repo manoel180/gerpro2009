@@ -28,6 +28,11 @@ public interface FacadePropostaItem{
 	
 	public PropostaItem procurarPorNome(String Nome);
 
-
 	public PropostaItem procurarPorProposta(PropostaItemId id);
+
+	/**
+	 * @param id
+	 * @return List<PropostaItem>
+	 */
+	public List<PropostaItem> listarPoridProposta(int id);
 }

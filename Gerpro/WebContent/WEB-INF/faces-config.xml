@@ -201,6 +201,10 @@
    <from-outcome>go_ConstruirProposta</from-outcome>
    <to-view-id>/Aluno/ConstruirProposta.jsp</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>SubmeterProposta</from-outcome>
+   <to-view-id>/Aluno/SubmeterProposta.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <!-- Tratamento das Mensagens de Exceção -->
  <application>

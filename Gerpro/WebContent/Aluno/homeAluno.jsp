@@ -7,6 +7,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <f:view>
 <jsp:include page="menu.jsp"></jsp:include>
 	<p>
+	Aluno
 		asiwfkhagfnasohgpiuafhdngjnadfpiuhgádofijgóiadfgknadfokngoadfng
 	godfisgpiojdsf´gj´dfiojgóijfdsóigj´dsfiojgíojfds´gijdsf
 	sdfpoigj´sdofijgóisdfjgóijsdf´gioj´dsfoijgódfisjgfdg

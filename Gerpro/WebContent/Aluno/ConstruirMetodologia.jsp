@@ -25,22 +25,24 @@
 		<br>
 
 		<h:panelGrid columns="3">
-			
+
 			<%@ include file="menu.jsp"%>
-						
+
 			<rich:simpleTogglePanel label="Dados do Proposta">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 					<h:outputText value="Metodologia:" />
-					<rich:editor height="300" width="700"  
-						style="width: 769px"
+					<rich:editor height="300" width="700" style="width: 769px" 
+						readonly="#{construirPropostaBean.desabilitar}" theme="advanced"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 
-		
-		<h:commandButton value="Salvar" action="#{construirPropostaBean.SalvarMetodologia}" /><br><%@include file=""../common/bannerSubmeterPropostaEquipe.jsp">
 
+		<h:commandButton value="Salvar"
+			action="#{construirPropostaBean.SalvarMetodologia}" disabled="#{construirPropostaBean.desabilitar}" />
+		<br>
+		<%@include file="../common/bannerPropostaEquipe.jsp"%>
 	</h:form>
 
 </f:view>
