@@ -28,7 +28,7 @@
 
 	<h:panelGrid columns="5">
 		<%@ include file="menu.jsp"%>
-		<rich:simpleTogglePanel  width="600px" label="Dados do cadastro">
+		<rich:simpleTogglePanel rendered="#{!construirPropostaBean.desabilitar}"  width="600px" label="Dados do cadastro">
 			<h:form id="form1">
 				<h:panelGrid columns="1">
 
