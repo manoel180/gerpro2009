@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/estilos.css">
 </head>
 
-<f:view>
+<f:view><%@ include file="menu.jsp" %>
 	<h:form>
 
 		<div align="center"><h:outputLabel value="SUBMETER CORREÇÃO"
@@ -19,9 +19,9 @@
 			showSummary="true" />
 		<br>
 		<br>
+		
 		<rich:dataTable var="correcoes" id="listaCorrecao"
-			value="#{submeterCorrecaoBean.listaCorrecao}"
-			binding="#{submeterCorrecaoBean.objDatatableCorrecao}" rows="10"
+			value="#{corrigirPropostaBean.listaCorrecao}" rows="10"
 			width="550px" align="center">
 			<h:column>
 				<f:facet name="header">
@@ -46,7 +46,7 @@
 
 		</rich:dataTable>		
 		<h:commandButton value="Submeter Correção"		
-			action="#{submeterCorrecaoBean.prepararBean}" style=" width : 142px;"/> <h:commandButton action="#{propostaBean.prepararBean}" value="Ir para o listar propostas" />
+			action="#{corrigirPropostaBean.submeterCorrecao}" style=" width : 142px;"/> <h:commandButton action="#{propostaBean.prepararBean}" value="Ir para o listar propostas" />
 		<br>
 
 		

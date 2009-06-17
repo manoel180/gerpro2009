@@ -100,6 +100,18 @@ public class UsuarioBean{
 				
 		return homeUsuario;
 	}
+	
+	public String sairAplicacao(){
+		
+		applicationSecurityManager.removeUsuario();
+		
+		if(applicationSecurityManager.getProposta() != null){
+			applicationSecurityManager.removeProposta();
+		}
+		
+		return "logoff";		
+		
+	}
 
 	//TODO Retirar item Tela Inicial de todos os menus.
 	

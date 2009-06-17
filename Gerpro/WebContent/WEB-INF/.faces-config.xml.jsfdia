@@ -8,11 +8,8 @@
    <PROCESS-ITEM-OUTPUT ID="homeProfessor::#Professor#homeProfessor.jsp"
     NAME="output1" PATH="/Professor/homeProfessor.jsp" SHAPE="-1,24"
     TARGET="rules:#Professor#homeProfessor.jsp" TITLE="homeProfessor" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="pesquisarProposta::#Coordenador#PesquisarProposta.jsp"
-    NAME="output2" PATH="/Coordenador/PesquisarProposta.jsp"
-    SHAPE="-1,64" TARGET="rules:#Coordenador#PesquisarProposta.jsp"
-    TITLE="pesquisarProposta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="logoff::#login.jsp" NAME="output2"
+    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="logoff" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
     ID="go_manterArtefatos::#Coordenador#PesquisarArtefatos.jsp"
     NAME="output3" PATH="/Coordenador/PesquisarArtefatos.jsp"
@@ -111,6 +108,10 @@
     NAME="output5" PATH="/Aluno/ConstruirProposta.jsp" SHAPE="-1,56"
     TARGET="rules:#Aluno#ConstruirProposta.jsp"
     TITLE="go_ConstruirProposta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="SubmeterProposta::#Aluno#SubmeterProposta.jsp" NAME="output6"
+    PATH="/Aluno/SubmeterProposta.jsp"
+    TARGET="rules:#Aluno#SubmeterProposta.jsp" TITLE="SubmeterProposta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Coordenador#homeCoordenador.jsp"
@@ -234,4 +235,8 @@
   PATH="/Professor/CorrigirProposta.jsp" SHAPE="304,2321,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Professor#SubmeterCorrecao.jsp"
   PATH="/Professor/SubmeterCorrecao.jsp" SHAPE="304,2353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Aluno#SubmeterProposta.jsp"
+  PATH="/Aluno/SubmeterProposta.jsp" SHAPE="304,3889,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#login.jsp" PATH="/login.jsp"
+  SHAPE="304,305,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

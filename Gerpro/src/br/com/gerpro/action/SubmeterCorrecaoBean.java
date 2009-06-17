@@ -60,15 +60,15 @@ public class SubmeterCorrecaoBean {
 	
 	public String prepararBean() {
 		
-		Proposta proposta = (Proposta) applicationSecurityManager.getProposta();
-		Usuario professor = (Usuario) applicationSecurityManager.getUsuario();
+		Proposta proposta = applicationSecurityManager.getProposta();
+		Usuario professor = applicationSecurityManager.getUsuario();
 		
-		listaCorrecao = correcaoDao.procurarPorCorrecao(professor, proposta);
+		setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
 				
 		status =  proposta.getStatus();
 		equipe = proposta.getEquipe();
 		
-		return listaCorrecao();
+		return "submeterCorrecao";//return listaCorrecao();
 	}
 	
 	public String listaCorrecao(){		

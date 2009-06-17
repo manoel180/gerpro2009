@@ -32,6 +32,7 @@ import br.com.gerpro.model.PropostaItemId;
 import br.com.gerpro.model.Resposta;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
+import br.com.gerpro.processing.ProcessoCorrecao;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
 /**
@@ -50,7 +51,7 @@ public class CorrecaoBean {
 	private FacadePergunta perguntaDao = new PerguntaDao();
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadePropostaItem propostaItemDao = new PropostaItemDao();
-
+	private ProcessoCorrecao processoCorrecao = new ProcessoCorrecao(); 
 	private boolean desabilitar;
 	
 	private FacadeCronograma daoCronograma = new CronogramaDao();
@@ -80,8 +81,7 @@ public class CorrecaoBean {
 		correcaoid.setIdItem(item);
 		correcaoid.setIdPergunta(pergunta);
 		correcaoid.setIdProposta(applicationSecurityManager.getProposta().getId());
-//		correcaoid.setIdProposta(Integer
-//				.parseInt(ApplicationSecurityManager.PROPOSTA));
+
 		correcaoid.setMatriculaProfessor(professor);
 		correcao = getCorrecaoDao().procurarPorIdCorrecao(correcaoid);
 
@@ -91,8 +91,7 @@ public class CorrecaoBean {
 		// Carrega o item
 		propostaitemId.setIdItem(item);
 		propostaitemId.setIdProposta(applicationSecurityManager.getProposta().getId());
-//		propostaitemId.setIdProposta(Integer
-//				.parseInt(ApplicationSecurityManager.PROPOSTA));
+
 		propostaitem = (PropostaItem) propostaItemDao
 				.procurarPorProposta(propostaitemId);
 		if (item == 2){
@@ -105,7 +104,6 @@ public class CorrecaoBean {
 	}
 
 	private void carregarEquipe() {
-		//proposta = propostaDao.procurarPorId(Integer.parseInt(ApplicationSecurityManager.PROPOSTA));
 		proposta = propostaDao.procurarPorId(applicationSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 	}
@@ -198,10 +196,38 @@ public class CorrecaoBean {
 		return "corrigirCronograma";
 	}
 	
-	public String prepararSubmeterCorrecao(){
-		return new SubmeterCorrecaoBean().prepararBean();
+public String prepararAvaliacaoGeral(){
 		
-		//return "submeterCorrecao";
+		Proposta proposta =  applicationSecurityManager.getProposta();
+		Usuario professor =  applicationSecurityManager.getUsuario();
+		
+		setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
+		//listaCorrecao = correcaoDao.procurarPorCorrecao(professor, proposta);
+				
+		status =  proposta.getStatus();
+		equipe = proposta.getEquipe();
+		
+		return "submeterCorrecao";
+		
+		//return new SubmeterCorrecaoBean().prepararBean();
+		
+	}
+	
+	public String prepararSubmeterCorrecao(){
+		
+		Proposta proposta =  applicationSecurityManager.getProposta();
+		Usuario professor =  applicationSecurityManager.getUsuario();
+		
+		setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
+		//listaCorrecao = correcaoDao.procurarPorCorrecao(professor, proposta);
+				
+		status =  proposta.getStatus();
+		equipe = proposta.getEquipe();
+		
+		return "submeterCorrecao";
+		
+		//return new SubmeterCorrecaoBean().prepararBean();
+		
 	}
 	
 	public String salvarCorrigirMissao() {
@@ -243,6 +269,15 @@ public class CorrecaoBean {
 			return false;
 		}
 		return true;
+	}
+	
+	/***
+	 * Processo para submeter uma proposta
+	 */
+	public void submeterCorrecao(){
+		Proposta proposta =  applicationSecurityManager.getProposta();
+		Usuario professor =  applicationSecurityManager.getUsuario();		
+		processoCorrecao.calcularStatusPropostaAtual(professor, proposta);		
 	}
 
 	

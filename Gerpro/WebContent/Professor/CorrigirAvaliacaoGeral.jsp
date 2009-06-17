@@ -14,24 +14,33 @@
 </head>
 
 <f:view>
-	<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
+	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL"
 		styleClass="Titulos" /></div>
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
 	<br>
 
-	<h:panelGrid columns="3">
-		<%@ include file="menu.jsp"%>
-		<rich:simpleTogglePanel label="Dados do Proposta">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
-				<h:outputText value="Missão:" />
-				<rich:editor height="100" width="600" theme="advanced"
-					readonly="true" style="width: 769px"
-					value="#{corrigirPropostaBean.propostaitem.conteudoItem}" />
-			</h:panelGrid>
-		</rich:simpleTogglePanel>
-	</h:panelGrid>
+			<%@ include file="menu.jsp"%>
+		<h:form>
+		<%@ include file="perguntasCorrecao.jsp"%>
+		<h:commandButton value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
+	</h:form>
+	<h:form>
+		<%@ include file="perguntasCorrecao.jsp"%>
+		<h:commandButton value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
+	</h:form>
+	<h:form>
+		<%@ include file="perguntasCorrecao.jsp"%>
+		<h:commandButton value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
+	</h:form>
+	
 
 	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
 	<h:form>

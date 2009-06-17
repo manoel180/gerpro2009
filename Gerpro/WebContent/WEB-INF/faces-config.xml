@@ -59,6 +59,10 @@
    <from-outcome>homeProfessor</from-outcome>
    <to-view-id>/Professor/homeProfessor.jsp</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>logoff</from-outcome>
+   <to-view-id>/login.jsp</to-view-id>
+  </navigation-case>
   <!-- Tela Pesquisar Proposta -->
   <navigation-case>
    <from-outcome>pesquisarProposta</from-outcome>
