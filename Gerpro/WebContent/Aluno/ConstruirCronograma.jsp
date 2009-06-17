@@ -124,7 +124,7 @@
 					<h:outputText value="#{lstCronograma.artefatos.nome}" />
 				</rich:column>
 
-				<h:column>
+				<h:column rendered="#{!construirPropostaBean.desabilitar}">
 					<f:facet name="header">
 						<h:outputText value="Opções"></h:outputText>
 					</f:facet>

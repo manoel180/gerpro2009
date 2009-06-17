@@ -126,7 +126,7 @@
 				<h:outputText value="#{listafuncao.tipoFuncao.nome}" />
 			</rich:column>
 
-			<h:column>
+			<h:column rendered="#{!construirPropostaBean.desabilitar}">
 				<f:facet name="header">
 					<h:outputText value="Opções"></h:outputText>
 				</f:facet>

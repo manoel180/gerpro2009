@@ -78,16 +78,7 @@
 		</h:form>
 
 
-	</rich:simpleTogglePanel> <h:form>
-		<h:panelGrid columns="1" width="90%" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton action="#{propostaBean.prepararBean}"
-						value="Ir para o listar propostas" />
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
-	</h:form>
+	</rich:simpleTogglePanel> 
 	</div>
 	</div>
 </f:view>

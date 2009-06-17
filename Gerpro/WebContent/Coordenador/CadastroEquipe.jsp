@@ -33,15 +33,6 @@
 			
 
 		</rich:simpleTogglePanel>
-<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
-		<h:panelGrid columns="1" width="90%" border="0">
-			<h:panelGrid columns="1" border="0">
-				<h:panelGroup>
-					<h:commandButton action="#{equipeBean.prepararBean}"
-						value="Ir para o listar propostas" />
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:panelGrid>
-		
+<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />		
 	</h:form>
 </f:view>
