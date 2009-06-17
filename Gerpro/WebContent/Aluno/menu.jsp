@@ -11,7 +11,7 @@
 		iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
 		iconCollapsedTopGroup="chevronDown" expandSingle="true">
 
-		<rich:panelMenuGroup label="Proposta" expanded="true">
+		<rich:panelMenuGroup label="Menu Itens" expanded="true">
 			<rich:panelMenuItem label="Missão"
 				action="#{construirPropostaBean.prepararMissao}" />
 			<rich:panelMenuItem label="Lista de Funções"
