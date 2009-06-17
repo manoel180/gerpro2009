@@ -26,7 +26,8 @@
 	<%@include file="menu.jsp"%></div>
 	<br/>
 		
-	<div id="content"><h:form>
+	<div id="content">
+
 
 
 	<div align="center"><h:outputLabel value="CORREÇÃO MISSÃO DO PRODUTO"
@@ -51,7 +52,7 @@
 
 	
 	<h:form>
-		<%@ include file="perguntasCorrecao.jsp"%>
+		<%@include file="perguntasCorrecao.jsp"%>
 		<h:commandButton value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
