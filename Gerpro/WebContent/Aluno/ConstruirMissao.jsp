@@ -39,7 +39,7 @@
 		<h:panelGrid columns="3">
 			<!-- <%@ include file="menu.jsp"%> -->
 
-			<rich:simpleTogglePanel label="Dados do Proposta" width="300"
+			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
 				height="129" style="width: 546px">
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Missão:" />
@@ -59,7 +59,7 @@
 			action="#{construirPropostaBean.SalvarMissao}" />
 		<br>
 	</h:form>
-	<%@include file="../common/bannerPropostaEquipe.jsp"%>	
+		
 		</div>
 	</div>
 </f:view>

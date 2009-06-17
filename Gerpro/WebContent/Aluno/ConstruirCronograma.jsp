@@ -45,7 +45,7 @@
 		<h:panelGrid columns="5">
 			<rich:simpleTogglePanel
 				rendered="#{!construirPropostaBean.desabilitar}" width="600px"
-				label="Dados do cadastro">
+				label="#{construirPropostaBean.proposta.nome}">
 				<h:form id="form1">
 					<h:panelGrid columns="1">
 
@@ -150,7 +150,7 @@
 				value="Clique para salvar" />
 
 		</h:form>
-		<%@include file="../common/bannerPropostaEquipe.jsp"%>
+		
 		</div>
 	</div>
 </f:view>

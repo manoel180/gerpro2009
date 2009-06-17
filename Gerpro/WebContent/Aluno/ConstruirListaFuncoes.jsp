@@ -40,7 +40,7 @@
 
 		<h:panelGrid columns="3" >
 
-			<rich:simpleTogglePanel label="Dados do cadastro" rendered="#{!construirPropostaBean.desabilitar}">
+			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" rendered="#{!construirPropostaBean.desabilitar}">
 				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 
 					<h:outputText value="Ordem:" />
@@ -158,7 +158,7 @@
 		<br>
 		</div>
 		<br>
-		<%@include file="../common/bannerPropostaEquipe.jsp"%>	
+		
 	</h:form>
 	</div>
 	</div>

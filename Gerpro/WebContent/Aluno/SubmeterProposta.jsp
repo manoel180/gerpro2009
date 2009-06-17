@@ -8,20 +8,36 @@
 
 <head>
 <title>Submeter Proposta</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
-	<h:form>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content"><h:form>
 
-		<div align="center"><h:outputLabel value="SUBMETER PROPOSTAS"
-			styleClass="titulo" /></div>
+		<h:form>
+		<div align="center"><h:outputLabel value="SUBMETER PROPOSTA"
+		styleClass="Titulo1" /></div>
 
 		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
 			showSummary="true" />
 		<br>
-		<br>
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
+				height="129" style="width: 546px">
+		
 		<rich:dataTable var="itens" id="listapropostasitens"
 			value="#{submeterPropostaBean.listaPropostaItem}"
 			binding="#{submeterPropostaBean.objDatatablePropostaItem}" rows="10"
@@ -40,12 +56,21 @@
 					style="color:red; font-weight:bold; font-"></h:outputText>
 			</h:column>
 		</rich:dataTable>
-
+        </rich:simpleTogglePanel>
 		<h:commandButton value="Submeter"
 			disabled="#{submeterPropostaBean.desabilita}"
 			action="#{submeterPropostaBean.submeterProposta}" />
 		
 		<br>
-		<%@include file="../common/bannerSubmeterPropostaEquipe.jsp"%>	
+			
 	</h:form>
+		
+		</div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
