@@ -2,11 +2,7 @@
 <!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
                               "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
 <faces-config>
- <managed-bean>
-  <managed-bean-name>propostaBean</managed-bean-name>
-  <managed-bean-class>br.com.gerpro.action.PropostaBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
+
  <managed-bean>
   <managed-bean-name>equipeBean</managed-bean-name>
   <managed-bean-class>br.com.gerpro.action.EquipeBean</managed-bean-class>
@@ -60,6 +56,10 @@
    <to-view-id>/Professor/homeProfessor.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
+   <from-outcome>homeCoordenador</from-outcome>
+   <to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>logoff</from-outcome>
    <to-view-id>/login.jsp</to-view-id>
   </navigation-case>
@@ -80,12 +80,8 @@
   </navigation-case>
   <!-- Tela Relatório Equipe -->
   <navigation-case>
-   <from-outcome>go_relatorioEquipeProposta</from-outcome>
-   <to-view-id>/Relatorios/RelatorioProposta.jsp</to-view-id>
-  </navigation-case>
-   <navigation-case>
-   <from-outcome>go_relatorioResultadoProposta</from-outcome>
-   <to-view-id>/Relatorios/RelatorioResultadoProposta.jsp</to-view-id>
+   <from-outcome>go_relatorio</from-outcome>
+   <to-view-id>/Relatorios/Relatorio.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <!-- Navegação da Área do Professor -->

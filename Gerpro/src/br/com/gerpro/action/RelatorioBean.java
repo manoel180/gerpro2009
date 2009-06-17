@@ -1,14 +1,9 @@
 package br.com.gerpro.action;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
-import javax.imageio.ImageIO;
 
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.PropostaDao;
@@ -16,10 +11,9 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.relatorios.ActionRelatorio;
 
 public class RelatorioBean {
-	private UIData objDatatableEquipe;// componente da tela - JSP
 	private ActionRelatorio rel = new ActionRelatorio();
 	private List<Proposta> listaProposta;
-	private BufferedImage imagen = new BufferedImage(400, 400, 1);
+	private int tipo;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta daoProposta = new PropostaDao();
 
@@ -34,43 +28,28 @@ public class RelatorioBean {
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 
-	public String prepararBean() {
+	public String prepararRelatorioPropostaEquipe() {
 
-		listaProposta = daoProposta.listarPeriodo();
-		imagen = rel.gerarRelatorioResultadosPropostaImage(proposta
-				.getPeriodo()).getSubimage(400, 400, 200,200);
-		return "go_relatorioResultadoProposta";
+		tipo =1;
+		return "go_relatorio";
+	}
+	public String prepararRelatorioResultadoProposta() {
+
+		tipo =2;
+		return "go_relatorio";
 	}
 
-	public void paint(OutputStream out, Object data) throws IOException {
-
-		// MediaData paintData = (MediaData) data;
-		BufferedImage img = rel.gerarRelatorioResultadosPropostaImage(proposta
-				.getPeriodo());
-		// Graphics2D graphics2D = img.createGraphics();
-		/*
-		 * graphics2D.setBackground(paintData.getBackground());
-		 * graphics2D.setColor(paintData.getDrawColor());
-		 * graphics2D.clearRect(0,0,paintData.getWidth(),paintData.getHeight());
-		 * graphics2D.drawLine(5,5,paintData.getWidth()-5,paintData.getHeight()-5);
-		 * graphics2D.drawChars(new
-		 * String("RichFaces").toCharArray(),0,9,40,15);
-		 * graphics2D.drawChars(new
-		 * String("mediaOutput").toCharArray(),0,11,5,45);
-		 */ImageIO.write(img, "jpeg", out);
-	}
-
+    public void exibir(){
+    	if (tipo ==1){
+    		rel.gerarRelatorioProposta(proposta.getPeriodo());
+    	}else{
+    		rel.gerarRelatorioResultadosProposta(proposta.getPeriodo());
+    	}
+    }
 	/*
 	 * Getters and Setters
 	 */
 
-	public UIData getObjDatatableEquipe() {
-		return objDatatableEquipe;
-	}
-
-	public void setObjDatatableEquipe(UIData objDatatableEquipe) {
-		this.objDatatableEquipe = objDatatableEquipe;
-	}
 
 	/**
 	 * @return the listaProposta
@@ -103,18 +82,18 @@ public class RelatorioBean {
 	}
 
 	/**
-	 * @return the imagen
+	 * @return the tipo
 	 */
-	public BufferedImage getImagen() {
-		return imagen;
+	public int getTipo() {
+		return tipo;
 	}
 
 	/**
-	 * @param imagen
-	 *            the imagen to set
+	 * @param tipo the tipo to set
 	 */
-	public void setImagen(BufferedImage imagen) {
-		this.imagen = imagen;
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
+
 
 }
