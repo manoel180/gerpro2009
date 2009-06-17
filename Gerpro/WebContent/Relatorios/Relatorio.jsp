@@ -22,20 +22,24 @@
 	<br>
 	<br>
 	<h:form>
-		<rich:simpleTogglePanel focus="txtdesc1" label="Dados da Consulta">
+		<rich:simpleTogglePanel focus="txtdesc1">
 			<h:panelGrid columns="2" id="id1">
+				<h:outputText value="Relatório" />
+				<h:selectOneRadio id="radio" layout="pageDirection" value="#{relatorioBean.tipo}">
+					<f:selectItem itemValue="1" itemLabel="Relatório Equipe x Proposta" />
+					<f:selectItem itemValue="2" itemLabel="Relatório Resultados Proposta" />
+				</h:selectOneRadio>
+				
 				<h:outputText value="Periodo:" />
 				<h:selectOneMenu id="combo"
 					value="#{relatorioBean.proposta.periodo}">
 					<f:selectItems value="#{relatorioBean.periodoCombo}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
-			<a4j:mediaOutput element="img" cacheable="false" session="true"
-				createContent="#{relatorioBean.paint}" value="#{relatorioBean.imagen}"
-				mimeType="image/jpeg" />
+			
 		</rich:simpleTogglePanel>
 		<h:commandButton value="Visualizar"
-			action="#{relatorioBean.prepararBean}" />
+			action="#{relatorioBean.exibir}" />
 
 
 	</h:form>

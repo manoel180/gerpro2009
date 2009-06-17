@@ -29,7 +29,7 @@
 	<div id="content">
 
 
-<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
+	<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
 	<!--  rint  -->
 	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
 	<rich:toolTip for="txtdescint" followMouse="true" zorder="90" value="Informe o código da proposta"/>
@@ -66,7 +66,7 @@
 	</h:form>
 	<h:form id="form2">
 
-		<rich:dataTable var="prop" id="listapropostas" frame="box"  rendered="true"
+		<rich:dataTable var="prop" id="listapropostas"
 			 value="#{propostaBean.listaProposta}" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
 			 align="center">
