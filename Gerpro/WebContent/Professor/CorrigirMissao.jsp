@@ -41,10 +41,10 @@
 	<h:panelGrid columns="3">
 		
 		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
+			<h:panelGrid columns="1" cellpadding="5" style="width: 500px">
 				<h:outputText value="Missão:" />
-				<rich:editor height="100" width="600" theme="advanced"
-					readonly="true" style="width: 769px"
+				<rich:editor height="50" width="467" theme="advanced"
+					readonly="true" style="width: px"
 					value="#{corrigirPropostaBean.propostaitem.conteudoItem}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>

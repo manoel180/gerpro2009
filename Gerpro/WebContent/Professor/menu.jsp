@@ -2,7 +2,7 @@
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<rich:simpleTogglePanel label="Proposta">
+<rich:simpleTogglePanel label="Menu Itens">
 	<rich:panelMenu expandMode="ajax" label="Itens">
 		<rich:panelMenuItem label="Missão"
 			action="#{corrigirPropostaBean.prepararCorrigirMissao}" />
