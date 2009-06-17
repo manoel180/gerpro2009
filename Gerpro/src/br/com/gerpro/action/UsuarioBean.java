@@ -87,7 +87,7 @@ public class UsuarioBean{
 				if(usuarioBD.getTipoUsuario().getId()==1){
 					Proposta proposta = new Proposta();
 					FacadeProposta propostaDao = new PropostaDao();
-					proposta = propostaDao.listarPorIdEquipe(usuarioBD.getEquipe().getId(), "1");
+					proposta = propostaDao.listarPorIdEquipe(usuarioBD.getEquipe().getId());
 					applicationSecurityManager.setProposta(proposta);
 				}
 			}

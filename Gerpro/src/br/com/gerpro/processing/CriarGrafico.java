@@ -299,7 +299,7 @@ public class CriarGrafico implements ICriarGrafico {
 		return buf;
 	}
 
-	public BufferedImage pizza3DStatic(ArrayList nome, ArrayList valor,
+	public BufferedImage pizza3DStatic( ArrayList nome, ArrayList valor,
 			String tituloGrafico) {
 		return pizza3D(nome, valor, tituloGrafico, 1f, "Dynamic");// Static
 	}

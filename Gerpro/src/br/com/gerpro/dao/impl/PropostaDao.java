@@ -145,7 +145,7 @@ public class PropostaDao implements FacadeProposta {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Proposta listarPorIdEquipe(int idEquipe, String periodo) {
+	public Proposta listarPorIdEquipe(int idEquipe) {
 		Proposta result = null;
 
 		session = HibernateUtil.getSession();
@@ -153,7 +153,7 @@ public class PropostaDao implements FacadeProposta {
 		// Funcionando mas duplicando linhas
 		result = (Proposta) session.createQuery(
 				"from Proposta as proposta" + " where proposta.equipe.id"
-						+ "=" + idEquipe + " and proposta.periodo=" + periodo ).uniqueResult();
+						+ "=" + idEquipe ).uniqueResult();
 		// q.setParameter("parametro", nomeEquipe + "%");
 
 		session.close();
@@ -202,6 +202,23 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 	 
+	  
+	@Override
+	public List<Proposta> listarPeriodo() {
+		// TODO Auto-generated method stub
+
+		List<Proposta> result = null;
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		
+		result = session.createQuery(
+				"from Proposta as proposta"
+						+ " Group by proposta.periodo").list();
+
+		session.close();
+	
+		return result;
+	}
 	/*
 	 * (non-Javadoc)
 	 * 

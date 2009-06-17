@@ -6,6 +6,6 @@ public interface IListaResultados {
 
 	public abstract List preecherNomes();
 
-	public abstract List preecherValores();
+	public abstract List preecherValores(String periodo);
 
 }

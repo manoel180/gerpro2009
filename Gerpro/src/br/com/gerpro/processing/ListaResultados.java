@@ -44,20 +44,20 @@ public class ListaResultados implements IListaResultados {
 	 /* (non-Javadoc)
 	 * @see br.com.gerpro.processing.IListaResultados#preecherValores()
 	 */
-	public List preecherValores(){
+	public List preecherValores(String periodo){
 		 listavalores=new ArrayList();
-		 listavalores.add(preecherListaAprovados());
-		 listavalores.add(preecherListaAprovadosRessalva());
-		 listavalores.add(preecherListaReprovados());
+		 listavalores.add(preecherListaAprovados(periodo));
+		 listavalores.add(preecherListaAprovadosRessalva(periodo));
+		 listavalores.add(preecherListaReprovados(periodo));
 		 
 		 return listavalores;
 	 }
 	 
 	 //Verificar a lista de aprovados
-	private float preecherListaAprovados(){
+	private float preecherListaAprovados(String periodo){
 		propostaDao = new PropostaDao();
 		 count = 0;
-		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
+		 List<Proposta> lp = propostaDao.listarPorPeriodo(periodo);
 		 int tmp = lp.size();
 		total =0;
 			for( Proposta p : lp ){
@@ -72,11 +72,11 @@ public class ListaResultados implements IListaResultados {
 	 }
 	 
 	//Verificar as propostas reprovadas no periodo
-	 private float preecherListaReprovados(){
+	 private float preecherListaReprovados(String periodo){
 		 propostaDao = new PropostaDao();
 		 count = 0;
 		 total = 0 ;
-		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
+		 List<Proposta> lp = propostaDao.listarPorPeriodo(periodo);
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==5){
@@ -89,11 +89,11 @@ public class ListaResultados implements IListaResultados {
 	 }
 	
 	//Verificar as propostas reprovadas com ressalva no periodo
-	private float preecherListaAprovadosRessalva(){
+	private float preecherListaAprovadosRessalva(String periodo){
 		propostaDao = new PropostaDao(); 
 		count = 0;
 		 total = 0;
-		 List<Proposta> lp = propostaDao.listarPorPeriodo("1");
+		 List<Proposta> lp = propostaDao.listarPorPeriodo(periodo);
 		 int tmp = lp.size();
 			for( Proposta p : lp ){
 				if(p.getStatus().getId()==4){

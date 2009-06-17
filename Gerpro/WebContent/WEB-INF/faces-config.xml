@@ -45,7 +45,7 @@
  <!-- Relatorio -->
  <managed-bean>
   <managed-bean-name>relatorioBean</managed-bean-name>
-  <managed-bean-class>br.com.gerpro.relatorios.ActionRelatorio</managed-bean-class>
+  <managed-bean-class>br.com.gerpro.action.RelatorioBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <!-- Navegação para telas HOME -->
@@ -82,6 +82,10 @@
   <navigation-case>
    <from-outcome>go_relatorioEquipeProposta</from-outcome>
    <to-view-id>/Relatorios/RelatorioProposta.jsp</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   <from-outcome>go_relatorioResultadoProposta</from-outcome>
+   <to-view-id>/Relatorios/RelatorioResultadoProposta.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <!-- Navegação da Área do Professor -->

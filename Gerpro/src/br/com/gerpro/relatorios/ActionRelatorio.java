@@ -10,6 +10,7 @@
 package br.com.gerpro.relatorios;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,7 +81,27 @@ public class ActionRelatorio {
 	}
 	
 	
-	public void gerarRelatorioResultadosProposta() {
+	public BufferedImage gerarRelatorioResultadosPropostaImage(String periodo) {
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		CriarGrafico grafico = new CriarGrafico();
+		ArrayList nomes = new ArrayList();
+        ArrayList valores = new ArrayList();
+        BufferedImage imagen = null;
+
+        nomes.addAll(new ListaResultados().preecherNomes());
+        valores.addAll(new ListaResultados().preecherValores(periodo));
+       
+        imagen = grafico.pizza3DStatic(nomes,valores,"Resultados das Propostas").getSubimage(0,0,600, 800);//.getSubimage(0, 100,300, 150);
+        return imagen;
+        /*params.put("logo", logo.getImage());
+        params.put("imagen", imagen);
+		gerarRelatorioPDF("Resultado_Propostas", params);*/
+		
+	}
+	
+	
+	public void gerarRelatorioResultadosProposta(String periodo) {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		CriarGrafico grafico = new CriarGrafico();
@@ -89,7 +110,7 @@ public class ActionRelatorio {
         Image imagen = null;
 
         nomes.addAll(new ListaResultados().preecherNomes());
-        valores.addAll(new ListaResultados().preecherValores());
+        valores.addAll(new ListaResultados().preecherValores(periodo));
        
         imagen = grafico.pizza3DStatic(nomes,valores,"Resultados das Propostas").getScaledInstance(600, 800, 0);//.getSubimage(0, 100,300, 150);
         params.put("logo", logo.getImage());
@@ -178,6 +199,7 @@ public class ActionRelatorio {
 
 	}
 
+	
 	
 	/**
 	 * @return the periodo
