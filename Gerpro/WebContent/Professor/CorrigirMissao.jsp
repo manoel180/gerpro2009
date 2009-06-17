@@ -7,23 +7,39 @@
 
 <head>
 <title>Missão</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="../css/gerpro.css">
-
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
-	<div align="center"><h:outputLabel value="MISSÃO PROPOSTA"
-		styleClass="Titulos" /></div>
+
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content"><h:form>
+
+
+	<div align="center"><h:outputLabel value="CORREÇÃO MISSÃO DO PRODUTO"
+		styleClass="Titulo1" /></div>
+
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
 	<br>
 
 	<h:panelGrid columns="3">
-		<%@ include file="menu.jsp"%>
-		<rich:simpleTogglePanel label="Dados do Proposta">
+		
+		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
 			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
 				<h:outputText value="Missão:" />
 				<rich:editor height="100" width="600" theme="advanced"
@@ -33,11 +49,20 @@
 		</rich:simpleTogglePanel>
 	</h:panelGrid>
 
-	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
+	
 	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
 		<h:commandButton value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>
-</f:view>
+			
+		</div>
+	</div>
+ </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
