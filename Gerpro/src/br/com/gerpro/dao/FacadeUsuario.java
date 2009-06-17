@@ -27,4 +27,9 @@ public interface FacadeUsuario {
 	 * @return
 	 */
 	public List<Usuario> listarPorEquipe(int id);
+
+	/**
+	 * @return
+	 */
+	public List<Usuario> listarProfessores();
 }
