@@ -26,7 +26,7 @@
 	<%@include file="menu.jsp"%></div>
 	<br/>
 		
-	<div id="content"><h:form>
+	<div id="content">
 
 		<h:form>
 		<div align="center"><h:outputLabel value="SUBMETER PROPOSTA"
