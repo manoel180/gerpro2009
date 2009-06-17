@@ -46,7 +46,7 @@
 					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
 						value="Clique para inserir" />
 
-					<rich:editor height="300" theme="advanced" width="490"
+					<rich:editor height="150" theme="advanced" width="490"
 						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>

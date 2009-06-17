@@ -44,7 +44,7 @@
 		<br>
 		<h:panelGrid columns="5">
 			<rich:simpleTogglePanel
-				rendered="#{!construirPropostaBean.desabilitar}" width="600px"
+				rendered="#{!construirPropostaBean.desabilitar}" width="515px"
 				label="#{construirPropostaBean.proposta.nome}">
 				<h:form id="form1">
 					<h:panelGrid columns="1">
@@ -96,7 +96,7 @@
 			<rich:dataTable id="idtable" var="lstCronograma"
 				value="#{construirPropostaBean.lstCronograma}"
 				binding="#{construirPropostaBean.objDatatableCronograma}" rows="10"
-				width="550px" align="center">
+				width="515px" align="center">
 				<rich:column sortBy="#{lstCronograma.dataInicial}">
 					<f:facet name="header">
 						<h:outputText value="Data Inicial" />

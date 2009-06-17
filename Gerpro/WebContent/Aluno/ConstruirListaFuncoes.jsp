@@ -41,7 +41,7 @@
 		<h:panelGrid columns="3" >
 
 			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" rendered="#{!construirPropostaBean.desabilitar}">
-				<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
+				<h:panelGrid columns="1" cellpadding="5" style="width: 532px">
 
 					<h:outputText value="Ordem:" />
 					<!-- rint Textarea -->
@@ -50,7 +50,7 @@
 					<h:inputTextarea
 						value="#{construirPropostaBean.listafuncaoid.numeroSequencia}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textordem"
-						style="width: 762px; height: 57px" />
+						style="width: 492px; height: 57px" />
 
 
 					<h:outputText value="Caso de Uso:" />
@@ -59,7 +59,7 @@
 						value="clique para inserir" />
 					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textcasouso"
-						style="width: 762px; height: 57px" />
+						style="height: 57px; width : 492px;" />
 
 
 					<h:outputText value="Descrição:" />
@@ -69,7 +69,7 @@
 					<h:inputTextarea
 						value="#{construirPropostaBean.listaFuncao.descricao}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textdesc"
-						style="width: 762px; height: 57px" />
+						style="width: 492px; height: 57px" />
 
 					<!-- Combobox tipo de funcao -->
 					<h:outputText value="Tipo de Função:" />
@@ -97,7 +97,7 @@
 		<rich:dataTable id="idtable" var="listafuncao"
 			value="#{construirPropostaBean.lstlistaFuncao}"
 			binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="5"
-			width="550px" align="center">
+			align="center" style=" width : 492px;">
 			<rich:column sortBy="#{listafuncao.id.numeroSequencia}">
 				<f:facet name="header">
 					<h:outputText value="Ordem" />
@@ -130,7 +130,7 @@
 				<f:facet name="header">
 					<h:outputText value="Opções"></h:outputText>
 				</f:facet>
-				<!-- rint botao deletar e alterar-->
+				<!-- hint botao deletar e alterar-->
 				<rich:toolTip for="btndeletar" followMouse="true" zorder="90"
 					value="Deletar/Excluir" />
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90"
@@ -150,10 +150,10 @@
 			value="clique para Salvar" />
 		<rich:datascroller align="center" for="idtable" maxPages="5"
 			fastControls="show" />
-		<div align="right" style="width: 899px;"><h:commandButton
+		<div align="left" style=" width : 495px;"><h:commandButton
 			value="Salvar" id="btnsalvar"
 			disabled="#{construirPropostaBean.desabilitar}"
-			action="#{construirPropostaBean.SalvarListaFuncao}" /> <rich:spacer
+			action="#{construirPropostaBean.SalvarListaFuncao}" style=" width : 61px;"/> <rich:spacer
 			height="30" /> <br>
 		<br>
 		</div>
