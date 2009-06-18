@@ -4,6 +4,10 @@ prefix="h" uri="http://java.sun.com/jsf/html"%> <%@taglib
 uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<head>
+<title>Home Aluno</title>
+</head>
+
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 

@@ -28,15 +28,16 @@
 	<div id="content">
 
 	<h:form>
-
-		<div align="center"><h:outputLabel value="FUNÇÕES"
+ <br>
+		<div align="center"><h:outputLabel value="LISTA DE FUNÇÕES"
 		styleClass="Titulo1" /></div>
-
+		<br>
+    
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
 
-		<br>
+		
 
 		<h:panelGrid columns="3" >
 
@@ -145,7 +146,7 @@
 					style="height: 40px; width: 40px"></h:commandButton>
 			</h:column>
 		</rich:dataTable>
-		<!-- rint botao salvar-->
+		<!-- hint botao salvar-->
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
 			value="clique para Salvar" />
 		<rich:datascroller align="center" for="idtable" maxPages="5"

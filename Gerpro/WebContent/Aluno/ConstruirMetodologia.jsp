@@ -43,24 +43,28 @@
 				height="129" style="width: 546px">
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText value="Metodologia:" />
-					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
+					<rich:toolTip for="idmetodologia" followMouse="true" zorder="90"
 						value="Clique para inserir" />
 
-					<rich:editor height="150" theme="advanced" width="490"
+					<rich:editor id="idmetodologia" height="150" theme="advanced" width="490"
 						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-
-
-		<h:commandButton value="Salvar"
+		
+          <!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+			<br>          
+        <div align="left">
+		&nbsp;&nbsp;&nbsp;<h:commandButton value="Salvar" id="btnsalvar"
 			disabled="#{construirPropostaBean.desabilitar}"
 			action="#{construirPropostaBean.SalvarMetodologia}" />
 		<br>
 	</h:form>
 	
-		</div>
+		</div> 
 	</div>
 </f:view>
 

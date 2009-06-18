@@ -26,10 +26,11 @@
 	<%@include file="menu.jsp"%></div>
 	<br/>
 		
-	<div id="content"><h:form>
+	<div id="content">
+	<h:form>
 
 		
-		<div align="center"><h:outputLabel value="MISSAO"
+		<div align="center"><h:outputLabel value="MISSÃO DO PRODUTO"
 		styleClass="Titulo1" /></div>
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
@@ -46,20 +47,21 @@
 					<rich:toolTip for="idmissao" followMouse="true" zorder="90"
 						value="Clique para inserir" />
 
-					<rich:editor height="150" theme="advanced" width="490"
+					<rich:editor height="150" id="idmissao" theme="advanced" width="490"
 						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
-
-
-		<h:commandButton value="Salvar"
-			disabled="#{construirPropostaBean.desabilitar}"
-			action="#{construirPropostaBean.SalvarMissao}" />
-		<br>
-	</h:form>
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
 		
+          <br>
+         <div align="left">		
+		&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar" disabled="#{construirPropostaBean.desabilitar}" 
+		    action="#{construirPropostaBean.SalvarMissao}" /><br>
+	</h:form>		
 		</div>
 	</div>
 </f:view>

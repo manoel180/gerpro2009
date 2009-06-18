@@ -40,11 +40,11 @@
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
-
-		<br>
+			
+			<br>
 		<h:panelGrid columns="5">
 			<rich:simpleTogglePanel
-				rendered="#{!construirPropostaBean.desabilitar}" width="515px"
+				rendered="#{!construirPropostaBean.desabilitar}" width="539px"
 				label="#{construirPropostaBean.proposta.nome}">
 				<h:form id="form1">
 					<h:panelGrid columns="1">
@@ -92,11 +92,20 @@
 			</rich:simpleTogglePanel>
 
 		</h:panelGrid>
+		<rich:spacer height="10" />
 		<h:form id="form2">
 			<rich:dataTable id="idtable" var="lstCronograma"
 				value="#{construirPropostaBean.lstCronograma}"
 				binding="#{construirPropostaBean.objDatatableCronograma}" rows="10"
 				width="515px" align="center">
+				
+				<rich:column width="5%" sortBy="#{lstCronograma.artefatos.nome}">
+					<f:facet name="header">
+						<h:outputText value="Eventos/Artefatos" />
+					</f:facet>
+					<h:outputText value="#{lstCronograma.artefatos.nome}" />
+				</rich:column>
+				
 				<rich:column sortBy="#{lstCronograma.dataInicial}">
 					<f:facet name="header">
 						<h:outputText value="Data Inicial" />
@@ -117,12 +126,7 @@
 					</h:outputText>
 				</rich:column>
 
-				<rich:column width="5%" sortBy="#{lstCronograma.artefatos.nome}">
-					<f:facet name="header">
-						<h:outputText value="Eventos/Artefatos" />
-					</f:facet>
-					<h:outputText value="#{lstCronograma.artefatos.nome}" />
-				</rich:column>
+				
 
 				<h:column rendered="#{!construirPropostaBean.desabilitar}">
 					<f:facet name="header">
@@ -137,7 +141,9 @@
 						style="height: 40px; width: 40px"></h:commandButton>
 				</h:column>
 			</rich:dataTable>
-			<div =align="right" style="width: 864px;"><h:commandButton
+			<br>
+			<div align="left">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h:commandButton
 				value="Salvar" id="btnsalvar"
 				action="#{construirPropostaBean.SalvarCronograma}"
 				disabled="#{construirPropostaBean.desabilitar}" /></div>
