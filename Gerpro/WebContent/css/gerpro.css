@@ -450,7 +450,7 @@ a.menu_superior:visited {
 #menu {
 	width:200px;
 	height:300px; 
-	text-align:center; 
+	text-align:left; 
 	float:left;
 }
 #content {
