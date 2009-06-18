@@ -78,8 +78,6 @@ public class CorrecaoBean {
 			desabilitar = true;
 		}
 	}
-	
-	
 
 	private void carregarCorrecao(String professor, int item, int pergunta) {
 		// Carrega a Correcao
@@ -214,16 +212,25 @@ public class CorrecaoBean {
 	}
 
 	public String prepararAvaliacaoGeral() {
-
-		Proposta proposta = applicationSecurityManager.getProposta();
-		Usuario professor = applicationSecurityManager.getUsuario();
-
-		setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
+		prp(applicationSecurityManager.getUsuario().getMatricula(),6,1);
+		prp(applicationSecurityManager.getUsuario().getMatricula(),6,2);
+		prp(applicationSecurityManager.getUsuario().getMatricula(),6,7);		
+		return "corrigirAvaliacaoGeral";
+	}
+	
+	public void prp(String matricula, int idItem, int idPergunta){
+		carregarCorrecao(
+				matricula, idItem, idPergunta);
+		carregarItem(5);
+		carregarEquipe();
 
 		status = proposta.getStatus();
-		equipe = proposta.getEquipe();
-
-		return "submeterCorrecao";
+		resposta = correcao.getResposta();
+		listaPergunta = getPerguntaDao().listarPorItem(5);
+		for (Pergunta pergt : listaPergunta) {
+			pergunta.setDescricao(pergt.getDescricao());
+		}
+		desabilitar();
 	}
 
 	public String prepararSubmeterCorrecao() {
@@ -259,6 +266,68 @@ public class CorrecaoBean {
 		}
 		return prepararBean();
 	}
+	
+	public String salvarAvaliacaoGeral1() {
+		try {
+			usuario.setMatricula(applicationSecurityManager.getUsuario()
+					.getMatricula());
+
+			status.setId(7);
+			correcao.setId(correcaoid);
+			correcao.setUsuario(usuario);
+			correcao.setPergunta(pergunta);
+			correcao.setDataCorrecao(new Date());
+			correcao.setResposta(resposta);
+			correcao.setStatus(status);
+
+			getCorrecaoDao().salvar(correcao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prepararBean();
+	}
+	
+	public String salvarAvaliacaoGeral2() {
+		try {
+			usuario.setMatricula(applicationSecurityManager.getUsuario()
+					.getMatricula());
+
+			status.setId(7);
+			correcao.setId(correcaoid);
+			correcao.setUsuario(usuario);
+			correcao.setPergunta(pergunta);
+			correcao.setDataCorrecao(new Date());
+			correcao.setResposta(resposta);
+			correcao.setStatus(status);
+
+			getCorrecaoDao().salvar(correcao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prepararBean();
+	}
+	
+	public String salvarAvaliacaoGeral3() {
+		try {
+			usuario.setMatricula(applicationSecurityManager.getUsuario()
+					.getMatricula());
+
+			status.setId(7);
+			correcao.setId(correcaoid);
+			correcao.setUsuario(usuario);
+			correcao.setPergunta(pergunta);
+			correcao.setDataCorrecao(new Date());
+			correcao.setResposta(resposta);
+			correcao.setStatus(status);
+
+			getCorrecaoDao().salvar(correcao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prepararBean();
+	}
+
+
 
 	public boolean propostaEmCorrecao() {
 
@@ -270,8 +339,7 @@ public class CorrecaoBean {
 
 		int contadorItensCorridos = 0;
 
-		for (Correcao correcao : listaCorrecao) {
-			System.out.println("Status = " + correcao.getStatus().getNome());
+		for (Correcao correcao : listaCorrecao) {			
 			if (correcao.getStatus().getId() == 7) {
 				contadorItensCorridos++;
 			}
@@ -568,3 +636,4 @@ public class CorrecaoBean {
 	}
 
 }
+

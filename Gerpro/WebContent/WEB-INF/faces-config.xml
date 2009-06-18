@@ -152,6 +152,10 @@
 			<to-view-id>/Professor/CorrigirProposta.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>corrigirAvaliacaoGeral</from-outcome>
+			<to-view-id>/Professor/CorrigirAvaliacaoGeral.jsp</to-view-id>
+		</navigation-case>		
+		<navigation-case>
 			<from-outcome>submeterCorrecao</from-outcome>
 			<to-view-id>/Professor/SubmeterCorrecao.jsp</to-view-id>
 		</navigation-case>

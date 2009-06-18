@@ -16,10 +16,9 @@
 
 		<div align="center"><h:outputLabel value="CADASTRO DE EQUIPES"
 			styleClass="titulo" /></div>
-		<h:messages globalOnly="true" showDetail="#{true}" showSummary="#{true}" />
 
-		<!--  h:message for="equipeBean" styleClass="Obrigatorio" showDetail="true"
-			showSummary="true" /-->
+		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
+			showSummary="true" />
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">

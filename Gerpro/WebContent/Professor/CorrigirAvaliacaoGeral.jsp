@@ -24,76 +24,56 @@
 	<br />
 	<br>
 	<%@include file="menuProfessor.jsp"%></div>
-	<br/>
-		
+	<br />
+
 	<div id="content">
-
-
 
 	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL"
 		styleClass="Titulo1" /></div>
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
-		showSummary="true" />
-	<br>
+		showSummary="true" /> <br>
 
-		<rich:simpleTogglePanel width="520px" label="#{corrigirPropostaBean.proposta.nome}">	
-		</rich:simpleTogglePanel>
-		<h:form>
+	<rich:simpleTogglePanel width="520px"
+		label="#{corrigirPropostaBean.proposta.nome}">
+	</rich:simpleTogglePanel> <h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
-		
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		<br>
-		<div align="left">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form>
-	<h:form>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%@ include file="perguntasCorrecao.jsp"%>
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		<br>
-		<div align="left">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form>
-	<h:form>
-		<%@ include file="perguntasCorrecao.jsp"%>
-		
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		<br>
-		<div align="left">
-		<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form>
-	
 
-	
-	<h:form>
-		<%@ include file="perguntasCorrecao.jsp"%>
-		
 		<!-- hint botao salvar-->
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
 			value="clique para Salvar" />
 		<br>
 		<div align="left">
-		<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton
+			id="btnsalvar" value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral1}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form>
+	</h:form> <h:form>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%@ include
+			file="perguntasCorrecao.jsp"%>
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+		<br>
+		<div align="left">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton
+			id="btnsalvar" value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral2}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
+	</h:form> <h:form>
+		<%@ include file="perguntasCorrecao.jsp"%>
+
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+		<br>
+		<div align="left"><h:commandButton id="btnsalvar" value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral3}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
+	</h:form></div>
 	</div>
-	</div>
- </f:view>
+</f:view>
 
 
-<div class="fontBranca" id="rodape"><!-- Rodapé -->
-		<br />
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
