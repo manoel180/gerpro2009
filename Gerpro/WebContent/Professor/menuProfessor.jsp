@@ -5,7 +5,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <br>
 <h:panelGrid>
-	<rich:panelMenu expandMode="ajax" style="width:160px" mode="ajax"
+	<rich:panelMenu expandMode="ajax" style="width:170px" mode="ajax"
 		iconExpandedGroup="disc" iconCollapsedGroup="disc" 
 		iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
 		iconCollapsedTopGroup="chevronDown">
