@@ -7,15 +7,31 @@
 
 <head>
 <title>Cronograma</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 
 <f:view>
-	<div align="center"><h:outputLabel value="CRONOGRAMA"
-		styleClass="Titulos" /></div>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content">
+
+
+
+	<div align="center"><h:outputLabel value="CORREÇAO CRONOGRAMa"
+		styleClass="Titulo1" /></div>
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
@@ -23,13 +39,13 @@
 	<br>
 
 	<h:panelGrid columns="5">
-		<%@ include file="menu.jsp"%>
+		
 
-		<rich:simpleTogglePanel width="600px" label="Dados do cadastro">
+		<rich:simpleTogglePanel width="525px" label="#{corrigirPropostaBean.proposta.nome}">
 			<h:form>
 				<rich:dataTable id="idtable" var="lstCronograma"
 					value="#{corrigirPropostaBean.lstCronograma}" rows="10"
-					width="550px" align="center">
+					width="525px" align="center">
 					<rich:column sortBy="#{lstCronograma.dataInicial}">
 						<f:facet name="header">
 							<h:outputText value="Data Inicial" />
@@ -63,13 +79,19 @@
 	</h:panelGrid>
 	<br>
 
-	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
-
+	
 	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
 		<h:commandButton value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
+			action="#{corrigirPropostaBean.salvarCorrigirCronograma}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>
+		</div>
+	</div>
+ </f:view>
 
-</f:view>
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

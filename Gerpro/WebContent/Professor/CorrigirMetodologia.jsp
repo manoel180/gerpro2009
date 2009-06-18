@@ -6,44 +6,65 @@
 
 
 <head>
-<title>Metodologia</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
-
+<title>Correção da Metodologia</title>
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
-	<div align="center"><h:outputLabel value="METODOLOGIA PROPOSTA"
-		styleClass="Titulos" /></div>
+
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menu.jsp"%></div>
+	<br/>
+		
+	<div id="content">
+
+
+
+	<div align="center"><h:outputLabel value="CORREÇÃO METODOLOGIA"
+		styleClass="Titulo1" /></div>
+
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 		showSummary="true" />
-
 	<br>
 
 	<h:panelGrid columns="3">
-
-		<%@ include file="menu.jsp"%>
-
-		<rich:simpleTogglePanel label="Dados do Proposta">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 798px">
+		
+		
+		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
+			<h:panelGrid columns="1" cellpadding="5" style="width: 500px">
 				<h:outputText value="Metodologia:" />
-				<rich:editor height="300" width="700" theme="advanced"
-					style="width: 769px" readonly="true"
+				<rich:editor height="50" width="467" theme="advanced"
+					readonly="true" style="width: px"
 					value="#{corrigirPropostaBean.propostaitem.conteudoItem}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
 	</h:panelGrid>
 
-
 	
-	<br>
-	<%@ include file="../common/bannerCorrigirPropostaEquipe.jsp"%>
 	<h:form>
-		<%@ include file="perguntasCorrecao.jsp"%>
-		<h:commandButton value="Salvar" action="#{corrigirPropostaBean.SalvarMetodologia}" />
-
+		<%@include file="perguntasCorrecao.jsp"%>
+		<h:commandButton value="Salvar"
+			action="#{corrigirPropostaBean.salvarCorrigirMetodologia}"
+			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>
+			
+		</div>
+	</div>
+ </f:view>
 
-</f:view>
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
