@@ -17,7 +17,7 @@ public interface IProcessoAlocarProposta {
 	 */
 
 	@SuppressWarnings("unchecked")
-	public abstract void alocaProposta(List<Usuario> professoresSelecionados,
+	public abstract void alocaProposta(List<String> listaMatriculasProfessores,
 			boolean correcaoEmGrupo);
 
 	/***************************************************************************

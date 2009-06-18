@@ -1,3 +1,4 @@
+
 package br.com.gerpro.test;
 
 import java.util.ArrayList;
@@ -19,11 +20,18 @@ public class TestProcessoAlocarProposta {
 		
 		boolean emGrupo = false;
 		
-		Usuario professor = usuarioDao.procurarPorMatricula("2");
 		
-		List<Usuario> lista = new ArrayList<Usuario>();
 		
-		lista.add(professor);
+		
+		String professor1 = "1";
+		
+		String professor2 = "2";
+		
+		
+		List<String> lista = new ArrayList<String>();
+		
+		lista.add(professor1);
+		lista.add(professor2);
 		
 		alocar.alocaProposta(lista, emGrupo);
 	}

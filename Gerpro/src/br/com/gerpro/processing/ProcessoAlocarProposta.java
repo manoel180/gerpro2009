@@ -42,13 +42,13 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 	 */
 
 	@SuppressWarnings("unchecked")
-	public void alocaProposta(List<Usuario> professoresSelecionadosView, boolean correcaoEmGrupo) {
+	public void alocaProposta(List<String> listaMatriculasProfessores, boolean correcaoEmGrupo) {
 		
 		setCorrecaoEmGrupo(correcaoEmGrupo);
-		List <Usuario> professoresSelecionados= new ArrayList();		
+		List <Usuario> professoresSelecionados = new ArrayList();		
 		
-		for (Usuario professor : professoresSelecionadosView) {
-			Usuario usuario = usuarioDao.procurarPorMatricula(professor.getMatricula());			
+		for (String matricula : listaMatriculasProfessores) {
+			Usuario usuario = usuarioDao.procurarPorMatricula(matricula);			
 			professoresSelecionados.add(usuario);			
 		}
 

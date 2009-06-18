@@ -21,14 +21,15 @@ import br.com.gerpro.util.HibernateUtil;
 
 /**
  * @author M3R
- *
+ * 
  */
 public class CorrecaoDao implements FacadeCorrecao {
-	private static	Session session = null;
+	private static Session session = null;
 	private static Transaction tx = null;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.FacadeCorrecao#procurarPorId(int)
 	 */
 	public Correcao procurarPorIdProposta(Correcao correcao) {
@@ -36,16 +37,20 @@ public class CorrecaoDao implements FacadeCorrecao {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.FacadeCorrecao#procurarPorNomeProfessor(java.lang.String)
 	 */
 	public Correcao procurarPorNomeProfessor(String Nome) {
-		
+
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.com.gerpro.dao.FacadeCorrecao#remover(br.com.gerpro.model.Correcao)
 	 */
 	public void remover(Correcao correcao) {
@@ -66,43 +71,42 @@ public class CorrecaoDao implements FacadeCorrecao {
 		session.close();
 		return result;
 
-		/*// Funcionando mas duplicando linhas
-		result = session.createQuery(
-				"from Correcao as c where c.status.id = 3 or proposta.status.id = 4 or proposta.status.id = 5"
-						+ " and proposta.periodo = '"+periodo*/
-			/*			+ "' Group by proposta.id").list();*/
+		/*
+		 * // Funcionando mas duplicando linhas result = session.createQuery(
+		 * "from Correcao as c where c.status.id = 3 or proposta.status.id = 4
+		 * or proposta.status.id = 5" + " and proposta.periodo = '"+periodo
+		 */
+		/* + "' Group by proposta.id").list(); */
 
-		
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Correcao> procurarPorCorrecao(Usuario professor, Proposta proposta) {
-		List<Correcao> listaCorrecao = null;;
-		
+	public List<Correcao> procurarPorCorrecao(Usuario professor,
+			Proposta proposta) {
+		List<Correcao> listaCorrecao = null;
+		;
+
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			if(session.isOpen()){
-				tx = session.beginTransaction();				
+			if (session.isOpen()) {
+				tx = session.beginTransaction();
 
-				listaCorrecao = session.createSQLQuery("select * from correcao c"
-						+ " where c.id_proposta = ?"
-						+ " and c.matricula_professor = ?")
-						.addEntity(Correcao.class)
-						.setParameter(0, proposta.getId())
-						.setParameter(1, professor.getMatricula())
-						.list();
+				listaCorrecao = session.createSQLQuery(
+						"select * from correcao c" + " where c.id_proposta = ?"
+								+ " and c.matricula_professor = ?").addEntity(
+						Correcao.class).setParameter(0, proposta.getId())
+						.setParameter(1, professor.getMatricula()).list();
 
 				tx.commit();
-			}
-			else
-				System.out.println("Erro na sessao");		
-		
+			} else
+				System.out.println("Erro na sessao");
+
 			return listaCorrecao;
-			
+
 		} catch (Exception e) {
 			tx.rollback();
-			System.out.println("Ocorreu um erro");		
+			System.out.println("Ocorreu um erro");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -135,6 +139,6 @@ public class CorrecaoDao implements FacadeCorrecao {
 			e.printStackTrace();
 		} finally {
 			session.close();
-		}		
+		}
 	}
 }

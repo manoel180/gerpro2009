@@ -5,6 +5,8 @@ package br.com.gerpro.processing;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeStatus;
@@ -34,8 +36,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	public void calcularStatusPropostaAtual(Usuario professor, Proposta propostaView ) {
 
 		/*
-		 * Gera a lista de correcoes para todos os itens de uma determinada
-		 * propostas e professor
+		 * Gera a lista de correcoes para todos os itens de uma determinada propostas e professor
 		 */
 		listaCorrecao = correcaoDao.procurarPorCorrecao(professor, propostaView);
 		
@@ -100,6 +101,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 						proposta.setStatus(statusDao.procurarPorId(4));
 						calcularStatusFinalProposta(proposta);
 						alteraStatusCorrecoes(listaCorrecao);
+						
 						return;
 
 					}// Fim do if
@@ -119,82 +121,87 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	 * @see br.com.gerpro.processing.IProcessoCorrecao#calcularStatusFinalProposta(br.com.gerpro.model.Proposta)
 	 */
 	public void calcularStatusFinalProposta(Proposta propostaView) {
-
-		Proposta propostaBD = propostaDao.procurarPorId(propostaView.getId());
-		System.out.println(propostaBD.getNome());
-
-		/***********************************************************************
-		 * Caso seja a primeira correcao da proposta, o sistema atualiza o
-		 * status da proposta com o status da proposta atual
-		 */
-		if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {
-			propostaBD.setStatus(propostaView.getStatus());
-			propostaDao.salvar(propostaBD);
-		} else {
-			if (propostaBD.getStatus().getId() == 3) {
-				if (propostaView.getStatus().getId() == 3) {
-					propostaBD.setStatus(statusDao.procurarPorId(3));
-				}
-
-				if (propostaView.getStatus().getId() == 4) {
-					propostaBD.setStatus(statusDao.procurarPorId(3));
-				}
-
-				if (propostaView.getStatus().getId() == 5) {
-					propostaBD.setStatus(statusDao.procurarPorId(4));
-				}
-
-				propostaDao.salvar(propostaBD);
-				return;
-			}
-
-			// Se proposta do banco = APROVADA COM RESSALVA
-			if (propostaBD.getStatus().getId() == 4) {
-				if (propostaView.getStatus().getId() == 3) {
-					
-					propostaBD.setStatus(statusDao.procurarPorId(3));
-					
-				}
-
-				if (propostaView.getStatus().getId() == 4) {
-
-					propostaBD.setStatus(statusDao.procurarPorId(4));
-					
-				}
-
-				if (propostaView.getStatus().getId() == 5) {
-
-					propostaBD.setStatus(statusDao.procurarPorId(5));
-					
-				}
-				propostaDao.salvar(propostaBD);
-				return;
-			}
-
-			// Se proposta do banco = REPROVADA
-			if (propostaBD.getStatus().getId() == 5) {
-				if (propostaView.getStatus().getId() == 3) {
-
-					propostaBD.setStatus(statusDao.procurarPorId(4));
-					
-				}
-
-				if (propostaView.getStatus().getId() == 4) {
-					
-					propostaBD.setStatus(statusDao.procurarPorId(4));
-					
-				}
-
-				if (propostaView.getStatus().getId() == 5) {
-					
-					propostaBD.setStatus(statusDao.procurarPorId(5));
-					
-				}
-				propostaDao.salvar(propostaBD);
-				return;
-			}
-		}
 		
+		try {
+			Proposta propostaBD = propostaDao.procurarPorId(propostaView.getId());
+			
+			/***********************************************************************
+			 * Caso seja a primeira correcao da proposta, o sistema atualiza o
+			 * status da proposta com o status da proposta atual
+			 */
+			if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {
+				propostaBD.setStatus(propostaView.getStatus());
+				propostaDao.salvar(propostaBD);
+			} else {
+				if (propostaBD.getStatus().getId() == 3) {
+					if (propostaView.getStatus().getId() == 3) {
+						propostaBD.setStatus(statusDao.procurarPorId(3));
+					}
+
+					if (propostaView.getStatus().getId() == 4) {
+						propostaBD.setStatus(statusDao.procurarPorId(3));
+					}
+
+					if (propostaView.getStatus().getId() == 5) {
+						propostaBD.setStatus(statusDao.procurarPorId(4));
+					}
+
+					propostaDao.salvar(propostaBD);
+					return;
+				}
+
+				// Se proposta do banco = APROVADA COM RESSALVA
+				if (propostaBD.getStatus().getId() == 4) {
+					if (propostaView.getStatus().getId() == 3) {
+						
+						propostaBD.setStatus(statusDao.procurarPorId(3));
+						
+					}
+
+					if (propostaView.getStatus().getId() == 4) {
+
+						propostaBD.setStatus(statusDao.procurarPorId(4));
+						
+					}
+
+					if (propostaView.getStatus().getId() == 5) {
+
+						propostaBD.setStatus(statusDao.procurarPorId(5));
+						
+					}
+					propostaDao.salvar(propostaBD);
+					return;
+				}
+
+				// Se proposta do banco = REPROVADA
+				if (propostaBD.getStatus().getId() == 5) {
+					if (propostaView.getStatus().getId() == 3) {
+
+						propostaBD.setStatus(statusDao.procurarPorId(4));
+						
+					}
+
+					if (propostaView.getStatus().getId() == 4) {
+						
+						propostaBD.setStatus(statusDao.procurarPorId(4));
+						
+					}
+
+					if (propostaView.getStatus().getId() == 5) {
+						
+						propostaBD.setStatus(statusDao.procurarPorId(5));
+						
+					}
+					propostaDao.salvar(propostaBD);
+					return;
+				}
+			}
+			JOptionPane.showMessageDialog(null, "Proposta corrigida com sucesso", "Correção de Proposta", 1);
+			
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao submeter a correção", "Correção de Proposta", JOptionPane.ERROR_MESSAGE);		
+		}		
 	}
 	
 	/*
@@ -205,7 +212,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	public void alteraStatusCorrecoes(List<Correcao> listaCorrecao) {		
 		for (Correcao correcao : listaCorrecao) {
 			correcao.setStatus(statusDao.procurarPorId(7));
-			correcaoDao.salvar(correcao);			
+			correcaoDao.salvar(correcao);		
 		}
 	}
 

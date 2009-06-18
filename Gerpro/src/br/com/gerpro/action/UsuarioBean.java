@@ -71,11 +71,15 @@ public class UsuarioBean{
 		getUsuarioDao().remover(usuario);
 		return prepararBean();
 	}
+	/***
+	 * Método para validação simples de login do usuario 
+	 * 
+	 * @return String contendo o nome da página Home do Usuario que realizou o login
+	 */
 
 	public String logar(){
 		String  homeUsuario = "home";		 
 		Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario.getMatricula());
-		System.out.println("Listar Por Professor " + usuarioBD.getNome());
 		
 		if (usuario == null) {			
 			return "erro";

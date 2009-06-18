@@ -3,31 +3,25 @@ package br.com.gerpro.action;
 import javax.faces.component.UIOutput;
 
 
-public class ErroBean {
-	//private UIData objDatatableErro;// componente da tela - JSP
-	private UIOutput objOutputErro;// componente da tela - JSP
+public class ErroBean {	
 	
+	private String tituloMensagemErro;
 	private String mensagemErro;
+	
 	
 	public String prepararBean(String mensagemErro2) {		
 		this.mensagemErro = "ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOO";//mensagemErro2;	
+		this.tituloMensagemErro = "Teste de Erro";
+		
+		System.out.println(mensagemErro + " ***** " + tituloMensagemErro);
+		
+		
 		return "erro";
 	}
 	
-
-	/**
-	 * @return the objOutputErro
+	/*
+	 * Getters and Setters
 	 */
-	public UIOutput getObjOutputErro() {
-		return objOutputErro;
-	}
-
-	/**
-	 * @param objOutputErro the objOutputErro to set
-	 */
-	public void setObjOutputErro(UIOutput objOutputErro) {
-		this.objOutputErro = objOutputErro;
-	}
 	
 	/**
 	 * @return the mensagemErro
@@ -42,10 +36,24 @@ public class ErroBean {
 	public void setMensagemErro(String mensagemErro) {
 		this.mensagemErro = mensagemErro;
 	}
-	
-	/*
-	 * Getters and Setters
+
+	/**
+	 * @return the tituloMensagemErro
 	 */
+	public String getTituloMensagemErro() {
+		return tituloMensagemErro;
+	}
+
+	/**
+	 * @param tituloMensagemErro the tituloMensagemErro to set
+	 */
+	public void setTituloMensagemErro(String tituloMensagemErro) {
+		this.tituloMensagemErro = tituloMensagemErro;
+	}
+	
+	
+	
+	
 	
 
 
