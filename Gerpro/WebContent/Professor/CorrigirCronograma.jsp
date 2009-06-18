@@ -6,7 +6,7 @@
 
 
 <head>
-<title>Cronograma</title>
+<title>Correção do Cronograma</title>
 </head>
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
@@ -23,6 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
+	<br>
 	<%@include file="menu.jsp"%></div>
 	<br/>
 		
@@ -30,7 +31,7 @@
 
 
 
-	<div align="center"><h:outputLabel value="CORREÇAO CRONOGRAMa"
+	<div align="center"><h:outputLabel value="CORREÇAO CRONOGRAMA"
 		styleClass="Titulo1" /></div>
 
 	<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
@@ -41,11 +42,11 @@
 	<h:panelGrid columns="5">
 		
 
-		<rich:simpleTogglePanel width="525px" label="#{corrigirPropostaBean.proposta.nome}">
+		<rich:simpleTogglePanel width="558px" label="#{corrigirPropostaBean.proposta.nome}">
 			<h:form>
 				<rich:dataTable id="idtable" var="lstCronograma"
 					value="#{corrigirPropostaBean.lstCronograma}" rows="10"
-					width="525px" align="center">
+					width="515px" align="center">
 					<rich:column sortBy="#{lstCronograma.dataInicial}">
 						<f:facet name="header">
 							<h:outputText value="Data Inicial" />
@@ -82,7 +83,13 @@
 	
 	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
-		<h:commandButton value="Salvar"
+		
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+		<br>
+		<div align="left">
+		<h:commandButton id="btnsalvar" value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirCronograma}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>

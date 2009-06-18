@@ -5,14 +5,15 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<rich:simpleTogglePanel label="Proposta">
+<rich:simpleTogglePanel style="width: 500px" label="Pergunta/Observação" width="238">
 	<h:outputLabel value="#{corrigirPropostaBean.pergunta.descricao}"></h:outputLabel>
 	<h:selectOneRadio value="#{corrigirPropostaBean.resposta.id}" disabled="#{corrigirPropostaBean.desabilitar}">
 		<f:selectItem itemLabel="Sim" itemValue="1" />
 		<f:selectItem itemLabel="Não" itemValue="2" />
 	</h:selectOneRadio>
+	
 	<rich:editor  value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
-		theme="advanced" required="true">
+		theme="advanced" style="width: 20px" required="true">
 		<f:attribute name="fieldRef" value="Descrição" />	
 	</rich:editor>
 </rich:simpleTogglePanel>

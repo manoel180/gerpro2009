@@ -6,32 +6,53 @@
 
 
 <head>
-<title>Construir Proposta</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
+<title>Corrigir Proposta</title>
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="menuProfessor.jsp"%></div>
+	<br/>
+		
+	<div id="content">
 	<h:form>
 
 		<div align="center"><h:outputLabel value="CORRIGIR PROPOSTA"
-			styleClass="Titulos" /></div>
+		styleClass="Titulo1" /></div>
 
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
 
 		<br>
 		
-		<h:panelGrid columns="3" width="890">	
-		<%@ include file="menu.jsp" %>
+		<h:panelGrid columns="3" width="560">	
+		
 		<%@include file="../common/bannerSubmeterPropostaEquipe.jsp"%>			
 
 			
 		</h:panelGrid>
 
-		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" /><br>
+		
 
 	</h:form>
+			
+		</div>
+	</div>
+ </f:view>
 
-</f:view>
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

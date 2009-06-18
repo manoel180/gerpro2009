@@ -23,6 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
+	<br>
 	<%@include file="menu.jsp"%></div>
 	<br/>
 		
@@ -41,7 +42,7 @@
 	<h:panelGrid columns="3">
 		
 		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 500px">
+			<h:panelGrid columns="1" cellpadding="5" style="width: 538px">
 				<h:outputText value="Justificativa:" />
 				<rich:editor height="50" width="467" theme="advanced"
 					readonly="true" style="width: px"
@@ -53,7 +54,13 @@
 	
 	<h:form>
 		<%@include file="perguntasCorrecao.jsp"%>
-		<h:commandButton value="Salvar"
+		
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+		<br>
+		<div align="left">
+		<h:commandButton id="btnsalvar" value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirJustificativa}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>

@@ -6,7 +6,7 @@
 
 
 <head>
-<title>Funções</title>
+<title>Correção da Lista de Funções</title>
 </head>
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,8 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<br>
+	<%@include file="menuProfessor.jsp"%></div>
 	<br/>
 		
 	<div id="content">
@@ -42,7 +43,7 @@
 
 		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
 			<h:form>
-				<h:panelGrid columns="1" cellpadding="5" style="width:525px">
+				<h:panelGrid columns="1" cellpadding="5" style="width:528px">
 
 					<rich:dataTable id="idtable" var="listafuncao"
 						value="#{corrigirPropostaBean.lstListaFuncao}" rows="10"
@@ -88,7 +89,15 @@
 	
 	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
-		<h:commandButton value="Salvar"
+		
+		
+		<!-- hint botao salvar-->
+		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+			value="clique para Salvar" />
+		
+		<br>
+		<div align="left">
+		<h:commandButton id="btnsalvar" value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirMissao}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 
