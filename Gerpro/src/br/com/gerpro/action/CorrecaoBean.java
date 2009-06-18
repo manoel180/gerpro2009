@@ -68,8 +68,8 @@ public class CorrecaoBean {
 	private Pergunta pergunta = new Pergunta();
 
 	/***************************************************************************
-	 * Método para desabilitar a opção de correcao dos itens da proposta caso
-	 * ela já tenha sido corrigida *
+	 * Mï¿½todo para desabilitar a opï¿½ï¿½o de correcao dos itens da proposta caso
+	 * ela jï¿½ tenha sido corrigida *
 	 */
 	private void desabilitar() {
 		if (propostaEmCorrecao()) {
@@ -172,13 +172,18 @@ public class CorrecaoBean {
 	}	
 	
 	public void prepararItem(String matricula, int idItem, int idPergunta){
+		
 		carregarCorrecao(
 				matricula, idItem, idPergunta);
 		carregarItem(idItem);
 		carregarEquipe();
-
+		
 		status = proposta.getStatus();
 		resposta = correcao.getResposta();
+		if(resposta ==null){
+			resposta = new Resposta();
+			resposta.setId(1);
+		}
 		pergunta = getPerguntaDao().procurarPorId(idPergunta);
 		
 //		listaPergunta = getPerguntaDao().listarPorItem(idPergunta);
@@ -259,7 +264,7 @@ public class CorrecaoBean {
 
 		Usuario professor = applicationSecurityManager.getUsuario();
 		Proposta proposta = applicationSecurityManager.getProposta();
-
+		
 		listaCorrecao = getCorrecaoDao().procurarPorCorrecao(professor,
 				proposta);
 
