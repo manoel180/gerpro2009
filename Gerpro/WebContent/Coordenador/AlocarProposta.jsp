@@ -26,14 +26,8 @@
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
 
-	<div id="content"><rich:toolTip for="tipobusca"
-		followMouse="true" zorder="90" value="Selecione a forma de busca" />
-	<!--  hint  --> <rich:toolTip for="txtdesc" followMouse="true"
-		zorder="90" value="Digite o conteúdo da pesquisa." /> <rich:toolTip
-		for="txtdescint" followMouse="true" zorder="90"
-		value="Informe o código da proposta" /> <rich:toolTip
-		for="btnpesquisar" followMouse="true" zorder="90"
-		value="Fazer pesquisa." /> <h:form id="form1">
+	<div id="content">
+	<h:form id="form1">
 
 		<h:outputLabel styleClass="Titulo1" value="ALOCAR PROPOSTAS" />
 
@@ -43,18 +37,18 @@
 			<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" />
 			<rich:simpleTogglePanel>
-				<h:outputLabel value="Tipo de alocação"/>
+				<h:outputLabel value="Tipo de alocação" />
 				<h:selectOneRadio id="radio" layout="pageDirection"
 					value="#{alocarBean.correcaoGrupo}">
 					<f:selectItem itemValue="true" itemLabel="Grupo" />
-					<f:selectItem itemValue="false"	itemLabel="Individual" />
+					<f:selectItem itemValue="false" itemLabel="Individual" />
 				</h:selectOneRadio>
 
 				<h:panelGrid columns="1" id="pg">
 
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
-						copyAllControlLabel="Adicionar Todos"
+						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
 						copyVisible="#{!alocarBean.desabilitar}"
 						copyAllVisible="#{!alocarBean.desabilitarTodos}"
 						value="#{alocarBean.listProfessores}">
