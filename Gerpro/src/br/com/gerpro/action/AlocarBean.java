@@ -30,6 +30,11 @@ public class AlocarBean {
 		}
 	}
 
+	public String prepararBean() {
+		correcaoGrupo = true;
+		return "alocarProposta";
+	}
+	
 	// Lista de Professores
 	public SelectItem[] getProfessorCombo() {
 		List<Usuario> lu = daoUsuario.listarProfessores();
