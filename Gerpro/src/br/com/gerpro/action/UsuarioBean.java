@@ -72,9 +72,9 @@ public class UsuarioBean{
 		return prepararBean();
 	}
 	/***
-	 * Método para validação simples de login do usuario 
+	 * Mï¿½todo para validaï¿½ï¿½o simples de login do usuario 
 	 * 
-	 * @return String contendo o nome da página Home do Usuario que realizou o login
+	 * @return String contendo o nome da pï¿½gina Home do Usuario que realizou o login
 	 */
 
 	public String logar(){
@@ -94,6 +94,7 @@ public class UsuarioBean{
 					proposta = propostaDao.listarPorIdEquipe(usuarioBD.getEquipe().getId());
 					applicationSecurityManager.setProposta(proposta);
 				}
+			
 			}
 			else
 			{
