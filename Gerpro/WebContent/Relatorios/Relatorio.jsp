@@ -9,17 +9,34 @@
 
 <head>
 <title>Relatórios de Propostas</title>
-<!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
+<!--Chamada ao arquivo CSS -->
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
 
 <f:view>
-	<div align="center"><h:outputLabel
-		value="RELATÓRIOS RESULTADO DAS PROPOSTAS" styleClass="titulo" /></div>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@include file="../Coordenador/menuCoordenador.jsp"%></div>
+	<br/>
+		
+	<div id="content">
+
+
+		
+		<div align="center"><h:outputLabel value="RELATÓRIOS"
+		styleClass="Titulo1" /></div>
+
 
 	<h:messages layout="list" showDetail="true" showSummary="true" />
-	<br>
+	
 	<br>
 	<h:form>
 		<rich:simpleTogglePanel focus="txtdesc1">
@@ -38,9 +55,18 @@
 			</h:panelGrid>
 			
 		</rich:simpleTogglePanel>
+		<div  align="left">
 		<h:commandButton value="Visualizar"
 			action="#{relatorioBean.exibir}" />
-
+          
 
 	</h:form>
+			</div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé -->
+		<br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>
