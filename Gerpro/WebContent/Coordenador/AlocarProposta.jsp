@@ -50,7 +50,7 @@
 					<f:selectItem itemValue="false"	itemLabel="Individual" />
 				</h:selectOneRadio>
 
-				<h:panelGrid columns="5" id="pg">
+				<h:panelGrid columns="1" id="pg">
 
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
