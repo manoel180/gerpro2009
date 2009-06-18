@@ -10,7 +10,7 @@
 		iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
 		iconCollapsedTopGroup="chevronDown">
 
-		<rich:panelMenuGroup label="Proposta">
+		<rich:panelMenuGroup label="Proposta" expanded="true">
 			<rich:panelMenuItem label="Lista de Propostas"
 				action="#{propostaBean.listaPorProfessor}" />
 			<rich:panelMenuItem label="Missão do Produto"

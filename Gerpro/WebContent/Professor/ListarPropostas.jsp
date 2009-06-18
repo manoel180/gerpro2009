@@ -12,35 +12,34 @@
 				value="#{propostaBean.listaPorProfessor}"
 				binding="#{propostaBean.objDatatableProposta}">
 
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Código" />
-					</f:facet>
-					<h:outputText value="#{prop.id}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nome" />
-					</f:facet>
-					<h:outputText value="#{prop.nome}"
-						style="color:red; font-weight:bold; font-" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Equipe" />
-					</f:facet>
-					<h:outputText value="#{prop.equipe.nome}"
-						style="color:red; font-weight:bold; font-" />
-				</h:column>
+				<rich:column sortBy="#{prop.id}">
+						<f:facet name="header">
+							<h:outputText value="Cód" />
+						</f:facet>
+						<h:outputText value="#{prop.id}"/>
+				</rich:column>
+					
+					<rich:column sortBy="#{prop.nome}">
+						<f:facet name="header">
+							<h:outputText value="Proposta" />
+						</f:facet>
+						<h:outputText value="#{prop.nome}"/>
+					</rich:column>	
+				
+					<rich:column sortBy="#{prop.equipe.nome}">
+						<f:facet name="header">
+							<h:outputText value="Equipe" />
+						</f:facet>
+						<h:outputText value="#{prop.equipe.nome}"/>
+					</rich:column>
 
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Status" />
-					</f:facet>
-					<h:outputText value="#{prop.status.nome}"
-						style="color:red; font-weight:bold; font-" />
-				</h:column>
-
+					<rich:column sortBy="#{prop.status.nome}">
+						<f:facet name="header">
+							<h:outputText value="Status" />
+						</f:facet>
+						<h:outputText value="#{prop.status.nome}"/>
+					</rich:column>
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Opções" />

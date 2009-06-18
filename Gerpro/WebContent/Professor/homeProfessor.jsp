@@ -35,11 +35,10 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	Seja bem vindo ao GERPRO.<br>
 	Para acessar os itens da sua prospota, basta escolher uma das opçoes do menu,
 	que<br>
-	sistema irá direcionar a pagina escolhida! Divirta-se
-	
+	sistema irá direcionar a pagina escolhida! Divirta-se	
 	</p>
-	</h:form>
-		
+	
+		</h:form>	
 		</div>
 	</div>
 </f:view>
