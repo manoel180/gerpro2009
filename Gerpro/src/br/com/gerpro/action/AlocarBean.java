@@ -13,7 +13,7 @@ import br.com.gerpro.processing.ProcessoAlocarProposta;
 
 public class AlocarBean {
 
-	private List<Usuario> listProfessores = new ArrayList<Usuario>();
+	private List listProfessores = new ArrayList();
 	private FacadeUsuario daoUsuario = new UsuarioDao();
 	private IProcessoAlocarProposta alocarProposta = new ProcessoAlocarProposta();
 	private boolean desabilitar;
@@ -58,7 +58,7 @@ public class AlocarBean {
 	/**
 	 * @return the listProfessores
 	 */
-	public List<Usuario> getListProfessores() {
+	public List getListProfessores() {
 		return listProfessores;
 	}
 
@@ -66,7 +66,7 @@ public class AlocarBean {
 	 * @param listProfessores
 	 *            the listProfessores to set
 	 */
-	public void setListProfessores(List<Usuario> listProfessores) {
+	public void setListProfessores(List listProfessores) {
 		this.listProfessores = listProfessores;
 	}
 
