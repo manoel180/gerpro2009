@@ -3,6 +3,7 @@
  */
 package br.com.gerpro.processing;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -44,10 +45,10 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 	public void alocaProposta(List<Usuario> professoresSelecionadosView, boolean correcaoEmGrupo) {
 		
 		setCorrecaoEmGrupo(correcaoEmGrupo);
-		List <Usuario> professoresSelecionados= null;
+		List <Usuario> professoresSelecionados= new ArrayList();		
 		
 		for (Usuario professor : professoresSelecionadosView) {
-			Usuario usuario = usuarioDao.procurarPorMatricula(professor.getMatricula());
+			Usuario usuario = usuarioDao.procurarPorMatricula(professor.getMatricula());			
 			professoresSelecionados.add(usuario);			
 		}
 
