@@ -24,6 +24,7 @@
 				action="#{construirPropostaBean.prepararCronograma}" />
 			<rich:panelMenuItem label="Submeter"
 				action="#{submeterPropostaBean.prepararBean}" />
+				
 		</rich:panelMenuGroup>
 
 		<rich:panelMenuGroup label="Sair" />
