@@ -11,24 +11,24 @@
 		iconCollapsedTopGroup="chevronDown">
 
 		<rich:panelMenuGroup label="Proposta">
-			<rich:panelMenuItem value="Lista de Propostas"
+			<rich:panelMenuItem label="Lista de Propostas"
 				action="#{propostaBean.listaPorProfessor}" />
-			<rich:panelMenuItem value="Missão do Produto"
+			<rich:panelMenuItem label="Missão do Produto"
 				action="#{corrigirPropostaBean.prepararCorrigirMissao}" />
-			<rich:panelMenuItem value="Lista de Função"
+			<rich:panelMenuItem label="Lista de Função"
 				action="#{corrigirPropostaBean.prepararCorrigirListaFuncao}" />
-			<rich:panelMenuItem value="Justificativa"
+			<rich:panelMenuItem label="Justificativa"
 				action="#{corrigirPropostaBean.prepararCorrigirJustificativa}" />
-			<rich:panelMenuItem value="Metodologia"
+			<rich:panelMenuItem label="Metodologia"
 				action="#{corrigirPropostaBean.prepararCorrigirMetodologia}" />
-			<rich:panelMenuItem value="Avaliação Geral"
+			<rich:panelMenuItem label="Avaliação Geral"
 				 />
 				
-			<rich:panelMenuItem value="Submeter Correção"
+			<rich:panelMenuItem label="Submeter Correção"
 				action="#{submeterCorrecaoBean.listaPorProfessor}" />
 				
 		</rich:panelMenuGroup>
-		<rich:panelMenuGroup value="Sair" action="index.jsf" />
+		<rich:panelMenuGroup label="Sair" action="index.jsf" />
 
 	</rich:panelMenu>
 </h:panelGrid>
