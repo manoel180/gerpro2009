@@ -11,7 +11,6 @@
 
 <f:view><%@ include file="menu.jsp" %>
 	<h:form>
-
 		<div align="center"><h:outputLabel value="SUBMETER CORREÇÃO"
 			styleClass="titulo" /></div>
 
@@ -46,7 +45,7 @@
 
 		</rich:dataTable>		
 		<h:commandButton value="Submeter Correção"		
-			action="#{corrigirPropostaBean.submeterCorrecao}" style=" width : 142px;"/> <h:commandButton action="#{propostaBean.prepararBean}" value="Ir para o listar propostas" />
+			action="#{corrigirPropostaBean.submeterCorrecao}" style=" width : 142px;"/>
 		<br>
 
 		

@@ -2,7 +2,9 @@ package br.com.gerpro.action;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 
 import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.impl.EquipeDao;
@@ -41,11 +43,19 @@ public class EquipeBean {
 	public String salvar() {
 		try {
 			getDaoEquipe().salvar(equipe);
+			return prepararBean();
 		} catch (Exception e) {
-			return new ErroBean().prepararBean("banco_indisponivel");//(PropertiesLoaderImpl.getValor(e.toString()));			
+			//return new ErroBean().prepararBean("banco_indisponivel");//(PropertiesLoaderImpl.getValor(e.toString()));			
 			//e.printStackTrace();
+			FacesContext contexto = FacesContext.getCurrentInstance();
+			FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					PropertiesLoaderImpl.getValor("banco.indisponivel"),PropertiesLoaderImpl.getValor("banco.indisponivel_detail"));
+			contexto.addMessage(null, mensagem);			
+			
 		}
-		return prepararBean();
+		
+		return null;
+		
 	}
 
 

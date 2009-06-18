@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="https://ajax4jsf.dev.java.net/ajax" prefix="a4j" %>
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,9 +16,10 @@
 
 		<div align="center"><h:outputLabel value="CADASTRO DE EQUIPES"
 			styleClass="titulo" /></div>
+		<h:messages globalOnly="true" showDetail="#{true}" showSummary="#{true}" />
 
-		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
-			showSummary="true" />
+		<!--  h:message for="equipeBean" styleClass="Obrigatorio" showDetail="true"
+			showSummary="true" /-->
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
@@ -30,9 +32,11 @@
 
 			</h:panelGrid>
 
-			
+
 
 		</rich:simpleTogglePanel>
-<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />		
+		<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
+		
+		
 	</h:form>
 </f:view>

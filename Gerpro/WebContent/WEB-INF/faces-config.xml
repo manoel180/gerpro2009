@@ -60,7 +60,7 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>erro</managed-bean-name>
+		<managed-bean-name>erroBean</managed-bean-name>
 		<managed-bean-class>
 			br.com.gerpro.action.ErroBean
 		</managed-bean-class>
@@ -89,6 +89,10 @@
 		<navigation-case>
 			<from-outcome>homeCoordenador</from-outcome>
 			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>erro</from-outcome>
+			<to-view-id>/common/ErrorModalPage.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>logoff</from-outcome>

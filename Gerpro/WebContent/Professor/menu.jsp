@@ -18,5 +18,7 @@
 			action="#{corrigirPropostaBean.prepararAvaliacaoGeral}" />
 		<rich:panelMenuItem label="Submeter Correção"
 			action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
+		<rich:panelMenuItem label="Logoff"
+			action="#{corrigirPropostaBean.sairAplicacao}" />
 	</rich:panelMenu>
 </rich:simpleTogglePanel>
