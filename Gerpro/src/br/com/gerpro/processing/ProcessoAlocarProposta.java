@@ -9,9 +9,11 @@ import java.util.Random;
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeStatus;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.StatusDao;
+import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Proposta;
@@ -23,22 +25,31 @@ import br.com.gerpro.model.Usuario;
  * 
  */
 public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
+	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
+	private FacadeStatus statusDao = new StatusDao();	
 	private int qtdeProfessoresSelecionados;
 	private int qtdeTotalPropostas;
 	private int qtdePropostasPorProfessor;
 	private boolean correcaoEmGrupo;
 	private Correcao correcao = new Correcao();
-	private FacadeStatus statusDao = new StatusDao();
+	
 
 	/* (non-Javadoc)
 	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#alocaProposta(java.util.List, boolean)
 	 */
 
 	@SuppressWarnings("unchecked")
-	public void alocaProposta(List professoresSelecionados, boolean correcaoEmGrupo) {
+	public void alocaProposta(List<Usuario> professoresSelecionadosView, boolean correcaoEmGrupo) {
+		
 		setCorrecaoEmGrupo(correcaoEmGrupo);
+		List <Usuario> professoresSelecionados= null;
+		
+		for (Usuario professor : professoresSelecionadosView) {
+			Usuario usuario = usuarioDao.procurarPorMatricula(professor.getMatricula());
+			professoresSelecionados.add(usuario);			
+		}
 
 		List<Proposta> listaPropostasConcluidas = propostaDao.listarPropostasConcluidas();
 
