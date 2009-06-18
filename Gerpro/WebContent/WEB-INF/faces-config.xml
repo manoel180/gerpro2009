@@ -159,6 +159,12 @@
 			<to-view-id>/Coordenador/AltProposta.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+		<navigation-rule>
+		<navigation-case>
+			<from-outcome>alocarProposta</from-outcome>
+			<to-view-id>/Coordenador/AlocarProposta.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/Coordenador/PesquisarArtefatos.jsp</from-view-id>
 		<navigation-case>
