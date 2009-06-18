@@ -15,6 +15,8 @@ import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.mensagens.MessageManager;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.mensagens.PropertiesLoaderImpl;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
@@ -98,16 +100,9 @@ public class UsuarioBean {
 				}
 
 			}
-		} catch (NullPointerException nullPointerException) {
-			FacesContext contexto = FacesContext.getCurrentInstance();
-			FacesMessage mensagem = new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, PropertiesLoaderImpl
-							.getValor("usuario.invalido"), PropertiesLoaderImpl
-							.getValor("usuario.invalido_detail"));
-			contexto.addMessage(null, mensagem);
-
+		} catch (NullPointerException nullPointerException) {			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
 		}
-
 		return homeUsuario;
 	}
 
