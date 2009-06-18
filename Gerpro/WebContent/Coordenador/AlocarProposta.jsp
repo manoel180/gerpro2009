@@ -42,15 +42,31 @@
 
 			<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" />
-			<rich:simpleTogglePanel label="Pesquisa">
+			<rich:simpleTogglePanel>
+				<h:outputLabel value="Tipo de alocação"/>
+				<h:selectOneRadio id="radio" layout="pageDirection"
+					value="#{alocarBean.correcaoGrupo}">
+					<f:selectItem itemValue="true" itemLabel="Grupo" />
+					<f:selectItem itemValue="false"	itemLabel="Individual" />
+				</h:selectOneRadio>
+
 				<h:panelGrid columns="5" id="pg">
+
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
-						copyAllControlLabel="Adicionar Todos">
-						<f:selectItems value="#{alocarPropostaBean.professoresList}" />
+						copyAllControlLabel="Adicionar Todos"
+						copyVisible="#{!alocarBean.desabilitar}"
+						copyAllVisible="#{!alocarBean.desabilitarTodos}"
+						value="#{alocarBean.listProfessores}">
+						<f:selectItems value="#{alocarBean.professorCombo}" />
+						<a4j:support event="onlistchange" ajaxSingle="true"
+							action="#{alocarBean.desabilitar}" reRender="pg" />
 					</rich:pickList>
 
+					<h:commandButton value="Alocar" action="#{alocarBean.alocar}"></h:commandButton>
+
 				</h:panelGrid>
+
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 

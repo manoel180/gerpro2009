@@ -9,7 +9,6 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-
 	<managed-bean>
 		<managed-bean-name>equipeBean</managed-bean-name>
 		<managed-bean-class>
@@ -32,6 +31,14 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>alocarBean</managed-bean-name>
+		<managed-bean-class>
+			br.com.gerpro.action.AlocarBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
 		<managed-bean-name>construirPropostaBean</managed-bean-name>
 		<managed-bean-class>
 			br.com.gerpro.action.ConstruirPropostaBean
@@ -52,14 +59,7 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>alocarPropostaBean</managed-bean-name>
-		<managed-bean-class>
-			br.com.gerpro.action.AlocarBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-
+	
 	<!-- Relatorio -->
 	<managed-bean>
 		<managed-bean-name>relatorioBean</managed-bean-name>

@@ -87,7 +87,7 @@ public class UsuarioDao implements FacadeUsuario {
 		tx = session.beginTransaction();
 		// Funcionando mas duplicando linhas
 		result = session.createQuery(
-				"from Usuario as user" + " where user.tipo.id = 2" ).list();
+				"from Usuario as user" + " where user.tipoUsuario.id = 2" ).list();
 
 		session.close();
 		return result;
