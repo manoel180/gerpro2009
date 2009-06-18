@@ -72,7 +72,10 @@
 					value="#{propostaBean.proposta.periodo}" required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
-				<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+		       value="Clique para Salvar" />
+		        <div align="left">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar" action="#{propostaBean.salvar}" />
 
 			</h:panelGrid>
 		</h:form>
@@ -81,6 +84,7 @@
 	</rich:simpleTogglePanel> 
 	</div>
 	</div>
+	
 </f:view>
 
 
