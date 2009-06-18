@@ -132,106 +132,62 @@ public class CorrecaoBean {
 	}
 
 	public String prepararCorrigirMissao() {
-		carregarCorrecao(
-				applicationSecurityManager.getUsuario().getMatricula(), 1, 4);
-		carregarItem(1);
-		carregarEquipe();
-
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(1);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
-		desabilitar();
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 1, 4);		
 		return "corrigirMissao";
 	}
 
 	public String prepararCorrigirMetodologia() {
-		carregarCorrecao(
-				applicationSecurityManager.getUsuario().getMatricula(), 4, 6);
-		carregarItem(4);
-		carregarEquipe();
-
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(4);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
-		desabilitar();
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 4, 6);		
 		return "corrigirMetodologia";
 	}
 
 	public String prepararCorrigirJustificativa() {
-		carregarCorrecao(
-				applicationSecurityManager.getUsuario().getMatricula(), 3, 3);
-		carregarItem(3);
-		carregarEquipe();
-
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(3);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
-		desabilitar();
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 3, 3);		
 		return "corrigirJustificativa";
 	}
 
 	public String prepararCorrigirListaFuncao() {
-		carregarCorrecao(
-				applicationSecurityManager.getUsuario().getMatricula(), 2, 5);
-		carregarItem(2);
-		carregarEquipe();
-
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(2);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
-		desabilitar();
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 2, 5);		
 		return "corrigirListaFuncoes";
 	}
 
 	public String prepararCorrigirCronograma() {
-		carregarCorrecao(
-				applicationSecurityManager.getUsuario().getMatricula(), 5, 8);
-		carregarItem(5);
-		carregarEquipe();
-
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(5);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
-		desabilitar();
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 5, 8);
 		return "corrigirCronograma";
 	}
 
-	public String prepararAvaliacaoGeral() {
-		prp(applicationSecurityManager.getUsuario().getMatricula(),6,1);
-		prp(applicationSecurityManager.getUsuario().getMatricula(),6,2);
-		prp(applicationSecurityManager.getUsuario().getMatricula(),6,7);		
-		return "corrigirAvaliacaoGeral";
+	public String prepararAvaliacaoGeral1() {
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(),6,1);			
+		return "corrigirAvaliacaoGeral1";
 	}
 	
-	public void prp(String matricula, int idItem, int idPergunta){
+	public String prepararAvaliacaoGeral2() {		
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6, 2);				
+		return "corrigirAvaliacaoGeral2";
+	}
+	
+	public String prepararAvaliacaoGeral7() {
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6, 7);		
+		return "corrigirAvaliacaoGeral7";
+	}	
+	
+	public void prepararItem(String matricula, int idItem, int idPergunta){
 		carregarCorrecao(
 				matricula, idItem, idPergunta);
-		carregarItem(5);
+		carregarItem(idItem);
 		carregarEquipe();
 
 		status = proposta.getStatus();
 		resposta = correcao.getResposta();
-		listaPergunta = getPerguntaDao().listarPorItem(5);
-		for (Pergunta pergt : listaPergunta) {
-			pergunta.setDescricao(pergt.getDescricao());
-		}
+		pergunta = getPerguntaDao().procurarPorId(idPergunta);
+		
+//		listaPergunta = getPerguntaDao().listarPorItem(idPergunta);
+//		for (Pergunta pergt : listaPergunta) {
+//			pergunta.setDescricao(pergt.getDescricao());
+//		}
 		desabilitar();
 	}
+
 
 	public String prepararSubmeterCorrecao() {
 
@@ -245,22 +201,11 @@ public class CorrecaoBean {
 
 		return "submeterCorrecao";
 
-	}
+	}	
 
 	public String salvarCorrigirMissao() {
 		try {
-			usuario.setMatricula(applicationSecurityManager.getUsuario()
-					.getMatricula());
-
-			status.setId(7);
-			correcao.setId(correcaoid);
-			correcao.setUsuario(usuario);
-			correcao.setPergunta(pergunta);
-			correcao.setDataCorrecao(new Date());
-			correcao.setResposta(resposta);
-			correcao.setStatus(status);
-
-			getCorrecaoDao().salvar(correcao);
+			salvarCorrecaoItem();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -269,18 +214,7 @@ public class CorrecaoBean {
 	
 	public String salvarAvaliacaoGeral1() {
 		try {
-			usuario.setMatricula(applicationSecurityManager.getUsuario()
-					.getMatricula());
-
-			status.setId(7);
-			correcao.setId(correcaoid);
-			correcao.setUsuario(usuario);
-			correcao.setPergunta(pergunta);
-			correcao.setDataCorrecao(new Date());
-			correcao.setResposta(resposta);
-			correcao.setStatus(status);
-
-			getCorrecaoDao().salvar(correcao);
+			salvarCorrecaoItem();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -289,18 +223,7 @@ public class CorrecaoBean {
 	
 	public String salvarAvaliacaoGeral2() {
 		try {
-			usuario.setMatricula(applicationSecurityManager.getUsuario()
-					.getMatricula());
-
-			status.setId(7);
-			correcao.setId(correcaoid);
-			correcao.setUsuario(usuario);
-			correcao.setPergunta(pergunta);
-			correcao.setDataCorrecao(new Date());
-			correcao.setResposta(resposta);
-			correcao.setStatus(status);
-
-			getCorrecaoDao().salvar(correcao);
+			salvarCorrecaoItem();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -309,22 +232,25 @@ public class CorrecaoBean {
 	
 	public String salvarAvaliacaoGeral3() {
 		try {
-			usuario.setMatricula(applicationSecurityManager.getUsuario()
-					.getMatricula());
-
-			status.setId(7);
-			correcao.setId(correcaoid);
-			correcao.setUsuario(usuario);
-			correcao.setPergunta(pergunta);
-			correcao.setDataCorrecao(new Date());
-			correcao.setResposta(resposta);
-			correcao.setStatus(status);
-
-			getCorrecaoDao().salvar(correcao);
+			salvarCorrecaoItem();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return prepararBean();
+	}
+	
+	public void salvarCorrecaoItem(){
+		usuario.setMatricula(applicationSecurityManager.getUsuario()
+				.getMatricula());
+
+		status.setId(7);
+		correcao.setId(correcaoid);
+		correcao.setUsuario(usuario);
+		correcao.setPergunta(pergunta);
+		correcao.setDataCorrecao(new Date());
+		correcao.setResposta(resposta);
+		correcao.setStatus(status);
+		getCorrecaoDao().salvar(correcao);		
 	}
 
 

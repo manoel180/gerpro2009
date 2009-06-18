@@ -36,7 +36,18 @@
 	<rich:simpleTogglePanel width="520px"
 		label="#{corrigirPropostaBean.proposta.nome}">
 	</rich:simpleTogglePanel> <h:form>
-		<%@ include file="perguntasCorrecao.jsp"%>
+		<rich:simpleTogglePanel style="width: 500px" label="Pergunta/Observação" width="238">
+	<h:outputLabel value="#{corrigirPropostaBean.pergunta.descricao}"></h:outputLabel>
+	<h:selectOneRadio value="#{corrigirPropostaBean.resposta.id}" disabled="#{corrigirPropostaBean.desabilitar}">
+		<f:selectItem itemLabel="Sim" itemValue="1" />
+		<f:selectItem itemLabel="Não" itemValue="2" />
+	</h:selectOneRadio>
+	
+	<rich:editor  value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
+		theme="advanced" style="width: 20px" required="true">
+		<f:attribute name="fieldRef" value="Descrição" />	
+	</rich:editor>
+</rich:simpleTogglePanel>
 
 		<!-- hint botao salvar-->
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"

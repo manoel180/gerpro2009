@@ -21,12 +21,15 @@
 				action="#{corrigirPropostaBean.prepararCorrigirJustificativa}" />
 			<rich:panelMenuItem label="Metodologia"
 				action="#{corrigirPropostaBean.prepararCorrigirMetodologia}" />
-			<rich:panelMenuItem label="Avaliação Geral"
-				 />
-				
+			<rich:panelMenuItem label="Avaliação Geral - 1"
+				action="#{corrigirPropostaBean.prepararAvaliacaoGeral1}" />
+			<rich:panelMenuItem label="Avaliação Geral - 2"
+				action="#{corrigirPropostaBean.prepararAvaliacaoGeral2}" />
+			<rich:panelMenuItem label="Avaliação Geral - 3"
+				action="#{corrigirPropostaBean.prepararAvaliacaoGeral7}" />
 			<rich:panelMenuItem label="Submeter Correção"
 				action="#{submeterCorrecaoBean.listaPorProfessor}" />
-				
+
 		</rich:panelMenuGroup>
 		<rich:panelMenuGroup label="Sair" action="index.jsf" />
 
