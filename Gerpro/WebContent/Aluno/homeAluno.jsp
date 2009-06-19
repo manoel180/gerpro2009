@@ -5,7 +5,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
-<title>Home Aluno</title>
+<title>Aluno - Página Inicial</title>
 </head>
 
 <!--Chamada ao arquivo CSS -->
@@ -29,7 +29,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<div id="content"><h:form>
 
 		
-		<div align="center"><h:outputLabel value="HOME ALUNO"
+		<div align="center"><h:outputLabel value="Olá, Caro Aluno"
 		styleClass="Titulo1" /></div>
 	<p>
 	Seja bem vindo ao GERPRO.<br>

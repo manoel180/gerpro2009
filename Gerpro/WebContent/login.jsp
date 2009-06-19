@@ -54,7 +54,6 @@
 	</h:form></div>
 	</div>
 </f:view>
-<div class="linkBranco" align="center" id="rodape"><!-- Rodapé -->
-<br />
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

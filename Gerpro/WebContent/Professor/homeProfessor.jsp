@@ -5,7 +5,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
-<title>Home Professor</title>
+<title>Professor - Página Inicial</title>
 </head>
 
 <!--Chamada ao arquivo CSS -->
@@ -29,11 +29,11 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<div id="content"><h:form>
 
 		
-		<div align="center"><h:outputLabel value="HOME PROFESSOR"
+		<div align="center"><h:outputLabel value="Olá, Caro Professor"
 		styleClass="Titulo1" /></div>
 	<p>
 	Seja bem vindo ao GERPRO.<br>
-	Para acessar os itens da sua prospota, basta escolher uma das opçoes do menu,
+	Para acessar os itens de sua responsabilidade, basta escolher uma das opçoes do menu,
 	que<br>
 	sistema irá direcionar a pagina escolhida! Divirta-se	
 	</p>
