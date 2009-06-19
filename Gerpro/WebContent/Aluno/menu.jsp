@@ -27,6 +27,6 @@
 				
 		</rich:panelMenuGroup>
 
-		<rich:panelMenuGroup label="Sair" />
+		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
 	</rich:panelMenu>
 </h:panelGrid>

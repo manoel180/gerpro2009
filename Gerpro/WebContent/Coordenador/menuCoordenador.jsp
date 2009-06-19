@@ -31,6 +31,6 @@
 			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.prepararRelatorioResultadoProposta}" />
 		</rich:panelMenuGroup>
 		
-		<rich:panelMenuGroup label="Sair"/>
+		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}"/>
 	</rich:panelMenu>
 </h:panelGrid>

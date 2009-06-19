@@ -5,19 +5,21 @@ package br.com.gerpro.action;
  *
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
+import br.com.gerpro.dao.FacadeEquipe;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeUsuario;
+import br.com.gerpro.dao.impl.EquipeDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
-import br.com.gerpro.mensagens.MessageManager;
 import br.com.gerpro.mensagens.MessageManagerImpl;
-import br.com.gerpro.mensagens.PropertiesLoaderImpl;
+import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
@@ -26,9 +28,32 @@ public class UsuarioBean {
 	private UIData objDatatableUsuario;// componente da tela - JSP
 	private List<Usuario> listaUsuarios;
 	private Usuario usuario = new Usuario();
+	private String tipo;
 	private FacadeUsuario usuarioDao = new UsuarioDao();
+	private FacadeEquipe equipeDao = new EquipeDao();
+	
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
+	private boolean desabilitar;
+	
+	public void desabilitarComponente(){
+		if(tipo.equals(1)){
+			desabilitar = false;
+		}else{
+			desabilitar = true;
+		}
+	}
+	
+	// ComboBox Equipes
+	public SelectItem[] getEquipesCombo() {
+		List<Equipe> le = equipeDao.listar();
+		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
 
+		for (Equipe e : le) {
+			itens.add(new SelectItem(e.getId(), e.getNome()));
+		}// for end
+		return itens.toArray(new SelectItem[itens.size()]);
+	}
+	
 	public String prepararBean() {
 		usuario = new Usuario();
 		listaUsuarios = getUsuarioDao().listar();
@@ -154,5 +179,33 @@ public class UsuarioBean {
 
 	public void setUsuarioDao(FacadeUsuario usuarioDao) {
 		this.usuarioDao = usuarioDao;
+	}
+
+	/**
+	 * @return the desabilitar
+	 */
+	public boolean isDesabilitar() {
+		return desabilitar;
+	}
+
+	/**
+	 * @param desabilitar the desabilitar to set
+	 */
+	public void setDesabilitar(boolean desabilitar) {
+		this.desabilitar = desabilitar;
+	}
+
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

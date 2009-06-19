@@ -35,7 +35,7 @@
 				action="#{submeterCorrecaoBean.listaPorProfessor}" />
 
 		</rich:panelMenuGroup>
-		<rich:panelMenuGroup label="Sair" action="index.jsf" />
+		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
 
 	</rich:panelMenu>
 </h:panelGrid>

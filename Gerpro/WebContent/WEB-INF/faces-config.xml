@@ -212,28 +212,17 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<from-view-id>/Coordenador/PesquisarEquipe.jsp</from-view-id>
+		<from-view-id>/Coordenador/PesquisarUsuario.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>incluirEquipe</from-outcome>
-			<to-view-id>/Coordenador/CadastroEquipe.jsp</to-view-id>
+			<from-outcome>incluirUsuario</from-outcome>
+			<to-view-id>/Coordenador/CadastroUsuario.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>alterarEquipe</from-outcome>
-			<to-view-id>/Coordenador/AlterarEquipe.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>visualizarEquipe</from-outcome>
-			<to-view-id>/Coordenador/PesquisarEquipe.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>homeCoordenador</from-outcome>
-			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_manterProposta</from-outcome>
-			<to-view-id>/Coordenador/PesquisarProposta.jsp</to-view-id>
+			<from-outcome>alterarUsuario</from-outcome>
+			<to-view-id>/Coordenador/AlterarUsuario.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<!-- Navegação da Área do Aluno -->
 	<navigation-rule>
 		<navigation-case>

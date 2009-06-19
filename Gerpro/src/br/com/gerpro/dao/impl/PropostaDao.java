@@ -153,8 +153,7 @@ public class PropostaDao implements FacadeProposta {
 		// Funcionando mas duplicando linhas
 		result = (Proposta) session.createQuery(
 				"from Proposta as proposta" + " where proposta.equipe.id"
-						+ "=" + idEquipe ).uniqueResult();
-		// q.setParameter("parametro", nomeEquipe + "%");
+						+ "=" + idEquipe ).uniqueResult() ;
 
 		session.close();
 		return result;

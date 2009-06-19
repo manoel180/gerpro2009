@@ -6,6 +6,7 @@ package br.com.gerpro.action;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import br.com.gerpro.dao.FacadeCorrecao;
@@ -20,6 +21,7 @@ import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PerguntaDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.CorrecaoId;
 import br.com.gerpro.model.Cronograma;
@@ -132,7 +134,13 @@ public class CorrecaoBean {
 	}
 
 	public String prepararCorrigirMissao() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 1, 4);		
+		try {
+			prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 1, 4);		
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "proposta.naoselecionada", "proposta.naoselecionada_detail");
+		}
 		return "corrigirMissao";
 	}
 

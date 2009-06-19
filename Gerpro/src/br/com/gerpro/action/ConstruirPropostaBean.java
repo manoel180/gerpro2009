@@ -333,7 +333,8 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdItem(2);
 			PropItemId.setIdProposta(proposta.getId());
 			status.setId(6);
-
+			propostaItem.setStatus(status);
+			getDaoPropItem().salvar(propostaItem);
 			for (ListaFuncao lf : lstlistaFuncao) {
 				getDaoListaFuncao().salvar(lf);
 			}
@@ -343,7 +344,7 @@ public class ConstruirPropostaBean {
 				}
 					
 			}
-
+			getDaoPropItem().salvar(propostaItem);
 
 		} catch (PersistenceException e) {
 
@@ -452,10 +453,12 @@ public class ConstruirPropostaBean {
 			PropItemId.setIdItem(5);
 			PropItemId.setIdProposta(proposta.getId());
 			status.setId(6); //Defini o status como concluido
-
+			propostaItem.setStatus(status);
+			getDaoPropItem().salvar(propostaItem);
 			for (Cronograma lc : lstCronograma) {
 				getDaoCronograma().salvar(lc);
 			}
+
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
