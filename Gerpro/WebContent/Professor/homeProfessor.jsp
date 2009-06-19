@@ -29,7 +29,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<div id="content"><h:form>
 
 		
-		<div align="center"><h:outputLabel value="Olá, Caro Professor"
+		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"
 		styleClass="Titulo1" /></div>
 	<p>
 	Seja bem vindo ao GERPRO.<br>

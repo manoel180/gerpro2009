@@ -34,25 +34,17 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(proposta);
 			tx.commit();
-			System.out.println("Altera��o realizada com sucesso");
+			
 		} catch (HibernateException e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+			tx.rollback();			
 			e.printStackTrace();
 		} catch (PersistenceException e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+			tx.rollback();			
 			e.printStackTrace();
 		} catch (Exception e) {
-			tx.rollback();
-			
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+			tx.rollback();			
 			e.printStackTrace();
 		} finally {
-
 			session.close();
 		}
 	}

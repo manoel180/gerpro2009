@@ -31,6 +31,7 @@ public class UsuarioBean {
 	private String tipo;
 	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeEquipe equipeDao = new EquipeDao();
+	private Usuario logado = new Usuario();
 	
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private boolean desabilitar;
@@ -115,6 +116,7 @@ public class UsuarioBean {
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
 				homeUsuario += usuarioBD.getTipoUsuario().getNome();
 				applicationSecurityManager.setUsuario(usuarioBD);
+				setLogado(usuarioBD);
 
 				if (usuarioBD.getTipoUsuario().getId() == 1) {
 					Proposta proposta = new Proposta();
@@ -208,4 +210,20 @@ public class UsuarioBean {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+	/**
+	 * @return the logado
+	 */
+	public Usuario getLogado() {
+		return logado;
+	}
+
+	/**
+	 * @param logado the logado to set
+	 */
+	public void setLogado(Usuario logado) {
+		this.logado = logado;
+	}
+	
+	
 }

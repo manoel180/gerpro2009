@@ -25,17 +25,15 @@ public class PropostaItemDao implements FacadePropostaItem{
 	
 	@Override
 	public void salvar(PropostaItem propitem) {
-		// TODO Auto-generated method stub
+		// TODO Retirar os 
 	
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.saveOrUpdate(propitem);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "Alteração Realizada com sucesso");
+			tx.commit();			
 		} catch (Exception e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+			tx.rollback();			
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -133,27 +131,27 @@ public class PropostaItemDao implements FacadePropostaItem{
 		session = HibernateUtil.getSession();
 		result = (PropostaItem) session.get(PropostaItem.class, Nome);
 		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Não encontrado");
+	//		JOptionPane.showMessageDialog(null, "Não encontrado");
 		}
 		session.close();
 		return result;
 	}
 	
 	@Override
-	public  void remover(PropostaItem equipe) {
+	public  void remover(PropostaItem propostaItem) {
 
 		try {
 			session=null;
 			tx = null;
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.delete(equipe);
+			session.delete(propostaItem);
 			tx.commit();
-			JOptionPane.showMessageDialog(null, "Eliminado com sucesso");
+			
 		} catch (Exception e) {
 			tx.rollback();
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu algum erro!");
+		
 		} finally {
 			session.close();
 		}
