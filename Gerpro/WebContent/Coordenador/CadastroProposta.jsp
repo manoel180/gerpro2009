@@ -48,7 +48,7 @@
 
 
 				<h:outputText value="Nome:" />
-				<h:inputText id="txtdesc1" required="true"
+				<h:inputText maxlength="5" id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
 					<f:attribute name="fieldRef" value="Nome" />
 				</h:inputText>
@@ -68,7 +68,7 @@
 				</rich:calendar>
 
 				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo"
+				<h:inputText maxlength="8" id="txtperiodo"
 					value="#{propostaBean.proposta.periodo}" required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>

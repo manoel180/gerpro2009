@@ -42,7 +42,7 @@
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="2" cellpadding="5" id="id1">
 				<h:outputText value="Nome:" />
-				<h:inputText id="txtdesc1" required="true"
+				<h:inputText maxlength="100" id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
 					<f:attribute name="fieldRef" value="Proposta" />
 				</h:inputText>

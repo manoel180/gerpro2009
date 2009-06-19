@@ -52,7 +52,7 @@
 						reRender="pg"/>
 				</h:selectOneMenu>
 				<h:outputText value="Descrição:" />
-					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
+					<h:inputText maxlength="100" autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
 				</h:inputText>
 					
 				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">

@@ -18,7 +18,7 @@
 		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
 			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
 				<h:outputText value="Nome:" />
-				<h:inputText id="txtdesc"
+				<h:inputText maxlength="50" id="txtdesc"
 					value="#{equipeBean.equipe.nome}" />
 				<h:commandButton value="Pesquisar"
 					action="#{equipeBean.pesquisar}"/> 
