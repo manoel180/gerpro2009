@@ -56,7 +56,7 @@
 		<div align="left">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton
 			id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
+			action="#{corrigirPropostaBean.salvarAvaliacaoGeral2}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form> </div>
 	</div>

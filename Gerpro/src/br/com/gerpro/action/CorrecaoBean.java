@@ -216,7 +216,7 @@ public class CorrecaoBean {
 
 	}	
 
-	public String salvarCorrigirMissao() {
+	public String salvarCorrigir() {
 		try {
 			salvarCorrecaoItem();
 		} catch (Exception e) {

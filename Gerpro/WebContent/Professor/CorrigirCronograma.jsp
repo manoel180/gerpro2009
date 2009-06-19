@@ -90,7 +90,7 @@
 		<br>
 		<div align="left">
 		<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigirCronograma}"
+			action="#{corrigirPropostaBean.salvarCorrigir}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
 	</h:form>
 		</div>
