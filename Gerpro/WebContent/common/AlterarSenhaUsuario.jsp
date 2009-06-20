@@ -22,14 +22,10 @@
 
 <f:view>
 	<div id="div_corpo">
-	<div id="menu"><br />
-	<br />
-	<%@ include file="menuCoordenador.jsp"%></div>
-
 	<div id="content">
 
 
-	<div align="center"><h:outputLabel value="CADASTRO DE USUÁRIOS"
+	<div align="center"><h:outputLabel value="ALTERAR SENHA DO USUÁRIO"
 		styleClass="Titulo1" /></div>
 
 	<h:messages layout="list" styleClass="" showDetail="true"
@@ -61,16 +57,16 @@
 
 
 				<h:outputText value="Senha atual:"/>
-				<h:inputSecret value="#{usuarioBean.usuario.senha}"/>
+				<h:inputSecret value="#{usuarioBean.usuario.senha}" required="true"/>
 
 				<h:outputText value="Nova Senha:"/>
-				<h:inputSecret value="#{usuarioBean.usuario.senha}"/>
+				<h:inputSecret value="#{usuarioBean.senhaNova}" required="true"/>
 				
 				<h:outputText value="Repitir Senha:" />
-				<h:inputSecret value="#{usuarioBean.usuario.senha}"/>
+				<h:inputSecret value="#{usuarioBean.senhaConfirmacao}" required="true"/>
 				
 				<div align="left">
-				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.salvar}" />
+				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.alterarSenha}" />
 				</div>
 			</h:panelGrid>
 		</h:form>

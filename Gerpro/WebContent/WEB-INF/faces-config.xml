@@ -98,6 +98,10 @@
 			<from-outcome>logoff</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterarSenha</from-outcome>
+			<to-view-id>/common/AlterarSenhaUsuario</to-view-id>
+		</navigation-case>
 		<!-- Tela Pesquisar Proposta -->
 		<navigation-case>
 			<from-outcome>pesquisarProposta</from-outcome>
