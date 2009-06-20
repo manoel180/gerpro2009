@@ -70,8 +70,8 @@ public class CorrecaoBean {
 	private Pergunta pergunta = new Pergunta();
 
 	/***************************************************************************
-	 * M�todo para desabilitar a op��o de correcao dos itens da proposta caso
-	 * ela j� tenha sido corrigida *
+	 * M�todo para desabilitar a op��o de correcao dos itens da proposta
+	 * caso ela j� tenha sido corrigida *
 	 */
 	private void desabilitar() {
 		if (propostaEmCorrecao()) {
@@ -134,73 +134,76 @@ public class CorrecaoBean {
 	}
 
 	public String prepararCorrigirMissao() {
-		try {
-			prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 1, 4);		
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "proposta.naoselecionada", "proposta.naoselecionada_detail");
-		}
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(),
+				1, 4);		
 		return "corrigirMissao";
 	}
 
 	public String prepararCorrigirMetodologia() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 4, 6);		
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 4,
+				6);
 		return "corrigirMetodologia";
 	}
 
 	public String prepararCorrigirJustificativa() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 3, 3);		
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 3,
+				3);
 		return "corrigirJustificativa";
 	}
 
 	public String prepararCorrigirListaFuncao() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 2, 5);		
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 2,
+				5);
 		return "corrigirListaFuncoes";
 	}
 
 	public String prepararCorrigirCronograma() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 5, 8);
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 5,
+				8);
 		return "corrigirCronograma";
 	}
 
 	public String prepararAvaliacaoGeral1() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(),6,1);			
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6,
+				1);
 		return "corrigirAvaliacaoGeral1";
 	}
-	
-	public String prepararAvaliacaoGeral2() {		
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6, 2);				
+
+	public String prepararAvaliacaoGeral2() {
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6,
+				2);
 		return "corrigirAvaliacaoGeral2";
 	}
-	
+
 	public String prepararAvaliacaoGeral7() {
-		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6, 7);		
+		prepararItem(applicationSecurityManager.getUsuario().getMatricula(), 6,
+				7);
 		return "corrigirAvaliacaoGeral7";
-	}	
-	
-	public void prepararItem(String matricula, int idItem, int idPergunta){
-		
-		carregarCorrecao(
-				matricula, idItem, idPergunta);
-		carregarItem(idItem);
-		carregarEquipe();
-		
-		status = proposta.getStatus();
-		resposta = correcao.getResposta();
-		if(resposta ==null){
-			resposta = new Resposta();
-			resposta.setId(1);
-		}
-		pergunta = getPerguntaDao().procurarPorId(idPergunta);
-		
-//		listaPergunta = getPerguntaDao().listarPorItem(idPergunta);
-//		for (Pergunta pergt : listaPergunta) {
-//			pergunta.setDescricao(pergt.getDescricao());
-//		}
-		desabilitar();
 	}
 
+	public void prepararItem(String matricula, int idItem, int idPergunta) {
+		try {
+			carregarCorrecao(matricula, idItem, idPergunta);
+			carregarItem(idItem);
+			carregarEquipe();
+
+			status = proposta.getStatus();
+			resposta = correcao.getResposta();
+			if (resposta == null) {
+				resposta = new Resposta();
+				resposta.setId(1);
+			}
+			pergunta = getPerguntaDao().procurarPorId(idPergunta);
+
+			desabilitar();
+
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+							"proposta.naoselecionada",
+							"proposta.naoselecionada_detail");
+		}
+
+	}
 
 	public String prepararSubmeterCorrecao() {
 
@@ -214,71 +217,63 @@ public class CorrecaoBean {
 
 		return "submeterCorrecao";
 
-	}	
+	}
 
-	public String salvarCorrigir() {
-		try {
+	public String salvarCorrigir() {		
 			salvarCorrecaoItem();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return prepararBean();
 	}
-	
+
 	public String salvarAvaliacaoGeral1() {
-		try {
-			salvarCorrecaoItem();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		salvarCorrecaoItem();
+
 		return prepararBean();
 	}
-	
+
 	public String salvarAvaliacaoGeral2() {
-		try {
-			salvarCorrecaoItem();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		salvarCorrecaoItem();
+
 		return prepararBean();
 	}
-	
+
 	public String salvarAvaliacaoGeral3() {
-		try {
-			salvarCorrecaoItem();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		salvarCorrecaoItem();
 		return prepararBean();
 	}
-	
-	public void salvarCorrecaoItem(){
-		usuario.setMatricula(applicationSecurityManager.getUsuario()
-				.getMatricula());
 
-		status.setId(7);
-		correcao.setId(correcaoid);
-		correcao.setUsuario(usuario);
-		correcao.setPergunta(pergunta);
-		correcao.setDataCorrecao(new Date());
-		correcao.setResposta(resposta);
-		correcao.setStatus(status);
-		getCorrecaoDao().salvar(correcao);		
+	public void salvarCorrecaoItem() {
+		try {
+			usuario.setMatricula(applicationSecurityManager.getUsuario()
+					.getMatricula());
+
+			status.setId(7);
+			correcao.setId(correcaoid);
+			correcao.setUsuario(usuario);
+			correcao.setPergunta(pergunta);
+			correcao.setDataCorrecao(new Date());
+			correcao.setResposta(resposta);
+			correcao.setStatus(status);
+			getCorrecaoDao().salvar(correcao);
+
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);
+		}
 	}
-
-
 
 	public boolean propostaEmCorrecao() {
 
 		Usuario professor = applicationSecurityManager.getUsuario();
 		Proposta proposta = applicationSecurityManager.getProposta();
-		
+
 		listaCorrecao = getCorrecaoDao().procurarPorCorrecao(professor,
 				proposta);
 
 		int contadorItensCorridos = 0;
 
-		for (Correcao correcao : listaCorrecao) {			
+		for (Correcao correcao : listaCorrecao) {
 			if (correcao.getStatus().getId() == 7) {
 				contadorItensCorridos++;
 			}
@@ -294,9 +289,16 @@ public class CorrecaoBean {
 	 * Processo para submeter uma proposta
 	 */
 	public void submeterCorrecao() {
-		Proposta proposta = applicationSecurityManager.getProposta();
-		Usuario professor = applicationSecurityManager.getUsuario();
-		processoCorrecao.calcularStatusPropostaAtual(professor, proposta);
+		try {
+			Proposta proposta = applicationSecurityManager.getProposta();
+			Usuario professor = applicationSecurityManager.getUsuario();
+			processoCorrecao.calcularStatusPropostaAtual(professor, proposta);
+			
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);
+		}
+		
 	}
 
 	public String sairAplicacao() {
@@ -575,4 +577,3 @@ public class CorrecaoBean {
 	}
 
 }
-

@@ -24,7 +24,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<%@include file=""menuAluno.jsp"></div>
 	<br />
 
 	<div id="content">
@@ -125,8 +125,6 @@
 							pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</rich:column>
-
-				
 
 				<h:column rendered="#{!construirPropostaBean.desabilitar}">
 					<f:facet name="header">

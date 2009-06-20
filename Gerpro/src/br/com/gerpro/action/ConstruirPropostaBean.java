@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 import javax.persistence.PersistenceException;
@@ -26,6 +27,7 @@ import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Artefatos;
 import br.com.gerpro.model.Cronograma;
 import br.com.gerpro.model.CronogramaId;
@@ -50,7 +52,7 @@ public class ConstruirPropostaBean {
 	private List<Cronograma> lstCronograma = new ArrayList<Cronograma>();
 	private List<Artefatos> lstArtefatos = new ArrayList<Artefatos>();
 	private List<Usuario> listaUsuarios;
-	private ApplicationSecurityManager appSecurityManager = new ApplicationSecurityManager ();
+	private ApplicationSecurityManager appSecurityManager = new ApplicationSecurityManager();
 
 	private ListaFuncao listaFuncao = new ListaFuncao();
 	private Artefatos artefatos = new Artefatos();
@@ -81,8 +83,8 @@ public class ConstruirPropostaBean {
 		}
 
 	}
-	
-	// ComboBox Tipo de Funçoes
+
+	// ComboBox Tipo de FunÃ§oes
 	public SelectItem[] getTipoFuncaoCombo() {
 		List<TipoFuncao> ltf = getDaoTipoFuncao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(ltf.size());
@@ -104,68 +106,85 @@ public class ConstruirPropostaBean {
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 
-	// Adiciona uma função na tabela de lista de funções
+	// Adiciona uma função na tabela de lista de funÃ§Ãµes
 	public void addfuncao() {
+		try {
+			if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
+				if (tipofuncao.getId() == 1) {
+					tipofuncao.setNome("Manter");
+				}
+				if (tipofuncao.getId() == 2) {
+					tipofuncao.setNome("Processamento");
+				}
+				if (tipofuncao.getId() == 3) {
+					tipofuncao.setNome("RelatÃ³rio");
+				}
+				listafuncaoid.setIdItem(2);
+				listafuncaoid.setIdProposta(proposta.getId());
 
-		if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
-			if (tipofuncao.getId() == 1) {
-				tipofuncao.setNome("Manter");
-			}
-			if (tipofuncao.getId() == 2) {
-				tipofuncao.setNome("Processamento");
-			}
-			if (tipofuncao.getId() == 3) {
-				tipofuncao.setNome("Relatório");
-			}
-			listafuncaoid.setIdItem(2);
-			listafuncaoid.setIdProposta(proposta.getId());
+				listaFuncao.setId(listafuncaoid);
+				listaFuncao.setTipoFuncao(tipofuncao);
 
-			listaFuncao.setId(listafuncaoid);
-			listaFuncao.setTipoFuncao(tipofuncao);
+				lstlistaFuncao.add(listaFuncao);
+				listafuncaoid = new ListaFuncaoId();
+				listaFuncao = new ListaFuncao();
+				tipofuncao = new TipoFuncao();
+			} else {
+				if (tipofuncao.getId() == 1) {
+					tipofuncao.setNome("Manter");
+				}
+				if (tipofuncao.getId() == 2) {
+					tipofuncao.setNome("Processamento");
+				}
+				if (tipofuncao.getId() == 3) {
+					tipofuncao.setNome("RelatÃ³rio");
+				}
+				listafuncaoid.setIdItem(2);
+				listafuncaoid.setIdProposta(proposta.getId());
 
-			lstlistaFuncao.add(listaFuncao);
-			listafuncaoid = new ListaFuncaoId();
-			listaFuncao = new ListaFuncao();
-			tipofuncao = new TipoFuncao();
-		} else {
-			if (tipofuncao.getId() == 1) {
-				tipofuncao.setNome("Manter");
-			}
-			if (tipofuncao.getId() == 2) {
-				tipofuncao.setNome("Processamento");
-			}
-			if (tipofuncao.getId() == 3) {
-				tipofuncao.setNome("Relatório");
-			}
-			listafuncaoid.setIdItem(2);
-			listafuncaoid.setIdProposta(proposta.getId());
+				listaFuncao.setId(listafuncaoid);
+				listaFuncao.setTipoFuncao(tipofuncao);
 
-			listaFuncao.setId(listafuncaoid);
-			listaFuncao.setTipoFuncao(tipofuncao);
+				lstlistaFuncao.set(lstlistaFuncao.indexOf(listaFuncao),
+						listaFuncao);
+				listafuncaoid = new ListaFuncaoId();
+				listaFuncao = new ListaFuncao();
+				tipofuncao = new TipoFuncao();
+			}
 
-			lstlistaFuncao
-					.set(lstlistaFuncao.indexOf(listaFuncao), listaFuncao);
-			listafuncaoid = new ListaFuncaoId();
-			listaFuncao = new ListaFuncao();
-			tipofuncao = new TipoFuncao();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);
 		}
 	}
 
-	// Remover uma função da tabela de lista de funções
+	// Remover uma função da tabela de lista de funÃ§Ãµes
 	public void delfuncao() {
-		int id = objDatatableListaFuncao.getRowIndex();
-		listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
-		lstlistaFuncaoDel.add(listaFuncao);
-		lstlistaFuncao.remove(id);
-		listaFuncao = new ListaFuncao();
+		try {
+			int id = objDatatableListaFuncao.getRowIndex();
+			listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
+			lstlistaFuncaoDel.add(listaFuncao);
+			lstlistaFuncao.remove(id);
+			listaFuncao = new ListaFuncao();
+
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.exclusao", null);
+		}
+
 	}
 
-	// Seleciona uma função da tabela de lista de funções para a alteracao
+	// Seleciona uma função da tabela de lista de funÃ§Ãµes para a alteracao
 	public void editfuncao() {
+		try {
+			listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
+			listafuncaoid = listaFuncao.getId();
+			tipofuncao = listaFuncao.getTipoFuncao();
 
-		listaFuncao = (ListaFuncao) objDatatableListaFuncao.getRowData();
-		listafuncaoid = listaFuncao.getId();
-		tipofuncao = listaFuncao.getTipoFuncao();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.inclusao", null);
+		}
 	}
 
 	/**
@@ -173,111 +192,128 @@ public class ConstruirPropostaBean {
 	 */
 	@SuppressWarnings("deprecation")
 	public void addCronograma() {
-		lstArtefatos = getDaoArtefatos().listar();
-		//Verifica se ja existe o item na lista
-		if (lstCronograma.indexOf(cronograma) == -1) {
-			
-			//Adiciona um novo item na lsita de cronogramas
-			for (Artefatos artefato : lstArtefatos) {
-				if (artefatos.getId().equals(artefato.getId())) {
-					artefatos.setNome(artefato.getNome());
+		try {
+			lstArtefatos = getDaoArtefatos().listar();
+			// Verifica se ja existe o item na lista
+			if (lstCronograma.indexOf(cronograma) == -1) {
+
+				// Adiciona um novo item na lsita de cronogramas
+				for (Artefatos artefato : lstArtefatos) {
+					if (artefatos.getId().equals(artefato.getId())) {
+						artefatos.setNome(artefato.getNome());
+					}
+				}
+
+				java.util.Calendar endDate = GregorianCalendar.getInstance();
+				endDate.setTime((Date) cronograma.getDataInicial());
+				java.util.Calendar startDate = GregorianCalendar.getInstance();
+				startDate.add(java.util.Calendar.DATE, -1);
+
+				// Verifica se a data de inicio Ã© maior que data final
+				if ((cronograma.getDataInicial().compareTo(
+						cronograma.getDataFinal()) == 1)
+						|| (startDate.after(endDate)))
+
+				{
+					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+							"data.inicial.maior", null);
+				} else {
+					// Adiciona um cronograma a lista
+					cronogramaId.setIdItem(5);
+					cronogramaId.setIdProposta(proposta.getId());
+
+					cronograma.setId(cronogramaId);
+
+					cronograma.setArtefatos(artefatos);
+					lstCronograma.add(cronograma);
+					cronogramaId = new CronogramaId();
+					cronograma = new Cronograma();
+					artefatos = new Artefatos();
+				}
+
+			}
+			// Altera o cronograma da lista
+			else {
+
+				for (Artefatos artefato : lstArtefatos) {
+					if (artefatos.getId().equals(artefato.getId())) {
+						artefatos.setNome(artefato.getNome());
+					}
+				}
+
+				java.util.Calendar endDate = GregorianCalendar.getInstance();
+				endDate.setTime((Date) cronograma.getDataInicial());
+				java.util.Calendar startDate = GregorianCalendar.getInstance();
+				startDate.add(java.util.Calendar.DATE, -1);
+
+				// Verifica se a data de inicio é maior que data final
+				if ((cronograma.getDataInicial().compareTo(
+						cronograma.getDataFinal()) == 1)
+						|| (startDate.after(endDate)))
+
+				{
+					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+							"data.inicial.maior", null);
+				} else {
+					cronogramaId.setIdItem(5);
+					cronogramaId.setIdProposta(proposta.getId());
+
+					cronograma.setId(cronogramaId);
+
+					cronograma.setArtefatos(artefatos);
+					lstCronograma.set(lstCronograma.indexOf(cronograma),
+							cronograma);
+					cronogramaId = new CronogramaId();
+					cronograma = new Cronograma();
+					artefatos = new Artefatos();
 				}
 			}
 
-			java.util.Calendar endDate = GregorianCalendar.getInstance();
-			endDate.setTime((Date) cronograma.getDataInicial());
-			java.util.Calendar startDate = GregorianCalendar.getInstance();
-			startDate.add(java.util.Calendar.DATE, -1);
-
-			//Verifica se a data de inicio é maior que data final
-			if ((cronograma.getDataInicial().compareTo(
-					cronograma.getDataFinal()) == 1)
-					|| (startDate.after(endDate)))
-
-			{
-				JOptionPane.showMessageDialog(null,
-						"Data Inicial maior que a data final");
-			} else {
-				//Adiciona um cronograma a lista
-				cronogramaId.setIdItem(5);
-				cronogramaId.setIdProposta(proposta.getId());
-
-				cronograma.setId(cronogramaId);
-
-				cronograma.setArtefatos(artefatos);
-				lstCronograma.add(cronograma);
-				cronogramaId = new CronogramaId();
-				cronograma = new Cronograma();
-				artefatos = new Artefatos();
-			}
-
-		} 
-		//Altera o cronograma da lista
-		else {
-			
-			for (Artefatos artefato : lstArtefatos) {
-				if (artefatos.getId().equals(artefato.getId())) {
-					artefatos.setNome(artefato.getNome());
-				}
-			}
-
-			java.util.Calendar endDate = GregorianCalendar.getInstance();
-			endDate.setTime((Date) cronograma.getDataInicial());
-			java.util.Calendar startDate = GregorianCalendar.getInstance();
-			startDate.add(java.util.Calendar.DATE, -1);
-
-			//Verifica se a data de inicio é maior que data final
-			if ((cronograma.getDataInicial().compareTo(
-					cronograma.getDataFinal()) == 1)
-					|| (startDate.after(endDate)))
-
-			{
-				JOptionPane.showMessageDialog(null,
-						"Data Inicial maior que a data final");
-			} else {
-				cronogramaId.setIdItem(5);
-				cronogramaId.setIdProposta(proposta.getId());
-
-				cronograma.setId(cronogramaId);
-
-				cronograma.setArtefatos(artefatos);
-				lstCronograma.set(lstCronograma.indexOf(cronograma),cronograma);
-				cronogramaId = new CronogramaId();
-				cronograma = new Cronograma();
-				artefatos = new Artefatos();
-
-			}
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.inclusao", null);
 		}
 	}
 
-	// Remover uma função da tabela de lista de funções
+	// Remover uma funÃ§Ã£o da tabela de lista de funÃ§Ãµes
 	public void delCronograma() {
-		int id = objDatatableCronograma.getRowIndex();
-		lstCronograma.remove(id);
+		try {
+			int id = objDatatableCronograma.getRowIndex();
+			lstCronograma.remove(id);
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.exclusao", null);
+		}
 	}
 
-	// Seleciona uma função da tabela de lista de funções para a alteracao
+	// Seleciona uma funÃ§Ã£o da tabela de lista de funÃ§Ãµes para a alteracao
 	public void editCronograma() {
-
-		cronograma = (Cronograma) objDatatableCronograma.getRowData();
-		cronogramaId = cronograma.getId();
-		artefatos = cronograma.getArtefatos();
+		try {
+			cronograma = (Cronograma) objDatatableCronograma.getRowData();
+			cronogramaId = cronograma.getId();
+			artefatos = cronograma.getArtefatos();			
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+		}		
 	}
 
 	public String prepararBean() {
 
-		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
+		proposta = getDaoProposta().procurarPorId(
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		desabilitar();
 		return "go_ConstruirProposta";
 	}
 
 	/*
-	 * Metodos para Missão proposta
+	 * Metodos para MissÃ£o proposta
 	 */
 	public String prepararMissao() {
 
-		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
+		proposta = getDaoProposta().procurarPorId(
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(1);
@@ -301,15 +337,17 @@ public class ConstruirPropostaBean {
 			propostaItem.setStatus(status);
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
 		}
 		return prepararBean();
 	}
 
 	public String prepararListaFuncao() {
-		proposta = getDaoProposta().procurarPorId(appSecurityManager.getProposta().getId());
+		proposta = getDaoProposta().procurarPorId(
+				appSecurityManager.getProposta().getId());
 		equipe = proposta.getEquipe();
 		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		PropItemId.setIdItem(2);
@@ -318,7 +356,8 @@ public class ConstruirPropostaBean {
 				PropItemId);
 		listafuncaoid.setIdItem(2);
 		listafuncaoid.setIdProposta(proposta.getId());
-		lstlistaFuncao = getDaoListaFuncao().procurarPorId(listafuncaoid.getIdProposta(),listafuncaoid.getIdItem());
+		lstlistaFuncao = getDaoListaFuncao().procurarPorId(
+				listafuncaoid.getIdProposta(), listafuncaoid.getIdItem());
 		desabilitar();
 		return "construirListaFuncoes";
 	}
@@ -338,17 +377,18 @@ public class ConstruirPropostaBean {
 			for (ListaFuncao lf : lstlistaFuncao) {
 				getDaoListaFuncao().salvar(lf);
 			}
-			if(lstlistaFuncaoDel!=null){
+			if (lstlistaFuncaoDel != null) {
 				for (ListaFuncao lf : lstlistaFuncaoDel) {
 					getDaoListaFuncao().remover(lf);
 				}
-					
+
 			}
 			getDaoPropItem().salvar(propostaItem);
 
-		} catch (PersistenceException e) {
-
-			e.printStackTrace();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
 		}
 		return prepararBean();
 	}
@@ -384,14 +424,15 @@ public class ConstruirPropostaBean {
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
 
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
 		}
 		return prepararBean();
 	}
 
-	//OK
+	// OK
 	public String prepararMetodologia() {
 		proposta = getDaoProposta().procurarPorId(
 				appSecurityManager.getProposta().getId());
@@ -405,7 +446,7 @@ public class ConstruirPropostaBean {
 		return "construirMetodologia";
 	}
 
-	//OK
+	// OK
 	public String SalvarMetodologia() {
 
 		equipe = proposta.getEquipe();
@@ -419,14 +460,15 @@ public class ConstruirPropostaBean {
 			propostaItem.setId(PropItemId);
 			getDaoPropItem().salvar(propostaItem);
 
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
 		}
 		return prepararBean();
 	}
 
-	//OK
+	// OK
 	public String prepararCronograma() {
 		proposta = getDaoProposta().procurarPorId(
 				appSecurityManager.getProposta().getId());
@@ -438,7 +480,8 @@ public class ConstruirPropostaBean {
 				PropItemId);
 		cronogramaId.setIdItem(5);
 		cronogramaId.setIdProposta(proposta.getId());
-		lstCronograma = getDaoCronograma().procurarPorId(cronogramaId.getIdProposta(),cronogramaId.getIdItem());
+		lstCronograma = getDaoCronograma().procurarPorId(
+				cronogramaId.getIdProposta(), cronogramaId.getIdItem());
 		desabilitar();
 		return "construirCronograma";
 	}
@@ -452,16 +495,17 @@ public class ConstruirPropostaBean {
 			// Setando o Id composto do Proposta Item
 			PropItemId.setIdItem(5);
 			PropItemId.setIdProposta(proposta.getId());
-			status.setId(6); //Defini o status como concluido
+			status.setId(6); // Defini o status como concluido
 			propostaItem.setStatus(status);
 			getDaoPropItem().salvar(propostaItem);
 			for (Cronograma lc : lstCronograma) {
 				getDaoCronograma().salvar(lc);
 			}
 
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
 		}
 		return prepararBean();
 	}
@@ -824,7 +868,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param daoCronograma the daoCronograma to set
+	 * @param daoCronograma
+	 *            the daoCronograma to set
 	 */
 	public void setDaoCronograma(FacadeCronograma daoCronograma) {
 		this.daoCronograma = daoCronograma;
@@ -838,7 +883,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param desabilitar the desabilitar to set
+	 * @param desabilitar
+	 *            the desabilitar to set
 	 */
 	public void setDesabilitar(boolean desabilitar) {
 		this.desabilitar = desabilitar;
@@ -852,7 +898,8 @@ public class ConstruirPropostaBean {
 	}
 
 	/**
-	 * @param listaUsuarios the listaUsuarios to set
+	 * @param listaUsuarios
+	 *            the listaUsuarios to set
 	 */
 	public void setListaUsuarios(List<Usuario> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;

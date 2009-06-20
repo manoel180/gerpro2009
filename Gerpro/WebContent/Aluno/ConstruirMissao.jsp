@@ -23,23 +23,18 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<%@include file="menuAluno.jsp"</div>
 	<br/>
 		
 	<div id="content">
-	<h:form>
-
-		
+	<h:form>		
 		<div align="center"><h:outputLabel value="MISSÃO DO PRODUTO"
 		styleClass="Titulo1" /></div>
 		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
-
 		<br>
 
 		<h:panelGrid columns="3">
-			<!-- <%@ include file="menu.jsp"%> -->
-
 			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
 				height="129" style="width: 546px">
 				<h:panelGrid columns="1" cellpadding="5">

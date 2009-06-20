@@ -29,11 +29,9 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(listafuncao);
 			//session.saveOrUpdate(listafuncao);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "Operação Realizada com sucesso");
+			tx.commit();		
 		} catch (Exception e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+			tx.rollback();			
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -102,8 +100,7 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		result = (ListaFuncao) session.get(ListaFuncao.class, Nome);
-		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Não encontrado");
+		if (result == null) {			
 		}
 		session.close();
 		return result;
@@ -118,12 +115,10 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.delete(listafuncao);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "Eliminado com sucesso");
+			tx.commit();			
 		} catch (Exception e) {
 			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu algum erro!");
+			e.printStackTrace();			
 		} finally {
 			session.close();
 		}

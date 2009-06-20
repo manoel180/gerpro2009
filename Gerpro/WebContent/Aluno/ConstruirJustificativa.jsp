@@ -23,7 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<%@include file=""menuAluno.jsp"></div>
 	<br/>
 		
 	<div id="content"><h:form>
@@ -37,7 +37,7 @@
 		<br>
 
 		<h:panelGrid columns="3">
-			<!-- <%@ include file="menu.jsp"%> -->
+			<!-- <%@ include file="m"menuAluno.jsp" -->
 
 			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
 				height="129" style="width: 546px">

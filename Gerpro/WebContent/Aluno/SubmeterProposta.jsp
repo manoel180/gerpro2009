@@ -23,7 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<%@include file=""menuAluno.jsp"></div>
 	<br/>
 		
 	<div id="content">

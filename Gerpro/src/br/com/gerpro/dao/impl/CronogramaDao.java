@@ -29,11 +29,9 @@ public class CronogramaDao implements FacadeCronograma {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(cronograma);
 			//session.saveOrUpdate(cronograma);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "Operação Realizada com sucesso");
+			tx.commit();			
 		} catch (Exception e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+			tx.rollback();			
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -100,8 +98,7 @@ public class CronogramaDao implements FacadeCronograma {
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		result = (Cronograma) session.get(Cronograma.class, Nome);
-		if (result == null) {
-			JOptionPane.showMessageDialog(null, "Não encontrado");
+		if (result == null) {			
 		}
 		session.close();
 		return result;
@@ -116,12 +113,10 @@ public class CronogramaDao implements FacadeCronograma {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.delete(cronograma);
-			tx.commit();
-			JOptionPane.showMessageDialog(null, "Eliminado com sucesso");
+			tx.commit();			
 		} catch (Exception e) {
 			tx.rollback();
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Ocorreu algum erro!");
+			e.printStackTrace();			
 		} finally {
 			session.close();
 		}

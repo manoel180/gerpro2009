@@ -23,7 +23,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menu.jsp"%></div>
+	<%@include file="m"menuAluno.jsp"</div>
 	<br/>
 		
 	<div id="content"><h:form>
