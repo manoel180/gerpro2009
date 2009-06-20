@@ -68,7 +68,8 @@ public class PropostaBean {
 		}// for end
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
-
+		
+	
 	public SelectItem[] getItensPesqCombo() {
 		List<SelectItem> itens = new ArrayList<SelectItem>(3);
 		itens.add(new SelectItem(1, "Cód."));

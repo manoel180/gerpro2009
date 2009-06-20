@@ -21,6 +21,7 @@ import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
 
@@ -28,7 +29,7 @@ public class UsuarioBean {
 	private UIData objDatatableUsuario;// componente da tela - JSP
 	private List<Usuario> listaUsuarios;
 	private Usuario usuario = new Usuario();
-	private String tipo;
+	private TipoUsuario tipoUsuario = new TipoUsuario();
 	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeEquipe equipeDao = new EquipeDao();
 	private Usuario logado = new Usuario();
@@ -37,10 +38,10 @@ public class UsuarioBean {
 	private boolean desabilitar;
 	
 	public void desabilitarComponente(){
-		if(tipo.equals(1)){
-			desabilitar = false;
-		}else{
+		if(tipoUsuario.getId()==1){
 			desabilitar = true;
+		}else{
+			desabilitar = false;
 		}
 	}
 	
@@ -59,7 +60,6 @@ public class UsuarioBean {
 		usuario = new Usuario();
 		listaUsuarios = getUsuarioDao().listar();
 		return null;
-
 	}
 
 	public String preperarInclusao() {
@@ -198,20 +198,6 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @return the tipo
-	 */
-	public String getTipo() {
-		return tipo;
-	}
-
-	/**
-	 * @param tipo the tipo to set
-	 */
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	/**
 	 * @return the logado
 	 */
 	public Usuario getLogado() {
@@ -223,6 +209,20 @@ public class UsuarioBean {
 	 */
 	public void setLogado(Usuario logado) {
 		this.logado = logado;
+	}
+
+	/**
+	 * @return the tipoUsuario
+	 */
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	/**
+	 * @param tipoUsuario the tipoUsuario to set
+	 */
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 	

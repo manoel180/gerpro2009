@@ -44,7 +44,7 @@
 		value="Inserir um Periodo" /> <rich:simpleTogglePanel focus="txtdesc1"
 		label="Dados do cadastro" style="text-align:left">
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5" id="id1">
+			<h:panelGrid columns="2" cellpadding="5" id="pg">
 
 
 				<h:outputText value="Nome:" />
@@ -58,6 +58,8 @@
 					rendered="true">
 					<f:selectItems value="#{propostaBean.equipesCombo}" />
 					<f:attribute name="fieldRef" value="Equipe" />
+						<a4j:support event="onchange" ajaxSingle="true"	
+							action="#{propostaBean.setarPeriodo}" reRender="pg"/>	
 				</h:selectOneMenu>
 
 				<h:outputText value="Data Criação:" />
@@ -69,7 +71,7 @@
 
 				<h:outputText value="Periodo:" />
 				<h:inputText maxlength="8" id="txtperiodo"
-					value="#{propostaBean.proposta.periodo}" required="true">
+					value="#{propostaBean.proposta.periodo}" readonly="true" required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
 				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
