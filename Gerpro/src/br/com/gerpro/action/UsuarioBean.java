@@ -101,9 +101,9 @@ public class UsuarioBean {
 	}
 
 	/***************************************************************************
-	 * M�todo para valida��o simples de login do usuario
+	 * Método para validação simples de login do usuário
 	 * 
-	 * @return String contendo o nome da p�gina Home do Usuario que realizou o
+	 * @return String contendo o nome da página Home do usuário que realizou o
 	 *         login
 	 */
 
@@ -126,6 +126,8 @@ public class UsuarioBean {
 					applicationSecurityManager.setProposta(proposta);
 				}
 
+			}else {
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
 			}
 		} catch (NullPointerException nullPointerException) {			
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
@@ -142,10 +144,8 @@ public class UsuarioBean {
 		}
 
 		return "logoff";
-
 	}
 
-	// TODO Retirar item Tela Inicial de todos os menus.
 
 	/*
 	 * Getters and Setters

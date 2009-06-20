@@ -311,38 +311,41 @@ public class ConstruirPropostaBean {
 	 * Metodos para MissÃ£o proposta
 	 */
 	public String prepararMissao() {
-
-		proposta = getDaoProposta().procurarPorId(
-				appSecurityManager.getProposta().getId());
-		equipe = proposta.getEquipe();
-		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-		PropItemId.setIdItem(1);
-		PropItemId.setIdProposta(proposta.getId());
-		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-				PropItemId);
-		desabilitar();
+		prepararContrucaoItemSimples(1);
+		
+//		proposta = getDaoProposta().procurarPorId(
+//				appSecurityManager.getProposta().getId());
+//		equipe = proposta.getEquipe();
+//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
+//		PropItemId.setIdItem(1);
+//		PropItemId.setIdProposta(proposta.getId());
+//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
+//				PropItemId);
+//		desabilitar();
 		return "construirMissao";
 	}
 
 	// Salvar a missao da proposta
-	public String SalvarMissao() {
+	public void salvarMissao() {
+		salvarConstrucaoItemSimples(1);
 
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(1);
-			PropItemId.setIdProposta(proposta.getId());
-			status.setId(6);
-			propostaItem.setStatus(status);
-			propostaItem.setId(PropItemId);
-			getDaoPropItem().salvar(propostaItem);
-		} catch (Exception e) {
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
-			
-		}
-		return prepararBean();
+//		equipe = proposta.getEquipe();
+//
+//		try {
+//			// Setando o Id composto do Proposta Item
+//			PropItemId.setIdItem(1);
+//			PropItemId.setIdProposta(proposta.getId());
+//			status.setId(6);
+//			propostaItem.setStatus(status);
+//			propostaItem.setId(PropItemId);
+//			getDaoPropItem().salvar(propostaItem);
+//		} catch (Exception e) {
+//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+//					"erro.insercao", null);			
+//			
+//		}
+//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+//				"sucesso.insercao", null);
 	}
 
 	public String prepararListaFuncao() {
@@ -363,7 +366,7 @@ public class ConstruirPropostaBean {
 	}
 
 	// Percorrre a lstlistafuncao pra salvar a as listas de funcoes da proposta
-	public String SalvarListaFuncao() {
+	public void salvarListaFuncao() {
 
 		equipe = proposta.getEquipe();
 
@@ -390,82 +393,93 @@ public class ConstruirPropostaBean {
 					"erro.insercao", null);			
 			
 		}
-		return prepararBean();
+		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+				"sucesso.insercao", null);
 	}
 
 	/*
 	 * Metodos para Justificativa da proposta
 	 */
 	public String prepararJustificativa() {
-		proposta = getDaoProposta().procurarPorId(
-				appSecurityManager.getProposta().getId());
-		equipe = proposta.getEquipe();
-		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-		PropItemId.setIdItem(3);
-		PropItemId.setIdProposta(proposta.getId());
-		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-				PropItemId);
-		desabilitar();
+		prepararContrucaoItemSimples(3);
+		
+//		proposta = getDaoProposta().procurarPorId(
+//				appSecurityManager.getProposta().getId());
+//		equipe = proposta.getEquipe();
+//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
+//		PropItemId.setIdItem(3);
+//		PropItemId.setIdProposta(proposta.getId());
+//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
+//				PropItemId);
+//		desabilitar();
+		
 		return "construirJustificativa";
 	}
 
 	// OK
-	public String SalvarJustificativa() {
+	public void salvarJustificativa() {
+		salvarConstrucaoItemSimples(3);
+		
 
-		equipe = proposta.getEquipe();
-
-		try {
-
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(3);
-			PropItemId.setIdProposta(proposta.getId());
-			status.setId(6);
-			propostaItem.setStatus(status);
-			propostaItem.setId(PropItemId);
-			getDaoPropItem().salvar(propostaItem);
-
-		} catch (Exception e) {
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
-			
-		}
-		return prepararBean();
+//		equipe = proposta.getEquipe();
+//
+//		try {
+//
+//			// Setando o Id composto do Proposta Item
+//			PropItemId.setIdItem(3);
+//			PropItemId.setIdProposta(proposta.getId());
+//			status.setId(6);
+//			propostaItem.setStatus(status);
+//			propostaItem.setId(PropItemId);
+//			getDaoPropItem().salvar(propostaItem);
+//
+//		} catch (Exception e) {
+//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+//					"erro.insercao", null);			
+//			
+//		}
+//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+//				"sucesso.insercao", null);
 	}
 
 	// OK
 	public String prepararMetodologia() {
-		proposta = getDaoProposta().procurarPorId(
-				appSecurityManager.getProposta().getId());
-		equipe = proposta.getEquipe();
-		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-		PropItemId.setIdItem(4);
-		PropItemId.setIdProposta(proposta.getId());
-		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-				PropItemId);
-		desabilitar();
+		prepararContrucaoItemSimples(4);
+		
+//		proposta = getDaoProposta().procurarPorId(
+//				appSecurityManager.getProposta().getId());
+//		equipe = proposta.getEquipe();
+//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
+//		PropItemId.setIdItem(4);
+//		PropItemId.setIdProposta(proposta.getId());
+//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
+//				PropItemId);
+//		desabilitar();
 		return "construirMetodologia";
 	}
 
 	// OK
-	public String SalvarMetodologia() {
+	public void salvarMetodologia() {
+		salvarConstrucaoItemSimples(4);
 
-		equipe = proposta.getEquipe();
-
-		try {
-			// Setando o Id composto do Proposta Item
-			PropItemId.setIdItem(4);
-			PropItemId.setIdProposta(proposta.getId());
-			status.setId(6);
-			propostaItem.setStatus(status);
-			propostaItem.setId(PropItemId);
-			getDaoPropItem().salvar(propostaItem);
-
-		}catch (Exception e) {
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
-			
-		}
-		return prepararBean();
+//		equipe = proposta.getEquipe();
+//
+//		try {
+//			// Setando o Id composto do Proposta Item
+//			PropItemId.setIdItem(4);
+//			PropItemId.setIdProposta(proposta.getId());
+//			status.setId(6);
+//			propostaItem.setStatus(status);
+//			propostaItem.setId(PropItemId);
+//			getDaoPropItem().salvar(propostaItem);
+//
+//		}catch (Exception e) {
+//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+//					"erro.insercao", null);			
+//			
+//		}
+//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+//				"sucesso.insercao", null);
 	}
 
 	// OK
@@ -487,7 +501,7 @@ public class ConstruirPropostaBean {
 	}
 
 	// Pendente
-	public String SalvarCronograma() {
+	public void salvarCronograma() {
 
 		equipe = proposta.getEquipe();
 
@@ -507,7 +521,42 @@ public class ConstruirPropostaBean {
 					"erro.insercao", null);			
 			
 		}
-		return prepararBean();
+		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+				"sucesso.insercao", null);
+	}
+	
+	private void prepararContrucaoItemSimples(int idItem){
+		proposta = getDaoProposta().procurarPorId(
+				appSecurityManager.getProposta().getId());
+		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
+		PropItemId.setIdItem(idItem);
+		PropItemId.setIdProposta(proposta.getId());
+		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
+				PropItemId);
+		desabilitar();
+	}
+	
+	private void salvarConstrucaoItemSimples(int idItem){
+		equipe = proposta.getEquipe();
+
+		try {
+			// Setando o Id composto do Proposta Item
+			PropItemId.setIdItem(idItem);
+			PropItemId.setIdProposta(proposta.getId());
+			status.setId(6);
+			propostaItem.setStatus(status);
+			propostaItem.setId(PropItemId);
+			getDaoPropItem().salvar(propostaItem);
+
+		}catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro.insercao", null);			
+			
+		}
+		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+				"sucesso.insercao", null);
+		
 	}
 
 	/*

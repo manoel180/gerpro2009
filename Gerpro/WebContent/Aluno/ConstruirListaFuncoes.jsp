@@ -22,7 +22,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="me"menuAluno.jsp"
+	<%@ include file="menuAluno.jsp"%>
 	</div>
 
 	<div id="content">
@@ -154,7 +154,7 @@
 		<div align="left" style=" width : 495px;"><h:commandButton
 			value="Salvar" id="btnsalvar"
 			disabled="#{construirPropostaBean.desabilitar}"
-			action="#{construirPropostaBean.SalvarListaFuncao}" style=" width : 61px;"/> <rich:spacer
+			action="#{construirPropostaBean.salvarListaFuncao}" style=" width : 61px;"/> <rich:spacer
 			height="30" /> <br>
 		<br>
 		</div>

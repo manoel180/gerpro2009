@@ -24,7 +24,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file=""menuAluno.jsp"></div>
+	<%@include file="menuAluno.jsp"%></div>
 	<br />
 
 	<div id="content">
@@ -143,7 +143,7 @@
 			<div align="left">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h:commandButton
 				value="Salvar" id="btnsalvar"
-				action="#{construirPropostaBean.SalvarCronograma}"
+				action="#{construirPropostaBean.salvarCronograma}"
 				disabled="#{construirPropostaBean.desabilitar}" /></div>
 		</h:form>
 

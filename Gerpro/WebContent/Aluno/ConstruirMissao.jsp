@@ -23,7 +23,7 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@include file="menuAluno.jsp"</div>
+	<%@include file="menuAluno.jsp"%></div>
 	<br/>
 		
 	<div id="content">
@@ -55,7 +55,7 @@
           <br>
          <div align="left">		
 		&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar" disabled="#{construirPropostaBean.desabilitar}" 
-		    action="#{construirPropostaBean.SalvarMissao}" /><br>
+		    action="#{construirPropostaBean.salvarMissao}" /><br>
 	</h:form>		
 		</div>
 	</div>
