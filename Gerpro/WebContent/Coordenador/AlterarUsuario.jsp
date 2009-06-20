@@ -1,15 +1,14 @@
-<%@page	contentType="text/html"%>
+<%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="rich" uri="http://richfaces.ajax4jsf.org/rich"%>
+<%@taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
 <head>
-<title>Alterar Proposta</title>
+<title>Cadastro de Usuários</title>
 </head>
-
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
@@ -22,57 +21,68 @@
 
 
 <f:view>
-
-<div id="div_corpo">
+	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menuCoordenador.jsp"%>
-	</div><!--fim div menu-->
+	<%@ include file="menuCoordenador.jsp"%></div>
+
 	<div id="content">
 
-	<h:form>
 
-		<div align="center"><h:outputLabel  value="ALTERAR PROPOSTA" 
+	<div align="center"><h:outputLabel value="CADASTRO DE USUÁRIOS"
 		styleClass="Titulo1" /></div>
 
-		<h:messages layout="list" styleClass="" showDetail="true"
-			showSummary="true" />
-		<br>
-		<br>
-		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
-			<h:panelGrid columns="2" cellpadding="5" id="id1">
-				<h:outputText value="Nome:" />
-				<h:inputText id="txtdesc1" required="true"
-					value="#{propostaBean.proposta.nome}">
-					<f:attribute name="fieldRef" value="Proposta" />
-				</h:inputText>
-				
-				<h:outputText value="Equipe:" />
-				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}" disabled="true" rendered="true" required="true">					
-					<f:selectItems value="#{propostaBean.equipesCombo}"/>
-					<f:attribute name="fieldRef" value="Equipe" />	
+	<h:messages layout="list" styleClass="" showDetail="true"
+		showSummary="true" /> <br>
+	<br>
+	<rich:toolTip for="rbtTipo" followMouse="true" zorder="90"	value="Selecione um tipo de usuário" />
+	<rich:toolTip for="txtmat" followMouse="true" zorder="90" value="Informe a matricula" /> 
+	<rich:toolTip for="txtnome" followMouse="true" zorder="90" value="Inserir o nome do usuário" /> 
+	<rich:toolTip for="equipe" followMouse="true" zorder="90" value="Selecione uma equipe para o aluno" /> 
+	<rich:toolTip for="btnsalvar" followMouse="true" zorder="90" value="Clique para Salvar" />
+	<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro" style="text-align:left">
+		
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5" id="pg">
+				<h:outputText value="Tipo:" />
+				<h:selectOneMenu id="rbtTipo" required="true" value="#{usuarioBean.tipoUsuario.id}">
+					<f:selectItem itemLabel="Aluno" itemValue="1" />
+					<f:selectItem itemLabel="Professor" itemValue="2" />
+					<f:selectItem itemLabel="Coordenador" itemValue="3" />
+						<a4j:support event="onchange" ajaxSingle="true"	
+							action="#{usuarioBean.desabilitarComponente}" reRender="pg"/>	
 				</h:selectOneMenu>
-				
-				<h:outputText value="Data Criação:" />	
-				<rich:calendar id="dt_criacao" disabled="true" value="#{propostaBean.proposta.dataCriacao}" required="true">
-					<f:attribute name="fieldRef" value="Data Criação" />
-				</rich:calendar>
-	
-				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}" disabled="true">
-					<f:attribute name="fieldRef" value="P" />
+
+				<h:outputText value="Matricula:" />
+				<h:inputText id="txtmat" maxlength="8" required="true" size="10"
+					value="#{usuarioBean.usuario.matricula}">
+					<f:attribute name="fieldRef" value="Matricula" />
 				</h:inputText>
-				
+
+				<h:outputText value="Nome:" />
+				<h:inputText id="txtnome" maxlength="80" required="true" size="40"
+					value="#{usuarioBean.usuario.nome}">
+					<f:attribute name="fieldRef" value="Nome" />
+				</h:inputText>
+
+
+				<h:outputText value="Equipe:" rendered="#{usuarioBean.desabilitar}" />
+				<h:selectOneMenu id="equipe"
+					value="#{usuarioBean.usuario.equipe.id}" rendered="#{usuarioBean.desabilitar}">
+					<f:selectItems value="#{usuarioBean.equipesCombo}" />
+					<f:attribute name="fieldRef" value="Equipe" />
+				</h:selectOneMenu>
+
+				<div align="left">
+				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.salvar}" />
+				</div>
 			</h:panelGrid>
+		</h:form>
 
-			
 
-		</rich:simpleTogglePanel>
-			<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
-	</h:form>
-
-   </div >
+	</rich:simpleTogglePanel></div>
 	</div>
+
 </f:view>
 
 
