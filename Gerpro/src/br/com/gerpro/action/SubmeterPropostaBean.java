@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
@@ -20,6 +21,7 @@ import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Item;
 import br.com.gerpro.model.Proposta;
@@ -78,7 +80,7 @@ public class SubmeterPropostaBean {
 	public String prepararBean() {
 
 		propitem = new PropostaItem();
-		listaPropostaItem =  getPropitemDao().listarPoridProposta(appSecurityManager.getProposta().getId());
+		listaPropostaItem = getPropitemDao().listarPoridPropostaSemAvaliacaoGeral(appSecurityManager.getProposta().getId());		
 	
 		propitem = listaPropostaItem.get(1);
 		proposta = propitem.getProposta();
@@ -102,14 +104,23 @@ public class SubmeterPropostaBean {
 		}
 		else{
 			desabilita = true;
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "itens.nao.concluidos");
 		}
 	}
 	
 	public void submeterProposta(){
-		status.setId(6);
-		proposta.setStatus(status);
-		proposta.setDataSubmissao(new Date());
-		propostaDao.salvar(proposta);
+		try {
+			status.setId(6);
+			proposta.setStatus(status);
+			proposta.setDataSubmissao(new Date());
+			propostaDao.salvar(proposta);
+			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "sucesso", "sucesso.submeter.proposta_detail");
+			
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "erro", "erro.submeter.proposta_detail");			
+		}
+		
 	}
 	public String prepararEdicao() {
 		proposta = (Proposta) objDatatablePropostaItem.getRowData();

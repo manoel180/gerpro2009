@@ -121,6 +121,25 @@ public class PropostaItemDao implements FacadePropostaItem{
 		session.close();
 		return result;
 	}
+	
+	public  List<PropostaItem> listarPoridPropostaSemAvaliacaoGeral(int id) {
+
+		List<PropostaItem> result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		
+		result = session.createQuery(
+				"from PropostaItem as propitem"
+				+ " where propitem.item.id <> 6"
+				+ " and propitem.proposta.id"
+				+ "=" + id).list();
+		// q.setParameter("parametro", nomeEquipe + "%");
+
+		session.close();
+		return result;
+	}
+
 
 	@Override
 	public PropostaItem procurarPorNome(String Nome) {

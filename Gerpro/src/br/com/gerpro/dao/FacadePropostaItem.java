@@ -35,4 +35,6 @@ public interface FacadePropostaItem{
 	 * @return List<PropostaItem>
 	 */
 	public List<PropostaItem> listarPoridProposta(int id);
+	
+	public List<PropostaItem> listarPoridPropostaSemAvaliacaoGeral(int id);
 }
