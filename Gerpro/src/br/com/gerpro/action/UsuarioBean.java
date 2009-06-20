@@ -24,10 +24,12 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.util.ApplicationSecurityManager;
+import br.com.gerpro.util.Criptografia;
 
 public class UsuarioBean {
 	private UIData objDatatableUsuario;// componente da tela - JSP
 	private List<Usuario> listaUsuarios;
+	private Criptografia criptografia;
 	private Usuario usuario = new Usuario();
 	private TipoUsuario tipoUsuario = new TipoUsuario();
 	private FacadeUsuario usuarioDao = new UsuarioDao();
@@ -113,6 +115,7 @@ public class UsuarioBean {
 
 			Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario
 					.getMatricula());
+			usuario.setSenha(criptografia.criptografar(usuario.getSenha()));
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
 				homeUsuario += usuarioBD.getTipoUsuario().getNome();
 				applicationSecurityManager.setUsuario(usuarioBD);
