@@ -98,12 +98,12 @@
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>
 				
 				<h:commandButton image="/images/editar.png"
-					action="#{propostaBean.prepararEdicao}" id="btnalterar" 
+					action="#{usuarioBean.prepararEdicao}" id="btnalterar" 
 					style="height: 40px; width: 40px" />
 				
 			</h:column>
 		</rich:dataTable>
-		<rich:datascroller align="center" for="listapropostas" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
+		<rich:datascroller align="center" for="listausuario" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 		<rich:spacer height="30" />
 
 	</h:form>

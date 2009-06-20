@@ -22,8 +22,8 @@
 		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Usuários">
-			<rich:panelMenuItem label="Pesquisar"  />
-			<rich:panelMenuItem label="Cadastrar"  />
+			<rich:panelMenuItem label="Pesquisar" action="#{usuarioBean.prepararPesquisar}" />
+			<rich:panelMenuItem label="Cadastrar" action="#{usuarioBean.prepararInclusao}" />
 		</rich:panelMenuGroup> 
 		
 		<rich:panelMenuGroup label="Relatórios"> 

@@ -122,6 +122,10 @@
 			<from-outcome>go_relatorio</from-outcome>
 			<to-view-id>/Relatorios/Relatorio.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_manterUsuario</from-outcome>
+			<to-view-id>/Coordenador/PesquisarUsuario.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<!-- Navegação da Área do Professor -->
 	<navigation-rule>

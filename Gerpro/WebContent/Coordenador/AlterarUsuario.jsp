@@ -77,7 +77,7 @@
 				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.salvar}" />
 				</div>
 				<div align="left">
-				<h:commandButton id="btnreiniciar" value="Reset Senha" action="#{usuarioBean.salvar}" />
+				<h:commandButton id="btnreiniciar" value="Reset Senha" action="#{usuarioBean.resetarSenha}" />
 				</div>
 			</h:panelGrid>
 		</h:form>

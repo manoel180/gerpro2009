@@ -37,16 +37,45 @@ public class UsuarioBean {
 	private Usuario logado = new Usuario();
 	private String senhaNova;
 	private String senhaConfirmacao;
+	
+	
+	private String tipo = new String();
+	private String busca = new String();
+	private boolean viewDes = false;
+	private boolean viewint = true;
+
 
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private boolean desabilitar;
 
+	public SelectItem[] getItensPesqCombo() {
+		List<SelectItem> itens = new ArrayList<SelectItem>(3);
+		itens.add(new SelectItem(1, "Cód."));
+		itens.add(new SelectItem(2, "Nome"));
+		itens.add(new SelectItem(3, "Equipe"));
+		return itens.toArray(new SelectItem[itens.size()]);
+	}
+	
 	public void desabilitarComponente() {
 		if (tipoUsuario.getId() == 1) {
 			desabilitar = true;
 		} else {
 			desabilitar = false;
 		}
+	}
+	
+	public void alterarComponente() {
+		if (tipo.equals("1")) {
+			viewDes = false;
+			viewint = true;
+			setBusca("0");
+		}
+		if (tipo.equals("2")||tipo.equals("3")) {
+			viewDes = true;
+			viewint = false;
+			setBusca("");
+		}
+
 	}
 
 	public String alterarSenha(){
@@ -82,6 +111,11 @@ public class UsuarioBean {
 		return sair;
 		
 	}
+	public String resetarSenha(){
+		usuario.setSenha(criptografia.criptografar("123"));
+		usuarioDao.salvar(usuario);
+		return prepararBean();
+	}
 
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
@@ -99,20 +133,28 @@ public class UsuarioBean {
 		listaUsuarios = getUsuarioDao().listar();
 		return "homeCoordenador";
 	}
-
-	public String preperarInclusao() {
+	public String prepararPesquisar() {
 		usuario = new Usuario();
-		return "incluir";
+		listaUsuarios = getUsuarioDao().listar();
+		return "go_manterUsuario";
 	}
 
-	public String preperarAlterarSenha() {
+	public String prepararInclusao() {
+		usuario = new Usuario();
+		return "incluirUsuario";
+	}
+
+	public String prepararAlterarSenha() {
 		usuario = new Usuario();
 		return "alterarSenha";
 	}
 
-	public String preperarEdicao() {
+	public String prepararEdicao() {
+		
 		usuario = (Usuario) objDatatableUsuario.getRowData();
-		return "alterar";
+		tipoUsuario = usuario.getTipoUsuario();
+		
+		return "alterarUsuario";
 	}
 
 	public void pesquisar() {
@@ -213,9 +255,6 @@ public class UsuarioBean {
 		return listaUsuarios;
 	}
 
-	public UIData getObjDatatableUsuario() {
-		return objDatatableUsuario;
-	}
 
 	public void setObjDatatableEquipe(UIData objDatatableUsuario) {
 		this.objDatatableUsuario = objDatatableUsuario;
@@ -303,5 +342,90 @@ public class UsuarioBean {
 	public void setSenhaConfirmacao(String senhaConfirmacao) {
 		this.senhaConfirmacao = senhaConfirmacao;
 	}
+
+	/**
+	 * @return the objDatatableUsuario
+	 */
+	public UIData getObjDatatableUsuario() {
+		return objDatatableUsuario;
+	}
+
+	/**
+	 * @param objDatatableUsuario the objDatatableUsuario to set
+	 */
+	public void setObjDatatableUsuario(UIData objDatatableUsuario) {
+		this.objDatatableUsuario = objDatatableUsuario;
+	}
+
+	/**
+	 * @return the listaUsuarios
+	 */
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaUsuarios the listaUsuarios to set
+	 */
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	/**
+	 * @return the busca
+	 */
+	public String getBusca() {
+		return busca;
+	}
+
+	/**
+	 * @param busca the busca to set
+	 */
+	public void setBusca(String busca) {
+		this.busca = busca;
+	}
+
+	/**
+	 * @return the viewDes
+	 */
+	public boolean isViewDes() {
+		return viewDes;
+	}
+
+	/**
+	 * @param viewDes the viewDes to set
+	 */
+	public void setViewDes(boolean viewDes) {
+		this.viewDes = viewDes;
+	}
+
+	/**
+	 * @return the viewint
+	 */
+	public boolean isViewint() {
+		return viewint;
+	}
+
+	/**
+	 * @param viewint the viewint to set
+	 */
+	public void setViewint(boolean viewint) {
+		this.viewint = viewint;
+	}
+
 
 }
