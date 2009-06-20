@@ -390,11 +390,11 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
+					"erro", "erro.salvar.item_detail");			
 			
 		}
 		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-				"sucesso.insercao", null);
+				"sucesso", "sucesso.insercao_detail");
 	}
 
 	/*
@@ -518,11 +518,11 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
+					"erro", "erro.salvar.item_detail");			
 			
 		}
 		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-				"sucesso.insercao", null);
+				"sucesso", "sucesso.insercao_detail");
 	}
 	
 	private void prepararContrucaoItemSimples(int idItem){
@@ -551,11 +551,11 @@ public class ConstruirPropostaBean {
 
 		}catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
+					"erro", "erro.salvar.item_detail");			
 			
 		}
 		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-				"sucesso.insercao", null);
+				"sucesso", "sucesso.insercao_detail");
 		
 	}
 

@@ -36,8 +36,7 @@
 
 		<br>
 
-		<h:panelGrid columns="3">
-			<!-- <%@ include file="m"menuAluno.jsp" -->
+		<h:panelGrid columns="3">		
 
 			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
 				height="129" style="width: 546px">
