@@ -45,7 +45,7 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5" id="pg">
 				<h:outputText value="Tipo:" />
-				<h:selectOneMenu id="rbtTipo" required="true" value="#{usuarioBean.tipoUsuario.id}">
+				<h:selectOneMenu id="rbtTipo" required="true" readonly="true" value="#{usuarioBean.tipoUsuario.id}">
 					<f:selectItem itemLabel="Aluno" itemValue="1" />
 					<f:selectItem itemLabel="Professor" itemValue="2" />
 					<f:selectItem itemLabel="Coordenador" itemValue="3" />
@@ -54,7 +54,7 @@
 				</h:selectOneMenu>
 
 				<h:outputText value="Matricula:" />
-				<h:inputText id="txtmat" maxlength="8" required="true" size="10"
+				<h:inputText id="txtmat" maxlength="8" readonly="true" required="true" size="10"
 					value="#{usuarioBean.usuario.matricula}">
 					<f:attribute name="fieldRef" value="Matricula" />
 				</h:inputText>
@@ -75,6 +75,9 @@
 
 				<div align="left">
 				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.salvar}" />
+				</div>
+				<div align="left">
+				<h:commandButton id="btnreiniciar" value="Reset Senha" action="#{usuarioBean.salvar}" />
 				</div>
 			</h:panelGrid>
 		</h:form>

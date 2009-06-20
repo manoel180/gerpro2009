@@ -5,6 +5,9 @@ package br.com.gerpro.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,8 +33,24 @@ public class UsuarioDao implements FacadeUsuario {
 	 * @see br.com.gerpro.dao.FacadeUsuario#salvar(br.com.gerpro.model.Usuario)
 	 */
 	public void salvar(Usuario usuario) {
-		// TODO Auto-generated method stub
-
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.saveOrUpdate(usuario);
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			tx.rollback();			
+			e.printStackTrace();
+		} catch (PersistenceException e) {
+			tx.rollback();			
+			e.printStackTrace();
+		} catch (Exception e) {
+			tx.rollback();			
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 
 	/*
@@ -58,8 +77,9 @@ public class UsuarioDao implements FacadeUsuario {
 	 * 
 	 * @see br.com.gerpro.dao.FacadeUsuario#listarPorNome(java.lang.String)
 	 */
-	public List<Usuario> listarPorNome(String nomeStatus) {
+	public List<Usuario> listarPorNome(String nome) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

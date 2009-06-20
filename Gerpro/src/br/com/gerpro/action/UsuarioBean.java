@@ -80,6 +80,7 @@ public class UsuarioBean {
 
 	public String salvar() {
 		try {
+			usuario.setTipoUsuario(tipoUsuario);
 			getUsuarioDao().salvar(usuario);
 		} catch (Exception e) {
 			e.printStackTrace();
