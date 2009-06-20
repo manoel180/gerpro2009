@@ -35,49 +35,54 @@ public class UsuarioBean {
 	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeEquipe equipeDao = new EquipeDao();
 	private Usuario logado = new Usuario();
-	
+	private String senhaNova;
+	private String senhaConfirmacao;
+
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private boolean desabilitar;
-	
-	public void desabilitarComponente(){
-		if(tipoUsuario.getId()==1){
+
+	public void desabilitarComponente() {
+		if (tipoUsuario.getId() == 1) {
 			desabilitar = true;
-		}else{
+		} else {
 			desabilitar = false;
 		}
 	}
-	
-	private boolean verificarUsuario(){
-	
+
+	public String alterarSenha(){
+	String sair ="";
 		try {
 
 			Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario
 					.getMatricula());
-			//if(){}
 			usuario.setSenha(criptografia.criptografar(usuario.getSenha()));
-			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
-				homeUsuario += usuarioBD.getTipoUsuario().getNome();
-				applicationSecurityManager.setUsuario(usuarioBD);
-				setLogado(usuarioBD);
-
-				if (usuarioBD.getTipoUsuario().getId() == 1) {
-					Proposta proposta = new Proposta();
-					FacadeProposta propostaDao = new PropostaDao();
-					proposta = propostaDao.listarPorIdEquipe(usuarioBD
-							.getEquipe().getId());
-					applicationSecurityManager.setProposta(proposta);
+			usuario.setTipoUsuario(usuarioBD.getTipoUsuario());
+			if(usuarioBD!= null){
+				
+				if (usuario.getSenha().equals(usuarioBD.getSenha())) {
+					if(senhaConfirmacao.equals(senhaNova)){
+						usuario.setSenha(criptografia.criptografar(senhaNova));
+						usuarioDao.salvar(usuario);
+						sair= "logoff";
+					}else {
+						// Alterar a Mesg
+						MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+					}
+				}else {
+					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
 				}
-
-			}else {
-				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
-			}
+			}	
+				else{
+					// Substituir mesg
+					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+				}
 		} catch (NullPointerException nullPointerException) {			
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+	}
+		return sair;
 		
 	}
-		return false;
-	}
-	
+
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
 		List<Equipe> le = equipeDao.listar();
@@ -88,16 +93,21 @@ public class UsuarioBean {
 		}// for end
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	
+
 	public String prepararBean() {
 		usuario = new Usuario();
 		listaUsuarios = getUsuarioDao().listar();
-		return null;
+		return "homeCoordenador";
 	}
 
 	public String preperarInclusao() {
 		usuario = new Usuario();
 		return "incluir";
+	}
+
+	public String preperarAlterarSenha() {
+		usuario = new Usuario();
+		return "alterarSenha";
 	}
 
 	public String preperarEdicao() {
@@ -161,11 +171,13 @@ public class UsuarioBean {
 					applicationSecurityManager.setProposta(proposta);
 				}
 
-			}else {
-				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
+			} else {
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+						"usuario.invalido", "usuario.invalido_detail");
 			}
-		} catch (NullPointerException nullPointerException) {			
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+		} catch (NullPointerException nullPointerException) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"usuario.invalido", "usuario.invalido_detail");
 		}
 		return homeUsuario;
 	}
@@ -180,7 +192,6 @@ public class UsuarioBean {
 
 		return "logoff";
 	}
-
 
 	/*
 	 * Getters and Setters
@@ -226,7 +237,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param desabilitar the desabilitar to set
+	 * @param desabilitar
+	 *            the desabilitar to set
 	 */
 	public void setDesabilitar(boolean desabilitar) {
 		this.desabilitar = desabilitar;
@@ -240,7 +252,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param logado the logado to set
+	 * @param logado
+	 *            the logado to set
 	 */
 	public void setLogado(Usuario logado) {
 		this.logado = logado;
@@ -254,11 +267,41 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param tipoUsuario the tipoUsuario to set
+	 * @param tipoUsuario
+	 *            the tipoUsuario to set
 	 */
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
-	
+
+	/**
+	 * @return the senhaNova
+	 */
+	public String getSenhaNova() {
+		return senhaNova;
+	}
+
+	/**
+	 * @param senhaNova
+	 *            the senhaNova to set
+	 */
+	public void setSenhaNova(String senhaNova) {
+		this.senhaNova = senhaNova;
+	}
+
+	/**
+	 * @return the senhaConfirmacao
+	 */
+	public String getSenhaConfirmacao() {
+		return senhaConfirmacao;
+	}
+
+	/**
+	 * @param senhaConfirmacao
+	 *            the senhaConfirmacao to set
+	 */
+	public void setSenhaConfirmacao(String senhaConfirmacao) {
+		this.senhaConfirmacao = senhaConfirmacao;
+	}
+
 }
