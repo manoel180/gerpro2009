@@ -57,9 +57,7 @@
 				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
 					rendered="true">
 					<f:selectItems value="#{propostaBean.equipesCombo}" />
-					<f:attribute name="fieldRef" value="Equipe" />
-						<a4j:support event="onchange" ajaxSingle="true"	
-							action="#{propostaBean.setarPeriodo}" reRender="pg"/>	
+					<f:attribute name="fieldRef" value="Equipe" />	
 				</h:selectOneMenu>
 
 				<h:outputText value="Data Criação:" />

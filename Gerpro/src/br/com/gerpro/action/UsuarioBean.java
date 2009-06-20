@@ -47,6 +47,37 @@ public class UsuarioBean {
 		}
 	}
 	
+	private boolean verificarUsuario(){
+	
+		try {
+
+			Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario
+					.getMatricula());
+			if(){}
+			usuario.setSenha(criptografia.criptografar(usuario.getSenha()));
+			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
+				homeUsuario += usuarioBD.getTipoUsuario().getNome();
+				applicationSecurityManager.setUsuario(usuarioBD);
+				setLogado(usuarioBD);
+
+				if (usuarioBD.getTipoUsuario().getId() == 1) {
+					Proposta proposta = new Proposta();
+					FacadeProposta propostaDao = new PropostaDao();
+					proposta = propostaDao.listarPorIdEquipe(usuarioBD
+							.getEquipe().getId());
+					applicationSecurityManager.setProposta(proposta);
+				}
+
+			}else {
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
+			}
+		} catch (NullPointerException nullPointerException) {			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+		
+	}
+		return false;
+	}
+	
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
 		List<Equipe> le = equipeDao.listar();
