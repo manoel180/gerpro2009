@@ -220,7 +220,6 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<from-view-id>/Coordenador/PesquisarUsuario.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>incluirUsuario</from-outcome>
 			<to-view-id>/Coordenador/CadastroUsuario.jsp</to-view-id>
