@@ -48,7 +48,7 @@
 
 
 				<h:outputText value="Nome:" />
-				<h:inputText maxlength="5" id="txtdesc1" required="true"
+				<h:inputText maxlength="100" id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
 					<f:attribute name="fieldRef" value="Nome" />
 				</h:inputText>
@@ -69,7 +69,7 @@
 
 				<h:outputText value="Periodo:" />
 				<h:inputText maxlength="8" id="txtperiodo"
-					value="#{propostaBean.proposta.periodo}" readonly="true" required="true">
+					value="#{propostaBean.proposta.periodo}"  required="true">
 					<f:attribute name="fieldRef" value="Período" />
 				</h:inputText>
 				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
@@ -79,7 +79,6 @@
 
 			</h:panelGrid>
 		</h:form>
-
 
 	</rich:simpleTogglePanel> 
 	</div>

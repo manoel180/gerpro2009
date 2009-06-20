@@ -190,8 +190,6 @@ public class PropostaBean {
 
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
 		
-		
-
 		return "listarPropostas";
 	}	
 	

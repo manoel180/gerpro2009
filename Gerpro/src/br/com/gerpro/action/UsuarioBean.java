@@ -53,7 +53,7 @@ public class UsuarioBean {
 
 			Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario
 					.getMatricula());
-			if(){}
+			//if(){}
 			usuario.setSenha(criptografia.criptografar(usuario.getSenha()));
 			if (usuario.getSenha().equals(usuarioBD.getSenha())) {
 				homeUsuario += usuarioBD.getTipoUsuario().getNome();

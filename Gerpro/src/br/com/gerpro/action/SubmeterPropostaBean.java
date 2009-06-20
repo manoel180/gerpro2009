@@ -75,12 +75,11 @@ public class SubmeterPropostaBean {
 		return itens.toArray( new SelectItem[itens.size()] );
 	}
 	
-	
-	
 	public String prepararBean() {
 
 		propitem = new PropostaItem();
-		listaPropostaItem = getPropitemDao().listarPoridPropostaSemAvaliacaoGeral(appSecurityManager.getProposta().getId());		
+		listaPropostaItem = getPropitemDao()
+			.listarPoridPropostaSemAvaliacaoGeral(appSecurityManager.getProposta().getId());		
 	
 		propitem = listaPropostaItem.get(1);
 		proposta = propitem.getProposta();
@@ -97,10 +96,10 @@ public class SubmeterPropostaBean {
 		for(PropostaItem propitem  : listaPropostaItem){
 			if(propitem.getStatus().getId()==6){
 				cont++;
-				System.out.println("Contador: **** " + cont);
-				
+				System.out.println("Contador: **** " + cont);				
 			}
 		}
+		
 		if(cont == 5 && !(proposta.getStatus().getId()==6)){
 			desabilita = false;
 		}
@@ -110,8 +109,7 @@ public class SubmeterPropostaBean {
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "itens.nao.concluidos");				
 			}else{
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "proposta.submetida");				
-			}
-			
+			}			
 		}
 	}
 	
@@ -141,9 +139,7 @@ public class SubmeterPropostaBean {
 	public void pesquisar() {
 		//listaPropostaItem = getPropostaDao().listarPorNome(proposta.getNome());
 	
-	}
-
-	
+	}	
 	
 	/*
 	 * Getters and Setters
@@ -359,7 +355,4 @@ public class SubmeterPropostaBean {
 	public void setDesabilita(boolean desabilita) {
 		this.desabilita = desabilita;
 	}
-
-	
-
 }

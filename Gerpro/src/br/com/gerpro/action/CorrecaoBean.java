@@ -130,6 +130,8 @@ public class CorrecaoBean {
 		Proposta proposta = applicationSecurityManager.getProposta();
 		Status status = proposta.getStatus();
 		Equipe equipe = proposta.getEquipe();
+		SubmeterPropostaBean submeterPropostaBean = new SubmeterPropostaBean();
+		submeterPropostaBean.setProposta(proposta);
 		return "corrigirProposta";
 	}
 
