@@ -55,7 +55,7 @@
 			<rich:panelMenuItem label="Submeter Correção"
 				action="#{submeterCorrecaoBean.listaPorProfessor}" />
 		</rich:panelMenuGroup>
-		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.preperarAlterarSenha}"/>
+		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.prepararAlterarSenha}"/>
 		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}"/>
 	</rich:panelMenu>
 </h:panelGrid>
