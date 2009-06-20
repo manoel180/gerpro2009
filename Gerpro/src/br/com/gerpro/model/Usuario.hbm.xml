@@ -18,7 +18,7 @@
             <column name="nome" length="80" not-null="true" />
         </property>
         <property name="senha" type="string">
-            <column name="senha" length="10" not-null="true" />
+            <column name="senha" length="32" not-null="true" />
         </property>
         <set name="correcaos" inverse="true">
             <key>

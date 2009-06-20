@@ -79,8 +79,7 @@ public class UsuarioDao implements FacadeUsuario {
 		return result;
 	}
 	@Override
-	public List<Usuario> listarProfessores() {
-		// TODO Auto-generated method stub
+	public List<Usuario> listarProfessores() {		
 		List<Usuario> result = null;
 
 		session = HibernateUtil.getSession();
@@ -124,6 +123,24 @@ public class UsuarioDao implements FacadeUsuario {
 	 */
 	public void remover(Usuario usuario) {
 		// TODO Auto-generated method stub
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> listarProfessoresParaCorrecao(){
+		List<Usuario> result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		// Funcionando mas duplicando linhas
+		result = session.createQuery("from Usuario as user"
+				+ " where user.tipoUsuario.id = 2"
+				+ " or user.tipoUsuario.id = 3"
+				+ " order by user.nome asc" ).list();
+
+		session.close();
+		return result;
+
+		
 	}
 	
 }

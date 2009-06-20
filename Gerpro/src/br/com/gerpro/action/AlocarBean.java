@@ -3,10 +3,12 @@ package br.com.gerpro.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.model.SelectItem;
 
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.processing.IProcessoAlocarProposta;
 import br.com.gerpro.processing.ProcessoAlocarProposta;
@@ -37,7 +39,7 @@ public class AlocarBean {
 	
 	// Lista de Professores
 	public SelectItem[] getProfessorCombo() {
-		List<Usuario> lu = daoUsuario.listarProfessores();
+		List<Usuario> lu = daoUsuario.listarProfessoresParaCorrecao();
 		List<SelectItem> itens = new ArrayList<SelectItem>(lu.size());
 
 		for (Usuario u : lu) {
@@ -52,7 +54,15 @@ public class AlocarBean {
 	}
 
 	public void alocar() {
-		alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
+		try {
+			alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+					"sucesso", "sucesso.alocar.proposta_detail");			
+			
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro", "erro.alocar.propostas");
+		}		
 	}
 
 	/**

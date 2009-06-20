@@ -31,6 +31,31 @@
 			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.prepararRelatorioResultadoProposta}" />
 		</rich:panelMenuGroup>
 		
+		<rich:panelMenuGroup label="Correção"> 
+			<rich:panelMenuItem label="Lista de Propostas"
+				action="#{propostaBean.listaPorProfessor}" />
+			<rich:panelMenuItem label="Missão do Produto"
+				action="#{corrigirPropostaBean.prepararCorrigirMissao}" />
+			<rich:panelMenuItem label="Lista de Função"
+				action="#{corrigirPropostaBean.prepararCorrigirListaFuncao}" />
+			<rich:panelMenuItem label="Justificativa"
+				action="#{corrigirPropostaBean.prepararCorrigirJustificativa}" />
+			<rich:panelMenuItem label="Metodologia"
+				action="#{corrigirPropostaBean.prepararCorrigirMetodologia}" />
+			<rich:panelMenuItem label="Cronograma"
+				action="#{corrigirPropostaBean.prepararCorrigirCronograma}" />	
+			<rich:panelMenuGroup label="Avaliação Geral">
+				<rich:panelMenuItem label="Avaliação Geral - 1"
+					action="#{corrigirPropostaBean.prepararAvaliacaoGeral1}" />
+				<rich:panelMenuItem label="Avaliação Geral - 2"
+					action="#{corrigirPropostaBean.prepararAvaliacaoGeral2}" />
+				<rich:panelMenuItem label="Avaliação Geral - 3"
+					action="#{corrigirPropostaBean.prepararAvaliacaoGeral7}" />
+			</rich:panelMenuGroup>
+			<rich:panelMenuItem label="Submeter Correção"
+				action="#{submeterCorrecaoBean.listaPorProfessor}" />
+		</rich:panelMenuGroup>
+		
 		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}"/>
 	</rich:panelMenu>
 </h:panelGrid>
