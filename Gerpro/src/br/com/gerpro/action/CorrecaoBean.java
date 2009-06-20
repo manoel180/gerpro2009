@@ -70,8 +70,8 @@ public class CorrecaoBean {
 	private Pergunta pergunta = new Pergunta();
 
 	/***************************************************************************
-	 * M�todo para desabilitar a op��o de correcao dos itens da proposta
-	 * caso ela j� tenha sido corrigida *
+	 * Método para desabilitar a opção de correcao dos itens da proposta
+	 * caso ela já tenha sido corrigida *
 	 */
 	private void desabilitar() {
 		if (propostaEmCorrecao()) {
@@ -258,10 +258,13 @@ public class CorrecaoBean {
 			correcao.setResposta(resposta);
 			correcao.setStatus(status);
 			getCorrecaoDao().salvar(correcao);
+			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+					"sucesso", "sucesso.corrigir.item_detail");
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);
+					"erro", "erro.insercao");
 		}
 	}
 
@@ -296,9 +299,12 @@ public class CorrecaoBean {
 			Usuario professor = applicationSecurityManager.getUsuario();
 			processoCorrecao.calcularStatusPropostaAtual(professor, proposta);
 			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+					"sucesso", "sucesso.submeter.correcao_detail");
+			
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);
+					"erro", "erro.submeter.correcao_detail");
 		}
 		
 	}

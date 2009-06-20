@@ -69,7 +69,7 @@
 		<rich:dataTable var="prop" id="listapropostas"
 			 value="#{propostaBean.listaProposta}" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
-			 align="center">
+			 align="center" >
 			<rich:column width="5%" sortBy="#{prop.id}">
 				<f:facet name="header">
 					<h:outputText value="Cod" />

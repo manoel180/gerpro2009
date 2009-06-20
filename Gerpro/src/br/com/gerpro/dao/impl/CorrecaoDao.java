@@ -62,7 +62,6 @@ public class CorrecaoDao implements FacadeCorrecao {
 	 * Método para carregar o item para correcao com base em um parametro
 	 * onde se especifica o item selecionado.  
 	 */
-
 	@Override
 	public Correcao procurarPorIdCorrecao(CorrecaoId idCorrecao) {		
 
@@ -74,14 +73,6 @@ public class CorrecaoDao implements FacadeCorrecao {
 
 		session.close();
 		return result;
-
-		/*
-		 * // Funcionando mas duplicando linhas result = session.createQuery(
-		 * "from Correcao as c where c.status.id = 3 or proposta.status.id = 4
-		 * or proposta.status.id = 5" + " and proposta.periodo = '"+periodo
-		 */
-		/* + "' Group by proposta.id").list(); */
-
 	}
 
 	@SuppressWarnings("unchecked")

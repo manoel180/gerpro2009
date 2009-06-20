@@ -29,13 +29,12 @@
 
 	<div id="content"><h:form>
 
-
-		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"
-			styleClass="Titulo1" /></div>
-		<p>	Seja bem vindo ao GERPRO.<br>
-		Para acessar os itens de sua responsabilidade,
-		basta escolher uma das opçoes do menu, que sistema
-		irá direcioná-lo para pagina escolhida! Divirta-se</p>
+		<div align="center"><h:outputLabel
+			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
+		<p>Seja bem vindo ao GERPRO.<br>
+		Para acessar os itens de sua responsabilidade, basta escolher uma das
+		opçoes do menu, que sistema irá direcioná-lo para pagina escolhida!
+		Divirta-se</p>
 	</h:form></div>
 	</div>
 </f:view>
