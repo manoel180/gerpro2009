@@ -201,24 +201,33 @@ public class CorrecaoBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-							"proposta.naoselecionada",
+							"erro",
 							"proposta.naoselecionada_detail");
 		}
 
 	}
 
 	public String prepararSubmeterCorrecao() {
+		try {
+			Proposta proposta = applicationSecurityManager.getProposta();
+			Usuario professor = applicationSecurityManager.getUsuario();
 
-		Proposta proposta = applicationSecurityManager.getProposta();
-		Usuario professor = applicationSecurityManager.getUsuario();
+			setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
 
-		setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
+			status = proposta.getStatus();
+			equipe = proposta.getEquipe();
 
-		status = proposta.getStatus();
-		equipe = proposta.getEquipe();
+			
 
+			
+		} catch (Exception e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro",
+					"proposta.naoselecionada_detail");
+		}
+		
 		return "submeterCorrecao";
-
+		
 	}
 
 	public void salvarCorrigir() {		
