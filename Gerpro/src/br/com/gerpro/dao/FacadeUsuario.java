@@ -34,4 +34,9 @@ public interface FacadeUsuario {
 	public List<Usuario> listarProfessores();
 	
 	public List<Usuario> listarProfessoresParaCorrecao();
+
+	/**
+	 * @return
+	 */
+	public List<Usuario> listarAlunos();
 }

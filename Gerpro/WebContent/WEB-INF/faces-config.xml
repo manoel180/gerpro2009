@@ -112,6 +112,11 @@
 			<from-outcome>go_manterArtefatos</from-outcome>
 			<to-view-id>/Coordenador/PesquisarArtefatos.jsp</to-view-id>
 		</navigation-case>
+			<!-- Tela Alocar Alunos -->
+		<navigation-case>
+			<from-outcome>alocarAlunoEquipe</from-outcome>
+			<to-view-id>/Coordenador/AlocarAlunos.jsp</to-view-id>
+		</navigation-case>
 		<!-- Tela Pesquisar Equipe -->
 		<navigation-case>
 			<from-outcome>go_manterEquipe</from-outcome>

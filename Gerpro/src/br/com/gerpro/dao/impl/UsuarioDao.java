@@ -112,6 +112,19 @@ public class UsuarioDao implements FacadeUsuario {
 		return result;
 	}
 
+	@Override
+	public List<Usuario> listarAlunos() {		
+		List<Usuario> result = null;
+
+		session = HibernateUtil.getSession();
+		tx = session.beginTransaction();
+		// Funcionando mas duplicando linhas
+		result = session.createQuery(
+				"from Usuario as user" + " where user.tipoUsuario.id = 1 order by user.nome asc" ).list();
+
+		session.close();
+		return result;
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
