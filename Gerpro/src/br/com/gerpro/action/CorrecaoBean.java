@@ -79,6 +79,9 @@ public class CorrecaoBean {
 			desabilitar = false;
 		} else {
 			desabilitar = true;
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+					"aviso",
+					"proposta.corrigida");
 		}
 	}
 

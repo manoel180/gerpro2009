@@ -32,7 +32,7 @@
 	<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
 	<!--  rint  -->
 	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
-	<rich:toolTip for="txtdescint" followMouse="true" zorder="90" value="Informe o código da proposta"/>
+	
 	<rich:toolTip for="btnpesquisar" followMouse="true" zorder="90" value="Fazer pesquisa."/>
 	
 	
@@ -51,7 +51,7 @@
 						action="#{usuarioBean.alterarComponente}"
 						reRender="pg"/>
 				</h:selectOneMenu>
-				<h:outputText value="Descrição:" />
+				
 					<h:inputText autocomplete="on" immediate="true" id="txtdesc" value="#{usuarioBean.busca}"   rendered="#{usuarioBean.viewDes}">
 				</h:inputText>
 					
