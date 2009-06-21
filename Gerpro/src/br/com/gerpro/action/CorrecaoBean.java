@@ -221,28 +221,28 @@ public class CorrecaoBean {
 
 	}
 
-	public String salvarCorrigir() {		
+	public void salvarCorrigir() {		
 			salvarCorrecaoItem();
-		return prepararBean();
+	//	return prepararBean();
 	}
 
-	public String salvarAvaliacaoGeral1() {
+	public void salvarAvaliacaoGeral1() {
 
 		salvarCorrecaoItem();
 
-		return prepararBean();
+		//return prepararBean();
 	}
 
-	public String salvarAvaliacaoGeral2() {
+	public void salvarAvaliacaoGeral2() {
 
 		salvarCorrecaoItem();
 
-		return prepararBean();
+		//return prepararBean();
 	}
 
-	public String salvarAvaliacaoGeral3() {
+	public void salvarAvaliacaoGeral3() {
 		salvarCorrecaoItem();
-		return prepararBean();
+		//return prepararBean();
 	}
 
 	public void salvarCorrecaoItem() {
@@ -305,8 +305,7 @@ public class CorrecaoBean {
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
 					"erro", "erro.submeter.correcao_detail");
-		}
-		
+		}		
 	}
 
 	public String sairAplicacao() {

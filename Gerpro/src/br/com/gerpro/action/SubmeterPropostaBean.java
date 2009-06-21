@@ -95,12 +95,11 @@ public class SubmeterPropostaBean {
 		int cont = 0;
 		for(PropostaItem propitem  : listaPropostaItem){
 			if(propitem.getStatus().getId()==6){
-				cont++;
-				System.out.println("Contador: **** " + cont);				
+				cont++;								
 			}
 		}
 		
-		if(cont == 5 && !(proposta.getStatus().getId()==6)){
+		if(cont == 5 && (proposta.getStatus().getId()== 1) ){
 			desabilita = false;
 		}
 		else{

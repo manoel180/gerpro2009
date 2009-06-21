@@ -32,7 +32,7 @@
 					action="#{corrigirPropostaBean.prepararAvaliacaoGeral7}" />
 			</rich:panelMenuGroup>
 			<rich:panelMenuItem label="Submeter Correção"
-				action="#{submeterCorrecaoBean.listaPorProfessor}" />
+				action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
 
 		</rich:panelMenuGroup>
 		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.prepararAlterarSenha}"/>

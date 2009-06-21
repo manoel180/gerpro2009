@@ -4,7 +4,7 @@
 <%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
  
-    <rich:simpleTogglePanel label="Dados da Equipe">
+    <rich:simpleTogglePanel label="Dados da Proposta">
 			<h:panelGrid columns="4">
 				<h:outputText value="Proposta:" />
 				<h:outputText value="#{submeterPropostaBean.proposta.nome}" />
