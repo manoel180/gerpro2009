@@ -62,6 +62,7 @@
 
 		</rich:dataTable>
 		<h:commandButton value="Submeter Correção"
+			disabled="#{corrigirPropostaBean.desabilitar}"
 			action="#{corrigirPropostaBean.submeterCorrecao}"
 			style=" width : 142px;" />
 		<br>

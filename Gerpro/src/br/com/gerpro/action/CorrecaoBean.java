@@ -48,6 +48,7 @@ public class CorrecaoBean {
 	private List<Pergunta> listaPergunta;
 	private List<ListaFuncao> lstListaFuncao;
 	private List<Cronograma> lstCronograma;
+	private List<PropostaItem> listaPropostaItem;
 	private Correcao correcao = new Correcao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
 	private FacadePergunta perguntaDao = new PerguntaDao();
@@ -211,14 +212,13 @@ public class CorrecaoBean {
 		try {
 			Proposta proposta = applicationSecurityManager.getProposta();
 			Usuario professor = applicationSecurityManager.getUsuario();
+			listaPropostaItem = propostaItemDao.listarPoridProposta(proposta.getId());
 
 			setListaCorrecao(correcaoDao.procurarPorCorrecao(professor, proposta));
 
 			status = proposta.getStatus();
 			equipe = proposta.getEquipe();
-
-			
-
+			desabilitar();
 			
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
@@ -315,7 +315,8 @@ public class CorrecaoBean {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
 					"erro", "erro.submeter.correcao_detail");
 		}		
-	}
+	}	
+	
 
 	public String sairAplicacao() {
 		return new UsuarioBean().sairAplicacao();

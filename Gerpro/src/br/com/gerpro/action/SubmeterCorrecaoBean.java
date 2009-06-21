@@ -3,6 +3,7 @@ package br.com.gerpro.action;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import br.com.gerpro.dao.FacadeCorrecao;
@@ -10,9 +11,11 @@ import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
+import br.com.gerpro.model.PropostaItem;
 import br.com.gerpro.model.Status;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.processing.ProcessoCorrecao;
@@ -22,7 +25,9 @@ import br.com.gerpro.util.ApplicationSecurityManager;
 public class SubmeterCorrecaoBean {
 	private UIData objDatatablePropostaItem;
 	private UIData objDatatableCorrecao;
-	private List<Correcao> listaCorrecao;	
+	private List<Correcao> listaCorrecao;
+	private List<PropostaItem> listaPropostaItem;
+	private boolean desabilita;
 	private Proposta proposta = new Proposta();	
 	private Equipe equipe = new Equipe();
 	private Status status = new Status();	
@@ -33,31 +38,7 @@ public class SubmeterCorrecaoBean {
 	private ProcessoCorrecao processoCorrecao = new ProcessoCorrecao(); 
 	
 	
-	
-//	//ComboBox Equipes
-//	public SelectItem[] getEquipesCombo(){
-//		List<Equipe> le = getEquipeDao().listar();
-//		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
-//
-//		for( Equipe e : le ){
-//			itens.add( new SelectItem(e.getId(),e.getNome()));
-//		}// for end
-//		return itens.toArray( new SelectItem[itens.size()] );
-//	}
-//	
-//	//ComboBox Status
-//	public SelectItem[] getStatusCombo(){
-//		List<Status> le = getStatusDao().listar();
-//		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
-//
-//		for( Status e : le ){
-//			itens.add( new SelectItem(e.getId(),e.getNome()));
-//		}// for end
-//		return itens.toArray( new SelectItem[itens.size()] );
-//	}
-	
-	
-	
+
 	public String prepararBean() {
 		
 		Proposta proposta = applicationSecurityManager.getProposta();
@@ -68,8 +49,8 @@ public class SubmeterCorrecaoBean {
 		status =  proposta.getStatus();
 		equipe = proposta.getEquipe();
 		
-		return "submeterCorrecao";//return listaCorrecao();
-	}
+		return "submeterCorrecao";
+		}
 	
 	public String listaCorrecao(){		
 		
@@ -87,6 +68,27 @@ public class SubmeterCorrecaoBean {
 			e.printStackTrace();
 		}
 		return prepararBean();
+	}
+	
+	private void verificarItens(){
+		int cont = 0;
+		for(PropostaItem propitem  : listaPropostaItem){
+			if(propitem.getStatus().getId()==6){
+				cont++;								
+			}
+		}
+		
+		if(cont == 5 && (proposta.getStatus().getId()== 1) ){
+			desabilita = false;
+		}
+		else{
+			desabilita = true;
+			if(cont < 5){
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "itens.nao.concluidos");				
+			}else{
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "proposta.submetida");				
+			}			
+		}
 	}
 	
 	public void corrigirProposta(){
@@ -243,9 +245,19 @@ public class SubmeterCorrecaoBean {
 	public void setProcessoCorrecao(ProcessoCorrecao processoCorrecao) {
 		this.processoCorrecao = processoCorrecao;
 	}
-	
-	
 
-	
+	/**
+	 * @return the desabilita
+	 */
+	public boolean isDesabilita() {
+		return desabilita;
+	}
+
+	/**
+	 * @param desabilita the desabilita to set
+	 */
+	public void setDesabilita(boolean desabilita) {
+		this.desabilita = desabilita;
+	}	
 
 }
