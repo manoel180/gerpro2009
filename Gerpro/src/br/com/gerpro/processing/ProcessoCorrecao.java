@@ -196,11 +196,8 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					return;
 				}
 			}
-			JOptionPane.showMessageDialog(null, "Proposta corrigida com sucesso", "Correção de Proposta", 1);
-			
-			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao submeter a correção", "Correção de Proposta", JOptionPane.ERROR_MESSAGE);		
+			e.printStackTrace();		
 		}		
 	}
 	

@@ -3,13 +3,10 @@ package br.com.gerpro.dao.impl;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
-import javax.swing.JOptionPane;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
@@ -27,22 +24,21 @@ public class PropostaDao implements FacadeProposta {
 	 */
 	@Override
 	public void salvar(Proposta proposta) {
-		// TODO Auto-generated method stub
 
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.saveOrUpdate(proposta);
 			tx.commit();
-			
+
 		} catch (HibernateException e) {
-			tx.rollback();			
+			tx.rollback();
 			e.printStackTrace();
 		} catch (PersistenceException e) {
-			tx.rollback();			
+			tx.rollback();
 			e.printStackTrace();
 		} catch (Exception e) {
-			tx.rollback();			
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -88,9 +84,8 @@ public class PropostaDao implements FacadeProposta {
 				" select *" + " from proposta p"
 						+ " inner join correcao co on co.id_proposta = p.id"
 						+ " where co.matricula_professor like ? "
-						+ " group by p.id ").addEntity(
-				Proposta.class).setParameter(0, professor.getMatricula())
-				.list();
+						+ " group by p.id ").addEntity(Proposta.class)
+				.setParameter(0, professor.getMatricula()).list();
 
 		session.close();
 		return result;
@@ -109,7 +104,8 @@ public class PropostaDao implements FacadeProposta {
 
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
-		Query q = session.createQuery("from Proposta where Nome like  :parametro");
+		Query q = session
+				.createQuery("from Proposta where Nome like  :parametro");
 
 		q.setParameter("parametro", nomeProposta + "%");
 
@@ -134,7 +130,7 @@ public class PropostaDao implements FacadeProposta {
 		session.close();
 		return result;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Proposta listarPorIdEquipe(int idEquipe) {
@@ -144,8 +140,8 @@ public class PropostaDao implements FacadeProposta {
 		tx = session.beginTransaction();
 		// Funcionando mas duplicando linhas
 		result = (Proposta) session.createQuery(
-				"from Proposta as proposta" + " where proposta.equipe.id"
-						+ "=" + idEquipe ).uniqueResult() ;
+				"from Proposta as proposta" + " where proposta.equipe.id" + "="
+						+ idEquipe).uniqueResult();
 
 		session.close();
 		return result;
@@ -170,11 +166,11 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	 /* 
-	  * (non-Javadoc)
-	  * 
-	  *  @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
-	  */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
+	 */
 	@Override
 	public List<Proposta> listarPorPeriodo(String periodo) {
 		// TODO Auto-generated method stub
@@ -182,18 +178,19 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
-		
-		result = session.createQuery(
-				"from Proposta as proposta where proposta.status.id = 3 or proposta.status.id = 4 or proposta.status.id = 5"
-						+ " and proposta.periodo = '"+periodo
-						+ "' Group by proposta.id").list();
+
+		result = session
+				.createQuery(
+						"from Proposta as proposta where proposta.status.id = 3 or proposta.status.id = 4 or proposta.status.id = 5"
+								+ " and proposta.periodo = '"
+								+ periodo
+								+ "' Group by proposta.id").list();
 		tx.commit();
 		session.close();
-	
+
 		return result;
 	}
-	 
-	  
+
 	@Override
 	public List<Proposta> listarPeriodo() {
 		// TODO Auto-generated method stub
@@ -201,15 +198,16 @@ public class PropostaDao implements FacadeProposta {
 		List<Proposta> result = null;
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
-		
+
 		result = session.createQuery(
-				"from Proposta as proposta"
-						+ " Group by proposta.periodo").list();
+				"from Proposta as proposta" + " Group by proposta.periodo")
+				.list();
 
 		session.close();
-	
+
 		return result;
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -217,16 +215,12 @@ public class PropostaDao implements FacadeProposta {
 	 */
 	@Override
 	public Proposta procurarPorNome(String Nome) {
-		// TODO Auto-generated method stub
 
 		Proposta result = null;
 
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		result = (Proposta) session.get(Proposta.class, Nome);
-		if (result == null) {
-			System.out.println("Proposta n�o encontrada");
-		}
 		session.close();
 		return result;
 	}
@@ -246,21 +240,18 @@ public class PropostaDao implements FacadeProposta {
 			tx = session.beginTransaction();
 			session.delete(proposta);
 			tx.commit();
-			System.out.println("Proposta excluida com sucesso");
+
 		} catch (HibernateException e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro" + e,
-					"GerPro - Ocorreu um erro", 1);
+
 			e.printStackTrace();
 		} catch (PersistenceException e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro" + e,
-					"GerPro - Ocorreu um erro", 1);
+
 			e.printStackTrace();
 		} catch (Exception e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro" + e,
-					"GerPro - Ocorreu um erro", 1);
+
 			e.printStackTrace();
 		} finally {
 			session.close();

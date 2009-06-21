@@ -94,9 +94,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 						.setParameter(1, professor.getMatricula()).list();
 
 				tx.commit();
-			} else
-				System.out.println("Erro na sessao");
-
+			}
 			return listaCorrecao;
 
 		} catch (Exception e) {
@@ -116,21 +114,17 @@ public class CorrecaoDao implements FacadeCorrecao {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(correcao);
 			tx.commit();
-			System.out.println("Alteração realizada com sucesso");
+
 		} catch (HibernateException e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+		
 			e.printStackTrace();
 		} catch (PersistenceException e) {
 			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+			
 			e.printStackTrace();
 		} catch (Exception e) {
-			tx.rollback();
-			JOptionPane.showMessageDialog(null, "Erro",
-					"GerPro - Ocorreu um erro" + e, 1);
+			tx.rollback();			
 			e.printStackTrace();
 		} finally {
 			session.close();

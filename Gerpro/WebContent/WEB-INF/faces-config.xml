@@ -100,7 +100,7 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>alterarSenha</from-outcome>
-			<to-view-id>/common/AlterarSenhaUsuario</to-view-id>
+			<to-view-id>/common/AlterarSenhaUsuario.jsp</to-view-id>
 		</navigation-case>
 		<!-- Tela Pesquisar Proposta -->
 		<navigation-case>

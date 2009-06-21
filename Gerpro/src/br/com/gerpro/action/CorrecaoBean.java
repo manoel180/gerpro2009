@@ -232,26 +232,26 @@ public class CorrecaoBean {
 
 	public void salvarCorrigir() {		
 			salvarCorrecaoItem();
-	//	return prepararBean();
+
 	}
 
 	public void salvarAvaliacaoGeral1() {
 
 		salvarCorrecaoItem();
 
-		//return prepararBean();
+
 	}
 
 	public void salvarAvaliacaoGeral2() {
 
 		salvarCorrecaoItem();
 
-		//return prepararBean();
+
 	}
 
 	public void salvarAvaliacaoGeral3() {
 		salvarCorrecaoItem();
-		//return prepararBean();
+
 	}
 
 	public void salvarCorrecaoItem() {
