@@ -31,7 +31,7 @@
 
 	<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
 	<!--  rint  -->
-	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite o conteúdo da pesquisa."/>
+	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite os dados para pesquisa."/>
 	
 	<rich:toolTip for="btnpesquisar" followMouse="true" zorder="90" value="Fazer pesquisa."/>
 	

@@ -7,11 +7,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.model.SelectItem;
 
 import br.com.gerpro.dao.FacadeEquipe;
+import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.EquipeDao;
+import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Equipe;
+import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.TipoUsuario;
 import br.com.gerpro.model.Usuario;
 import br.com.gerpro.processing.IProcessoAlocarProposta;
@@ -26,8 +29,10 @@ public class AlocarBean {
 	private Equipe equipe = new Equipe();
 	private Usuario usuario = new Usuario();
 	private IProcessoAlocarProposta alocarProposta = new ProcessoAlocarProposta();
+	private FacadeProposta propostaDao = new PropostaDao();
 	private boolean desabilitar;
 	private boolean desabilitarTodos;
+	private boolean desabilitarBotaoAlocar;
 	private boolean correcaoGrupo;
 
 	public void desabilitar() {
@@ -39,9 +44,22 @@ public class AlocarBean {
 			desabilitar = false;
 		}
 	}
+	
+	private void desabilitarBotaoAlocar() {
+		if (semPropostaParaAlocar()) {
+			desabilitarBotaoAlocar = true;
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+					"aviso",
+					"sem.proposta.para.alocar");
+		} else {
+			desabilitarBotaoAlocar = false;
+			
+		}
+	}
 
 	public String prepararBean() {
 		correcaoGrupo = true;
+		desabilitarBotaoAlocar();
 		return "alocarProposta";
 	}
 	
@@ -122,6 +140,15 @@ public class AlocarBean {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
 					"erro", "erro.alocar.propostas");
 		}		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean semPropostaParaAlocar(){
+		List<Proposta> listaPropostaConcluidas = propostaDao.listarPropostasConcluidas();
+		if(listaPropostaConcluidas.isEmpty()){
+			return true;
+		}else
+			return false;
 	}
 	
 
@@ -211,5 +238,21 @@ public class AlocarBean {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+
+	/**
+	 * @return the desabilitarBotaoAlocar
+	 */
+	public boolean isDesabilitarBotaoAlocar() {
+		return desabilitarBotaoAlocar;
+	}
+
+	/**
+	 * @param desabilitarBotaoAlocar the desabilitarBotaoAlocar to set
+	 */
+	public void setDesabilitarBotaoAlocar(boolean desabilitarBotaoAlocar) {
+		this.desabilitarBotaoAlocar = desabilitarBotaoAlocar;
+	}
+	
+	
 
 }

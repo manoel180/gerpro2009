@@ -57,7 +57,7 @@
 							action="#{alocarBean.desabilitar}" reRender="pg" />
 					</rich:pickList>
 
-					<h:commandButton value="Alocar" action="#{alocarBean.alocar}"></h:commandButton>
+					<h:commandButton value="Alocar" disabled="#{alocarBean.desabilitarBotaoAlocar}" action="#{alocarBean.alocar}"></h:commandButton>
 
 				</h:panelGrid>
 
