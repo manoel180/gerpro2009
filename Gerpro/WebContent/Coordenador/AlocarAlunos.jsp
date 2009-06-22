@@ -29,7 +29,7 @@
 	<div id="content">
 	<h:form id="form1">
 
-		<h:outputLabel styleClass="Titulo1" value="ALOCAR PROPOSTAS" />
+		<h:outputLabel styleClass="Titulo1" value="ALOCAR ALUNOS" />
 
 		<h:panelGrid columns="1" cellpadding="10" style="width=100%"
 			width="100%" rowClasses="2">
@@ -47,14 +47,14 @@
 					<f:selectItems value="#{alocarBean.equipesCombo}" />
 					<f:attribute name="fieldRef" value="Equipe" />
 				</h:selectOneMenu>
-				
+				<br>
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
 						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
 						value="#{alocarBean.listAlunos}">
 						<f:selectItems value="#{alocarBean.alunosCombo}" />
 					</rich:pickList>
-<br>
+
 					<h:commandButton value="Alocar" action="#{alocarBean.alocarAlunos}"></h:commandButton>
 
 				</h:panelGrid>
