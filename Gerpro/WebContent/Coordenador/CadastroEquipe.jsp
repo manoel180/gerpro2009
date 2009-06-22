@@ -8,7 +8,7 @@
 
 <head>
 <title>Cadastro de Equipe</title>
-<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 
 <f:view>

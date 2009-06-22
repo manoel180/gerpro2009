@@ -8,7 +8,7 @@
 <head>
 <title>Cadastro de Equipes</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 
 <f:view>
