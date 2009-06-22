@@ -10,7 +10,7 @@
 <title>Cadastro de Usuários</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href=.../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -22,6 +22,10 @@
 
 <f:view>
 	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@ include file="menuCoordenador.jsp"%></div>
+	
 	<div id="content">
 
 

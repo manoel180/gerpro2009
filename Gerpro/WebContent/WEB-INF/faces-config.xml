@@ -98,10 +98,7 @@
 			<from-outcome>logoff</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-		<navigation-case>
-			<from-outcome>alterarSenha</from-outcome>
-			<to-view-id>/common/AlterarSenhaUsuario.jsp</to-view-id>
-		</navigation-case>
+		
 		<!-- Tela Pesquisar Proposta -->
 		<navigation-case>
 			<from-outcome>pesquisarProposta</from-outcome>
@@ -230,8 +227,8 @@
 			<to-view-id>/Coordenador/CadastroUsuario.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>alterarUsuario</from-outcome>
-			<to-view-id>/Coordenador/AlterarUsuario.jsp</to-view-id>
+			<from-outcome>alterarSenha</from-outcome>
+			<to-view-id>/Coordenador/AlterarSenhaUsuario.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

@@ -33,9 +33,7 @@
 			</rich:panelMenuGroup>
 			<rich:panelMenuItem label="Submeter Correção"
 				action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
-
-		</rich:panelMenuGroup>
-		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.prepararAlterarSenha}"/>
+		</rich:panelMenuGroup>		
 		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
 
 	</rich:panelMenu>

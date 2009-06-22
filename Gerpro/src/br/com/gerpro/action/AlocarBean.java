@@ -113,11 +113,11 @@ public class AlocarBean {
 		try {
 			alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-					"sucesso", "sucesso.alocar.proposta_detail");			
+					"sucesso", "sucesso.alocar.aluno_detail");			
 			
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.propostas");
+					"erro", "erro.alocar.aluno_detail");
 		}		
 	}
 	
@@ -133,12 +133,12 @@ public class AlocarBean {
 				daoUsuario.salvar(usuario);
 			}
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-					"sucesso", "sucesso.alocar.proposta_detail");			
+					"sucesso", "sucesso.alocar.aluno_detail");			
 			
 		} catch (Exception e) {
 			System.out.println(e);
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.propostas");
+					"erro", "erro.alocar.aluno_detail");
 		}		
 	}
 	
