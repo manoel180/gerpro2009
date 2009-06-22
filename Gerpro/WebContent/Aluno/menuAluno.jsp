@@ -11,7 +11,7 @@
 		iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
 		iconCollapsedTopGroup="chevronDown" expandSingle="true">
 
-		<rich:panelMenuGroup label="Menu Itens" expanded="true">
+		<rich:panelMenuGroup label="Itens" expanded="true">
 			<rich:panelMenuItem label="Missão"
 				action="#{construirPropostaBean.prepararMissao}" />
 			<rich:panelMenuItem label="Lista de Funções"
@@ -22,7 +22,7 @@
 				action="#{construirPropostaBean.prepararMetodologia}" />
 			<rich:panelMenuItem label="Cronograma"
 				action="#{construirPropostaBean.prepararCronograma}" />
-			<rich:panelMenuItem label="Submeter"
+			<rich:panelMenuItem label="Submeter Proposta"
 				action="#{submeterPropostaBean.prepararBean}" />				
 		</rich:panelMenuGroup>		
 		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
