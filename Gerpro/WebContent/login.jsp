@@ -22,15 +22,16 @@
 	<div id="div_corpo" align="center"><!-- Início DIV Content  -->
 
 	<div
-		style="width: 300px; height: 150px; text-align: right; float: left; vertical-align: middle; margin-top: 100px"><img
+		style="width: 300px; text-align: right; float: left; vertical-align: top; margin-top: 50px"><img
 		src="images/login.jpg" /></div>
 	<div
-		style="width: 300px; height: 150px; text-align: left; float: left; margin-top: 120px">
+		style="width: 300px; text-align: left; float: left; margin-top: 50px">
 	<h:form>
 		<h:outputFormat styleClass="fontAzul"
 			value="Informe seu login e senha para ter acesso ao GERPRO." />
-		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorStyle="mensagem_erro"
+				 infoStyle="mensagem_sucesso"/>
 		<br>
 		<br>
 		<h:outputText styleClass="fontAzul" value="Matricula*: "

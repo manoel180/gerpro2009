@@ -35,7 +35,8 @@
 			width="100%" rowClasses="2">
 
 			<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" />
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 			<rich:simpleTogglePanel>
 				<h:outputLabel value="Tipo de alocação" />
 				<h:selectOneRadio id="radio" layout="pageDirection"

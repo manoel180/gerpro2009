@@ -28,7 +28,7 @@
 
 	<div id="content">
 
-<h:form>
+<h:form id="form1" >
 
 	<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
 		styleClass="Titulo1" /></div>
