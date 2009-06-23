@@ -179,13 +179,7 @@
 		</navigation-case>
 	</navigation-rule>
 	<!-- Navegação da Área do Coordenador -->
-	<navigation-rule>
-		<navigation-case>
-			<from-outcome>go_altproposta</from-outcome>
-			<to-view-id>/Coordenador/AltProposta.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-		<navigation-rule>
+	<navigation-rule>	
 		<navigation-case>
 			<from-outcome>alocarProposta</from-outcome>
 			<to-view-id>/Coordenador/AlocarProposta.jsp</to-view-id>

@@ -72,9 +72,10 @@
 			</h:panelGrid>
 		</h:form>
 
-	</rich:simpleTogglePanel> 
+	</rich:simpleTogglePanel>
+	</h:form> 
 	</div>
-	</h:form>
+	
 	</div>
 	
 </f:view>

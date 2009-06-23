@@ -1,8 +1,10 @@
 package br.com.gerpro.action;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 
@@ -20,6 +22,7 @@ import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
+import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Equipe;
 import br.com.gerpro.model.Proposta;
@@ -116,11 +119,7 @@ public class PropostaBean {
 	
 	
 	public void alterarComponente() {
-//		if (tipo.equals("1")) {
-//			viewDes = false;
-//			viewint = true;
-//			setBusca("0");
-//		}
+
 		if (tipo.equals("1")||tipo.equals("2")) {
 			viewDes = true;
 			viewint = false;
@@ -129,18 +128,8 @@ public class PropostaBean {
 
 	}
 
-	public void pesquisar() {
-	
-//		if (tipo.equals("1")) {
-//			if (busca.equals("")) {
-//				setBusca("0");
-//			} 
-//				listaProposta = new ArrayList<Proposta>();
-//				proposta = getPropostaDao().procurarPorId(
-//						Integer.parseInt(busca.toString()));
-//				listaProposta.add(proposta);
-//			
-//		}
+	public void pesquisar() {	
+
 		if (tipo.equals("1")) {
 			listaProposta = getPropostaDao().listarPorNome(busca.toString());
 		}
@@ -156,10 +145,12 @@ public class PropostaBean {
 			status.setId(1);
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
+			proposta.setDataCriacao(new Date());
 			
 			
 			if(proposta.getId()==null){
 				getPropostaDao().salvar(proposta);
+				
 			//Adiciona os Itens a proposta criada
 				for(int i=1;i<=6;i++){
 					PropItemId.setIdItem(i);
@@ -169,24 +160,25 @@ public class PropostaBean {
 					propostaItem.setId(PropItemId);
 					getDaoPropItem().salvar(propostaItem);
 				}
+				
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "sucesso", "sucesso.cadastro.proposta_detail");
+				
 			}else{
+				
 				getPropostaDao().salvar(proposta);
+				
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "sucesso", "sucesso.cadastro.proposta_detail");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "erro", "erro.cadastro.proposta_detail");			
+			
 		}
 		return prepararBean();
-	}
-
-	public String excluir() {
-		proposta = (Proposta) objDatatableProposta.getRowData();
-		getPropostaDao().remover(proposta);
-		return prepararBean();
-	}
+	}	
 
 	public String listaPorProfessor() {
 		Usuario usuario = applicationSecurityManager.getUsuario();
-
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
 		
 		return "listarPropostas";
