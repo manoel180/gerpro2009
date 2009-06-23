@@ -27,6 +27,9 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<br/>
 		
 	<div id="content"><h:form>
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 
 		
 		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"

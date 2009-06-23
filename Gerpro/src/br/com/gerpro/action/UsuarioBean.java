@@ -210,7 +210,13 @@ public class UsuarioBean {
 					FacadeProposta propostaDao = new PropostaDao();
 					proposta = propostaDao.listarPorIdEquipe(usuarioBD
 							.getEquipe().getId());
-					applicationSecurityManager.setProposta(proposta);
+					
+					if(proposta != null){
+						applicationSecurityManager.setProposta(proposta);						
+					}else
+						MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+								"aviso", "aluno.sem.proposta");
+					
 				}
 
 			} else {
