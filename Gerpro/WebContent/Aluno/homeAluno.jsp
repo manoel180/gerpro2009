@@ -33,9 +33,9 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 		styleClass="Titulo1" /></div>
 	<p style="font-family: sans-serif ;  font-size: 14;" >
 	Seja bem vindo ao GERPRO.<br>
-	Para acessar os itens da sua prospota, basta escolher uma das opçoes do menu,
+	Para acessar os itens de sua prospota, basta escolher uma das opções do menu,
 	que<br>
-	sistema irá direcionar a pagina escolhida! Divirta-se
+	sistema irá direcioná-lo a página escolhida! Divirta-se
 	
 	</p>
 	</h:form>

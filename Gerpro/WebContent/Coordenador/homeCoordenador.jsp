@@ -34,7 +34,7 @@
 			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
 		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo ao GERPRO.<br>
 		Para acessar os itens de sua responsabilidade, basta escolher uma das
-		opçoes do menu, que sistema irá direcioná-lo para pagina escolhida!
+		opções do menu, que sistema irá direcioná-lo para página escolhida!
 		Divirta-se</p>
 	</h:form>
 	</div>

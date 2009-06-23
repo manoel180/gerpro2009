@@ -34,9 +34,9 @@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
 		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo
 		ao GerPro.<br>
-		Para acessar os ítens de sua responsabilidade, basta escolher uma das
-		opçoes do menu, que<br>
-		sistema irá direcioná- lo a página escolhida! Divirta-se</p>
+		Para acessar os itens de sua responsabilidade, basta escolher uma das
+		opções do menu, que<br>
+		sistema irá direcioná-lo a página escolhida! Divirta-se</p>
 
 	</h:form></div>
 	</div>
