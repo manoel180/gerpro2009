@@ -180,21 +180,7 @@
 			<to-view-id>/Coordenador/AlocarProposta.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/Coordenador/PesquisarArtefatos.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>incluirArtefatos</from-outcome>
-			<to-view-id>/Coordenador/CadastroArtefatos.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>alterarArtefatos</from-outcome>
-			<to-view-id>/Coordenador/AlterarArtefatos.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>visualizarArtefatos</from-outcome>
-			<to-view-id>/Coordenador/PesquisarArtefatos.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/Coordenador/PesquisarProposta.jsp</from-view-id>
 		<navigation-case>
