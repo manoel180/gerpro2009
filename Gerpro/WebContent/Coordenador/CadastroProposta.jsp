@@ -9,7 +9,7 @@
 <title>Cadastro de Propostas</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -38,37 +38,28 @@
 	<br>
 	<rich:toolTip for="txtdesc1" followMouse="true" zorder="90"
 		value="Inserir um nome da Proposta" /> <rich:toolTip for="equipe"
-		followMouse="true" zorder="90" value="Selecione uma equipe" /> 
-		<rich:toolTip for="dt_criacao" followMouse="true" zorder="90"
-		value="Inserir uma data de Criação da Proposta" /> 
+		followMouse="true" zorder="90" value="Selecione uma equipe" /> 		
 		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90"
 		value="Inserir um Periodo" /> <rich:simpleTogglePanel focus="txtdesc1"
-		label="Dados do cadastro" style="text-align:left">
+		label="Dados do Cadastro" style="text-align:left">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5" id="pg">
 
 
-				<h:outputText value="Nome:" />
+				<h:outputText value="Nome*:" />
 				<h:inputText maxlength="100" id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
 					<f:attribute name="fieldRef" value="Nome" />
 				</h:inputText>
 
-				<h:outputText value="Equipe:" />
+				<h:outputText value="Equipe*:" />
 				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
 					rendered="true">
 					<f:selectItems value="#{propostaBean.equipesCombo}" />
 					<f:attribute name="fieldRef" value="Equipe" />	
-				</h:selectOneMenu>
+				</h:selectOneMenu>				
 
-				<h:outputText value="Data Criação:" />
-
-				<rich:calendar id="dt_criacao"
-					value="#{propostaBean.proposta.dataCriacao}" required="true">
-					<f:attribute name="fieldRef" value="Data Criação" />
-				</rich:calendar>
-
-				<h:outputText value="Periodo:" />
+				<h:outputText value="Periodo*:" />
 				<h:inputText maxlength="8" id="txtperiodo"
 					value="#{propostaBean.proposta.periodo}"  required="true">
 					<f:attribute name="fieldRef" value="Período" />

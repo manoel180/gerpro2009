@@ -1,4 +1,4 @@
-<%@page	contentType="text/html"%>
+<%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -11,7 +11,7 @@
 </head>
 
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -23,55 +23,44 @@
 
 <f:view>
 
-<div id="div_corpo">
+	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menuCoordenador.jsp"%>
-	</div><!--fim div menu-->
-	<div id="content">
+	<%@ include file="menuCoordenador.jsp"%></div>
+	<!--fim div menu-->
+	<div id="content"><h:form>
 
-	<h:form>
+		<div align="center"><h:outputLabel value="ALTERAR PROPOSTA"
+			styleClass="Titulo1" /></div>
 
-		<div align="center"><h:outputLabel  value="ALTERAR PROPOSTA" 
-		styleClass="Titulo1" /></div>
-
-		<h:messages layout="list" styleClass="" showDetail="true"
+		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
 			showSummary="true" />
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="2" cellpadding="5" id="id1">
-				<h:outputText value="Nome:" />
+				<h:outputText value="Nome*:" />
 				<h:inputText maxlength="100" id="txtdesc1" required="true"
 					value="#{propostaBean.proposta.nome}">
 					<f:attribute name="fieldRef" value="Proposta" />
 				</h:inputText>
-				
+
 				<h:outputText value="Equipe:" />
-				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}" disabled="true" rendered="true" required="true">					
-					<f:selectItems value="#{propostaBean.equipesCombo}"/>
-					<f:attribute name="fieldRef" value="Equipe" />	
+				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"	disabled="true" >
+					<f:selectItems value="#{propostaBean.equipesCombo}" />
 				</h:selectOneMenu>
-				
-				<h:outputText value="Data Criação:" />	
-				<rich:calendar id="dt_criacao" disabled="true" value="#{propostaBean.proposta.dataCriacao}" required="true">
-					<f:attribute name="fieldRef" value="Data Criação" />
-				</rich:calendar>
-	
+
+				<h:outputText value="Data de criação:" />
+				<h:inputText id="txtdata"
+					value="#{propostaBean.proposta.dataCriacao}" disabled="true"></h:inputText>
+
 				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo" value="#{propostaBean.proposta.periodo}" disabled="true">
-					<f:attribute name="fieldRef" value="P" />
-				</h:inputText>
-				
+				<h:inputText id="txtperiodo"
+					value="#{propostaBean.proposta.periodo}" disabled="true"></h:inputText>
 			</h:panelGrid>
-
-			
-
 		</rich:simpleTogglePanel>
-			<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
-	</h:form>
-
-   </div >
+		<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+	</h:form></div>
 	</div>
 </f:view>
 
