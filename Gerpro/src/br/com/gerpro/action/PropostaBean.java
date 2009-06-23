@@ -71,10 +71,9 @@ public class PropostaBean {
 		
 	
 	public SelectItem[] getItensPesqCombo() {
-		List<SelectItem> itens = new ArrayList<SelectItem>(3);
-		itens.add(new SelectItem(1, "Cód."));
-		itens.add(new SelectItem(2, "Nome"));
-		itens.add(new SelectItem(3, "Equipe"));
+		List<SelectItem> itens = new ArrayList<SelectItem>(2);		
+		itens.add(new SelectItem(1, "Nome"));
+		itens.add(new SelectItem(2, "Equipe"));
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 
@@ -117,12 +116,12 @@ public class PropostaBean {
 	
 	
 	public void alterarComponente() {
-		if (tipo.equals("1")) {
-			viewDes = false;
-			viewint = true;
-			setBusca("0");
-		}
-		if (tipo.equals("2")||tipo.equals("3")) {
+//		if (tipo.equals("1")) {
+//			viewDes = false;
+//			viewint = true;
+//			setBusca("0");
+//		}
+		if (tipo.equals("1")||tipo.equals("2")) {
 			viewDes = true;
 			viewint = false;
 			setBusca("");
@@ -132,20 +131,20 @@ public class PropostaBean {
 
 	public void pesquisar() {
 	
+//		if (tipo.equals("1")) {
+//			if (busca.equals("")) {
+//				setBusca("0");
+//			} 
+//				listaProposta = new ArrayList<Proposta>();
+//				proposta = getPropostaDao().procurarPorId(
+//						Integer.parseInt(busca.toString()));
+//				listaProposta.add(proposta);
+//			
+//		}
 		if (tipo.equals("1")) {
-			if (busca.equals("")) {
-				setBusca("0");
-			} 
-				listaProposta = new ArrayList<Proposta>();
-				proposta = getPropostaDao().procurarPorId(
-						Integer.parseInt(busca.toString()));
-				listaProposta.add(proposta);
-			
-		}
-		if (tipo.equals("2")) {
 			listaProposta = getPropostaDao().listarPorNome(busca.toString());
 		}
-		if (tipo.equals("3")) {
+		if (tipo.equals("2")) {
 			equipe.setNome(busca.toString());
 			listaProposta = getPropostaDao().listarPorEquipe(equipe.getNome());
 		}

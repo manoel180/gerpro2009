@@ -108,6 +108,9 @@
 		<rich:spacer height="30" />
 
 	</h:form>
+	<h:form>
+		<h:commandButton value="Nova Proposta" id="btncadastrar" action="#{propostaBean.prepararInclusao}" />
+	</h:form>
 	</div>
 	</div>
 </f:view>

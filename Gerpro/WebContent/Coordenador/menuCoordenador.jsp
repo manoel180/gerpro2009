@@ -17,8 +17,7 @@
 		
 		<rich:panelMenuGroup label="Propostas">
 			<rich:panelMenuItem label="Alocar"  action="#{alocarBean.prepararBean}"/>
-			<rich:panelMenuItem label="Pesquisar" action="#{propostaBean.prepararBean}" />
-			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.prepararInclusao}" />
+			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.prepararBean}" />			
 		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Usuários">
