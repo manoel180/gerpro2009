@@ -89,16 +89,11 @@
 		<navigation-case>
 			<from-outcome>homeCoordenador</from-outcome>
 			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>erro</from-outcome>
-			<to-view-id>/common/ErrorModalPage.jsp</to-view-id>
-		</navigation-case>
+		</navigation-case>		
 		<navigation-case>
 			<from-outcome>logoff</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-		
+		</navigation-case>		
 		<!-- Tela Pesquisar Proposta -->
 		<navigation-case>
 			<from-outcome>pesquisarProposta</from-outcome>
