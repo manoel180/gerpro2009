@@ -31,7 +31,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 		
 		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"
 		styleClass="Titulo1" /></div>
-	<p style="font-family: sans-serif ;" >
+	<p style="font-family: sans-serif ;  font-size: 14;" >
 	Seja bem vindo ao GERPRO.<br>
 	Para acessar os itens da sua prospota, basta escolher uma das opçoes do menu,
 	que<br>

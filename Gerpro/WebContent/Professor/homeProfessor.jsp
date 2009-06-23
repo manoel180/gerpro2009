@@ -1,7 +1,9 @@
-<%@page contentType="text/html"%> <%@page pageEncoding="UTF-8"%> <%@
-taglib prefix="f" uri="http://java.sun.com/jsf/core"%> <%@ taglib
-prefix="h" uri="http://java.sun.com/jsf/html"%> <%@taglib
-uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@
+taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
@@ -24,28 +26,23 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 	<div id="menu"><br />
 	<br />
 	<%@include file="menuProfessor.jsp"%></div>
-	<br/>
-		
-	<div id="content"><h:form>
+	<br />
 
-		
-		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"
-		styleClass="Titulo1" /></div>
-	<p style="font-family: sans-serif ;">
-	Seja bem vindo ao GerPro.<br>
-	Para acessar os ítens de sua responsabilidade, basta escolher uma das opçoes do menu,
-	que<br>
-	sistema irá direcioná-
-	lo a página escolhida! Divirta-se	
-	</p>
-	
-		</h:form>	
-		</div>
+	<div id="content">
+		<h:form>
+			<div align="center"><h:outputLabel
+			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
+		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo
+		ao GerPro.<br>
+		Para acessar os ítens de sua responsabilidade, basta escolher uma das
+		opçoes do menu, que<br>
+		sistema irá direcioná- lo a página escolhida! Divirta-se</p>
+
+	</h:form></div>
 	</div>
 </f:view>
 
 
-<div class="fontBranca" id="rodape"><!-- Rodapé -->
-		<br />
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

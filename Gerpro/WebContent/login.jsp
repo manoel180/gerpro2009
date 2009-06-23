@@ -28,7 +28,7 @@
 		style="width: 300px; text-align: left; float: left; margin-top: 50px">
 	<h:form>
 		<h:outputFormat styleClass="fontAzul"
-			value="Informe seu login e senha para ter acesso ao GERPRO." />
+			value="Informe seu login e senha para ter acesso ao GerPro." />
 		<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
@@ -51,9 +51,14 @@
 		<br />
 		<br />
 		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" />
-	</h:form></div>
-	</div>
+		<br />
+		<br />
+		</div>
+	
+		</h:form></div>
+	
 </f:view>
+
 <div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

@@ -45,6 +45,7 @@
 		<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
+				 
 		<rich:simpleTogglePanel label="Pesquisa">
 			<h:panelGrid columns="5" id="pg">
 				<h:selectOneMenu id="tipobusca" value="#{propostaBean.tipo}" >
@@ -53,7 +54,6 @@
 						action="#{propostaBean.alterarComponente}"
 						reRender="pg"/>
 				</h:selectOneMenu>
-				<h:outputText value="Descrição:" />
 					<h:inputText maxlength="100" autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
 				</h:inputText>
 					
@@ -71,24 +71,24 @@
 		<rich:dataTable var="prop" id="listapropostas"
 			 value="#{propostaBean.listaProposta}" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
-			 align="center" >
-			<rich:column width="5%" sortBy="#{prop.id}">
-				<f:facet name="header">
-					<h:outputText value="Cod" />
-				</f:facet>
-				<h:outputText value="#{prop.id}" />
-			</rich:column>
+			 align="center" >			
 			<rich:column width="60%" sortBy="#{prop.nome}">
 				<f:facet name="header">
 					<h:outputText value="Proposta" />
 				</f:facet>
-				<h:outputText value="#{prop.nome}" />
+				<h:outputText style="text-align:left" value="#{prop.nome}" />
 			</rich:column>
 			<rich:column width="15%" sortBy="#{prop.equipe.nome}">
 				<f:facet name="header">
 					<h:outputText value="Equipe" />
 				</f:facet>
 				<h:outputText value="#{prop.equipe.nome}" />
+			</rich:column>
+			<rich:column width="25%" sortBy="#{prop.id}">
+				<f:facet name="header">
+					<h:outputText value="Status" />
+				</f:facet>
+				<h:outputText value="#{prop.status.nome}" />
 			</rich:column>
 			
 			<h:column>
@@ -98,7 +98,7 @@
 				
 				
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>				
-				<h:commandButton image="/images/editar.png"
+				<h:commandLink value="Editar" 
 					action="#{propostaBean.prepararEdicao}" id="btnalterar" 
 					style="height: 40px; width: 40px" />
 				
