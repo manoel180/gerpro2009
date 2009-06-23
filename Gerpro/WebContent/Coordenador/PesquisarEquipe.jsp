@@ -63,14 +63,13 @@
 						style="color:red; font-weight:bold; font-" />
 
 				</h:column>
-				<h:column>
+				<h:column >
 					<f:facet name="header">
-						<h:outputText value="Opções" />
+						<h:outputText value="Opções"  />
 
 					</f:facet>
 					<h:commandButton value="Excluir" action="#{equipeBean.excluir}" />
-					<h:commandButton value="Editar"
-						action="#{equipeBean.prepararEdicao}" />
+					<h:commandButton value="Editar" action="#{equipeBean.prepararEdicao}" />
 				</h:column>
 			</rich:dataTable>
 		</rich:simpleTogglePanel>

@@ -84,7 +84,7 @@
 				</f:facet>
 				<h:outputText value="#{prop.equipe.nome}" />
 			</rich:column>
-			<rich:column width="25%" sortBy="#{prop.id}">
+			<rich:column width="30%" sortBy="#{prop.id}">
 				<f:facet name="header">
 					<h:outputText value="Status" />
 				</f:facet>
@@ -98,9 +98,7 @@
 				
 				
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>				
-				<h:commandLink value="Editar" 
-					action="#{propostaBean.prepararEdicao}" id="btnalterar" 
-					style="height: 40px; width: 40px" />
+				<h:commandButton value="Editar" action="#{propostaBean.prepararEdicao}" id="btnalterar"/>
 				
 			</h:column>
 		</rich:dataTable>
