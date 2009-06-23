@@ -99,11 +99,7 @@
 			<from-outcome>pesquisarProposta</from-outcome>
 			<to-view-id>/Coordenador/PesquisarProposta.jsp</to-view-id>
 		</navigation-case>
-		<!-- Tela Pesquisar Artefatos -->
-		<navigation-case>
-			<from-outcome>go_manterArtefatos</from-outcome>
-			<to-view-id>/Coordenador/PesquisarArtefatos.jsp</to-view-id>
-		</navigation-case>
+		
 			<!-- Tela Alocar Alunos -->
 		<navigation-case>
 			<from-outcome>alocarAlunoEquipe</from-outcome>
