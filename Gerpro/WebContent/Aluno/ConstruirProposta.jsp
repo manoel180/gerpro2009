@@ -9,7 +9,7 @@
 <title>Construir Proposta</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"> <!-- Início da DIV do Topo -->
 <div id="topo_linha"></div> <!-- DIV Linha Cinza -->
@@ -21,7 +21,7 @@
 <div id="menu">
 	<br />
 	<br />
-	<%@ include file=""menuAluno.jsp">
+	<%@ include file="menuAluno.jsp">
 </div>
 
 <div id="content">
@@ -30,8 +30,9 @@
 		<div align="center"><h:outputLabel value="CONSTRUIR PROPOSTA"
 			styleClass="Titulos" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 
 		<br>
 		
