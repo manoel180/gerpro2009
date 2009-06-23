@@ -9,7 +9,7 @@
 <title>Pesquisar Propostas</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -42,7 +42,9 @@
 			   
 		<h:panelGrid columns="1" cellpadding="10" style="width=100%" width="100%" rowClasses="2">
 		
-		<h:messages tooltip="true" layout="list" showDetail="true" showSummary="true" rendered="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<rich:simpleTogglePanel label="Pesquisa">
 			<h:panelGrid columns="5" id="pg">
 				<h:selectOneMenu id="tipobusca" value="#{usuarioBean.tipo}" >

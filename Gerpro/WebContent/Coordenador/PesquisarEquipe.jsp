@@ -28,6 +28,9 @@
 	<%@ include file="menuCoordenador.jsp"%></div>
 
 	<div id="content"><h:form id="form1">
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<div align="center"><h:outputLabel value="PESQUISAR EQUIPES"
 			styleClass="titulo" /></div>
 		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">

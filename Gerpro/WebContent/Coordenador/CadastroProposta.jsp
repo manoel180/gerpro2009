@@ -33,8 +33,9 @@
 	<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
 		styleClass="Titulo1" /></div>
 
-	<h:messages layout="list" styleClass="" showDetail="true"
-		showSummary="true" /> <br>
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/> <br>
 	<br>
 	<rich:toolTip for="txtdesc1" followMouse="true" zorder="90"
 		value="Inserir um nome da Proposta" /> <rich:toolTip for="equipe"

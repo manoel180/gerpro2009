@@ -10,7 +10,7 @@
 <title>Cadastro de Usuários</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -32,8 +32,9 @@
 	<div align="center"><h:outputLabel value="CADASTRO DE USUÁRIOS"
 		styleClass="Titulo1" /></div>
 
-	<h:messages layout="list" styleClass="" showDetail="true"
-		showSummary="true" /> <br>
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/> <br>
 	<br>
 	<rich:toolTip for="rbtTipo" followMouse="true" zorder="90"	value="Selecione um tipo de usuário" />
 	<rich:toolTip for="txtmat" followMouse="true" zorder="90" value="Informe a matricula" /> 

@@ -18,8 +18,9 @@
 		<div align="center"><h:outputLabel value="CADASTRO DE ARTEFATOS"
 			styleClass="titulo" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">

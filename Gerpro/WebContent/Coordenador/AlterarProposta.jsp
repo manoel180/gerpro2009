@@ -33,8 +33,9 @@
 		<div align="center"><h:outputLabel value="ALTERAR PROPOSTA"
 			styleClass="Titulo1" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatório" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<br>
 		<br>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">

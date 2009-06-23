@@ -8,11 +8,27 @@
 <head>
 <title>Cadastro de Artefatos</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="WEB-INF/css/estilos.css">
+<link rel="stylesheet" type="text/css" href="../css/gerpro.css">
 </head>
 
+<div id="topo"><!-- Início da DIV do Topo -->
+<div id="topo_linha"></div>
+<!-- DIV Linha Cinza -->
+<div id="banner"></div>
+<!-- DIV Banner Gerpro--></div>
+<!-- Fim da DIV do Topo -->
+
+
 <f:view>
-	<h:form>
+	<div id="div_corpo">
+	<div id="menu"><br />
+	<br />
+	<%@ include file="menuCoordenador.jsp"%></div>
+	<!--fim div menu-->
+	<div id="content"><h:form>
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<div align="center"><h:outputLabel value="Alterar Artefatos"	styleClass="titulo"/></div>
 		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
 			<h:panelGrid columns="5" cellpadding="5">
@@ -22,5 +38,11 @@
 				<h:commandButton value="Salvar" action="#{artefatosBean.salvar}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
-	</h:form>
+	</h:form></div>
+	</div>
 </f:view>
+
+
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
+GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
+Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

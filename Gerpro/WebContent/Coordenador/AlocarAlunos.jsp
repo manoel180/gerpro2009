@@ -10,7 +10,7 @@
 <title>Pesquisar Propostas</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -35,7 +35,8 @@
 			width="100%" rowClasses="2">
 
 			<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" />
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 			<rich:simpleTogglePanel>
 		
 				
