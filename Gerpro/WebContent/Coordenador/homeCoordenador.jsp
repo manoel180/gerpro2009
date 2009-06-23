@@ -10,7 +10,7 @@
 </head>
 
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -27,7 +27,8 @@
 	<%@include file="menuCoordenador.jsp"%></div>
 	<br />
 
-	<div id="content"><h:form>
+	<div id="content">
+	<h:form>
 
 		<div align="center"><h:outputLabel
 			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
@@ -35,7 +36,8 @@
 		Para acessar os itens de sua responsabilidade, basta escolher uma das
 		opçoes do menu, que sistema irá direcioná-lo para pagina escolhida!
 		Divirta-se</p>
-	</h:form></div>
+	</h:form>
+	</div>
 	</div>
 </f:view>
 

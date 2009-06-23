@@ -28,6 +28,7 @@
 
 	<div id="content">
 
+<h:form>
 
 	<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
 		styleClass="Titulo1" /></div>
@@ -82,6 +83,7 @@
 
 	</rich:simpleTogglePanel> 
 	</div>
+	</h:form>
 	</div>
 	
 </f:view>

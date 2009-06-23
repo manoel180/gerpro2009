@@ -3,8 +3,9 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <br>
-<h:panelGrid>
+<h:panelGrid >
 	<rich:panelMenu expandMode="ajax"  style="width:160px"  mode="ajax"
         iconExpandedGroup="disc" iconCollapsedGroup="disc" 
         iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right" 
@@ -54,7 +55,7 @@
 					action="#{corrigirPropostaBean.prepararAvaliacaoGeral7}" />
 			</rich:panelMenuGroup>
 			<rich:panelMenuItem label="Submeter Correção"
-				action="#{submeterCorrecaoBean.listaPorProfessor}" />
+				action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
 		</rich:panelMenuGroup>
 		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.prepararAlterarSenha}"/>
 		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}"/>
