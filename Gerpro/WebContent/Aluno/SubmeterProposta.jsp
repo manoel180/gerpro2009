@@ -10,7 +10,7 @@
 <title>Submeter Proposta</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -24,53 +24,49 @@
 	<div id="menu"><br />
 	<br />
 	<%@include file="menuAluno.jsp"%></div>
-	<br/>
-		
-	<div id="content">
+	<br />
 
-		<h:form>
+	<div id="content"><h:form>
 		<div align="center"><h:outputLabel value="SUBMETER PROPOSTA"
-		styleClass="Titulo1" /></div>
+			styleClass="Titulo1" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+			showSummary="true" rendered="true" errorClass="mensagem_erro"
+			infoClass="mensagem_sucesso" />
 		<br>
-		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
-				height="129" style="width: 546px">
-		
-		<rich:dataTable var="itens" id="listapropostasitens"
-			value="#{submeterPropostaBean.listaPropostaItem}"
-			binding="#{submeterPropostaBean.objDatatablePropostaItem}" rows="10"
-			width="550px" align="center">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Item"></h:outputText>
-				</f:facet>
-				<h:outputText value="#{itens.item.nome}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Status"></h:outputText>
-				</f:facet>
-				<h:outputText value="#{itens.status.nome}"
-					style="color:red; font-weight:bold; font-"></h:outputText>
-			</h:column>
-		</rich:dataTable>
-        </rich:simpleTogglePanel>
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
+			width="300" height="129" style="width: 546px">
+
+			<rich:dataTable var="itens" id="listapropostasitens"
+				value="#{submeterPropostaBean.listaPropostaItem}"
+				binding="#{submeterPropostaBean.objDatatablePropostaItem}" rows="10"
+				width="550px" align="center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Item"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{itens.item.nome}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Status"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{itens.status.nome}"
+						style="color:red; font-weight:bold; font-"></h:outputText>
+				</h:column>
+			</rich:dataTable>
+		</rich:simpleTogglePanel>
 		<h:commandButton value="Submeter"
 			disabled="#{submeterPropostaBean.desabilita}"
 			action="#{submeterPropostaBean.submeterProposta}" />
-		
+
 		<br>
-			
-	</h:form>
-		
-		</div>
+
+	</h:form></div>
 	</div>
 </f:view>
 
 
-<div class="fontBranca" id="rodape"><!-- Rodapé -->
-		<br />
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

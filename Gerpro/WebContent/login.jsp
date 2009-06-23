@@ -30,8 +30,8 @@
 		<h:outputFormat styleClass="fontAzul"
 			value="Informe seu login e senha para ter acesso ao GERPRO." />
 		<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorStyle="mensagem_erro"
-				 infoStyle="mensagem_sucesso"/>
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<br>
 		<br>
 		<h:outputText styleClass="fontAzul" value="Matricula*: "

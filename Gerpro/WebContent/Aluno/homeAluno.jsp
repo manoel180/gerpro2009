@@ -9,7 +9,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 </head>
 
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -31,7 +31,7 @@ uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
 		
 		<div align="center"><h:outputLabel value="Olá, #{usuarioBean.logado.nome}"
 		styleClass="Titulo1" /></div>
-	<p>
+	<p style="font-family: sans-serif ;" >
 	Seja bem vindo ao GERPRO.<br>
 	Para acessar os itens da sua prospota, basta escolher uma das opçoes do menu,
 	que<br>

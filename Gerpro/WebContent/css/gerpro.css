@@ -30,7 +30,7 @@ body {
 	font-family: Verdana, "Arial", Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	color: red;
+	color: #990000;
 	text-decoration: none;
 	line-height: 20px;
 }
@@ -39,7 +39,7 @@ body {
 	font-family: Verdana, "Arial", Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	color: blue;
+	color: #006699;
 	text-decoration: none;
 	line-height: 20px;
 }
