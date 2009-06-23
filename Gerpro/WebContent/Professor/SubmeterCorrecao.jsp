@@ -9,7 +9,7 @@
 <title>Missão</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -31,8 +31,9 @@
 		<div align="center"><h:outputLabel value="SUBMETER CORREÇÃO"
 			styleClass="titulo" /></div>
 
-		<h:messages layout="list" styleClass="Obrigatorio" showDetail="true"
-			showSummary="true" />
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 		<br>
 		<br>
 

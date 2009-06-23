@@ -9,7 +9,7 @@
 <title>Lista de Propostas</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -27,6 +27,9 @@
 	<br />
 	<div id="content"><h:form id="form">
 		<rich:panel>
+		<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
 			<rich:dataTable var="prop" id="listapropostas"
 				value="#{propostaBean.listaPorProfessor}"
 				binding="#{propostaBean.objDatatableProposta}">
