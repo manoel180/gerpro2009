@@ -9,7 +9,7 @@
 <title>Pesquisar Propostas</title>
 </head>
 <!--Chamada ao arquivo CSS -->
-<link href="${pageContext.request.contextPath}/css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
@@ -94,10 +94,8 @@
 					<h:outputText value="Opções" />
 				</f:facet>
 				
-				<rich:toolTip for="btnexcluir" followMouse="true" zorder="90" value="Remove uma proposta"/>
-				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>
-				<h:commandButton image="/images/delete.png" id="btnexcluir"
-					action="#{propostaBean.excluir}" style="height: 40px; width: 40px" />
+				
+				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>				
 				<h:commandButton image="/images/editar.png"
 					action="#{propostaBean.prepararEdicao}" id="btnalterar" 
 					style="height: 40px; width: 40px" />
