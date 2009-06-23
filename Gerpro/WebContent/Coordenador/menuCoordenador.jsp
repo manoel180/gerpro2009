@@ -33,7 +33,7 @@
 			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.prepararRelatorioResultadoProposta}" />
 		</rich:panelMenuGroup>
 		
-		<rich:panelMenuGroup label="Correção"> 
+		<rich:panelMenuGroup label="Correção (Modo Professor) "> 
 			<rich:panelMenuItem label="Lista de Propostas"
 				action="#{propostaBean.listaPorProfessor}" />
 			<rich:panelMenuItem label="Missão do Produto"
