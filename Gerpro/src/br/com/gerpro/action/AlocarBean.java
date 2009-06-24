@@ -114,7 +114,7 @@ public class AlocarBean {
 	
 	public void alocar() {
 		try {
-			if(listProfessores.size()>=2){
+			if(listProfessores.size()>2){
 				
 			alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
