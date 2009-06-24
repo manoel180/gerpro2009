@@ -39,10 +39,12 @@
 	<br>
 	<rich:toolTip for="txtdesc1" followMouse="true" zorder="90"
 		value="Inserir um nome da Proposta" /> <rich:toolTip for="equipe"
-		followMouse="true" zorder="90" value="Selecione uma equipe" /> 		
+		followMouse="true" zorder="90" value="Selecione uma equipe" />
+		 		
 		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90"
 		value="Inserir um Periodo" /> <rich:simpleTogglePanel focus="txtdesc1"
 		label="Dados do Cadastro" style="text-align:left">
+		
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5" id="pg">
 

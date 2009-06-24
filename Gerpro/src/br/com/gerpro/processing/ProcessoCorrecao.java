@@ -3,6 +3,7 @@
  */
 package br.com.gerpro.processing;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -209,6 +210,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	public void alteraStatusCorrecoes(List<Correcao> listaCorrecao) {		
 		for (Correcao correcao : listaCorrecao) {
 			correcao.setStatus(statusDao.procurarPorId(7));
+			correcao.setDataCorrecao(new Date());
 			correcaoDao.salvar(correcao);		
 		}
 	}

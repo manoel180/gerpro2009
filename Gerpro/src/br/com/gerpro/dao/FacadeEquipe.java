@@ -21,6 +21,8 @@ public interface FacadeEquipe {
 	public void remover (Equipe equipe);
 		
 	public List<Equipe> listar();
+	
+	public List<Equipe> listarEquipesSemProposta();
 
 	public List<Equipe> listarPorNome(String nomeEquipe);
 	

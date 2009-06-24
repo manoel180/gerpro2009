@@ -50,31 +50,37 @@ public class PropostaBean {
 	private boolean viewDes = false;
 	private boolean viewint = true;
 
-	//Variaveis proposta item
+	// Variaveis proposta item
 	private PropostaItemId PropItemId = new PropostaItemId();
 	private PropostaItem propostaItem = new PropostaItem();
-	
+
 	private FacadeProposta daoProposta = new PropostaDao();
 	private FacadePropostaItem daoPropItem = new PropostaItemDao();
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
 	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
 	private FacadeCorrecao daoCorrecao = new CorrecaoDao();
-	
-	
+
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
-		List<Equipe> le = getEquipeDao().listar();
-		List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
+		try {
+			List<Equipe> le = getEquipeDao().listarEquipesSemProposta();
+			List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
 
-		for (Equipe e : le) {
-			itens.add(new SelectItem(e.getId(), e.getNome()));
-		}// for end
-		return itens.toArray(new SelectItem[itens.size()]);
+			for (Equipe e : le) {
+				itens.add(new SelectItem(e.getId(), e.getNome()));
+			}// for end			
+			
+			
+			return itens.toArray(new SelectItem[itens.size()]);
+
+		} catch (NullPointerException e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "aviso", "equipes.nao.cadastradas");
+		}
+		return null;
 	}
-		
-	
+
 	public SelectItem[] getItensPesqCombo() {
-		List<SelectItem> itens = new ArrayList<SelectItem>(2);		
+		List<SelectItem> itens = new ArrayList<SelectItem>(2);
 		itens.add(new SelectItem(1, "Nome"));
 		itens.add(new SelectItem(2, "Equipe"));
 		return itens.toArray(new SelectItem[itens.size()]);
@@ -102,25 +108,24 @@ public class PropostaBean {
 
 		return "alterarProposta";
 	}
-	
+
 	public String prepararCorrecao() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		applicationSecurityManager.setProposta(proposta);
 		return new CorrecaoBean().prepararCorrecao();
 	}
 
-	public String irConstruirProposta(){
+	public String irConstruirProposta() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		ApplicationSecurityManager.PROPOSTA = proposta.getId().toString();
-		
+
 		return new ConstruirPropostaBean().prepararBean();
-		
+
 	}
-	
-	
+
 	public void alterarComponente() {
 
-		if (tipo.equals("1")||tipo.equals("2")) {
+		if (tipo.equals("1") || tipo.equals("2")) {
 			viewDes = true;
 			viewint = false;
 			setBusca("");
@@ -128,7 +133,7 @@ public class PropostaBean {
 
 	}
 
-	public void pesquisar() {	
+	public void pesquisar() {
 
 		if (tipo.equals("1")) {
 			listaProposta = getPropostaDao().listarPorNome(busca.toString());
@@ -146,13 +151,12 @@ public class PropostaBean {
 			proposta.setEquipe(equipe);
 			proposta.setStatus(status);
 			proposta.setDataCriacao(new Date());
-			
-			
-			if(proposta.getId()==null){
+
+			if (proposta.getId() == null) {
 				getPropostaDao().salvar(proposta);
-				
-			//Adiciona os Itens a proposta criada
-				for(int i=1;i<=6;i++){
+
+				// Adiciona os Itens a proposta criada
+				for (int i = 1; i <= 6; i++) {
 					PropItemId.setIdItem(i);
 					PropItemId.setIdProposta(proposta.getId());
 					status.setId(1);
@@ -160,30 +164,32 @@ public class PropostaBean {
 					propostaItem.setId(PropItemId);
 					getDaoPropItem().salvar(propostaItem);
 				}
-				
-				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "sucesso", "sucesso.cadastro.proposta_detail");
-				
-			}else{
-				
+
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+						"sucesso", "sucesso.cadastro.proposta_detail");
+
+			} else {
+
 				getPropostaDao().salvar(proposta);
-				
-				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "sucesso", "sucesso.cadastro.proposta_detail");
+
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+						"sucesso", "sucesso.cadastro.proposta_detail");
 			}
 		} catch (Exception e) {
-			
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "erro", "erro.cadastro.proposta_detail");			
-			
+
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "erro",
+					"erro.cadastro.proposta_detail");
+
 		}
 		return prepararBean();
-	}	
+	}
 
 	public String listaPorProfessor() {
 		Usuario usuario = applicationSecurityManager.getUsuario();
 		listaPorProfessor = getPropostaDao().listarPorProfessor(usuario);
-		
+
 		return "listarPropostas";
-	}	
-	
+	}
 
 	/*
 	 * Getters and Setters
@@ -328,7 +334,8 @@ public class PropostaBean {
 	}
 
 	/**
-	 * @param daoProposta the daoProposta to set
+	 * @param daoProposta
+	 *            the daoProposta to set
 	 */
 	public void setDaoProposta(FacadeProposta daoProposta) {
 		this.daoProposta = daoProposta;
@@ -342,7 +349,8 @@ public class PropostaBean {
 	}
 
 	/**
-	 * @param daoPropItem the daoPropItem to set
+	 * @param daoPropItem
+	 *            the daoPropItem to set
 	 */
 	public void setDaoPropItem(FacadePropostaItem daoPropItem) {
 		this.daoPropItem = daoPropItem;
@@ -356,7 +364,8 @@ public class PropostaBean {
 	}
 
 	/**
-	 * @param daoTipoFuncao the daoTipoFuncao to set
+	 * @param daoTipoFuncao
+	 *            the daoTipoFuncao to set
 	 */
 	public void setDaoTipoFuncao(FacadeTipoFuncao daoTipoFuncao) {
 		this.daoTipoFuncao = daoTipoFuncao;
@@ -370,7 +379,8 @@ public class PropostaBean {
 	}
 
 	/**
-	 * @param daoListaFuncao the daoListaFuncao to set
+	 * @param daoListaFuncao
+	 *            the daoListaFuncao to set
 	 */
 	public void setDaoListaFuncao(FacadeListaFuncao daoListaFuncao) {
 		this.daoListaFuncao = daoListaFuncao;
@@ -391,9 +401,5 @@ public class PropostaBean {
 	public void setDaoCorrecao(FacadeCorrecao daoCorrecao) {
 		this.daoCorrecao = daoCorrecao;
 	}
-	
-	
-	
-	
 
 }

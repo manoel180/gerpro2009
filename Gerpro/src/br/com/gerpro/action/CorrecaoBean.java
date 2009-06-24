@@ -265,8 +265,7 @@ public class CorrecaoBean {
 			status.setId(7);
 			correcao.setId(correcaoid);
 			correcao.setUsuario(usuario);
-			correcao.setPergunta(pergunta);
-			correcao.setDataCorrecao(new Date());
+			correcao.setPergunta(pergunta);			
 			correcao.setResposta(resposta);
 			correcao.setStatus(status);
 			getCorrecaoDao().salvar(correcao);
@@ -291,14 +290,16 @@ public class CorrecaoBean {
 		int contadorItensCorridos = 0;
 
 		for (Correcao correcao : listaCorrecao) {
-			if (correcao.getStatus().getId() == 7) {
+			if (correcao.getDataCorrecao() != null) {
 				contadorItensCorridos++;
-			}
+			}			
 		}
 
 		if (contadorItensCorridos == 8) {
+			
 			return false;
 		}
+		
 		return true;
 	}
 

@@ -72,18 +72,18 @@ public class SubmeterCorrecaoBean {
 	
 	private void verificarItens(){
 		int cont = 0;
-		for(PropostaItem propitem  : listaPropostaItem){
-			if(propitem.getStatus().getId()==6){
+		for(Correcao correcao  : listaCorrecao){
+			if(correcao.getStatus().getId() == 7){
 				cont++;								
 			}
 		}
 		
-		if(cont == 5 && (proposta.getStatus().getId()== 1) ){
+		if(cont == 8 && (proposta.getStatus().getId()== 2) ){
 			desabilita = false;
 		}
 		else{
 			desabilita = true;
-			if(cont < 5){
+			if(cont < 8){
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "itens.nao.concluidos");				
 			}else{
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "proposta.submetida");				
