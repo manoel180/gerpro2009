@@ -25,7 +25,12 @@
 </div>
 
 <div id="content">
-	<h:form>
+	<h:form>	
+		<p style="font-family: sans-serif; font-size: 14;">Esta  é a página inicial 
+		para construir sua proposta. Acessando os itens no menu ao lado, você será
+		redirecionado à todos os componentes de sua proposta que devem ser preenchidos e,
+		ao fim, poderá submetê-la para a avaliação dos professores. Bom trabalho!<br>
+	</p>
 
 		<div align="center"><h:outputLabel value="CONSTRUIR PROPOSTA"
 			styleClass="Titulos" /></div>
