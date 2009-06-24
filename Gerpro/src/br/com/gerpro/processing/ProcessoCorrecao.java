@@ -34,28 +34,43 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	 * 
 	 * @see br.com.gerpro.processing.IProcessoCorrecao#calcularStatusPropostaAtual(br.com.gerpro.model.Correcao)
 	 */
-	public void calcularStatusPropostaAtual(Usuario professor, Proposta propostaView ) {
+	public void calcularStatusPropostaAtual(Usuario professor,
+			Proposta propostaView) {
 
-		/*
-		 * Gera a lista de correcoes para todos os itens de uma determinada propostas e professor
+		/***********************************************************************
+		 * Gera a lista de correcoes para todos os itens de uma determinada
+		 * propostas e professor
 		 */
-		listaCorrecao = correcaoDao.procurarPorCorrecao(professor, propostaView);
-		
+		listaCorrecao = correcaoDao
+				.procurarPorCorrecao(professor, propostaView);
+
 		Correcao correcao = listaCorrecao.get(1);
+
+		/***********************************************************************
+		 * Objeto proposta: Objeto para armazenamento do status da proposta em
+		 * tempo de execução para uso no calcularStatusFinalProposta().
+		 * 
+		 */
 
 		Proposta proposta = propostaDao.procurarPorId(correcao
 				.getPropostaItem().getProposta().getId());
 
 		for (Correcao correcaoView : listaCorrecao) {
 
-			// Verifica��o de proposta reprovada
+			/*******************************************************************
+			 * Verificação de proposta reprovada
+			 */
 			if (correcaoView.getResposta().getId() == 2
 					&& correcaoView.getPergunta().getId() == 7) {
-				
+
 				proposta.setStatus(statusDao.procurarPorId(5));
+
 				alteraStatusCorrecoes(listaCorrecao);
+
 				calcularStatusFinalProposta(proposta);
+
 				return;
+
 			} else
 				// Primeiro FOR
 				for (Correcao correcaoView2 : listaCorrecao) {
@@ -87,7 +102,9 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					}// Fim do if
 				}// fim do primeiro FOR
 
-			// Verifica��o de proposta aprovada com ressalva
+			/*******************************************************************
+			 * Verificação de proposta aprovada com ressalva
+			 */
 			if (correcaoView.getResposta().getId() == 1
 					&& correcaoView.getPergunta().getId() == 7) {
 				for (Correcao correcaoView1 : listaCorrecao) {
@@ -102,7 +119,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 						proposta.setStatus(statusDao.procurarPorId(4));
 						calcularStatusFinalProposta(proposta);
 						alteraStatusCorrecoes(listaCorrecao);
-						
+
 						return;
 
 					}// Fim do if
@@ -110,8 +127,14 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 			}
 		}// Fim do FOR GLOBAL
 
+		/***********************************************************************
+		 * Caso a proposta não se enquadre em nenhuma das condições anteriores,
+		 * ela será aprovada. (id_status_proposta = 3)
+		 */
 		proposta.setStatus(statusDao.procurarPorId(3));
+
 		alteraStatusCorrecoes(listaCorrecao);
+
 		calcularStatusFinalProposta(proposta);
 
 	}
@@ -122,18 +145,33 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 	 * @see br.com.gerpro.processing.IProcessoCorrecao#calcularStatusFinalProposta(br.com.gerpro.model.Proposta)
 	 */
 	public void calcularStatusFinalProposta(Proposta propostaView) {
-		
+
+		/***********************************************************************
+		 * Proposta propostaView = Objeto armazenado em tempo de execução
+		 */
 		try {
-			Proposta propostaBD = propostaDao.procurarPorId(propostaView.getId());
-			
-			/***********************************************************************
+			Proposta propostaBD = propostaDao.procurarPorId(propostaView
+					.getId());
+
+			/*******************************************************************
 			 * Caso seja a primeira correcao da proposta, o sistema atualiza o
 			 * status da proposta com o status da proposta atual
 			 */
 			if (vericaSePrimeiraCorrecaodaProposta(propostaBD)) {
 				propostaBD.setStatus(propostaView.getStatus());
 				propostaDao.salvar(propostaBD);
-			} else {
+			}
+			
+			/*******************************************************************
+			 * Se o status da proposta do banco = APROVADA
+			 * 
+			 * Não sendo a primeira correcao da proposta, o sistema analisa e 
+			 * executa o seguinte procedimento:
+			 * propostaBD.status = 3 e propostaView = 3 --> statusFinalProposta = 3
+			 * propostaBD.status = 3 e propostaView = 4 --> statusFinalProposta = 3
+			 * propostaBD.status = 3 e propostaView = 5 --> statusFinalProposta = 4			 
+			 */
+			else {
 				if (propostaBD.getStatus().getId() == 3) {
 					if (propostaView.getStatus().getId() == 3) {
 						propostaBD.setStatus(statusDao.procurarPorId(3));
@@ -151,67 +189,82 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 					return;
 				}
 
-				// Se proposta do banco = APROVADA COM RESSALVA
+				/*******************************************************************
+				 * Se o status da proposta do banco = APROVADA COM RESSALVA
+				 * 
+				 * O sistema analisa e executa o seguinte procedimento:
+				 * propostaBD.status = 4 e propostaView = 3 --> statusFinalProposta = 3
+				 * propostaBD.status = 4 e propostaView = 4 --> statusFinalProposta = 4
+				 * propostaBD.status = 4 e propostaView = 5 --> statusFinalProposta = 5	
+				 */
+
 				if (propostaBD.getStatus().getId() == 4) {
 					if (propostaView.getStatus().getId() == 3) {
-						
+
 						propostaBD.setStatus(statusDao.procurarPorId(3));
-						
+
 					}
 
 					if (propostaView.getStatus().getId() == 4) {
 
 						propostaBD.setStatus(statusDao.procurarPorId(4));
-						
+
 					}
 
 					if (propostaView.getStatus().getId() == 5) {
 
 						propostaBD.setStatus(statusDao.procurarPorId(5));
-						
+
 					}
 					propostaDao.salvar(propostaBD);
 					return;
 				}
 
-				// Se proposta do banco = REPROVADA
+				/*******************************************************************
+				 * Se o status da proposta do banco = REPROVADA
+				 * 
+				 * O sistema analisa e executa o seguinte procedimento:
+				 * propostaBD.status = 5 e propostaView = 3 --> statusFinalProposta = 4
+				 * propostaBD.status = 5 e propostaView = 4 --> statusFinalProposta = 4
+				 * propostaBD.status = 4 e propostaView = 5 --> statusFinalProposta = 5	
+				 */
 				if (propostaBD.getStatus().getId() == 5) {
 					if (propostaView.getStatus().getId() == 3) {
 
 						propostaBD.setStatus(statusDao.procurarPorId(4));
-						
+
 					}
 
 					if (propostaView.getStatus().getId() == 4) {
-						
+
 						propostaBD.setStatus(statusDao.procurarPorId(4));
-						
+
 					}
 
 					if (propostaView.getStatus().getId() == 5) {
-						
+
 						propostaBD.setStatus(statusDao.procurarPorId(5));
-						
+
 					}
 					propostaDao.salvar(propostaBD);
 					return;
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();		
-		}		
+			e.printStackTrace();
+		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see br.com.gerpro.processing.IProcessoCorrecao#alteraStatusCorrecoes(br.com.gerpro.model.Proposta)
 	 */
-	public void alteraStatusCorrecoes(List<Correcao> listaCorrecao) {		
+	public void alteraStatusCorrecoes(List<Correcao> listaCorrecao) {
 		for (Correcao correcao : listaCorrecao) {
 			correcao.setStatus(statusDao.procurarPorId(7));
 			correcao.setDataCorrecao(new Date());
-			correcaoDao.salvar(correcao);		
+			correcaoDao.salvar(correcao);
 		}
 	}
 

@@ -38,7 +38,7 @@
 		<div align="center"><h:outputLabel value="CRONOGRAMA"
 			styleClass="Titulo1" /></div>
 
-		<h:messages tooltip="true" layout="list" showDetail="true"
+		<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 			
@@ -73,7 +73,7 @@
 							disabled="#{construirPropostaBean.desabilitar}" showHeader="true"
 							limitToList="true" locale="pt"
 							readonly="#{construirPropostaBean.desabilitar}"
-							minDaysInFirstWeek="6" />
+							minDaysInFirstWeek="6" required="true" />
 
 						<rich:toolTip for="art" followMouse="true" zorder="90"
 							value="Selecione um artefato" />

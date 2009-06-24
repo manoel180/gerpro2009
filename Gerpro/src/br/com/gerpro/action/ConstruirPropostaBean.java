@@ -8,8 +8,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
-import javax.persistence.PersistenceException;
-import javax.swing.JOptionPane;
 
 import br.com.gerpro.dao.FacadeArtefatos;
 import br.com.gerpro.dao.FacadeCronograma;
@@ -84,7 +82,7 @@ public class ConstruirPropostaBean {
 
 	}
 
-	// ComboBox Tipo de FunÃ§oes
+	// ComboBox Tipo de Função
 	public SelectItem[] getTipoFuncaoCombo() {
 		List<TipoFuncao> ltf = getDaoTipoFuncao().listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(ltf.size());
@@ -106,7 +104,7 @@ public class ConstruirPropostaBean {
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 
-	// Adiciona uma função na tabela de lista de funÃ§Ãµes
+	// Adiciona uma função na tabela de lista de funções
 	public void addfuncao() {
 		try {
 			if (lstlistaFuncao.indexOf(listaFuncao) == -1) {
@@ -154,7 +152,7 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);
+					"erro", "erro.inclusao");
 		}
 	}
 
@@ -169,7 +167,7 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.exclusao", null);
+					"erro", "erro.exclusao");
 		}
 
 	}
@@ -183,7 +181,7 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.inclusao", null);
+					"erro", "erro.inclusao");
 		}
 	}
 
@@ -216,7 +214,7 @@ public class ConstruirPropostaBean {
 
 				{
 					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-							"data.inicial.maior", null);
+							"erro", "data.inicial.maior");
 				} else {
 					// Adiciona um cronograma a lista
 					cronogramaId.setIdItem(5);
@@ -253,7 +251,7 @@ public class ConstruirPropostaBean {
 
 				{
 					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-							"data.inicial.maior", null);
+							"erro", "data.inicial.maior");
 				} else {
 					cronogramaId.setIdItem(5);
 					cronogramaId.setIdProposta(proposta.getId());
@@ -271,7 +269,7 @@ public class ConstruirPropostaBean {
 
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.inclusao", null);
+					"erro", "erro.inclusao");
 		}
 	}
 
@@ -282,7 +280,7 @@ public class ConstruirPropostaBean {
 			lstCronograma.remove(id);
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.exclusao", null);
+					"erro", "erro.exclusao");
 		}
 	}
 
@@ -294,7 +292,7 @@ public class ConstruirPropostaBean {
 			artefatos = cronograma.getArtefatos();			
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro.insercao", null);			
+					"erro", "erro.inclusao");
 		}		
 	}
 
@@ -311,41 +309,14 @@ public class ConstruirPropostaBean {
 	 * Metodos para MissÃ£o proposta
 	 */
 	public String prepararMissao() {
-		prepararContrucaoItemSimples(1);
-		
-//		proposta = getDaoProposta().procurarPorId(
-//				appSecurityManager.getProposta().getId());
-//		equipe = proposta.getEquipe();
-//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-//		PropItemId.setIdItem(1);
-//		PropItemId.setIdProposta(proposta.getId());
-//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-//				PropItemId);
-//		desabilitar();
+		prepararContrucaoItemSimples(1);	
+
 		return "construirMissao";
 	}
 
 	// Salvar a missao da proposta
 	public void salvarMissao() {
 		salvarConstrucaoItemSimples(1);
-
-//		equipe = proposta.getEquipe();
-//
-//		try {
-//			// Setando o Id composto do Proposta Item
-//			PropItemId.setIdItem(1);
-//			PropItemId.setIdProposta(proposta.getId());
-//			status.setId(6);
-//			propostaItem.setStatus(status);
-//			propostaItem.setId(PropItemId);
-//			getDaoPropItem().salvar(propostaItem);
-//		} catch (Exception e) {
-//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-//					"erro.insercao", null);			
-//			
-//		}
-//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-//				"sucesso.insercao", null);
 	}
 
 	public String prepararListaFuncao() {
@@ -403,83 +374,27 @@ public class ConstruirPropostaBean {
 	public String prepararJustificativa() {
 		prepararContrucaoItemSimples(3);
 		
-//		proposta = getDaoProposta().procurarPorId(
-//				appSecurityManager.getProposta().getId());
-//		equipe = proposta.getEquipe();
-//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-//		PropItemId.setIdItem(3);
-//		PropItemId.setIdProposta(proposta.getId());
-//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-//				PropItemId);
-//		desabilitar();
-		
 		return "construirJustificativa";
 	}
 
 	// OK
 	public void salvarJustificativa() {
+		
 		salvarConstrucaoItemSimples(3);
 		
-
-//		equipe = proposta.getEquipe();
-//
-//		try {
-//
-//			// Setando o Id composto do Proposta Item
-//			PropItemId.setIdItem(3);
-//			PropItemId.setIdProposta(proposta.getId());
-//			status.setId(6);
-//			propostaItem.setStatus(status);
-//			propostaItem.setId(PropItemId);
-//			getDaoPropItem().salvar(propostaItem);
-//
-//		} catch (Exception e) {
-//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-//					"erro.insercao", null);			
-//			
-//		}
-//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-//				"sucesso.insercao", null);
 	}
 
 	// OK
 	public String prepararMetodologia() {
-		prepararContrucaoItemSimples(4);
 		
-//		proposta = getDaoProposta().procurarPorId(
-//				appSecurityManager.getProposta().getId());
-//		equipe = proposta.getEquipe();
-//		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
-//		PropItemId.setIdItem(4);
-//		PropItemId.setIdProposta(proposta.getId());
-//		propostaItem = (PropostaItem) getDaoPropItem().procurarPorProposta(
-//				PropItemId);
-//		desabilitar();
+		prepararContrucaoItemSimples(4);
+
 		return "construirMetodologia";
 	}
 
 	// OK
 	public void salvarMetodologia() {
 		salvarConstrucaoItemSimples(4);
-
-//		equipe = proposta.getEquipe();
-//
-//		try {
-//			// Setando o Id composto do Proposta Item
-//			PropItemId.setIdItem(4);
-//			PropItemId.setIdProposta(proposta.getId());
-//			status.setId(6);
-//			propostaItem.setStatus(status);
-//			propostaItem.setId(PropItemId);
-//			getDaoPropItem().salvar(propostaItem);
-//
-//		}catch (Exception e) {
-//			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-//					"erro.insercao", null);			
-//			
-//		}
-//		MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-//				"sucesso.insercao", null);
 	}
 
 	// OK

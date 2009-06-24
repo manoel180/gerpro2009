@@ -31,7 +31,7 @@
 		<div align="center"><h:outputLabel value="MISSÃO DO PRODUTO"
 		styleClass="Titulo1" /></div>
 		
-		<h:messages tooltip="true" layout="list" showDetail="true"
+		<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 		<br>
@@ -45,7 +45,7 @@
 						value="Clique para inserir" />
 
 					<rich:editor height="150" id="idmissao" theme="advanced" width="490"
-						style="width: 520px" readonly="#{construirPropostaBean.desabilitar}"
+						style="width: 520px" required="true" readonly="#{construirPropostaBean.desabilitar}"
 						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
 				</h:panelGrid>
 			</rich:simpleTogglePanel>

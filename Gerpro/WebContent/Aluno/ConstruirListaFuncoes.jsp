@@ -34,7 +34,7 @@
 		<br>
     
 
-		<h:messages tooltip="true" layout="list" showDetail="true"
+		<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 
@@ -52,7 +52,7 @@
 					<h:inputTextarea
 						value="#{construirPropostaBean.listafuncaoid.numeroSequencia}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textordem"
-						style="width: 492px; height: 57px" />
+						style="width: 492px; height: 57px" required="true"/>
 
 
 					<h:outputText value="Caso de Uso:" />
@@ -61,7 +61,7 @@
 						value="clique para inserir" />
 					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textcasouso"
-						style="height: 57px; width : 492px;" />
+						style="height: 57px; width : 492px;" required="true"/>
 
 
 					<h:outputText value="Descrição:" />
@@ -71,7 +71,7 @@
 					<h:inputTextarea
 						value="#{construirPropostaBean.listaFuncao.descricao}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textdesc"
-						style="width: 492px; height: 57px" />
+						style="width: 492px; height: 57px" required="true"/>
 
 					<!-- Combobox tipo de funcao -->
 					<h:outputText value="Tipo de Função:" />
