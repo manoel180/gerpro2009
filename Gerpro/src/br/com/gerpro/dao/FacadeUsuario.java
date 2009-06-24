@@ -11,25 +11,22 @@ import br.com.gerpro.model.Usuario;
 public interface FacadeUsuario {
 	public void salvar(Usuario usuario);
 
-	public Usuario procurarPorMatricula(String matricula);
-
-	public void remover(Usuario usuario);	
+	public Usuario procurarPorMatricula(String matricula);		
 
 	public List<Usuario> listar();
 
 	public List<Usuario> listarPorNome(String nomeStatus);
 
 	public Usuario procurarPorNome(String nome);
-
 	
 	/**
 	 * @param id
-	 * @return
+	 * @return Lista de usuarios do tipo Aluno de uma determinada equipe
 	 */
 	public List<Usuario> listarPorEquipe(int id);
 
 	/**
-	 * @return
+	 * @return Lista de usuario do tipo Professor
 	 */
 	public List<Usuario> listarProfessores();
 	

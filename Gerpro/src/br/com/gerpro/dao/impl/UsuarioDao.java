@@ -147,16 +147,7 @@ public class UsuarioDao implements FacadeUsuario {
 	public Usuario procurarPorNome(String nome) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.gerpro.dao.FacadeUsuario#remover(br.com.gerpro.model.Usuario)
-	 */
-	public void remover(Usuario usuario) {
-		// TODO Auto-generated method stub
-	}
+	}	
 	
 	@SuppressWarnings("unchecked")
 	public List<Usuario> listarProfessoresParaCorrecao(){
@@ -164,11 +155,12 @@ public class UsuarioDao implements FacadeUsuario {
 
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
-		// Funcionando mas duplicando linhas
+		
 		result = session.createQuery("from Usuario as user"
 				+ " where user.tipoUsuario.id = 2"
 				+ " or user.tipoUsuario.id = 3"
-				+ " order by user.nome asc" ).list();
+				+ " order by user.nome asc" )
+				.list();
 
 		session.close();
 		return result;

@@ -165,8 +165,7 @@ public class ProcessoCorrecao implements IProcessoCorrecao {
 			/*******************************************************************
 			 * Se o status da proposta do banco = APROVADA
 			 * 
-			 * Não sendo a primeira correcao da proposta, o sistema analisa e 
-			 * executa o seguinte procedimento:
+			 * O sistema analisa e executa o seguinte procedimento:
 			 * propostaBD.status = 3 e propostaView = 3 --> statusFinalProposta = 3
 			 * propostaBD.status = 3 e propostaView = 4 --> statusFinalProposta = 3
 			 * propostaBD.status = 3 e propostaView = 5 --> statusFinalProposta = 4			 

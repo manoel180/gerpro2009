@@ -270,7 +270,8 @@ public class PropostaDao implements FacadeProposta {
 		session = HibernateUtil.getSession();
 		tx = session.beginTransaction();
 		List result = session.createQuery(
-				" from Proposta as proposta" + " where proposta.status.id = 6")
+				" from Proposta as proposta" +
+				" where proposta.status.id = 6")
 				.list();
 
 		session.close();
