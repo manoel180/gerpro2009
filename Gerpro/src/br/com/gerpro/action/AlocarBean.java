@@ -21,7 +21,7 @@ import br.com.gerpro.processing.IProcessoAlocarProposta;
 import br.com.gerpro.processing.ProcessoAlocarProposta;
 
 public class AlocarBean {
-
+	
 	private List<String> listProfessores = new ArrayList<String>();
 	private List<String> listAlunos = new ArrayList<String>();
 	private FacadeUsuario daoUsuario = new UsuarioDao();
@@ -36,12 +36,15 @@ public class AlocarBean {
 	private boolean correcaoGrupo;
 
 	public void desabilitar() {
+		
 		if (listProfessores.size() >= 2) {
 			desabilitarTodos = true;
 			desabilitar = true;
+			
 		} else {
 			desabilitarTodos = false;
 			desabilitar = false;
+			
 		}
 	}
 	
@@ -111,13 +114,19 @@ public class AlocarBean {
 	
 	public void alocar() {
 		try {
+			if(listProfessores.size()>=2){
+				
 			alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-					"sucesso", "sucesso.alocar.aluno_detail");			
-			
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"erro", "erro.alocar.proposta_professor_detail");			
+			}
+			else{
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
+						"sucesso", "sucesso.alocar.proposta_detail");
+			}
 		} catch (Exception e) {
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.aluno_detail");
+					"erro", "erro.alocar.proposta_detail");
 		}		
 	}
 	

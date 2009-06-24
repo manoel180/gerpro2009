@@ -35,7 +35,7 @@
 			width="100%" rowClasses="2">
 
 			<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				showSummary="true"  rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 			<rich:simpleTogglePanel>
 				<h:outputLabel value="Tipo de alocação" />
@@ -50,12 +50,13 @@
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
 						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
-						copyVisible="#{!alocarBean.desabilitar}"
+						copyVisible="#{!alocarBean.desabilitar}"   
 						copyAllVisible="#{!alocarBean.desabilitarTodos}"
 						value="#{alocarBean.listProfessores}">
 						<f:selectItems value="#{alocarBean.professorCombo}" />
 						<a4j:support event="onlistchange" ajaxSingle="true"
 							action="#{alocarBean.desabilitar}" reRender="pg" />
+
 					</rich:pickList>
 
 					<h:commandButton value="Alocar" disabled="#{alocarBean.desabilitarBotaoAlocar}" action="#{alocarBean.alocar}"></h:commandButton>
