@@ -31,6 +31,7 @@
 		<rich:panelMenuGroup label="Relatórios"> 
 			<rich:panelMenuItem label="Equipe x Proposta" action="#{relatorioBean.prepararRelatorioPropostaEquipe}"/>
 			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.prepararRelatorioResultadoProposta}" />
+			<rich:panelMenuItem label="Professor x Proposta" action="#{relatorioBean.prepararRelatorioProfessorProposta}" />
 		</rich:panelMenuGroup>
 		
 		<rich:panelMenuGroup label="Correção (Modo Professor) "> 

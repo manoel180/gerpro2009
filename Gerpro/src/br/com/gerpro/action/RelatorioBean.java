@@ -14,6 +14,7 @@ public class RelatorioBean {
 	private ActionRelatorio rel = new ActionRelatorio();
 	private List<Proposta> listaProposta;
 	private int tipo;
+	private boolean desabilitar1,desabilitar2,desabilitar3;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta daoProposta = new PropostaDao();
 
@@ -30,26 +31,59 @@ public class RelatorioBean {
 
 	public String prepararRelatorioPropostaEquipe() {
 
-		tipo =1;
+		tipo = 1;
+		desabilitar1 = false;
+		desabilitar2 = true;
+		desabilitar3 = true;
 		return "go_relatorio";
 	}
+
 	public String prepararRelatorioResultadoProposta() {
 
-		tipo =2;
+		tipo = 2;
+
+		desabilitar1 = true;
+		desabilitar2 = false;
+		desabilitar3 = true;
 		return "go_relatorio";
 	}
 
-    public void exibir(){
-    	if (tipo ==1){
-    		rel.gerarRelatorioProposta(proposta.getPeriodo());
-    	}else{
-    		rel.gerarRelatorioResultadosProposta(proposta.getPeriodo());
-    	}
-    }
+	public String prepararRelatorioProfessorProposta() {
+
+		tipo = 3;
+
+		desabilitar1 = true;
+		desabilitar2 = true;
+		desabilitar3 = false;
+		return "go_relatorio";
+	}
+
+	public void exibir() {
+
+		switch (tipo) {
+		case 1:
+			rel.gerarRelatorioProposta(proposta.getPeriodo());
+			break;
+		case 2:
+			rel.gerarRelatorioResultadosProposta(proposta.getPeriodo());
+			break;
+		case 3:
+			rel.gerarRelatorioProfessorProposta(proposta.getPeriodo());
+			break;
+
+		default:
+			break;
+		}
+		if (tipo == 1) {
+
+		} else {
+
+		}
+	}
+
 	/*
 	 * Getters and Setters
 	 */
-
 
 	/**
 	 * @return the listaProposta
@@ -89,11 +123,53 @@ public class RelatorioBean {
 	}
 
 	/**
-	 * @param tipo the tipo to set
+	 * @param tipo
+	 *            the tipo to set
 	 */
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 
+	/**
+	 * @return the desabilitar1
+	 */
+	public boolean isDesabilitar1() {
+		return desabilitar1;
+	}
+
+	/**
+	 * @param desabilitar1 the desabilitar1 to set
+	 */
+	public void setDesabilitar1(boolean desabilitar1) {
+		this.desabilitar1 = desabilitar1;
+	}
+
+	/**
+	 * @return the desabilitar2
+	 */
+	public boolean isDesabilitar2() {
+		return desabilitar2;
+	}
+
+	/**
+	 * @param desabilitar2 the desabilitar2 to set
+	 */
+	public void setDesabilitar2(boolean desabilitar2) {
+		this.desabilitar2 = desabilitar2;
+	}
+
+	/**
+	 * @return the desabilitar3
+	 */
+	public boolean isDesabilitar3() {
+		return desabilitar3;
+	}
+
+	/**
+	 * @param desabilitar3 the desabilitar3 to set
+	 */
+	public void setDesabilitar3(boolean desabilitar3) {
+		this.desabilitar3 = desabilitar3;
+	}
 
 }

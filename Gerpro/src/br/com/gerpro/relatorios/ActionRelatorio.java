@@ -70,7 +70,22 @@ public class ActionRelatorio {
 			System.err.println(e.getMessage());
 		}
 	}
-		
+
+	public void gerarRelatorioProfessorProposta(String periodo) {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("logo", logo.getImage());
+		params.put("periodo", periodo);
+
+		try {
+			gerarRelatorioPDF("Professor_proposta", params);
+		} catch (Exception e) {
+
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	
 	public void gerarRelatorioResultadosProposta(String periodo) {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
