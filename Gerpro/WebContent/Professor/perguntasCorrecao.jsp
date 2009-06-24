@@ -13,7 +13,7 @@
 	</h:selectOneRadio>
 	
 	<rich:editor  value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
-		theme="advanced" style="width: 20px" required="true">
+		theme="advanced"  autoResize="true" validator="" style="width: 20px" required="true">
 		<f:attribute name="fieldRef" value="Descrição" />	
 	</rich:editor>
 </rich:simpleTogglePanel>

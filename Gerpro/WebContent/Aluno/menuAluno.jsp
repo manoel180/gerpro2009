@@ -25,6 +25,6 @@
 			<rich:panelMenuItem label="Submeter Proposta"
 				action="#{submeterPropostaBean.prepararBean}" />				
 		</rich:panelMenuGroup>		
-		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
+		<rich:panelMenuGroup label="Sair" iconCollapsed="triangle" iconExpanded="triangle" action="#{usuarioBean.sairAplicacao}" />
 	</rich:panelMenu>
 </h:panelGrid>

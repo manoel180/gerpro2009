@@ -43,9 +43,9 @@
 			<h:panelGrid columns="2" id="id1">
 				<h:outputText value="Relatório" />
 				<h:selectOneRadio id="radio" layout="pageDirection" value="#{relatorioBean.tipo}">
-					<f:selectItem itemValue="1" itemLabel="Relatório Equipe x Proposta" itemDisabled="#{relatorioBean.desabilitar1}" />
-					<f:selectItem itemValue="2" itemLabel="Relatório Resultados Proposta" itemDisabled="#{relatorioBean.desabilitar2}" />
-					<f:selectItem itemValue="3" itemLabel="Relatório Professor Proposta" itemDisabled="#{relatorioBean.desabilitar3}" />
+					<f:selectItem itemValue="1" itemLabel="Relatório Equipe 	X Proposta" />
+					<f:selectItem itemValue="3" itemLabel="Relatório Professor 	X Proposta"/>
+					<f:selectItem itemValue="2" itemLabel="Relatório Resultados   Proposta"/>
 				</h:selectOneRadio>
 				
 				<h:outputText value="Periodo:" />

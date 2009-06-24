@@ -16,7 +16,7 @@
 			<rich:panelMenuItem label="Cadastrar" action="#{equipeBean.prepararInclusao}"/>
 		</rich:panelMenuGroup>
 		
-		<rich:panelMenuGroup label="Propostas">
+		<rich:panelMenuGroup label="Propostas"  expandMode="ajax" limitToList="true">
 			<rich:panelMenuItem label="Alocar"  action="#{alocarBean.prepararBean}"/>
 			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.prepararBean}" />			
 		</rich:panelMenuGroup>
@@ -28,11 +28,7 @@
 			
 		</rich:panelMenuGroup> 
 		
-		<rich:panelMenuGroup label="Relatórios"> 
-			<rich:panelMenuItem label="Equipe x Proposta" action="#{relatorioBean.prepararRelatorioPropostaEquipe}"/>
-			<rich:panelMenuItem label="Média das Proposta" action="#{relatorioBean.prepararRelatorioResultadoProposta}" />
-			<rich:panelMenuItem label="Professor x Proposta" action="#{relatorioBean.prepararRelatorioProfessorProposta}" />
-		</rich:panelMenuGroup>
+		<rich:panelMenuGroup iconCollapsed="triangle" iconExpanded="triangle" label="Relatórios"  expandMode="ajax" limitToList="true" action="#{relatorioBean.prepararRelatorio}" />
 		
 		<rich:panelMenuGroup label="Correção (Modo Professor) "> 
 			<rich:panelMenuItem label="Lista de Propostas"
@@ -59,6 +55,6 @@
 				action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
 		</rich:panelMenuGroup>
 		<rich:panelMenuGroup label="Alterar Senha" action="#{usuarioBean.prepararAlterarSenha}"/>
-		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}"/>
+		<rich:panelMenuGroup label="Sair" iconCollapsed="triangle" iconExpanded="triangle" action="#{usuarioBean.sairAplicacao}"/>
 	</rich:panelMenu>
 </h:panelGrid>

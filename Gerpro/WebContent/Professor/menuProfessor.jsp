@@ -34,7 +34,6 @@
 			<rich:panelMenuItem label="Submeter Correção"
 				action="#{corrigirPropostaBean.prepararSubmeterCorrecao}" />
 		</rich:panelMenuGroup>		
-		<rich:panelMenuGroup label="Sair" action="#{usuarioBean.sairAplicacao}" />
-
+		<rich:panelMenuGroup label="Sair" iconCollapsed="triangle" iconExpanded="triangle" action="#{usuarioBean.sairAplicacao}" />
 	</rich:panelMenu>
 </h:panelGrid>
