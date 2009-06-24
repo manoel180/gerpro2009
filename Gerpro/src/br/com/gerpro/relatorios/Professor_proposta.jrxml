@@ -41,7 +41,7 @@ ORDER BY
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<group name="professor_nome" isReprintHeaderOnEachPage="true">
-		<groupExpression><![CDATA[]]></groupExpression>
+		<groupExpression><![CDATA[$F{usuario_matricula}]]></groupExpression>
 		<groupHeader>
 			<band height="27" isSplitAllowed="false">
 				<staticText>
@@ -186,7 +186,4 @@ ORDER BY
 			</textField>
 		</band>
 	</pageFooter>
-	<summary>
-		<band/>
-	</summary>
 </jasperReport>
