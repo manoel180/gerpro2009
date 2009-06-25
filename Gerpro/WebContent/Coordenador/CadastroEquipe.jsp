@@ -8,7 +8,8 @@
 
 <head>
 <title>Cadastro de Equipe</title>
-<link rel="stylesheet" type="text/css" href="../css/gerpro.css">
+<link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="css/gerpro.css" rel="stylesheet" type="text/css" />
 </head>
 
 <div id="topo"><!-- Início da DIV do Topo -->

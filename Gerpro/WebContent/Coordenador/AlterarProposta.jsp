@@ -12,6 +12,7 @@
 
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
+<link href="css/gerpro.css" rel="stylesheet" type="text/css" />
 
 <div id="topo"><!-- Início da DIV do Topo -->
 <div id="topo_linha"></div>
