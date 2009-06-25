@@ -20,7 +20,7 @@ public class CronogramaDao implements FacadeCronograma {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
+
 	public void salvar(Cronograma cronograma) {
 		// TODO Auto-generated method stub
 	
@@ -39,7 +39,6 @@ public class CronogramaDao implements FacadeCronograma {
 	}
 
 	
-	@Override
 	public List<Cronograma> listar() {
 
 		List<Cronograma> result = null;
@@ -54,7 +53,7 @@ public class CronogramaDao implements FacadeCronograma {
 	}
 		
 		
-	@Override	
+	
 	public List<Cronograma> listarPorNome(String nomecronograma) {
 		// TODO Auto-generated method stub
 		List<Cronograma> result = null;
@@ -72,7 +71,7 @@ public class CronogramaDao implements FacadeCronograma {
 
 	   
 
-	@Override
+
 	public List<Cronograma> procurarPorId(int idProposta, int idItem) {
 		// TODO Auto-generated method stub
 		List<Cronograma> result = null;
@@ -89,7 +88,7 @@ public class CronogramaDao implements FacadeCronograma {
 		return result;
 	}
 
-	@Override
+
 	public Cronograma procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -104,7 +103,7 @@ public class CronogramaDao implements FacadeCronograma {
 		return result;
 	}
 	
-	@Override
+
 	public  void remover(Cronograma cronograma) {
 
 		try {

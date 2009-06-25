@@ -22,7 +22,7 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#salvar(br.com.gerpro.model.Proposta)
 	 */
-	@Override
+
 	public void salvar(Proposta proposta) {
 
 		try {
@@ -50,8 +50,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listar()
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Proposta> listar() {
 
 		List<Proposta> result = null;
@@ -71,8 +69,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPorProfessor(br.com.gerpro.model.Usuario)
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Proposta> listarPorProfessor(Usuario professor) {
 
 		List<Proposta> result = null;
@@ -96,8 +92,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPorNome(java.lang.String)
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Proposta> listarPorNome(String nomeProposta) {
 		// TODO Auto-generated method stub
 		List<Proposta> result = null;
@@ -115,8 +109,6 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Proposta> listarPorEquipe(String nomeEquipe) {
 		List<Proposta> result = null;
 
@@ -131,8 +123,6 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
 	public Proposta listarPorIdEquipe(int idEquipe) {
 		Proposta result = null;
 
@@ -152,7 +142,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
 	 */
-	@Override
 	public Proposta procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -171,7 +160,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorId(int)
 	 */
-	@Override
 	public List<Proposta> listarPorPeriodo(String periodo) {
 		// TODO Auto-generated method stub
 
@@ -191,7 +179,6 @@ public class PropostaDao implements FacadeProposta {
 		return result;
 	}
 
-	@Override
 	public List<Proposta> listarPeriodo() {
 		// TODO Auto-generated method stub
 
@@ -213,7 +200,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#procurarPorNome(java.lang.String)
 	 */
-	@Override
 	public Proposta procurarPorNome(String Nome) {
 
 		Proposta result = null;
@@ -230,7 +216,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#remover(br.com.gerpro.model.Proposta)
 	 */
-	@Override
 	public void remover(Proposta proposta) {
 
 		try {
@@ -264,7 +249,6 @@ public class PropostaDao implements FacadeProposta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadeProposta#listarPropostasConcluidas()
 	 */
-	@SuppressWarnings("unchecked")
 	public List listarPropostasConcluidas() {
 
 		session = HibernateUtil.getSession();

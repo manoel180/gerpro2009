@@ -24,7 +24,6 @@ public class PerguntaDao implements FacadePergunta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#salvar(br.com.gerpro.model.Pergunta)
 	 */
-	@Override
 	public void salvar(Pergunta pergunta) {
 		// TODO Auto-generated method stub
 
@@ -61,7 +60,6 @@ public class PerguntaDao implements FacadePergunta {
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#listar()
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Pergunta> listar() {
 
 		List<Pergunta> result = null;
@@ -81,8 +79,7 @@ public class PerguntaDao implements FacadePergunta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#listarPorNome(java.lang.String)
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
+	@SuppressWarnings("unchecked")	
 	public List<Pergunta> listarPorNome(String nomePergunta) {
 		// TODO Auto-generated method stub
 		List<Pergunta> result = null;
@@ -105,7 +102,7 @@ public class PerguntaDao implements FacadePergunta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#procurarPorId(int)
 	 */
-	@Override
+
 	public Pergunta procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -124,7 +121,7 @@ public class PerguntaDao implements FacadePergunta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#procurarPorNome(java.lang.String)
 	 */
-	@Override
+
 	public Pergunta procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -145,7 +142,7 @@ public class PerguntaDao implements FacadePergunta {
 	 * 
 	 * @see br.com.gerpro.dao.impl.FacadePergunta#remover(br.com.gerpro.model.Pergunta)
 	 */
-	@Override
+
 	public void remover(Pergunta pergunta) {
 
 		try {
@@ -180,7 +177,7 @@ public class PerguntaDao implements FacadePergunta {
 	/* (non-Javadoc)
 	 * @see br.com.gerpro.dao.FacadePergunta#listarPorItem(int)
 	 */
-	@Override
+
 	public List<Pergunta> listarPorItem(int id) {
 		// TODO Auto-generated method stub
 		List<Pergunta> result = null;

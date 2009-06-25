@@ -20,7 +20,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
+
 	public void salvar(TipoFuncao tipofuncao) {
 		// TODO Auto-generated method stub
 	
@@ -39,7 +39,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		}
 	}
 
-	@Override
+
 	public List<TipoFuncao> listar() {
 
 		List<TipoFuncao> result = null;
@@ -54,8 +54,7 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		return result;
 	}
 		
-		
-	@Override	
+			
 	public List<TipoFuncao> listarPorNome(String nomeTipoFuncao) {
 		// TODO Auto-generated method stub
 		List<TipoFuncao> result = null;
@@ -71,9 +70,6 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		return result;
 	}
 
-	   
-
-	@Override
 	public  TipoFuncao procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -87,7 +83,6 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		return result;
 	}
 
-	@Override
 	public TipoFuncao procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -103,7 +98,6 @@ public class TipoFuncaoDao implements FacadeTipoFuncao {
 		return result;
 	}
 	
-	@Override
 	public  void remover(TipoFuncao Tipofuncao) {
 
 		try {

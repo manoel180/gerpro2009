@@ -18,7 +18,6 @@ public class EquipeDao implements FacadeEquipe {
 	private static Session session = null;
 	private static Transaction tx = null;
 
-	@Override
 	public void salvar(Equipe equipe) {
 
 		try {
@@ -48,7 +47,7 @@ public class EquipeDao implements FacadeEquipe {
 		}
 	}
 
-	@Override
+
 	public List<Equipe> listar() {
 
 		List<Equipe> result = null;
@@ -63,7 +62,7 @@ public class EquipeDao implements FacadeEquipe {
 		return result;
 	}
 
-	@Override
+
 	public List<Equipe> listarPorNome(String nomeEquippe) {
 
 		List<Equipe> result = null;
@@ -80,7 +79,7 @@ public class EquipeDao implements FacadeEquipe {
 		return result;
 	}
 
-	@Override
+
 	public Equipe procurarPorId(int id) {
 
 		Equipe result = null;
@@ -93,7 +92,7 @@ public class EquipeDao implements FacadeEquipe {
 		return result;
 	}
 
-	@Override
+
 	public Equipe procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -109,7 +108,7 @@ public class EquipeDao implements FacadeEquipe {
 		return result;
 	}
 
-	@Override
+
 	public void remover(Equipe equipe) {
 
 		try {
@@ -129,7 +128,7 @@ public class EquipeDao implements FacadeEquipe {
 		}
 	}
 
-	@Override
+
 	public List<Equipe> listarEquipesSemProposta() {
 		
 

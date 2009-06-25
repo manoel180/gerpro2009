@@ -23,7 +23,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
+	
 	public void salvar(PropostaItem propitem) {
 		// TODO Retirar os 
 	
@@ -40,7 +40,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		}
 	}
 
-	@Override
+	
 	public List<PropostaItem> listar() {
 
 		List<PropostaItem> result = null;
@@ -55,8 +55,6 @@ public class PropostaItemDao implements FacadePropostaItem{
 		return result;
 	}
 		
-	@SuppressWarnings("unchecked")
-	@Override	
 	public List<PropostaItem> listarPorNome(String nomeEquipe) {
 		// TODO Auto-generated method stub
 		List<PropostaItem> result = null;
@@ -74,7 +72,6 @@ public class PropostaItemDao implements FacadePropostaItem{
 
 	   
 
-	@Override
 	public  PropostaItem procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -91,7 +88,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		session.close();
 		return result;
 	}
-	@Override
+	
 	public  PropostaItem procurarPorProposta(PropostaItemId id) {
 
 		PropostaItem result = null;
@@ -105,7 +102,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		return result;
 	}
 	
-	@Override
+	
 	public  List<PropostaItem> listarPoridProposta(int id) {
 
 		List<PropostaItem> result = null;
@@ -141,7 +138,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 	}
 
 
-	@Override
+	
 	public PropostaItem procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -156,7 +153,7 @@ public class PropostaItemDao implements FacadePropostaItem{
 		return result;
 	}
 	
-	@Override
+
 	public  void remover(PropostaItem propostaItem) {
 
 		try {

@@ -20,7 +20,6 @@ public class ItemDao implements FacadeItem {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
 	public void salvar(Item item) {
 		// TODO Auto-generated method stub
 	
@@ -39,7 +38,6 @@ public class ItemDao implements FacadeItem {
 		}
 	}
 
-	@Override
 	public List<Item> listar() {
 
 		List<Item> result = null;
@@ -54,7 +52,6 @@ public class ItemDao implements FacadeItem {
 		return result;
 	}
 			
-	@Override	
 	public List<Item> listarPorNome(String nomeEquippe) {
 		// TODO Auto-generated method stub
 		List<Item> result = null;
@@ -71,8 +68,6 @@ public class ItemDao implements FacadeItem {
 	}
 
 	   
-
-	@Override
 	public  Item procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -86,7 +81,6 @@ public class ItemDao implements FacadeItem {
 		return result;
 	}
 
-	@Override
 	public Item procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -102,7 +96,6 @@ public class ItemDao implements FacadeItem {
 		return result;
 	}
 	
-	@Override
 	public  void remover(Item equipe) {
 
 		try {

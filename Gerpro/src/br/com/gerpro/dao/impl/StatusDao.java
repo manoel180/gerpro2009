@@ -20,7 +20,6 @@ public class StatusDao implements FacadeStatus {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
 	public void salvar(Status equipe) {
 		// TODO Auto-generated method stub
 	
@@ -39,7 +38,6 @@ public class StatusDao implements FacadeStatus {
 		}
 	}
 
-	@Override
 	public List<Status> listar() {
 
 		List<Status> result = null;
@@ -54,8 +52,7 @@ public class StatusDao implements FacadeStatus {
 		return result;
 	}
 
-	
-	@Override	
+		
 	public List<Status> listarPorNome(String nomeEquippe) {
 		// TODO Auto-generated method stub
 		List<Status> result = null;
@@ -71,9 +68,6 @@ public class StatusDao implements FacadeStatus {
 		return result;
 	}
 
-	   
-
-	@Override
 	public  Status procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -87,7 +81,6 @@ public class StatusDao implements FacadeStatus {
 		return result;
 	}
 
-	@Override
 	public Status procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -103,7 +96,6 @@ public class StatusDao implements FacadeStatus {
 		return result;
 	}
 	
-	@Override
 	public  void remover(Status status) {
 
 		try {

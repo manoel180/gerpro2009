@@ -182,7 +182,7 @@ public class UsuarioBean {
 
 	public String excluir() {
 		usuario = (Usuario) objDatatableUsuario.getRowData();
-		getUsuarioDao().remover(usuario);
+		//getUsuarioDao().remover(usuario);
 		return prepararBean();
 	}
 

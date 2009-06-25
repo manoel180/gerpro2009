@@ -62,7 +62,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 	 * Método para carregar o item para correcao com base em um parametro
 	 * onde se especifica o item selecionado.  
 	 */
-	@Override
+
 	public Correcao procurarPorIdCorrecao(CorrecaoId idCorrecao) {		
 
 		Correcao result = null;
@@ -107,7 +107,7 @@ public class CorrecaoDao implements FacadeCorrecao {
 		return null;
 	}
 
-	@Override
+
 	public void salvar(Correcao correcao) {
 		try {
 			session = HibernateUtil.getSession();

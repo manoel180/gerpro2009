@@ -83,7 +83,6 @@ public class UsuarioDao implements FacadeUsuario {
 		return null;
 	}
 
-	@Override
 	public List<Usuario> listarPorEquipe(int id) {
 		// TODO Auto-generated method stub
 		List<Usuario> result = null;
@@ -98,7 +97,7 @@ public class UsuarioDao implements FacadeUsuario {
 		session.close();
 		return result;
 	}
-	@Override
+
 	public List<Usuario> listarProfessores() {		
 		List<Usuario> result = null;
 
@@ -112,7 +111,6 @@ public class UsuarioDao implements FacadeUsuario {
 		return result;
 	}
 
-	@Override
 	public List<Usuario> listarAlunos() {		
 		List<Usuario> result = null;
 

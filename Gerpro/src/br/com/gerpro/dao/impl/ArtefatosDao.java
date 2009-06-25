@@ -20,7 +20,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
+	//@Override
 	public void salvar(Artefatos artefatos) {
 		// TODO Auto-generated method stub
 	
@@ -41,7 +41,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 	}
 
 	
-	@Override
+	//@Override
 	public List<Artefatos> listar() {
 
 		List<Artefatos> result = null;
@@ -57,7 +57,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 	}
 		
 			
-	@Override	
+	//@Override	
 	public List<Artefatos> listarPorNome(String nomeArtefatos) {
 		// TODO Auto-generated method stub
 		List<Artefatos> result = null;
@@ -75,7 +75,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 
 	   
 
-	@Override
+	//@Override
 	public  Artefatos procurarPorId(int id) {
 		// TODO Auto-generated method stub
 
@@ -89,7 +89,7 @@ public class ArtefatosDao implements FacadeArtefatos {
 		return result;
 	}
 
-	@Override
+	//@Override
 	public Artefatos procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -105,7 +105,6 @@ public class ArtefatosDao implements FacadeArtefatos {
 		return result;
 	}
 	
-	@Override
 	public  void remover(Artefatos artefatos) {
 
 		try {

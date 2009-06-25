@@ -20,7 +20,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 	private static	Session session = null;
 	private static Transaction tx = null;
 	
-	@Override
 	public void salvar(ListaFuncao listafuncao) {
 		// TODO Auto-generated method stub
 	
@@ -39,7 +38,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 	}
 
 	
-	@Override
 	public List<ListaFuncao> listar() {
 
 		List<ListaFuncao> result = null;
@@ -55,7 +53,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 	}
 		
 		
-	@Override	
 	public List<ListaFuncao> listarPorNome(String nomelistafuncao) {
 		// TODO Auto-generated method stub
 		List<ListaFuncao> result = null;
@@ -73,7 +70,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 
 	   
 
-	@Override
 	public List<ListaFuncao> procurarPorId(int idProposta, int idItem) {
 		// TODO Auto-generated method stub
 		List<ListaFuncao> result = null;
@@ -91,7 +87,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		return result;
 	}
 
-	@Override
 	public ListaFuncao procurarPorNome(String Nome) {
 		// TODO Auto-generated method stub
 
@@ -106,7 +101,6 @@ public class ListaFuncaoDao implements FacadeListaFuncao {
 		return result;
 	}
 	
-	@Override
 	public  void remover(ListaFuncao listafuncao) {
 
 		try {
