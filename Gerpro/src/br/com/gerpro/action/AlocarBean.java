@@ -21,7 +21,7 @@ import br.com.gerpro.processing.IProcessoAlocarProposta;
 import br.com.gerpro.processing.ProcessoAlocarProposta;
 
 public class AlocarBean {
-	
+
 	private List<String> listProfessores = new ArrayList<String>();
 	private List<String> listAlunos = new ArrayList<String>();
 	private FacadeUsuario daoUsuario = new UsuarioDao();
@@ -36,27 +36,26 @@ public class AlocarBean {
 	private boolean correcaoGrupo;
 
 	public void desabilitar() {
-		
+
 		if (listProfessores.size() >= 2) {
 			desabilitarTodos = true;
 			desabilitar = true;
-			
+
 		} else {
 			desabilitarTodos = false;
 			desabilitar = false;
-			
+
 		}
 	}
-	
+
 	private void desabilitarBotaoAlocar() {
 		if (semPropostaParaAlocar()) {
 			desabilitarBotaoAlocar = true;
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-					"aviso",
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "aviso",
 					"sem.proposta.para.alocar");
 		} else {
 			desabilitarBotaoAlocar = false;
-			
+
 		}
 	}
 
@@ -65,13 +64,13 @@ public class AlocarBean {
 		desabilitarBotaoAlocar();
 		return "alocarProposta";
 	}
-	
-	public String preparaAlocarAlunoEquipe(){
-	equipe = new Equipe();
-	listAlunos = new ArrayList<String>();
+
+	public String preparaAlocarAlunoEquipe() {
+		equipe = new Equipe();
+		listAlunos = new ArrayList<String>();
 		return "alocarAlunoEquipe";
 	}
-	
+
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
 		List<Equipe> le = equipeDao.listar();
@@ -82,8 +81,7 @@ public class AlocarBean {
 		}// for end
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	
-	
+
 	// Lista de Professores
 	public SelectItem[] getProfessorCombo() {
 		List<Usuario> lu = daoUsuario.listarProfessoresParaCorrecao();
@@ -111,55 +109,61 @@ public class AlocarBean {
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
 	
-	
+	/***
+	 * Método para validar a entrada de dados da página AlocarProposta.jsp
+	 *  e aloca as propostas para os professores selecionados  
+	 */
 	public void alocar() {
 		try {
-			if(listProfessores.size()>2){
-				
-			alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.proposta_professor_detail");			
+			if (listProfessores.size() == 0) {
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+						"erro", "erro.professor.nao.selecionado_detail");
 			}
-			else{
+			if (listProfessores.size() > 2) {
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+						"erro", "erro.maximo.professor.selecionado_detail");
+			} else {
+
+				alocarProposta.alocaProposta(listProfessores, correcaoGrupo);
+
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
 						"sucesso", "sucesso.alocar.proposta_detail");
 			}
 		} catch (Exception e) {
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.proposta_detail");
-		}		
+		}
 	}
-	
+
 	public void alocarAlunos() {
-		int i=0;
+		int i = 0;
 		TipoUsuario tipoUsuario = new TipoUsuario();
 		try {
-			for (i=0;i<listAlunos.size();i++) {
-				usuario=daoUsuario.procurarPorMatricula(listAlunos.get(i).toString());
-				
+			for (i = 0; i < listAlunos.size(); i++) {
+				usuario = daoUsuario.procurarPorMatricula(listAlunos.get(i)
+						.toString());
+
 				usuario.setEquipe(equipe);
-				System.out.println(usuario.getMatricula()+" "+usuario.getEquipe().getId());
+
 				daoUsuario.salvar(usuario);
 			}
 			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
-					"sucesso", "sucesso.alocar.aluno_detail");			
-			
+					"sucesso", "sucesso.alocar.aluno_detail");
+
 		} catch (Exception e) {
-			System.out.println(e);
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-					"erro", "erro.alocar.aluno_detail");
-		}		
+
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "erro",
+					"erro.alocar.aluno_detail");
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public boolean semPropostaParaAlocar(){
-		List<Proposta> listaPropostaConcluidas = propostaDao.listarPropostasConcluidas();
-		if(listaPropostaConcluidas.isEmpty()){
+	public boolean semPropostaParaAlocar() {
+		List<Proposta> listaPropostaConcluidas = propostaDao
+				.listarPropostasConcluidas();
+		if (listaPropostaConcluidas.isEmpty()) {
 			return true;
-		}else
+		} else
 			return false;
 	}
-	
 
 	/**
 	 * @return the listProfessores
@@ -214,7 +218,8 @@ public class AlocarBean {
 	}
 
 	/**
-	 * @param correcaoGrupo the correcaoGrupo to set
+	 * @param correcaoGrupo
+	 *            the correcaoGrupo to set
 	 */
 	public void setCorrecaoGrupo(boolean correcaoGrupo) {
 		this.correcaoGrupo = correcaoGrupo;
@@ -228,7 +233,8 @@ public class AlocarBean {
 	}
 
 	/**
-	 * @param listAlunos the listAlunos to set
+	 * @param listAlunos
+	 *            the listAlunos to set
 	 */
 	public void setListAlunos(List<String> listAlunos) {
 		this.listAlunos = listAlunos;
@@ -242,7 +248,8 @@ public class AlocarBean {
 	}
 
 	/**
-	 * @param equipe the equipe to set
+	 * @param equipe
+	 *            the equipe to set
 	 */
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
@@ -256,12 +263,10 @@ public class AlocarBean {
 	}
 
 	/**
-	 * @param desabilitarBotaoAlocar the desabilitarBotaoAlocar to set
+	 * @param desabilitarBotaoAlocar
+	 *            the desabilitarBotaoAlocar to set
 	 */
 	public void setDesabilitarBotaoAlocar(boolean desabilitarBotaoAlocar) {
 		this.desabilitarBotaoAlocar = desabilitarBotaoAlocar;
 	}
-	
-	
-
 }
