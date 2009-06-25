@@ -35,7 +35,7 @@
 			infoClass="mensagem_sucesso" />
 		<br>
 		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
-			width="300" height="129" style="width: 546px">
+			width="250" height="129" style="width: 546px">
 
 			<rich:dataTable var="itens" id="listapropostasitens"
 				value="#{submeterPropostaBean.listaPropostaItem}"
@@ -49,10 +49,10 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Status"></h:outputText>
+						<h:outputText value="Status" ></h:outputText>
 					</f:facet>
 					<h:outputText value="#{itens.status.nome}"
-						style="color:red; font-weight:bold; font-"></h:outputText>
+						style="color:red; width: 5px;  font-weight:bold;"></h:outputText>
 				</h:column>
 			</rich:dataTable>
 		</rich:simpleTogglePanel>

@@ -225,10 +225,10 @@
 			<from-outcome>construirMissao</from-outcome>
 			<to-view-id>/Aluno/ConstruirMissao.jsp</to-view-id>
 		</navigation-case>
-		<navigation-case>
+		<!-- navigation-case>
 			<from-outcome>go_ConstruirProposta</from-outcome>
 			<to-view-id>/Aluno/ConstruirProposta.jsp</to-view-id>
-		</navigation-case>
+		</navigation-case -->
 		<navigation-case>
 			<from-outcome>SubmeterProposta</from-outcome>
 			<to-view-id>/Aluno/SubmeterProposta.jsp</to-view-id>

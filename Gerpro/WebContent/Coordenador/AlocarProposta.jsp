@@ -34,9 +34,10 @@
 		<h:panelGrid columns="1" cellpadding="10" style="width=100%"
 			width="100%" rowClasses="2">
 
-			<h:messages tooltip="true" layout="list" showDetail="true"
+			<h:messages layout="list" showDetail="true"
 				showSummary="true"  rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
+				 
 			<rich:simpleTogglePanel>
 				<h:outputLabel value="Tipo de alocação" />
 				<h:selectOneRadio id="radio" layout="pageDirection"
@@ -45,21 +46,32 @@
 					<f:selectItem itemValue="false" itemLabel="Individual" />
 				</h:selectOneRadio>
 
-				<h:panelGrid columns="1" id="pg">
+				<h:panelGrid  columns="1" id="pg">
+				
+				
 
 					<rich:pickList removeAllControlLabel="Remover Todos"
+					
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
+						
 						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
-						copyVisible="#{!alocarBean.desabilitar}"   
+						
+						copyVisible="#{!alocarBean.desabilitar}"
+						   
 						copyAllVisible="#{!alocarBean.desabilitarTodos}"
-						value="#{alocarBean.listProfessores}">
+						
+						value="#{alocarBean.listProfessores}" >
+						
 						<f:selectItems value="#{alocarBean.professorCombo}" />
+						
 						<a4j:support event="onlistchange" ajaxSingle="true"
-							action="#{alocarBean.desabilitar}" reRender="pg" />
+						
+							action="#{alocarBean.desabilitar}"  reRender="pg" />
 
 					</rich:pickList>
 
-					<h:commandButton value="Alocar" disabled="#{alocarBean.desabilitarBotaoAlocar}" action="#{alocarBean.alocar}"></h:commandButton>
+					<h:commandButton value="Alocar" disabled="#{alocarBean.desabilitarBotaoAlocar}"
+					 action="#{alocarBean.alocar}"></h:commandButton>
 
 				</h:panelGrid>
 

@@ -32,7 +32,7 @@
 
 		<div align="center"><h:outputLabel
 			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
-		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo ao GERPRO.<br>
+		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo ao GerPro.<br>
 		Para acessar os itens de sua responsabilidade, basta escolher uma das
 		opções do menu, que sistema irá direcioná-lo para página escolhida!
 		Divirta-se</p>

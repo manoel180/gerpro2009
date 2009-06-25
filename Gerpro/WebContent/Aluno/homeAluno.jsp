@@ -40,7 +40,7 @@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 		ao GERPRO.<br>
 		Para acessar os itens de sua prospota, basta escolher uma das opções
 		do menu, que<br>
-		sistema irá direcioná-lo a página escolhida! Divirta-se</p>
+		sistema irá direcioná-lo a página do item escolhido! Divirta-se</p>
 	</h:form></div>
 	</div>
 </f:view>

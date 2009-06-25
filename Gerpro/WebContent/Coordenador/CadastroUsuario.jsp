@@ -32,7 +32,7 @@
 	<div align="center"><h:outputLabel value="CADASTRO DE USUÁRIOS"
 		styleClass="Titulo1" /></div>
 
-	<h:messages tooltip="true" layout="list" showDetail="true"
+	<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/> <br>
 	<br>

@@ -21,63 +21,69 @@ import br.com.gerpro.model.Proposta;
 import br.com.gerpro.model.Usuario;
 
 /**
- * @author M3R Classe que implementa o processo para a aloca��o dinamica das
- *         proposta aos professores Que far�o a corre��o das mesmas.
+ *  Classe que implementa o processo para a alocação dinâmica das
+ *         proposta aos professores que farão a correção das mesmas.
  * 
+ * @author M3R 
  */
 public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
+	private int qtdeTotalPropostas;
+	private boolean correcaoEmGrupo;
+	private int qtdePropostasPorProfessor;
+	private int qtdeProfessoresSelecionados;
+	private Correcao correcao = new Correcao();
+
+	private FacadeStatus statusDao = new StatusDao();
 	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeCorrecao correcaoDao = new CorrecaoDao();
-	private FacadeStatus statusDao = new StatusDao();	
-	private int qtdeProfessoresSelecionados;
-	private int qtdeTotalPropostas;
-	private int qtdePropostasPorProfessor;
-	private boolean correcaoEmGrupo;
-	private Correcao correcao = new Correcao();
-	
 
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#alocaProposta(java.util.List, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#alocaProposta(java.util.List,
+	 *      boolean)
 	 */
 
 	@SuppressWarnings("unchecked")
-	public void alocaProposta(List<String> listaMatriculasProfessores, boolean correcaoEmGrupo) {
-		
+	public void alocaProposta(List<String> listaMatriculasProfessores,
+			boolean correcaoEmGrupo) {
+
 		setCorrecaoEmGrupo(correcaoEmGrupo);
-		List <Usuario> professoresSelecionados = new ArrayList();		
-		
+		List<Usuario> professoresSelecionados = new ArrayList();
+
 		for (String matricula : listaMatriculasProfessores) {
-			Usuario usuario = usuarioDao.procurarPorMatricula(matricula);			
-			professoresSelecionados.add(usuario);			
+			Usuario usuario = usuarioDao.procurarPorMatricula(matricula);
+			professoresSelecionados.add(usuario);
 		}
 
-		List<Proposta> listaPropostasConcluidas = propostaDao.listarPropostasConcluidas();
+		List<Proposta> listaPropostasConcluidas = propostaDao
+				.listarPropostasConcluidas();
 
 		/**
-		 *  Verifica se existe proposta na lista. Senão houver, sai do método.
+		 * Verifica se existe proposta na lista. Senão houver, sai do método.
 		 */
-		if (listaPropostasConcluidas.isEmpty()) {			
+		if (listaPropostasConcluidas.isEmpty()) {
 			return;
-
 		}
 		/**
-		 * Havendo proposta na lista, verifica quantos professores foram escolhidos para correção.
+		 * Havendo proposta na lista, verifica quantos professores foram
+		 * escolhidos para correção.
 		 */
 		else {
 			/**
 			 * Existe apenas um professor para correção
 			 */
-			if (professoresSelecionados.size() == 1) {				
+			if (professoresSelecionados.size() == 1) {
 				Usuario professor = (Usuario) professoresSelecionados.get(0);
-				
+
 				/**
-				 *  Aloca as proposta para o professor, gera as correcoes para a proposta,
-				 *  atualiza o status da proposta para "Em correcao"
-				 *  e salva a proposta no banco
+				 * Aloca as propostas para cada professor, gera as correções
+				 * para a proposta, atualiza o status da proposta para "Em
+				 * correcao" e salva a proposta no banco.
 				 */
-				for (Proposta proposta : listaPropostasConcluidas) {					
-					geraCorrecao(professor, proposta);					
+				for (Proposta proposta : listaPropostasConcluidas) {
+					geraCorrecao(professor, proposta);
 					proposta.setStatus(statusDao.procurarPorId(2));
 					propostaDao.salvar(proposta);
 
@@ -87,39 +93,38 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 			 * Existe mais de professor para correção
 			 */
 			else {
-				/***
+				/***************************************************************
 				 * Verifica se a correção é em grupo
 				 */
-				if (isCorrecaoEmGrupo()) {					
+				if (isCorrecaoEmGrupo()) {
 
 					Usuario professor1 = (Usuario) professoresSelecionados
 							.get(0);
 					Usuario professor2 = (Usuario) professoresSelecionados
 							.get(1);
-					
-					/***
-					 *  Aloca as proposta dinamicamente para os dois professores,
-					 *  gera as correcoes para as propostas,
-					 *  atualiza o status da proposta para "Em correcao"
-					 *  e salva a proposta no banco
-					 */ 
+
+					/***********************************************************
+					 * Aloca as proposta dinamicamente para os dois professores,
+					 * gera as correcoes para as propostas, atualiza o status da
+					 * proposta para "Em correcao" e salva a proposta no banco
+					 */
 					for (Proposta proposta : listaPropostasConcluidas) {
-						
+
 						geraCorrecao(professor1, proposta);
-						
+
 						geraCorrecao(professor2, proposta);
-						
+
 						proposta.setStatus(statusDao.procurarPorId(2));
-						
+
 						propostaDao.salvar(proposta);
 					}
 
 				}
-				/***
-				 *  Caso a correcao seja individual,a quantidade de propostas é
-				 *   divida pelo numero de professores.
+				/***************************************************************
+				 * Caso a correcao seja individual,a quantidade de propostas é
+				 * divida pelo numero de professores.
 				 */
-				else { 
+				else {
 					/**
 					 * Caso a quantidade de popostas seja PAR
 					 */
@@ -129,8 +134,9 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 						// professores
 						int index = 0;
 						for (int i = 0; i < listaPropostasConcluidas.size(); i++) {
-							geraCorrecao((Usuario) professoresSelecionados.get(index)
-									, listaPropostasConcluidas.get(i));							
+							geraCorrecao((Usuario) professoresSelecionados
+									.get(index), listaPropostasConcluidas
+									.get(i));
 
 							// Atualiza o status da proposta para "Em
 							// correcao"
@@ -141,12 +147,12 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 								index++;
 							} else
 								index--;
-
 						}
 
-					} else { // Caso a qtde de propostas seja �MPAR
-						// Retira a primeira proposta da lista						
-						if (listaPropostasConcluidas.size() == 1) {// Caso o
+					} else { // Caso a qtde de propostas seja ÍMPAR
+						// Retira a primeira proposta da lista
+						if (listaPropostasConcluidas.size() == 1) {
+							// Caso o
 							// numero de
 							// propostas
 							// concluiidas
@@ -157,7 +163,6 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 								geraCorrecao((Usuario) professoresSelecionados
 										.get(i), listaPropostasConcluidas
 										.get(0));
-
 							}
 
 							// Atualiza o status da proposta para "Em
@@ -175,15 +180,16 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 
 							int index = 0;
 							for (int i = 0; i < listaPropostasConcluidas.size(); i++) {
-								geraCorrecao((Usuario) professoresSelecionados.get(index)
-										, listaPropostasConcluidas.get(i));
-								System.out.println("");
+								geraCorrecao((Usuario) professoresSelecionados
+										.get(index), listaPropostasConcluidas
+										.get(i));
 
 								// Atualiza o status da proposta para "Em
 								// correcao"
 								listaPropostasConcluidas.get(i).setStatus(
 										statusDao.procurarPorId(2));
-								propostaDao.salvar(listaPropostasConcluidas.get(i));
+								propostaDao.salvar(listaPropostasConcluidas
+										.get(i));
 								if (index == 0) {
 									index++;
 								} else
@@ -193,7 +199,8 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 							// Cria um objeto para escolha randomica
 							Random seletor = new Random();
 
-							// Aloca a ultima proposta aleatoriamente para o professor escolhido
+							// Aloca a ultima proposta aleatoriamente para o
+							// professor escolhido
 							geraCorrecao((Usuario) professoresSelecionados
 									.get(seletor.nextInt(2)), proposta);
 
@@ -208,8 +215,11 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#geraCorrecao(br.com.gerpro.model.Usuario, br.com.gerpro.model.Proposta)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.gerpro.processing.IProcessoAlocarProposta#geraCorrecao(br.com.gerpro.model.Usuario,
+	 *      br.com.gerpro.model.Proposta)
 	 */
 	public void geraCorrecao(Usuario professor, Proposta proposta) {
 
@@ -260,11 +270,10 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 			// Persiste a correcao no banco de dados
 			correcaoDao.salvar(correcao);
 		}
-
 	}
 
 	/**
-	 * M�todos Get e Set para os objetos da classe.
+	 * Métodos Get e Set para os objetos da classe.
 	 * 
 	 */
 	public int getQtdeProfessoresSelecionados() {
@@ -306,5 +315,4 @@ public class ProcessoAlocarProposta implements IProcessoAlocarProposta {
 	public void setCorrecaoEmGrupo(boolean correcaoEmGrupo) {
 		this.correcaoEmGrupo = correcaoEmGrupo;
 	}
-
 }

@@ -45,6 +45,7 @@
 		<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
+				 
 		<rich:simpleTogglePanel label="Pesquisa">
 			<h:panelGrid columns="5" id="pg">
 				<h:selectOneMenu id="tipobusca" value="#{usuarioBean.tipo}" >
@@ -99,9 +100,8 @@
 				
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90" value="Alterar uma proposta"/>
 				
-				<h:commandButton image="/images/editar.png"
-					action="#{usuarioBean.prepararEdicao}" id="btnalterar" 
-					style="height: 40px; width: 40px" />
+				<h:commandButton value="Editar" action="#{usuarioBean.prepararEdicao}" id="btnalterar" 
+					 />
 				
 			</h:column>
 		</rich:dataTable>

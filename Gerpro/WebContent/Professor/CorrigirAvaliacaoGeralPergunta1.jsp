@@ -6,7 +6,7 @@
 
 
 <head>
-<title>Correção da Avaliação Geral</title>
+<title>Correção da Avaliação Geral 1</title>
 </head>
 <!--Chamada ao arquivo CSS -->
 <link href="../css/gerpro.css" rel="stylesheet" type="text/css" />
@@ -28,9 +28,9 @@
 
 	<div id="content">
 
-	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL"
+	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL - 1"
 		styleClass="Titulo1" /></div>
-	<h:messages tooltip="true" layout="list" showDetail="true"
+	<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/> <br>
 
