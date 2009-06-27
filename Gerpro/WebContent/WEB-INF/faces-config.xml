@@ -59,13 +59,7 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>erroBean</managed-bean-name>
-		<managed-bean-class>
-			br.com.gerpro.action.ErroBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+	
 	
 	<!-- Relatorio -->
 	<managed-bean>
