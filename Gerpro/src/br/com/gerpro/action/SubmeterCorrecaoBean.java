@@ -8,6 +8,7 @@ import javax.faces.component.UIData;
 
 import br.com.gerpro.dao.FacadeCorrecao;
 import br.com.gerpro.dao.FacadeProposta;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.UsuarioDao;
@@ -33,7 +34,7 @@ public class SubmeterCorrecaoBean {
 	private Status status = new Status();	
 	private FacadeProposta propostaDao = new PropostaDao() ;
 	private FacadeCorrecao correcaoDao = new CorrecaoDao() ;
-	private UsuarioDao usuarioDao = new UsuarioDao();
+	private FacadeUsuario usuarioDao = new UsuarioDao();
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private ProcessoCorrecao processoCorrecao = new ProcessoCorrecao(); 
 	
