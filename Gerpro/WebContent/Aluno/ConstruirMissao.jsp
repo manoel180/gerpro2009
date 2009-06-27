@@ -28,7 +28,8 @@
 		
 	<div id="content">
 	<h:form>		
-		<div align="center"><h:outputLabel value="MISSÃO DO PRODUTO"
+		<div align="center">
+		<h:outputLabel value="MISSÃO DO PRODUTO"
 		styleClass="Titulo1" /></div>
 		
 		<h:messages layout="list" showDetail="true"
@@ -36,7 +37,7 @@
 				 infoClass="mensagem_sucesso"/>
 		<br>
 
-		<h:panelGrid columns="3">
+		<h:panelGrid columns="2">
 			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
 				height="129" style="width: 546px">
 				<h:panelGrid columns="1" cellpadding="5">

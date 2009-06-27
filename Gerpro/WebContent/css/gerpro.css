@@ -1,3 +1,4 @@
+@CHARSET "ISO-8859-1";
 
 body {
 	margin:0px;
@@ -434,19 +435,23 @@ a.menu_superior:visited {
 	height:100%; 
 	text-align:center; 
 	float:center; 
+	margin: auto;
 	background-color:#ffffff;
 	overflow: auto;
 }
 #topo {
-	width:778px;	
+	width:776px;	
 	text-align:center; 
-	float:center; 
+	float:center;
+	margin: auto;
+	vertical-align: middle; 
 	background-color:#ffffff;
 }
 #topo_linha {
 	width:778px;
 	height:20px; 
-	text-align:center; 
+	text-align:center;
+	margin: auto; 
 	float:center; 
 	background-color:#999999;
 }
@@ -455,6 +460,7 @@ a.menu_superior:visited {
 	height:200px; 
 	text-align:center; 
 	float:center;
+	margin: auto;
 	background-image:url(../images/header-img.jpg);
 }
 #rodape {
@@ -463,6 +469,7 @@ a.menu_superior:visited {
 	text-align:center; 
 	float:center; 
 	background-color:#333333;
+	margin: auto;
 }
 #menu {
 	width:200px;	

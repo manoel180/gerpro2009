@@ -22,46 +22,40 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menuAluno.jsp"%>
-	</div>
+	<%@ include file="menuAluno.jsp"%></div>
 
-	<div id="content">
-
-	<h:form>
- <br>
-		<div align="center"><h:outputLabel value="LISTA DE FUNÇÕES"
+	<div><br>
+	<div align="center"><h:outputLabel value="LISTA DE FUNÇÕES"
 		styleClass="Titulo1" /></div>
-		<br>
-    
+	<br>
 
-		<h:messages layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
 
-		
+	<h:messages layout="list" showDetail="true" showSummary="true"
+		rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" /> 
+		<h:panelGrid columns="1">
 
-		<h:panelGrid columns="3" >
-
-			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" rendered="#{!construirPropostaBean.desabilitar}">
-				<h:panelGrid columns="1" cellpadding="5" style="width: 532px">
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
+			rendered="#{!construirPropostaBean.desabilitar}">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="5">
 
 					<h:outputText value="Ordem:" />
-					<!-- rint Textarea -->
 					<rich:toolTip for="textordem" followMouse="true" zorder="90"
 						value="clique para inserir" />
-					<h:inputTextarea
+					<rich:inputNumberSpinner
 						value="#{construirPropostaBean.listafuncaoid.numeroSequencia}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textordem"
-						style="width: 492px; height: 57px" required="true"/>
+						required="true" />
 
 
 					<h:outputText value="Caso de Uso:" />
-					<!-- rint Textarea -->
+					<!-- hint Textarea -->
 					<rich:toolTip for="textcasouso" followMouse="true" zorder="90"
 						value="clique para inserir" />
 					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textcasouso"
-						style="height: 57px; width : 492px;" required="true"/>
+						style="height: 57px; width : 100%;" required="true" />
 
 
 					<h:outputText value="Descrição:" />
@@ -71,7 +65,7 @@
 					<h:inputTextarea
 						value="#{construirPropostaBean.listaFuncao.descricao}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textdesc"
-						style="width: 492px; height: 57px" required="true"/>
+						style="width: 100%; height: 57px" required="true" />
 
 					<!-- Combobox tipo de funcao -->
 					<h:outputText value="Tipo de Função:" />
@@ -91,11 +85,10 @@
 						action="#{construirPropostaBean.addfuncao}" />
 
 				</h:panelGrid>
-			</rich:simpleTogglePanel>
-		</h:panelGrid>
-	</h:form>
-
-	<h:form>
+				</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid> 
+	 <h:form>
 		<rich:dataTable id="idtable" var="listafuncao"
 			value="#{construirPropostaBean.lstlistaFuncao}"
 			binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="5"
@@ -152,19 +145,19 @@
 			value="clique para Salvar" />
 		<rich:datascroller align="center" for="idtable" maxPages="5"
 			fastControls="show" />
-		<div align="left" style=" width : 495px;"><h:commandButton
+		<div align="left" style="width: 495px;"><h:commandButton
 			value="Salvar" id="btnsalvar"
 			disabled="#{construirPropostaBean.desabilitar}"
-			action="#{construirPropostaBean.salvarListaFuncao}" style=" width : 61px;"/> <rich:spacer
-			height="30" /> <br>
+			action="#{construirPropostaBean.salvarListaFuncao}"
+			style=" width : 61px;" /> <rich:spacer height="30" /> <br>
 		<br>
 		</div>
 		<br>
-		
+
 	</h:form>
 	</div>
 	</div>
-	
+
 </f:view>
 
 

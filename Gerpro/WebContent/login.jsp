@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="UTF-8" autoFlush="true" contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib uri="http://richfaces.ajax4jsf.org/rich" prefix="rich"%>
@@ -7,7 +7,8 @@
 <head>
 <title>Seja Bem Vindo ao GERPRO</title>
 <!--Chamada ao arquivo CSS -->
-<link rel="stylesheet" type="text/css" href="css/gerpro.css" />
+<link  rel="stylesheet" type="text/css" href="css/gerpro.css" />
+<link rel="stylesheet" type="text/css" href="../css/gerpro.css" />
 </head>
 
 
@@ -19,19 +20,20 @@
 <!-- Fim da DIV do Topo -->
 
 <f:view>
-	<div id="div_corpo" align="center"><!-- Início DIV Content  -->
+
+	<div id="div_corpo"><!-- Início DIV Content  -->
 
 	<div
 		style="width: 300px; text-align: right; float: left; vertical-align: top; margin-top: 50px"><img
 		src="images/login.jpg" /></div>
 	<div
-		style="width: 300px; text-align: left; float: left; margin-top: 50px">
+		style="width: 300px; text-align: left; float: left; margin-top: 50px; margin: auto; ">
 	<h:form>
 		<h:outputFormat styleClass="fontAzul"
 			value="Informe seu login e senha para ter acesso ao GerPro." />
 		<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
+			showSummary="true" rendered="true" errorClass="mensagem_erro"
+			infoClass="mensagem_sucesso" />
 		<br>
 		<br>
 		<h:outputText styleClass="fontAzul" value="Matricula*: "
@@ -52,11 +54,10 @@
 		<br />
 		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" />
 		<br />
-		<br />
-		</div>
-	
-		</h:form></div>
-	
+		<br /></div>
+
+	</h:form></div>
+
 </f:view>
 
 <div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
