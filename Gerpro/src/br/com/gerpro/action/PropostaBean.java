@@ -145,7 +145,7 @@ public class PropostaBean {
 
 	}
 
-	public String salvar() {
+	public void salvar() {
 		try {
 			status.setId(1);
 			proposta.setEquipe(equipe);
@@ -181,7 +181,7 @@ public class PropostaBean {
 					"erro.cadastro.proposta_detail");
 
 		}
-		return prepararBean();
+		
 	}
 
 	public String listaPorProfessor() {
