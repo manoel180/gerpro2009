@@ -50,8 +50,8 @@
 			<h:form id="form1">
 				<h:panelGrid columns="1">
 
-					<h:outputText value="Data Inicial" />
-					<rich:calendar id="dt_Inicio"
+					<h:outputText value="Data Inicial*:" styleClass="Obrigatorio" />
+					<rich:calendar id="dt_Inicio"  
 						value="#{construirPropostaBean.cronograma.dataInicial}"
 						direction="auto" firstWeekDay="1" popup="true"
 						showWeekDaysBar="true" showWeeksBar="false"
@@ -63,8 +63,8 @@
 						<f:attribute name="fieldRef" value="Data Inicial" />
 					</rich:calendar>
 
-					<h:outputText value="Data Final:" />
-					<rich:calendar id="dt_Fim"
+					<h:outputText value="Data Final*:" styleClass="Obrigatorio" />
+					<rich:calendar id="dt_Fim" 
 						value="#{construirPropostaBean.cronograma.dataFinal}"
 						direction="auto" firstWeekDay="1" popup="true"
 						showWeekDaysBar="true" showWeeksBar="false"
@@ -72,11 +72,13 @@
 						disabled="#{construirPropostaBean.desabilitar}" showHeader="true"
 						limitToList="true" locale="pt"
 						readonly="#{construirPropostaBean.desabilitar}"
-						minDaysInFirstWeek="6" required="true" />
+						minDaysInFirstWeek="6" required="true">
+						<f:attribute name="fieldRef" value="Data Final" />
+						 </rich:calendar>
 
 					<rich:toolTip for="art" followMouse="true" zorder="90"
 						value="Selecione um artefato" />
-					<h:outputText value="Artefato:" />
+					<h:outputText value="Artefato:"/>
 					<h:selectOneMenu id="art"
 						value="#{construirPropostaBean.artefatos.id}"
 						disabled="#{construirPropostaBean.desabilitar}">
@@ -131,25 +133,27 @@
 				<!-- rint botao alterar -->
 				<rich:toolTip for="btnalterar" followMouse="true" zorder="90"
 					value="Alterar" />
-				<h:commandButton image="/images/editar.png" id="btnalterar"
+				<h:commandButton value="Editar" id="btnalterar"
 					disabled="#{construirPropostaBean.desabilitar}"
-					action="#{construirPropostaBean.editCronograma}"
-					style="height: 40px; width: 40px"></h:commandButton>
+					action="#{construirPropostaBean.editCronograma}">
+					</h:commandButton>
 			</h:column>
 		</rich:dataTable>
 		<rich:datascroller align="center" for="idtable" maxPages="5"
 			page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 		<br>
-		<div align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h:commandButton
-			value="Salvar" id="btnsalvar"
-			action="#{construirPropostaBean.salvarCronograma}"
-			disabled="#{construirPropostaBean.desabilitar}" /></div>
-	</h:form> <br>
-	<h:form>
 		<!-- rint botao alterar -->
 		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
 			value="Clique para salvar" />
-	</h:form></div>
+		<div align="left">
+			<h:commandButton
+				value="Salvar" id="btnsalvar"
+				action="#{construirPropostaBean.salvarCronograma}"
+				disabled="#{construirPropostaBean.desabilitar}" />
+		</div>
+	</h:form> 
+	<br>
+	</div>
 	</div>
 
 </f:view>

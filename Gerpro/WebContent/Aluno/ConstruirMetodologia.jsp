@@ -24,48 +24,42 @@
 	<div id="menu"><br />
 	<br />
 	<%@include file="menuAluno.jsp"%></div>
-	<br/>
-		
-	<h:outputLabel value="METODOLOGIA" styleClass="Titulo1" />
-	<br>
-	<h:messages layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
+	<br />
 
-	<br>
+	<h:outputLabel value="METODOLOGIA" styleClass="Titulo1" /> <br>
+	<h:messages layout="list" showDetail="true" showSummary="true"
+		rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" /> <br>
 
-	<div id="content">
-		<h:panelGrid columns="1" width="560">
-			
-			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="99%"
-				height="129">
-				<h:form>
-					<h:panelGrid columns="1" cellpadding="5">
-						
-						<rich:editor id="idmetodologia" height="150" theme="advanced" width="500"
-							required="true" readonly="#{construirPropostaBean.desabilitar}"
-							value="#{construirPropostaBean.propostaItem.conteudoItem}" />
-					</h:panelGrid>
-				</h:form>
-			</rich:simpleTogglePanel>
-		</h:panelGrid>
-		
-          <!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-			<br>          
-        <div align="left">
-		&nbsp;&nbsp;&nbsp;<h:commandButton value="Salvar" id="btnsalvar"
-			disabled="#{construirPropostaBean.desabilitar}"
-			action="#{construirPropostaBean.salvarMetodologia}" />
-		<br>
+	<div id="content"><h:panelGrid columns="1" width="560">
+
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
+			width="99%" height="129">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="3">
+
+					<rich:editor id="idmetodologia" height="150" theme="advanced"
+						width="500" required="true"
+						readonly="#{construirPropostaBean.desabilitar}"
+						value="#{construirPropostaBean.propostaItem.conteudoItem}">
+						<f:attribute name="fieldRef" value="Metodologia" />
+					</rich:editor>
+				</h:panelGrid>
+				<!-- hint botao salvar-->
+				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+					value="clique para Salvar" />
+				<br>
+				<h:commandButton value="Salvar" id="btnsalvar"
+					disabled="#{construirPropostaBean.desabilitar}"
+					action="#{construirPropostaBean.salvarMetodologia}" />
+			</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid></div>
 	</div>
-		</div> 
 	</div>
 </f:view>
 
 
-<div class="fontBranca" id="rodape"><!-- Rodapé -->
-		<br />
+<div class="fontBranca" id="rodape"><!-- Rodapé --> <br />
 GerPro - Sistema de Gera&ccedil;&atilde;o e Apoio a
 Corre&ccedil;&atilde;o de PESw &copy; Copyright</div>

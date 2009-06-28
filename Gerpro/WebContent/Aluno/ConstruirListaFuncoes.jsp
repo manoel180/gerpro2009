@@ -31,25 +31,30 @@
 	<h:messages layout="list" showDetail="true" showSummary="true"
 		rendered="true" errorClass="mensagem_erro"
 		infoClass="mensagem_sucesso" /> <br>
-	<div id="content"><h:panelGrid columns="1" width="560">
+	<div id="content">
+	<h:panelGrid columns="1" width="560">
 
 		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
 			rendered="#{!construirPropostaBean.desabilitar}" width="99%">
 			<h:form id="form1">
 				<h:panelGrid columns="1">
 
-					<h:outputText value="Ordem:" />
+					<h:outputText value="Ordem*:" styleClass="Obrigatorio" />
 					<rich:inputNumberSpinner
 						value="#{construirPropostaBean.listafuncaoid.numeroSequencia}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textordem"
-						required="true" />
+						required="true" >
+						<f:attribute name="fieldRef" value="Ordem" />
+					</rich:inputNumberSpinner>
 
-					<h:outputText value="Caso de Uso:" />
+					<h:outputText value="Caso de Uso*:" styleClass="Obrigatorio" />
 					<rich:editor value="#{construirPropostaBean.listaFuncao.uc}"
 						theme="advanced" readonly="#{construirPropostaBean.desabilitar}"
-						id="textcasouso" required="true" width="540" />
+						id="textcasouso" required="true" width="540">
+						<f:attribute name="fieldRef" value="Caso de Uso" />
+					</rich:editor>
 
-					<h:outputText value="Descrição:" />
+					<h:outputText value="Descrição*:" styleClass="Obrigatorio"/>
 					<rich:editor value="#{construirPropostaBean.listaFuncao.descricao}"
 						theme="advanced" readonly="#{construirPropostaBean.desabilitar}"
 						id="textdesc" required="true" width="540" />
@@ -116,15 +121,14 @@
 						value="Deletar/Excluir" />
 					<rich:toolTip for="btnalterar" followMouse="true" zorder="90"
 						value="Alterar" />
-					<h:commandButton image="/images/delete.png" id="btndeletar"
+					<h:commandButton value="Excluir" id="btndeletar"
 						action="#{construirPropostaBean.delfuncao}"
-						disabled="#{construirPropostaBean.desabilitar}"
-						style="height: 40px; width: 40px">
+						disabled="#{construirPropostaBean.desabilitar}">
 					</h:commandButton>
-					<h:commandButton image="/images/editar.png" id="btnalterar"
+					<h:commandButton value="Editar" id="btnalterar"
 						action="#{construirPropostaBean.editfuncao}"
 						disabled="#{construirPropostaBean.desabilitar}"
-						style="height: 40px; width: 40px">
+						>
 					</h:commandButton>
 				</h:column>
 			</rich:dataTable>
@@ -135,10 +139,10 @@
 				value="clique para Salvar" />
 
 			<div align="left" style="width: 495px;">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h:commandButton value="Salvar"
+			<h:commandButton value="Salvar"
 				id="btnsalvar" disabled="#{construirPropostaBean.desabilitar}"
-				action="#{construirPropostaBean.salvarListaFuncao}"
-				style=" width : 61px;" /> <rich:spacer height="30" /> <br>
+				action="#{construirPropostaBean.salvarListaFuncao}" />
+			<br>
 			<br>
 			</div>
 			<br>

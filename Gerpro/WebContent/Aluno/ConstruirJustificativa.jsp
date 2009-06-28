@@ -32,27 +32,29 @@
 	<br>
 	<div id="content"><h:panelGrid columns="1" width="560">
 
-		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="99%">
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
+			width="99%">
 			<h:form>
 				<h:panelGrid columns="1" cellpadding="5">
-
-					<rich:toolTip for="idjustificativa" followMouse="true" zorder="90"
-						value="Clique para inserir" />
 
 					<rich:editor id="idjustificativa" height="150" theme="advanced"
 						width="490" required="true"
 						readonly="#{construirPropostaBean.desabilitar}"
-						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+						value="#{construirPropostaBean.propostaItem.conteudoItem}" >
+						<f:attribute name="fieldRef" value="Justificativa" />
+					</rich:editor>
+					
+					<!-- hint botao salvar-->
+					<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+						value="clique para Salvar" />
+					<h:commandButton id="btnsalvar" value="Salvar"
+						disabled="#{construirPropostaBean.desabilitar}"
+						action="#{construirPropostaBean.salvarJustificativa}" />
+					<br>
 				</h:panelGrid>
 			</h:form>
 		</rich:simpleTogglePanel>
-	</h:panelGrid> <!-- hint botao salvar--> <rich:toolTip for="btnsalvar"
-		followMouse="true" zorder="90" value="clique para Salvar" /> <br>
-	<div align="left">&nbsp;&nbsp;&nbsp;<h:commandButton
-		id="btnsalvar" value="Salvar"
-		disabled="#{construirPropostaBean.desabilitar}"
-		action="#{construirPropostaBean.salvarJustificativa}" /> <br>
-	</div>
+	</h:panelGrid></div>
 	</div>
 	</div>
 </f:view>

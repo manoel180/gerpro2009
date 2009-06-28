@@ -43,19 +43,21 @@
 					<rich:editor height="150" id="idmissao" theme="advanced"
 						width="520" required="true"
 						readonly="#{construirPropostaBean.desabilitar}"
-						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+						value="#{construirPropostaBean.propostaItem.conteudoItem}" >
+						<f:attribute name="fieldRef" value="Missão" />
+					</rich:editor>	
 				</h:panelGrid>
+				 <!-- hint botao salvar--> 
+	 <rich:toolTip for="btnsalvar"
+		followMouse="true" zorder="90" value="clique para Salvar" /> <br>
+				<h:commandButton
+		id="btnsalvar" value="Salvar"
+		disabled="#{construirPropostaBean.desabilitar}"
+		action="#{construirPropostaBean.salvarMissao}" />
 			</h:form>
 		</rich:simpleTogglePanel>
 	</h:panelGrid>
-	 <!-- hint botao salvar--> 
-	 <rich:toolTip for="btnsalvar"
-		followMouse="true" zorder="90" value="clique para Salvar" /> <br>
-	<div align="left">&nbsp;&nbsp;&nbsp;
-	<h:commandButton
-		id="btnsalvar" value="Salvar"
-		disabled="#{construirPropostaBean.desabilitar}"
-		action="#{construirPropostaBean.salvarMissao}" /><br>
+		<br>
 	</div>
 	</div>
 	</div>

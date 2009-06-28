@@ -30,9 +30,8 @@
 
 	<h:outputLabel value="SUBMETER PROPOSTA" styleClass="Titulo1" />
 
-	<h:messages layout="list" showDetail="true" showSummary="true"
-		rendered="true" errorClass="mensagem_erro"
-		infoClass="mensagem_sucesso" /> <br>
+	<h:messages layout="list" showDetail="true" showSummary="true" rendered="true" errorClass="mensagem_erro" infoClass="mensagem_sucesso"/>
+	 <br>
 	
 	<h:panelGrid columns="1" width="560">
 		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
@@ -56,13 +55,14 @@
 							style="color:red; width: 5px;  font-weight:bold;"></h:outputText>
 					</h:column>
 				</rich:dataTable>
-			</h:form>
-		</rich:simpleTogglePanel>
-
+				<br>
 		<h:commandButton value="Submeter"
 			disabled="#{submeterPropostaBean.desabilita}"
 			action="#{submeterPropostaBean.submeterProposta}" />
+		</h:form>	
+		</rich:simpleTogglePanel>
 
+		
 		<br>
 	</h:panelGrid>
 	</div>
