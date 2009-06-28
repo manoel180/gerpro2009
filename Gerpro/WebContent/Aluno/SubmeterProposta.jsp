@@ -57,8 +57,7 @@
 				</rich:dataTable>
 				<br>
 		<h:commandButton value="Submeter"
-			disabled="#{submeterPropostaBean.desabilita}"
-			action="#{submeterPropostaBean.submeterProposta}" />
+			disabled="#{submeterPropostaBean.desabilita}" action="#{submeterPropostaBean.submeterProposta}" />
 		</h:form>	
 		</rich:simpleTogglePanel>
 
