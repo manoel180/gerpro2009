@@ -30,9 +30,9 @@
 		layout="list" showDetail="true" showSummary="true" rendered="true"
 		errorClass="mensagem_erro" infoClass="mensagem_sucesso" /> <br>
 	<br>
-	<div id="content"><h:panelGrid columns="2">
+	<div id="content"><h:panelGrid columns="1" width="560">
 
-		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}">
+		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="99%">
 			<h:form>
 				<h:panelGrid columns="1" cellpadding="5">
 

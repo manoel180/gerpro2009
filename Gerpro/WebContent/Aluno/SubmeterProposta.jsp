@@ -26,43 +26,46 @@
 	<%@include file="menuAluno.jsp"%></div>
 	<br />
 
-	<div id="content"><h:form>
-		<div align="center"><h:outputLabel value="SUBMETER PROPOSTA"
-			styleClass="Titulo1" /></div>
+	<div id="content">
 
-		<h:messages layout="list" showDetail="true"
-			showSummary="true" rendered="true" errorClass="mensagem_erro"
-			infoClass="mensagem_sucesso" />
-		<br>
+	<h:outputLabel value="SUBMETER PROPOSTA" styleClass="Titulo1" />
+
+	<h:messages layout="list" showDetail="true" showSummary="true"
+		rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" /> <br>
+	
+	<h:panelGrid columns="1" width="560">
 		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
-			width="250" height="129" style="width: 546px">
-
-			<rich:dataTable var="itens" id="listapropostasitens"
-				value="#{submeterPropostaBean.listaPropostaItem}"
-				binding="#{submeterPropostaBean.objDatatablePropostaItem}" rows="10"
-				width="550px" align="center">
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Item"></h:outputText>
-					</f:facet>
-					<h:outputText value="#{itens.item.nome}"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Status" ></h:outputText>
-					</f:facet>
-					<h:outputText value="#{itens.status.nome}"
-						style="color:red; width: 5px;  font-weight:bold;"></h:outputText>
-				</h:column>
-			</rich:dataTable>
+			width="99%">
+			<h:form>
+				<rich:dataTable var="itens" id="listapropostasitens"
+					value="#{submeterPropostaBean.listaPropostaItem}"
+					binding="#{submeterPropostaBean.objDatatablePropostaItem}"
+					rows="10" width="99%" align="center">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Item"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{itens.item.nome}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Status"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{itens.status.nome}"
+							style="color:red; width: 5px;  font-weight:bold;"></h:outputText>
+					</h:column>
+				</rich:dataTable>
+			</h:form>
 		</rich:simpleTogglePanel>
+
 		<h:commandButton value="Submeter"
 			disabled="#{submeterPropostaBean.desabilita}"
 			action="#{submeterPropostaBean.submeterProposta}" />
 
 		<br>
-
-	</h:form></div>
+	</h:panelGrid>
+	</div>
 	</div>
 </f:view>
 

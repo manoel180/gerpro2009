@@ -26,32 +26,27 @@
 	<%@include file="menuAluno.jsp"%></div>
 	<br/>
 		
-	<div id="content"><h:form>
-
-		
-		<div align="center"><h:outputLabel value="METODOLOGIA"
-		styleClass="Titulo1" /></div>
-		
-		<h:messages layout="list" showDetail="true"
+	<h:outputLabel value="METODOLOGIA" styleClass="Titulo1" />
+	<br>
+	<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 
-		<br>
+	<br>
 
-		<h:panelGrid columns="3">
-		
-
-			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="300"
-				height="129" style="width: 546px">
-				<h:panelGrid columns="1" cellpadding="5">
-					<h:outputText value="Metodologia:" />
-					<rich:toolTip for="idmetodologia" followMouse="true" zorder="90"
-						value="Clique para inserir" />
-
-					<rich:editor id="idmetodologia" height="150" theme="advanced" width="490"
-						style="width: 520px" required="true" readonly="#{construirPropostaBean.desabilitar}"
-						value="#{construirPropostaBean.propostaItem.conteudoItem}" />
-				</h:panelGrid>
+	<div id="content">
+		<h:panelGrid columns="1" width="560">
+			
+			<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}" width="99%"
+				height="129">
+				<h:form>
+					<h:panelGrid columns="1" cellpadding="5">
+						
+						<rich:editor id="idmetodologia" height="150" theme="advanced" width="500"
+							required="true" readonly="#{construirPropostaBean.desabilitar}"
+							value="#{construirPropostaBean.propostaItem.conteudoItem}" />
+					</h:panelGrid>
+				</h:form>
 			</rich:simpleTogglePanel>
 		</h:panelGrid>
 		
@@ -64,8 +59,7 @@
 			disabled="#{construirPropostaBean.desabilitar}"
 			action="#{construirPropostaBean.salvarMetodologia}" />
 		<br>
-	</h:form>
-	
+	</div>
 		</div> 
 	</div>
 </f:view>
