@@ -11,5 +11,5 @@
 <ui:insert name="titulo"></ui:insert>
 </head>
 <body>    
-    <h:graphicImage url="/images/header-img.jpg" width="778" height="200" />
+    <h:graphicImage url="/images/header-img2.jpg" width="778"/>
 </body>
