@@ -24,48 +24,38 @@
 	<br />
 	<%@ include file="menuAluno.jsp"%></div>
 
-	<div><br>
-	<div align="center"><h:outputLabel value="LISTA DE FUNÇÕES"
-		styleClass="Titulo1" /></div>
+	<div>
 	<br>
-
-
+		<h:outputLabel value="LISTA DE FUNÇÕES" styleClass="Titulo1" />
+	<br>
+	<br>
+	
 	<h:messages layout="list" showDetail="true" showSummary="true"
-		rendered="true" errorClass="mensagem_erro"
-		infoClass="mensagem_sucesso" /> 
-		<h:panelGrid columns="1">
+		rendered="true" errorClass="mensagem_erro" infoClass="mensagem_sucesso" /> 
+		
+		<h:panelGrid columns="1" width="570px">
 
 		<rich:simpleTogglePanel label="#{construirPropostaBean.proposta.nome}"
 			rendered="#{!construirPropostaBean.desabilitar}">
 			<h:form>
-				<h:panelGrid columns="1" cellpadding="5">
+				<h:panelGrid columns="1">
 
 					<h:outputText value="Ordem:" />
-					<rich:toolTip for="textordem" followMouse="true" zorder="90"
-						value="clique para inserir" />
 					<rich:inputNumberSpinner
 						value="#{construirPropostaBean.listafuncaoid.numeroSequencia}"
 						disabled="#{construirPropostaBean.desabilitar}" id="textordem"
-						required="true" />
-
+						required="true"/>
 
 					<h:outputText value="Caso de Uso:" />
-					<!-- hint Textarea -->
-					<rich:toolTip for="textcasouso" followMouse="true" zorder="90"
-						value="clique para inserir" />
-					<h:inputTextarea value="#{construirPropostaBean.listaFuncao.uc}"
-						disabled="#{construirPropostaBean.desabilitar}" id="textcasouso"
-						style="height: 57px; width : 100%;" required="true" />
-
-
+					<rich:editor value="#{construirPropostaBean.listaFuncao.uc}" theme="advanced"
+						readonly="#{construirPropostaBean.desabilitar}" id="textcasouso"
+						required="true" width="540"/>
+						
 					<h:outputText value="Descrição:" />
-					<!-- rint Textarea -->
-					<rich:toolTip for="textdesc" followMouse="true" zorder="90"
-						value="clique para inserir" />
-					<h:inputTextarea
-						value="#{construirPropostaBean.listaFuncao.descricao}"
-						disabled="#{construirPropostaBean.desabilitar}" id="textdesc"
-						style="width: 100%; height: 57px" required="true" />
+					<rich:editor 
+						value="#{construirPropostaBean.listaFuncao.descricao}" theme="advanced"
+						readonly="#{construirPropostaBean.desabilitar}" id="textdesc"
+						required="true" width="540"/>
 
 					<!-- Combobox tipo de funcao -->
 					<h:outputText value="Tipo de Função:" />
@@ -83,16 +73,15 @@
 					<h:commandButton value="Adicionar" id="btnadd"
 						disabled="#{construirPropostaBean.desabilitar}"
 						action="#{construirPropostaBean.addfuncao}" />
-
 				</h:panelGrid>
 				</h:form>
 		</rich:simpleTogglePanel>
-	</h:panelGrid> 
+	 
 	 <h:form>
 		<rich:dataTable id="idtable" var="listafuncao"
 			value="#{construirPropostaBean.lstlistaFuncao}"
 			binding="#{construirPropostaBean.objDatatableListaFuncao}" rows="5"
-			align="center" style=" width : 492px;">
+			align="center" width="99%">
 			<rich:column sortBy="#{listafuncao.id.numeroSequencia}">
 				<f:facet name="header">
 					<h:outputText value="Ordem" />
@@ -104,14 +93,14 @@
 				<f:facet name="header">
 					<h:outputText value="Caso de Uso" />
 				</f:facet>
-				<h:outputText value="#{listafuncao.uc}" />
+				<h:outputLabel escape="false"  value="#{listafuncao.uc}" />
 			</rich:column>
 
 			<rich:column sortBy="#{listafuncao.descricao}">
 				<f:facet name="header">
-					<h:outputText value="Descrição" />
+					<h:outputFormat value="Descrição" />
 				</f:facet>
-				<h:outputText value="#{listafuncao.descricao}" />
+				<h:outputLabel escape="false" value="#{listafuncao.descricao}"/>
 			</rich:column>
 
 			<rich:column sortBy="#{listafuncao.tipoFuncao.nome}">
@@ -133,11 +122,13 @@
 				<h:commandButton image="/images/delete.png" id="btndeletar"
 					action="#{construirPropostaBean.delfuncao}"
 					disabled="#{construirPropostaBean.desabilitar}"
-					style="height: 40px; width: 40px"></h:commandButton>
+					style="height: 40px; width: 40px">
+				</h:commandButton>
 				<h:commandButton image="/images/editar.png" id="btnalterar"
 					action="#{construirPropostaBean.editfuncao}"
 					disabled="#{construirPropostaBean.desabilitar}"
-					style="height: 40px; width: 40px"></h:commandButton>
+					style="height: 40px; width: 40px">
+				</h:commandButton>
 			</h:column>
 		</rich:dataTable>
 		<!-- hint botao salvar-->
@@ -145,7 +136,9 @@
 			value="clique para Salvar" />
 		<rich:datascroller align="center" for="idtable" maxPages="5"
 			fastControls="show" />
-		<div align="left" style="width: 495px;"><h:commandButton
+		<div align="left" style="width: 495px;">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<h:commandButton
 			value="Salvar" id="btnsalvar"
 			disabled="#{construirPropostaBean.desabilitar}"
 			action="#{construirPropostaBean.salvarListaFuncao}"
@@ -155,6 +148,7 @@
 		<br>
 
 	</h:form>
+	</h:panelGrid>
 	</div>
 	</div>
 
