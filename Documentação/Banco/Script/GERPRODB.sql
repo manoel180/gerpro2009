@@ -30,23 +30,24 @@ CREATE TABLE `artefatos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artefatos`
 --
 
 /*!40000 ALTER TABLE `artefatos` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `artefatos` (`id`,`nome`) VALUES 
- (1,'PESW'),
- (2,'Elaboração'),
- (3,'Relatório I'),
- (4,'Elaboração - Projeto DDSW'),
- (5,'Construção Implementação'),
- (6,'Elaboração - MUSW'),
- (7,'Relatório Final II'),
- (8,'Manual do Usuário'),
- (9,'Defesa Final II');
+ (1,'Elaboração'),
+ (2,'Relatório I'),
+ (3,'Elaboração - Projeto DDSW'),
+ (4,'Construção Implementação'),
+ (5,'Elaboração - MUSW'),
+ (6,'Relatório Final II'),
+ (7,'Manual do Usuário'),
+ (8,'Defesa Final II');
+COMMIT;
 /*!40000 ALTER TABLE `artefatos` ENABLE KEYS */;
 
 
@@ -81,6 +82,8 @@ CREATE TABLE `correcao` (
 --
 
 /*!40000 ALTER TABLE `correcao` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `correcao` ENABLE KEYS */;
 
 
@@ -101,13 +104,15 @@ CREATE TABLE `cronograma` (
   KEY `FK_cronograma_2` (`id_artefatos`),
   CONSTRAINT `FK_cronograma_1` FOREIGN KEY (`id_proposta`, `id_item`) REFERENCES `proposta_item` (`id_proposta`, `id_item`),
   CONSTRAINT `FK_cronograma_2` FOREIGN KEY (`id_artefatos`) REFERENCES `artefatos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cronograma`
 --
 
 /*!40000 ALTER TABLE `cronograma` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `cronograma` ENABLE KEYS */;
 
 
@@ -119,14 +124,17 @@ DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE `equipe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Index_2` (`nome`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `equipe`
 --
 
 /*!40000 ALTER TABLE `equipe` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `equipe` ENABLE KEYS */;
 
 
@@ -146,6 +154,7 @@ CREATE TABLE `item` (
 --
 
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `item` (`id`,`nome`) VALUES 
  (1,'Missão do Produto'),
  (2,'Lista de Funções'),
@@ -153,6 +162,7 @@ INSERT INTO `item` (`id`,`nome`) VALUES
  (4,'Metodologia'),
  (5,'Cronograma'),
  (6,'Avaliação Geral');
+COMMIT;
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 
 
@@ -181,6 +191,8 @@ CREATE TABLE `lista_funcao` (
 --
 
 /*!40000 ALTER TABLE `lista_funcao` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `lista_funcao` ENABLE KEYS */;
 
 
@@ -203,6 +215,7 @@ CREATE TABLE `pergunta` (
 --
 
 /*!40000 ALTER TABLE `pergunta` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `pergunta` (`id`,`descricao`,`id_item`) VALUES 
  (1,'Apresentação e estilo (bem organizado, claro, correção gramatical e ortográfica), coesão e coerência textual?',6),
  (2,'Trabalho de acordo com os padrões de escrita definidos?',6),
@@ -212,6 +225,7 @@ INSERT INTO `pergunta` (`id`,`descricao`,`id_item`) VALUES
  (6,'Metodologia coerente com os objetivos definidos e adequada abrangência do tema?',4),
  (7,'Sistema pertencente ao grupo de trabalhos aceitos?',6),
  (8,'As datas estão coesas?',5);
+COMMIT;
 /*!40000 ALTER TABLE `pergunta` ENABLE KEYS */;
 
 
@@ -234,13 +248,15 @@ CREATE TABLE `proposta` (
   KEY `FK_proposta_1` (`id_status_proposta`) USING BTREE,
   CONSTRAINT `FK_proposta_1` FOREIGN KEY (`id_status_proposta`) REFERENCES `status` (`id`),
   CONSTRAINT `FK_proposta_2` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proposta`
 --
 
 /*!40000 ALTER TABLE `proposta` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `proposta` ENABLE KEYS */;
 
 
@@ -261,13 +277,15 @@ CREATE TABLE `proposta_item` (
   CONSTRAINT `FK_proposta_item_3` FOREIGN KEY (`id_status_criacao`) REFERENCES `status` (`id`),
   CONSTRAINT `proposta_item_ibfk_1` FOREIGN KEY (`id_proposta`) REFERENCES `proposta` (`id`),
   CONSTRAINT `proposta_item_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proposta_item`
 --
 
 /*!40000 ALTER TABLE `proposta_item` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
+COMMIT;
 /*!40000 ALTER TABLE `proposta_item` ENABLE KEYS */;
 
 
@@ -287,9 +305,11 @@ CREATE TABLE `resposta` (
 --
 
 /*!40000 ALTER TABLE `resposta` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `resposta` (`id`,`descricao`) VALUES 
  (1,'SIM'),
  (2,'NÃO');
+COMMIT;
 /*!40000 ALTER TABLE `resposta` ENABLE KEYS */;
 
 
@@ -309,6 +329,7 @@ CREATE TABLE `status` (
 --
 
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `status` (`id`,`nome`) VALUES 
  (1,'Em construção'),
  (2,'Em correção'),
@@ -317,6 +338,7 @@ INSERT INTO `status` (`id`,`nome`) VALUES
  (5,'Reprovado'),
  (6,'Concluído'),
  (7,'Corrigido');
+COMMIT;
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 
 
@@ -337,10 +359,12 @@ CREATE TABLE `tipo_funcao` (
 --
 
 /*!40000 ALTER TABLE `tipo_funcao` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `tipo_funcao` (`id`,`nome`,`abreviatura`) VALUES 
  (1,'Manter','M'),
  (2,'Processamento','P'),
  (3,'Relatório','R');
+COMMIT;
 /*!40000 ALTER TABLE `tipo_funcao` ENABLE KEYS */;
 
 
@@ -361,10 +385,12 @@ CREATE TABLE `tipo_usuario` (
 --
 
 /*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `tipo_usuario` (`id`,`nome`) VALUES 
  (1,'Aluno'),
  (2,'Professor'),
  (3,'Coordenador');
+COMMIT;
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
 
 
@@ -378,7 +404,7 @@ CREATE TABLE `usuario` (
   `nome` varchar(80) NOT NULL,
   `id_equipe` int(11) DEFAULT NULL,
   `id_tipo` int(11) NOT NULL,
-  `senha` varchar(10) NOT NULL DEFAULT '123',
+  `senha` varchar(33) NOT NULL DEFAULT '202CB962AC59075B964B07152D234B70',
   PRIMARY KEY (`matricula`) USING BTREE,
   KEY `FK_usuario_1` (`id_equipe`),
   KEY `FK_usuario_3` (`id_tipo`),
@@ -391,8 +417,10 @@ CREATE TABLE `usuario` (
 --
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+SET AUTOCOMMIT=0;
 INSERT INTO `usuario` (`matricula`,`nome`,`id_equipe`,`id_tipo`,`senha`) VALUES 
- ('1','master',NULL,3,'123');
+ ('1','admin',NULL,3,'21232F297A57A5A743894A0E4A801FC3');
+COMMIT;
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 
