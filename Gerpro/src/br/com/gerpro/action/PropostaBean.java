@@ -181,6 +181,7 @@ public class PropostaBean {
 					"erro.cadastro.proposta_detail");
 
 		}
+		proposta = new Proposta();
 		
 	}
 
