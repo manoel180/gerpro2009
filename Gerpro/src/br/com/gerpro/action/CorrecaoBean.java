@@ -15,12 +15,14 @@ import br.com.gerpro.dao.FacadeListaFuncao;
 import br.com.gerpro.dao.FacadePergunta;
 import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.CronogramaDao;
 import br.com.gerpro.dao.impl.ListaFuncaoDao;
 import br.com.gerpro.dao.impl.PerguntaDao;
 import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
+import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.CorrecaoId;
@@ -69,6 +71,7 @@ public class CorrecaoBean {
 	private Status status = new Status();
 	private Proposta proposta = new Proposta();
 	private Pergunta pergunta = new Pergunta();
+
 
 	/***************************************************************************
 	 * Método para desabilitar a opção de correcao dos itens da proposta
@@ -131,9 +134,9 @@ public class CorrecaoBean {
 	}
 
 	public String prepararCorrecao() {
-		Proposta proposta = applicationSecurityManager.getProposta();
-		Status status = proposta.getStatus();
-		Equipe equipe = proposta.getEquipe();
+		
+		proposta = applicationSecurityManager.getProposta();
+		
 		SubmeterPropostaBean submeterPropostaBean = new SubmeterPropostaBean();
 		submeterPropostaBean.setProposta(proposta);
 		return "corrigirProposta";
@@ -596,5 +599,7 @@ public class CorrecaoBean {
 	public void setLstCronograma(List<Cronograma> lstCronograma) {
 		this.lstCronograma = lstCronograma;
 	}
+
+	
 
 }
