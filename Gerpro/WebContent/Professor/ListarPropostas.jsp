@@ -23,15 +23,20 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<br>
 	<%@include file="menuProfessor.jsp"%></div>
-	<br />
-	<div id="content"><h:form id="form">
-		<rich:panel>
-		<h:messages tooltip="true" layout="list" showDetail="true"
+	<br>
+	
+	<h:outputLabel styleClass="Titulo1" value="LISTA DE PROPOSTAS"/>
+	<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
-			<rich:dataTable var="prop" id="listapropostas"
+	<br>
+	<br>
+	<div id="content">
+	<h:form id="form">
+		<h:panelGrid columns="1" cellpadding="5" width="560" >
+		
+			<rich:dataTable var="prop" id="listapropostas" width="99%"
 				value="#{propostaBean.listaPorProfessor}"
 				binding="#{propostaBean.objDatatableProposta}">
 
@@ -73,7 +78,7 @@
 					</h:commandLink>
 				</h:column>
 			</rich:dataTable>
-		</rich:panel>
+		</h:panelGrid>
 	</h:form></div>
 	</div>
 </f:view>

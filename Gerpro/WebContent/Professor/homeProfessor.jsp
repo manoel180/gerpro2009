@@ -31,8 +31,8 @@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 
 	<div id="content">
 		<h:form>
-			<div align="center"><h:outputLabel
-			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" /></div>
+			<h:outputLabel
+			value="Olá, #{usuarioBean.logado.nome}" styleClass="Titulo1" />
 		<p style="font-family: sans-serif; font-size: 14;">Seja bem vindo
 		ao GerPro.<br>
 		Para acessar os itens de sua responsabilidade, basta escolher uma das

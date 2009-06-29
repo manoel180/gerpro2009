@@ -23,31 +23,27 @@
 <f:view>
 	<div id="div_corpo">
 	<div id="menu"><br />
-	<br />
+	
 	<br>
 	<%@include file="menuProfessor.jsp"%></div>
 	<br />
-
-	<div id="content">
-
-
-
-	<div align="center"><h:outputLabel value="CORREÇAO CRONOGRAMA"
-		styleClass="Titulo1" /></div>
+	<h:outputLabel value="CORREÇAO CRONOGRAMA"
+		styleClass="Titulo1" />
 
 	<h:messages tooltip="true" layout="list" showDetail="true"
 		showSummary="true" rendered="true" errorClass="mensagem_erro"
-		infoClass="mensagem_sucesso" /> <br>
+		infoClass="mensagem_sucesso" /> <br><br>
 
-	<h:panelGrid columns="5">
+	<div id="content">
 
+	<h:panelGrid columns="1" width="560">
 
-		<rich:simpleTogglePanel width="558px"
+		<rich:simpleTogglePanel width="99%"
 			label="#{corrigirPropostaBean.proposta.nome}">
 			<h:form>
 				<rich:dataTable id="idtable" var="lstCronograma"
 					value="#{corrigirPropostaBean.lstCronograma}" rows="10"
-					width="515px" align="center">
+					width="99%" align="center">
 					<rich:column sortBy="#{lstCronograma.dataInicial}">
 						<f:facet name="header">
 							<h:outputText value="Data Inicial" />
@@ -80,18 +76,10 @@
 		</rich:simpleTogglePanel>
 	</h:panelGrid> <br>
 
-
-	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
-
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		<br>
-		<div align="left"><h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigir}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form></div>
+	
+	</div>
+	</div>
 	</div>
 </f:view>
 

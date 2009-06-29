@@ -23,21 +23,21 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<br>
+	
 	<%@include file="menuProfessor.jsp"%></div>
 	<br />
 
-	<div id="content">
-
-	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL"
-		styleClass="Titulo1" /></div>
+	<h:outputLabel value="AVALIAÇÃO GERAL"
+		styleClass="Titulo1" />
 	<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/> <br>
-
-	<rich:simpleTogglePanel width="520px"
+<br>
+	<div id="content">
+	<rich:simpleTogglePanel width="560"
 		label="#{corrigirPropostaBean.proposta.nome}">
-	</rich:simpleTogglePanel> <h:form>
+	</rich:simpleTogglePanel>
+	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
 
 		<!-- hint botao salvar-->
@@ -45,12 +45,15 @@
 			value="clique para Salvar" />
 		<br>
 		<div align="left">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton
+		<h:commandButton
 			id="btnsalvar" value="Salvar"
 			action="#{corrigirPropostaBean.salvarCorrigirAvaliacaoGeral}"
 			disabled="#{corrigirPropostaBean.desabilitar}" />
+		</div>	
 	</h:form> </div>
 	</div>
+	</div>
+	
 </f:view>
 
 

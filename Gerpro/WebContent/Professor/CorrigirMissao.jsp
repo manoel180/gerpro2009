@@ -28,49 +28,34 @@
 	
 	<%@include file="menuProfessor.jsp"%></div>
 	<br/>
-		
-	<div id="content">
 
-
-
-	<div align="center"><h:outputLabel value="CORREÇÃO MISSÃO DO PRODUTO"
-		styleClass="Titulo1" /></div>
+	<h:outputLabel value="CORREÇÃO MISSÃO"
+		styleClass="Titulo1" />
 
 
 	<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
-	<br>
+	<br>		
+	<div id="content">
 
-	<h:panelGrid columns="3">
+
+	<h:panelGrid columns="1" width="560">
 		
 		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
-			<h:panelGrid columns="1" cellpadding="5" style="width: 536px">
-				<h:outputText value="Missão do Produto:" />
+			<h:panelGrid columns="1" cellpadding="5" width="99%">
+				
 				<rich:editor height="50" width="467" theme="advanced"
-					readonly="true" style="width: px"
+					readonly="true"
 					value="#{corrigirPropostaBean.propostaitem.conteudoItem}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>
 	</h:panelGrid>
 
 	
-	<h:form>
 	   
 		<%@include file="perguntasCorrecao.jsp"%>
-		
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		
-		
-		<br>
-		<div align="left">
-		<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigir}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form>
-			
+			</div>
 		</div>
 	</div>
  </f:view>

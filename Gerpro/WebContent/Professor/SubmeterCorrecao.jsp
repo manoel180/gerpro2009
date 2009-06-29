@@ -23,52 +23,53 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<br>
+	
 
 	<%@include file="menuProfessor.jsp"%></div>
 	<br />
-
-	<div id="content"><h:form>
-		<div align="center"><h:outputLabel value="SUBMETER CORREÇÃO"
-			styleClass="titulo" /></div>
+	
+	<h:outputLabel value="SUBMETER CORREÇÃO" styleClass="Titulo1" />
 
 		<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
-		<br>
-		<br>
+<br> <br>
+	<div id="content">
+	<h:form>
 
 		<rich:dataTable var="correcoes" id="listaCorrecao"
-			value="#{corrigirPropostaBean.listaCorrecao}" rows="10" width="550px"
+			value="#{corrigirPropostaBean.listaCorrecao}" rows="10" width="560"
 			align="center">
-			<h:column>
+			<rich:column sortBy="#{correcoes.pergunta.descricao}">
 				<f:facet name="header">
 					<h:outputText value="Pergunta"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{correcoes.pergunta.descricao}"></h:outputText>
-			</h:column>
-			<h:column>
+			</rich:column>
+			<rich:column sortBy="#{correcoes.resposta.descricao}">
 				<f:facet name="header">
 					<h:outputText value="Resposta"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{correcoes.resposta.descricao}"
-					style="color:red; font-weight:bold; font-"></h:outputText>
-			</h:column>
-			<h:column>
+					></h:outputText>
+			</rich:column>
+			<rich:column sortBy="#{correcoes.status.nome}">
 				<f:facet name="header">
 					<h:outputText value="Status"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{correcoes.status.nome}"
-					style="color:red; font-weight:bold; font-"></h:outputText>
-			</h:column>
+					></h:outputText>
+			</rich:column>
 
 		</rich:dataTable>
+		<div align="left">		
 		<h:commandButton value="Submeter Correção"
 			disabled="#{corrigirPropostaBean.desabilitar}"
 			action="#{corrigirPropostaBean.submeterCorrecao}"
 			style=" width : 142px;" />
+			</div>
 		<br>
-	</h:form></div>
+	</h:form></div></div> 
 </f:view>
 
 

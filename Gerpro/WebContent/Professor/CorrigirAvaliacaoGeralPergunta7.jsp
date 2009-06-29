@@ -27,40 +27,42 @@
 	<%@include file="menuProfessor.jsp"%></div>
 	<br />
 
-	<div id="content">
+	<h:outputLabel value="AVALIAÇÃO GERAL - 3" styleClass="Titulo1" /> <h:messages
+		layout="list" showDetail="true" showSummary="true" rendered="true"
+		errorClass="mensagem_erro" infoClass="mensagem_sucesso" /> <br>
 
-	<div align="center"><h:outputLabel value="AVALIAÇÃO GERAL - 3"
-		styleClass="Titulo1" /></div>
-	<h:messages layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/> <br>
+	<div id="content"><h:panelGrid columns="1" cellpadding="5"
+		width="560">
+		<rich:simpleTogglePanel width="99%"
+			label="#{corrigirPropostaBean.proposta.nome}">
+		</rich:simpleTogglePanel>
+		<rich:simpleTogglePanel label="Pergunta/Observação" width="99%">
+			<h:form>
+				<h:outputLabel value="#{corrigirPropostaBean.pergunta.descricao}"></h:outputLabel>
+				<h:selectOneRadio value="#{corrigirPropostaBean.resposta.id}"
+					disabled="#{corrigirPropostaBean.desabilitar}">
+					<f:selectItem itemLabel="Sim" itemValue="1" />
+					<f:selectItem itemLabel="Não" itemValue="2" />
+				</h:selectOneRadio>
 
-	<rich:simpleTogglePanel width="520px"
-		label="#{corrigirPropostaBean.proposta.nome}">
-	</rich:simpleTogglePanel> <h:form>
-		<rich:simpleTogglePanel style="width: 500px" label="Pergunta/Observação" width="238">
-	<h:outputLabel value="#{corrigirPropostaBean.pergunta.descricao}"></h:outputLabel>
-	<h:selectOneRadio value="#{corrigirPropostaBean.resposta.id}" disabled="#{corrigirPropostaBean.desabilitar}">
-		<f:selectItem itemLabel="Sim" itemValue="1" />
-		<f:selectItem itemLabel="Não" itemValue="2" />
-	</h:selectOneRadio>
-	
-	<rich:editor  value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
-		theme="advanced" style="width: 20px" required="true">
-		<f:attribute name="fieldRef" value="Descrição" />	
-	</rich:editor>
-</rich:simpleTogglePanel>
-
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		<br>
-		<div align="left">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton
-			id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarAvaliacaoGeral3}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-	</h:form> </div>
+				<rich:editor value="#{corrigirPropostaBean.correcao.observacao}"
+					readonly="#{corrigirPropostaBean.desabilitar}" theme="advanced"
+					width="530" required="true">
+					<f:attribute name="fieldRef" value="Descrição" />
+				</rich:editor>
+				<!-- hint botao salvar-->
+				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+					value="clique para Salvar" />
+				<br>
+				<div align="left">
+				<h:commandButton
+					id="btnsalvar" value="Salvar"
+					action="#{corrigirPropostaBean.salvarAvaliacaoGeral3}"
+					disabled="#{corrigirPropostaBean.desabilitar}" />
+			</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid></div>
+	</div>
 	</div>
 </f:view>
 

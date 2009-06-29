@@ -22,34 +22,26 @@
 <f:view>
 	<div id="div_corpo">
 	<div id="menu"><br />
-	<br />
 	<br>
 	<%@include file="menuProfessor.jsp"%></div>
 	<br/>
-		
-	<div id="content">
-
-
-
-	<div align="center"><h:outputLabel value="CORREÇÃO LISTA DE FUNÇÕES"
-		styleClass="Titulo1" /></div>
-
+	<h:outputLabel value="CORREÇÃO LISTA DE FUNÇÕES"
+		styleClass="Titulo1" />
 	<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
+<br>		<br>
+	<div id="content">
 
-	<br>
-
-	<h:panelGrid columns="3">
+	<h:panelGrid columns="1" width="560">
 		
-
-		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}">
+		<rich:simpleTogglePanel label="#{corrigirPropostaBean.proposta.nome}" width="99%">
 			<h:form>
-				<h:panelGrid columns="1" cellpadding="5" style="width:528px">
+				<h:panelGrid columns="1" cellpadding="5" width="99%">
 
 					<rich:dataTable id="idtable" var="listafuncao"
-						value="#{corrigirPropostaBean.lstListaFuncao}" rows="10"
-						width="525px" align="center">
+						value="#{corrigirPropostaBean.lstListaFuncao}" rows="5"
+						width="99%" align="center">
 						<rich:column sortBy="#{listafuncao.id.numeroSequencia}">
 							<f:facet name="header">
 								<h:outputText value="Ordem" />
@@ -61,25 +53,25 @@
 							<f:facet name="header">
 								<h:outputText value="Caso de Uso" />
 							</f:facet>
-							<h:outputText value="#{listafuncao.uc}" />
+							<h:outputLabel escape="false"  value="#{listafuncao.uc}" />
 						</rich:column>
 
 						<rich:column sortBy="#{listafuncao.descricao}">
 							<f:facet name="header">
-								<h:outputText value="Descrição" />
+								<h:outputLabel value="Descrição" />
 							</f:facet>
-							<h:outputText value="#{listafuncao.descricao}" />
+							<h:outputLabel escape="false" value="#{listafuncao.descricao}" />
 						</rich:column>
 
 						<rich:column sortBy="#{listafuncao.tipoFuncao.nome}">
 							<f:facet name="header">
-								<h:outputText value="Tipo" />
+								<h:outputLabel value="Tipo" />
 							</f:facet>
-							<h:outputText value="#{listafuncao.tipoFuncao.nome}" />
+							<h:outputLabel escape="false" value="#{listafuncao.tipoFuncao.nome}" />
 						</rich:column>
 
 					</rich:dataTable>
-					<rich:datascroller align="center" for="idtable" maxPages="10"
+					<rich:datascroller align="center" for="idtable" maxPages="5"
 						fastControls="show" />
 					<rich:spacer height="30" />
 				</h:panelGrid>
@@ -89,21 +81,7 @@
 
 	<br>
 	
-	<h:form>
 		<%@ include file="perguntasCorrecao.jsp"%>
-		
-		
-		<!-- hint botao salvar-->
-		<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-			value="clique para Salvar" />
-		
-		<br>
-		<div align="left">
-		<h:commandButton id="btnsalvar" value="Salvar"
-			action="#{corrigirPropostaBean.salvarCorrigir}"
-			disabled="#{corrigirPropostaBean.desabilitar}" />
-
-	</h:form>
 			
 		</div>
 	</div>
