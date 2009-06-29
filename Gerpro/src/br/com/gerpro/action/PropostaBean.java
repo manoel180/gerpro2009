@@ -15,6 +15,7 @@ import br.com.gerpro.dao.FacadeProposta;
 import br.com.gerpro.dao.FacadePropostaItem;
 import br.com.gerpro.dao.FacadeStatus;
 import br.com.gerpro.dao.FacadeTipoFuncao;
+import br.com.gerpro.dao.FacadeUsuario;
 import br.com.gerpro.dao.impl.CorrecaoDao;
 import br.com.gerpro.dao.impl.EquipeDao;
 import br.com.gerpro.dao.impl.ListaFuncaoDao;
@@ -22,6 +23,7 @@ import br.com.gerpro.dao.impl.PropostaDao;
 import br.com.gerpro.dao.impl.PropostaItemDao;
 import br.com.gerpro.dao.impl.StatusDao;
 import br.com.gerpro.dao.impl.TipoFuncaoDao;
+import br.com.gerpro.dao.impl.UsuarioDao;
 import br.com.gerpro.mensagens.MessageManagerImpl;
 import br.com.gerpro.model.Correcao;
 import br.com.gerpro.model.Equipe;
@@ -38,6 +40,7 @@ public class PropostaBean {
 	private List<Proposta> listaProposta;
 	private List<Correcao> listaCorrecao;
 	private List<Proposta> listaPorProfessor;
+	private List<Usuario> listaUsuarios;
 	private Proposta proposta = new Proposta();
 	private FacadeProposta propostaDao = new PropostaDao();
 	private FacadeEquipe equipeDao = new EquipeDao();
@@ -59,6 +62,7 @@ public class PropostaBean {
 	private FacadeTipoFuncao daoTipoFuncao = new TipoFuncaoDao();
 	private FacadeListaFuncao daoListaFuncao = new ListaFuncaoDao();
 	private FacadeCorrecao daoCorrecao = new CorrecaoDao();
+	private FacadeUsuario usuarioDao = new UsuarioDao();
 
 	// ComboBox Equipes
 	public SelectItem[] getEquipesCombo() {
@@ -79,6 +83,25 @@ public class PropostaBean {
 		return null;
 	}
 
+	// ComboBox Equipes
+	public SelectItem[] getEquipesAlterarCombo() {
+		try {
+			List<Equipe> le = getEquipeDao().listar();
+			List<SelectItem> itens = new ArrayList<SelectItem>(le.size());
+
+			for (Equipe e : le) {
+				itens.add(new SelectItem(e.getId(), e.getNome()));
+			}// for end			
+			
+			
+			return itens.toArray(new SelectItem[itens.size()]);
+
+		} catch (NullPointerException e) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "aviso", "equipes.nao.cadastradas");
+		}
+		return null;
+	}
+	
 	public SelectItem[] getItensPesqCombo() {
 		List<SelectItem> itens = new ArrayList<SelectItem>(2);
 		itens.add(new SelectItem(1, "Nome"));
@@ -112,6 +135,9 @@ public class PropostaBean {
 	public String prepararCorrecao() {
 		proposta = (Proposta) objDatatableProposta.getRowData();
 		applicationSecurityManager.setProposta(proposta);
+		status = proposta.getStatus();
+		equipe = proposta.getEquipe();
+		listaUsuarios = usuarioDao.listarPorEquipe(equipe.getId());
 		return new CorrecaoBean().prepararCorrecao();
 	}
 
@@ -163,8 +189,9 @@ public class PropostaBean {
 					propostaItem.setStatus(status);
 					propostaItem.setId(PropItemId);
 					getDaoPropItem().salvar(propostaItem);
+					
 				}
-
+				prepararInclusao();
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO,
 						"sucesso", "sucesso.cadastro.proposta_detail");
 
@@ -181,7 +208,6 @@ public class PropostaBean {
 					"erro.cadastro.proposta_detail");
 
 		}
-		proposta = new Proposta();
 		
 	}
 
@@ -401,6 +427,20 @@ public class PropostaBean {
 
 	public void setDaoCorrecao(FacadeCorrecao daoCorrecao) {
 		this.daoCorrecao = daoCorrecao;
+	}
+
+	/**
+	 * @return the listaUsuarios
+	 */
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaUsuarios the listaUsuarios to set
+	 */
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 }
