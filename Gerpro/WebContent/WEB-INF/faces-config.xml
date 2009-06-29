@@ -37,7 +37,7 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>construirPropostaBean</managed-bean-name>
 		<managed-bean-class>
@@ -59,8 +59,8 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
-	
+
+
 	<!-- Relatorio -->
 	<managed-bean>
 		<managed-bean-name>relatorioBean</managed-bean-name>
@@ -83,18 +83,18 @@
 		<navigation-case>
 			<from-outcome>homeCoordenador</from-outcome>
 			<to-view-id>/Coordenador/homeCoordenador.jsp</to-view-id>
-		</navigation-case>		
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>logoff</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>		
+		</navigation-case>
 		<!-- Tela Pesquisar Proposta -->
 		<navigation-case>
 			<from-outcome>pesquisarProposta</from-outcome>
 			<to-view-id>/Coordenador/PesquisarProposta.jsp</to-view-id>
 		</navigation-case>
-		
-			<!-- Tela Alocar Alunos -->
+
+		<!-- Tela Alocar Alunos -->
 		<navigation-case>
 			<from-outcome>alocarAlunoEquipe</from-outcome>
 			<to-view-id>/Coordenador/AlocarAlunos.jsp</to-view-id>
@@ -148,35 +148,49 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>corrigirAvaliacaoGeral1</from-outcome>
-			<to-view-id>/Professor/CorrigirAvaliacaoGeralPergunta1.jsp</to-view-id>
+			<to-view-id>
+				/Professor/CorrigirAvaliacaoGeralPergunta1.jsp
+			</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>corrigirAvaliacaoGeral2</from-outcome>
-			<to-view-id>/Professor/CorrigirAvaliacaoGeralPergunta2.jsp</to-view-id>
+			<to-view-id>
+				/Professor/CorrigirAvaliacaoGeralPergunta2.jsp
+			</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>corrigirAvaliacaoGeral7</from-outcome>
-			<to-view-id>/Professor/CorrigirAvaliacaoGeralPergunta7.jsp</to-view-id>
-		</navigation-case>		
+			<to-view-id>
+				/Professor/CorrigirAvaliacaoGeralPergunta7.jsp
+			</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>submeterCorrecao</from-outcome>
 			<to-view-id>/Professor/SubmeterCorrecao.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<!-- Navegação da Área do Coordenador -->
-	<navigation-rule>	
+	<navigation-rule>
+	<navigation-case>
+			<from-outcome>incluirEquipe</from-outcome>
+			<to-view-id>/Coordenador/CadastroEquipe.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<navigation-case>
 			<from-outcome>alocarProposta</from-outcome>
 			<to-view-id>/Coordenador/AlocarProposta.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/Coordenador/PesquisarProposta.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>incluirProposta</from-outcome>
 			<to-view-id>/Coordenador/CadastroProposta.jsp</to-view-id>
 		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>alterarProposta</from-outcome>
 			<to-view-id>/Coordenador/AlterarProposta.jsp</to-view-id>
@@ -185,6 +199,7 @@
 			<from-outcome>visualizarProposta</from-outcome>
 			<to-view-id>/Coordenador/PesquisarProposta.jsp</to-view-id>
 		</navigation-case>
+		
 	</navigation-rule>
 	<navigation-rule>
 		<navigation-case>
@@ -193,10 +208,12 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>alterarSenha</from-outcome>
-			<to-view-id>/Coordenador/AlterarSenhaUsuario.jsp</to-view-id>
+			<to-view-id>
+				/Coordenador/AlterarSenhaUsuario.jsp
+			</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<!-- Navegação da Área do Aluno -->
 	<navigation-rule>
 		<navigation-case>
@@ -222,7 +239,7 @@
 		<!-- navigation-case>
 			<from-outcome>go_ConstruirProposta</from-outcome>
 			<to-view-id>/Aluno/ConstruirProposta.jsp</to-view-id>
-		</navigation-case -->
+			</navigation-case -->
 		<navigation-case>
 			<from-outcome>SubmeterProposta</from-outcome>
 			<to-view-id>/Aluno/SubmeterProposta.jsp</to-view-id>
