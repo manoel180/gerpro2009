@@ -7,14 +7,14 @@
     <rich:simpleTogglePanel label="Dados da Proposta">
 			<h:panelGrid columns="4">
 				<h:outputText value="Proposta:" />
-				<h:outputText value="#{submeterPropostaBean.proposta.nome}" />
+				<h:outputText value="#{propostaBean.proposta.nome}" />
 				<h:outputText value="Equipe:" />
-				<h:outputText value="#{submeterPropostaBean.proposta.equipe.nome}" />
+				<h:outputText value="#{propostaBean.proposta.equipe.nome}" />
 				<h:outputLabel value="Status:" />
-				<h:outputLabel value="#{submeterPropostaBean.proposta.status.nome}" />
+				<h:outputLabel value="#{propostaBean.proposta.status.nome}" />
 				<h:outputLabel value="Componentes:" />
 				<rich:dataTable var="lstUsers" 
-					value="#{submeterPropostaBean.listaUsuarios}"
+					value="#{propostaBean.listaUsuarios}"
 					rows="4"  frame="vsides"  align="center">
 					<rich:column sortBy="#{lstUsers.nome}">
 						<h:outputText value="#{lstUsers.nome}"/>						
