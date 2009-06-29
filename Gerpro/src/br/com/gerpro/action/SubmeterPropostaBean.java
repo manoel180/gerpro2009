@@ -105,7 +105,7 @@ public class SubmeterPropostaBean {
 		else{
 			desabilita = true;
 			if(cont < 5){
-				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "itens.nao.concluidos");				
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_INFO, "aviso", "itens.nao.concluidos");				
 			}else{
 				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_WARN, "aviso", "proposta.submetida");				
 			}			
