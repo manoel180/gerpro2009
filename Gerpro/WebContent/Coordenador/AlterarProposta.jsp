@@ -51,7 +51,7 @@
 					<h:outputText value="Equipe:" />
 					<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
 						disabled="true">
-						<f:selectItems value="#{propostaBean.equipesCombo}" />
+						<f:selectItems value="#{propostaBean.equipesAlterarCombo}" />
 					</h:selectOneMenu>
 
 					<h:outputText value="Data de criação:" />

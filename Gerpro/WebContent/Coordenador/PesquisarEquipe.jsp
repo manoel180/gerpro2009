@@ -78,9 +78,10 @@
 						action="#{equipeBean.prepararEdicao}" />
 				</h:column>
 			</rich:dataTable>
+			<rich:datascroller align="center" for="listaequipe" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 			</h:form>
 		</rich:simpleTogglePanel>
-		<rich:datascroller align="center" for="listaequipe" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
+		
 		</h:panelGrid>
 	</div>
 	</div>
