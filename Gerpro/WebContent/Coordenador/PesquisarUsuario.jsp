@@ -26,28 +26,26 @@
 	<br />
 	<%@ include file="menuCoordenador.jsp"%>
 	</div>
-
-	<div id="content">
-
-
-	<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
-	<!--  rint  -->
-	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite os dados para pesquisa."/>
-	
-	<rich:toolTip for="btnpesquisar" followMouse="true" zorder="90" value="Fazer pesquisa."/>
-	
-	
-<h:form id="form1">	
-	
+	<br>
 			<h:outputLabel styleClass="Titulo1" value="PESQUISAR USUÁRIOS"/>
-			   
-		<h:panelGrid columns="1" cellpadding="10" style="width=100%" width="100%" rowClasses="2">
-		
 		<h:messages tooltip="true" layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
 				 infoClass="mensagem_sucesso"/>
 				 
+	<div id="content">
+	<rich:toolTip for="tipobusca" followMouse="true" zorder="90" value="Selecione a forma de busca" />
+	<!--  rint  -->
+	<rich:toolTip for="txtdesc" followMouse="true" zorder="90" value="Digite os dados para pesquisa."/>
+	<rich:toolTip for="btnpesquisar" followMouse="true" zorder="90" value="Fazer pesquisa."/>
+	
+	
+	
+			   
+		<h:panelGrid columns="1" cellpadding="10" width="560" rowClasses="2">
+		
+	
 		<rich:simpleTogglePanel label="Pesquisa">
+		<h:form id="form1">
 			<h:panelGrid columns="5" id="pg">
 				<h:selectOneMenu id="tipobusca" value="#{usuarioBean.tipo}" >
 					<f:selectItems value="#{usuarioBean.itensPesqCombo}" />
@@ -64,13 +62,13 @@
 				</rich:inputNumberSpinner>
 					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{usuarioBean.pesquisar}" />
 			</h:panelGrid>
+			</h:form>
 		</rich:simpleTogglePanel>		
 		</h:panelGrid>
 	
-	</h:form>
 	<h:form id="form2">
-
-		<rich:dataTable var="users" id="listausuario"
+		<h:panelGrid columns="1" cellpadding="10" width="560" rowClasses="2">
+		<rich:dataTable var="users" id="listausuario" width="99%"
 			 value="#{usuarioBean.listaUsuario}" 
 			binding="#{usuarioBean.objDatatableUsuario}" rows="5"
 			 align="center">
@@ -108,7 +106,7 @@
 		</rich:dataTable>
 		<rich:datascroller align="center" for="listausuario" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
 		<rich:spacer height="30" />
-
+</h:panelGrid>
 	</h:form>
 	</div>
 	</div>

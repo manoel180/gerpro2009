@@ -27,26 +27,31 @@
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
 	<!--fim div menu-->
-	<div id="content">
-	<h:form>
-
-		<div align="center"><h:outputLabel value="ALTERAR PROPOSTA"
-			styleClass="Titulo1" /></div>
+	
+	
+<br>
+		<h:outputLabel value="ALTERAR EQUIPE" styleClass="Titulo1" />
 
 		<h:messages tooltip="true" layout="list" showDetail="true"
 			showSummary="true" rendered="true" errorClass="mensagem_erro"
 			infoClass="mensagem_sucesso" />		
-		
-			<div align="center"><h:outputLabel value="Alterar Equipes"
-				styleClass="titulo" /></div>
-			<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
-				<h:panelGrid columns="5" cellpadding="5">
-					<h:outputText value="Nome:" />
-					<h:inputText id="txtdesc1" value="#{equipeBean.equipe.nome}" />
-					<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
-				</h:panelGrid>
-			</rich:simpleTogglePanel>
-		</h:form></div>
+		<br>
+		<br>
+		<div id="content">
+			<h:panelGrid columns="1" cellpadding="5" width="560">
+				<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
+				<h:form>
+					<h:panelGrid columns="1" cellpadding="5" width="99%">
+						<h:outputText value="Nome*:"  styleClass="Obrigatorio"/>
+						<h:inputText id="txtdesc1" value="#{equipeBean.equipe.nome}" required="true">
+							<f:attribute name="fieldRef" value="Nome" />
+						</h:inputText>
+						<h:commandButton value="Salvar" action="#{equipeBean.salvar}" />
+					</h:panelGrid>
+					</h:form>
+				</rich:simpleTogglePanel>
+			</h:panelGrid>
+			</div>
 	</div>
 </f:view>
 

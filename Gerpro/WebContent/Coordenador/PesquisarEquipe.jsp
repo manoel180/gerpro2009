@@ -26,54 +26,63 @@
 	<div id="menu"><br />
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
+	<br>
+	<h:outputLabel value="PESQUISAR EQUIPES" styleClass="Titulo1" /> <h:messages
+		tooltip="true" layout="list" showDetail="true" showSummary="true"
+		rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" />
+		<br><br>
+	<div id="content"><h:panelGrid columns="1" cellpadding="5"
+		width="560">
+		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa"
+			width="99%">
+			<h:form id="form1">
+				<h:panelGrid columns="5" cellpadding="10" rowClasses="2" width="99%">
+					<h:outputText value="Nome:" />
+					<h:inputText maxlength="50" id="txtdesc"
+						value="#{equipeBean.equipe.nome}" />
+					<h:commandButton value="Pesquisar" action="#{equipeBean.pesquisar}" />
 
-	<div id="content"><h:form id="form1">
-	<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
-		<div align="center"><h:outputLabel value="PESQUISAR EQUIPES"
-			styleClass="titulo" /></div>
-		<rich:simpleTogglePanel focus="txtdesc" label="Dados da Pesquisa">
-			<h:panelGrid columns="5" cellpadding="10" rowClasses="2">
-				<h:outputText value="Nome:" />
-				<h:inputText maxlength="50" id="txtdesc"
-					value="#{equipeBean.equipe.nome}" />
-				<h:commandButton value="Pesquisar" action="#{equipeBean.pesquisar}" />
-
-			</h:panelGrid>
-
+				</h:panelGrid>
+			</h:form>
 		</rich:simpleTogglePanel>
-	</h:form> <h:form id="form2">
+	</h:panelGrid> 
+	<h:panelGrid columns="1" cellpadding="5" width="560">
+	
 		<rich:simpleTogglePanel label="Resultado da Pesquisa">
+		<h:form id="form2">
 			<rich:dataTable var="eqp" id="listaequipe"
-				value="#{equipeBean.listaEquipe}"
-				binding="#{equipeBean.objDatatableEquipe}" rows="10" width="550px"
+				value="#{equipeBean.listaEquipe}" 
+				binding="#{equipeBean.objDatatableEquipe}" rows="5" width="99%"
 				align="center">
-				<h:column>
+				
+				<rich:column width="20%" sortBy="#{eqp.id}">
 					<f:facet name="header">
 						<h:outputText value="Cod" />
 					</f:facet>
 					<h:outputText value="#{eqp.id}" />
-				</h:column>
-				<h:column>
+				</rich:column>
+				<rich:column width="60%" sortBy="#{eqp.nome}">
 					<f:facet name="header">
 						<h:outputText value="Equipe" />
 					</f:facet>
-					<h:outputText value="#{eqp.nome}"
-						style="color:red; font-weight:bold; font-" />
-
-				</h:column>
-				<h:column >
+					<h:outputText value="#{eqp.nome}" />
+				</rich:column>
+				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Opções"  />
+						<h:outputText value="Opções" />
 
 					</f:facet>
 					<h:commandButton value="Excluir" action="#{equipeBean.excluir}" />
-					<h:commandButton value="Editar" action="#{equipeBean.prepararEdicao}" />
+					<h:commandButton value="Editar"
+						action="#{equipeBean.prepararEdicao}" />
 				</h:column>
 			</rich:dataTable>
+			</h:form>
 		</rich:simpleTogglePanel>
-	</h:form></div>
+		<rich:datascroller align="center" for="listaequipe" maxPages="5"	page="#{dataTableScrollerBean.scrollerPage}" fastControls="show" />
+		</h:panelGrid>
+	</div>
 	</div>
 </f:view>
 

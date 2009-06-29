@@ -24,64 +24,57 @@
 	<div id="div_corpo">
 	<div id="menu"><br />
 	<br />
-	<%@ include file="menuCoordenador.jsp"%>
-	</div>
+	<%@ include file="menuCoordenador.jsp"%></div>
 
-	<div id="content">
-
-<h:form id="form1" >
-
-	<div align="center"><h:outputLabel value="CADASTRO DE PROPOSTAS"
-		styleClass="Titulo1" /></div>
-
-	<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/> <br>
+	<br>
+	<h:outputLabel value="CADASTRO DE PROPOSTAS" styleClass="Titulo1" /> <h:messages
+		tooltip="true" layout="list" showDetail="true" showSummary="true"
+		rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" /> <br>
 	<br>
 	<rich:toolTip for="txtdesc1" followMouse="true" zorder="90"
 		value="Inserir um nome da Proposta" /> <rich:toolTip for="equipe"
-		followMouse="true" zorder="90" value="Selecione uma equipe" />
-		 		
-		<rich:toolTip for="txtperiodo" followMouse="true" zorder="90"
-		value="Inserir um Periodo" /> <rich:simpleTogglePanel focus="txtdesc1"
-		label="Dados do Cadastro" style="text-align:left">
-		
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5" id="pg">
+		followMouse="true" zorder="90" value="Selecione uma equipe" /> <rich:toolTip
+		for="txtperiodo" followMouse="true" zorder="90"
+		value="Inserir um Periodo" />
 
+	<div id="content"><h:panelGrid cellpadding="5" width="560">
+		<rich:simpleTogglePanel label="Dados do Cadastro" width="99%">
 
-				<h:outputText value="Nome*:" />
-				<h:inputText maxlength="100" id="txtdesc1" required="true"
-					value="#{propostaBean.proposta.nome}">
-					<f:attribute name="fieldRef" value="Nome" />
-				</h:inputText>
+			<h:form id="form1">
+				<h:panelGrid columns="2" cellpadding="5" id="pg">
+					<h:outputText value="Nome*:" styleClass="Obrigatorio"/>
+					<h:inputText maxlength="100" id="txtdesc1" required="true"
+						value="#{propostaBean.proposta.nome}">
+						<f:attribute name="fieldRef" value="Nome" />
+					</h:inputText>
 
-				<h:outputText value="Equipe*:" />
-				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
-					rendered="true">
-					<f:selectItems value="#{propostaBean.equipesCombo}" />
-					<f:attribute name="fieldRef" value="Equipe" />	
-				</h:selectOneMenu>				
+					<h:outputText value="Equipe*:" styleClass="Obrigatorio"/>
+					<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
+						rendered="true">
+						<f:selectItems value="#{propostaBean.equipesCombo}" />
+						<f:attribute name="fieldRef" value="Equipe" />
+					</h:selectOneMenu>
 
-				<h:outputText value="Periodo*:" />
-				<h:inputText maxlength="8" id="txtperiodo"
-					value="#{propostaBean.proposta.periodo}"  required="true">
-					<f:attribute name="fieldRef" value="Período" />
-				</h:inputText>
-				<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
-		       value="Clique para Salvar" />
-		        <div align="left">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton id="btnsalvar" value="Salvar" action="#{propostaBean.salvar}" />
-
-			</h:panelGrid>
-		</h:form>
-
-	</rich:simpleTogglePanel>
-	</h:form> 
+					<h:outputText value="Periodo*:" styleClass="Obrigatorio"/>
+					<h:inputText maxlength="8" id="txtperiodo"
+						value="#{propostaBean.proposta.periodo}" required="true">
+						<f:attribute name="fieldRef" value="Período" />
+					</h:inputText>
+					<rich:toolTip for="btnsalvar" followMouse="true" zorder="90"
+						value="Clique para Salvar" />
+					<h:commandButton
+						id="btnsalvar" value="Salvar" action="#{propostaBean.salvar}" />
+				</h:panelGrid>
+			</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid>
 	</div>
-	
+
 	</div>
-	
+	</div>
+
+
 </f:view>
 
 

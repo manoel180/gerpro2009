@@ -26,20 +26,22 @@
 	<div id="menu"><br />
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
-
+	<br>
+		<h:outputLabel styleClass="Titulo1" value="ALOCAR PROPOSTAS" />
+		
+		<h:messages layout="list" showDetail="true"
+				showSummary="true"  rendered="true" errorClass="mensagem_erro"
+				 infoClass="mensagem_sucesso"/>
+		<br>
+		<br>
+	
 	<div id="content">
 	<h:form id="form1">
 
-		<h:outputLabel styleClass="Titulo1" value="ALOCAR PROPOSTAS" />
+		<h:panelGrid columns="1" width="560" >
 
-		<h:panelGrid columns="1" cellpadding="10" style="width=100%"
-			width="100%" rowClasses="2">
-
-			<h:messages layout="list" showDetail="true"
-				showSummary="true"  rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
 				 
-			<rich:simpleTogglePanel>
+			<rich:simpleTogglePanel width="99%">
 				<h:outputLabel value="Tipo de alocação" />
 				<h:selectOneRadio id="radio" layout="pageDirection"
 					value="#{alocarBean.correcaoGrupo}">
@@ -49,18 +51,11 @@
 
 				<h:panelGrid  columns="1" id="pg">
 				
-				
-
 					<rich:pickList removeAllControlLabel="Remover Todos"
-					
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
-						
 						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
-						
 						copyVisible="#{!alocarBean.desabilitar}"
-						   
 						copyAllVisible="#{!alocarBean.desabilitarTodos}"
-						
 						value="#{alocarBean.listProfessores}" >
 						
 						<f:selectItems value="#{alocarBean.professorCombo}" />

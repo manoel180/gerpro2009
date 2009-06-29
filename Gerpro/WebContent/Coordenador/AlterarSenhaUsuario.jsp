@@ -26,59 +26,64 @@
 	<div id="menu"><br />
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
-	
-	<div id="content">
-
-
-	<div align="center"><h:outputLabel value="ALTERAR SENHA DO USUÁRIO"
-		styleClass="Titulo1" /></div>
+	<br>
+	<h:outputLabel value="ALTERAR SENHA DO USUÁRIO" styleClass="Titulo1" />
 
 	<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/> <br>
+		showSummary="true" rendered="true" errorClass="mensagem_erro"
+		infoClass="mensagem_sucesso" /> <br>
 	<br>
-	<rich:toolTip for="rbtTipo" followMouse="true" zorder="90"	value="Selecione um tipo de usuário" />
-	<rich:toolTip for="txtmat" followMouse="true" zorder="90" value="Informe a matricula" /> 
-	<rich:toolTip for="txtnome" followMouse="true" zorder="90" value="Inserir o nome do usuário" /> 
-	<rich:toolTip for="equipe" followMouse="true" zorder="90" value="Selecione uma equipe para o aluno" /> 
-	<rich:toolTip for="btnsalvar" followMouse="true" zorder="90" value="Clique para Salvar" />
-	<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro" style="text-align:left">
-		
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5" id="pg">
-				
-				
 
-				<h:outputText value="Matricula:" />
-				<h:inputText id="txtmat" maxlength="8" required="true" size="10"
-					value="#{usuarioBean.usuario.matricula}">
-					<f:attribute name="fieldRef" value="Matricula" />
-				</h:inputText>
+	<div id="content">
+	<rich:toolTip for="rbtTipo" followMouse="true"
+		zorder="90" value="Selecione um tipo de usuário" /> <rich:toolTip
+		for="txtmat" followMouse="true" zorder="90"
+		value="Informe a matricula" /> <rich:toolTip for="txtnome"
+		followMouse="true" zorder="90" value="Inserir o nome do usuário" /> <rich:toolTip
+		for="equipe" followMouse="true" zorder="90"
+		value="Selecione uma equipe para o aluno" /> <rich:toolTip
+		for="btnsalvar" followMouse="true" zorder="90"
+		value="Clique para Salvar" /> <h:panelGrid columns="1"
+		cellpadding="5" width="560">
+		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="5" id="pg">
+					<h:outputText value="Matricula*:" styleClass="Obrigatorio"/>
+					<h:inputText id="txtmat" maxlength="8" required="true" size="10"
+						value="#{usuarioBean.usuario.matricula}">
+						<f:attribute name="fieldRef" value="Matricula" />
+					</h:inputText>
 
-				<h:outputText value="Nome:" />
-				<h:inputText id="txtnome" maxlength="80" required="true" size="40"
-					value="#{usuarioBean.usuario.nome}">
-					<f:attribute name="fieldRef" value="Nome" />
-				</h:inputText>
+					<h:outputText value="Nome*:" styleClass="Obrigatorio" />
+					<h:inputText id="txtnome" maxlength="80" required="true" size="40"
+						value="#{usuarioBean.usuario.nome}">
+						<f:attribute name="fieldRef" value="Nome" />
+					</h:inputText>
 
+					<h:outputText value="Senha atual*:" styleClass="Obrigatorio" />
+					<h:inputSecret value="#{usuarioBean.usuario.senha}" required="true" >
+					<f:attribute name="fieldRef" value="Senha atual" />
+					</h:inputSecret>
 
-				<h:outputText value="Senha atual:"/>
-				<h:inputSecret value="#{usuarioBean.usuario.senha}" required="true"/>
+					<h:outputText value="Nova Senha*:" styleClass="Obrigatorio" />
+					<h:inputSecret value="#{usuarioBean.senhaNova}" required="true" >
+					<f:attribute name="fieldRef" value="Nova Senha" />
+					</h:inputSecret>
 
-				<h:outputText value="Nova Senha:"/>
-				<h:inputSecret value="#{usuarioBean.senhaNova}" required="true"/>
-				
-				<h:outputText value="Repitir Senha:" />
-				<h:inputSecret value="#{usuarioBean.senhaConfirmacao}" required="true"/>
-				
-				<div align="left">
-				<h:commandButton id="btnsalvar" value="Salvar" action="#{usuarioBean.alterarSenha}" />
-				</div>
-			</h:panelGrid>
-		</h:form>
+					<h:outputText value="Repitir Senha*:"  styleClass="Obrigatorio"/>
+					<h:inputSecret value="#{usuarioBean.senhaConfirmacao}"
+						required="true" >
+						<f:attribute name="fieldRef" value="Repitir Senha" />
+						</h:inputSecret>
 
+					<h:commandButton id="btnsalvar" value="Salvar"
+						action="#{usuarioBean.alterarSenha}" />
+				</h:panelGrid>
+			</h:form>
+		</rich:simpleTogglePanel>
+	</h:panelGrid>
+	</div>
 
-	</rich:simpleTogglePanel></div>
 	</div>
 
 </f:view>

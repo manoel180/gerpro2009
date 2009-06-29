@@ -41,7 +41,7 @@
 	
 			<h:outputLabel styleClass="Titulo1" value="PESQUISAR PROPOSTAS"/>
 			   
-		<h:panelGrid columns="1" cellpadding="10" style="width=100%" width="100%" rowClasses="2">
+		<h:panelGrid columns="1" cellpadding="10" width="560" rowClasses="2">
 		
 		<h:messages layout="list" showDetail="true"
 				showSummary="true" rendered="true" errorClass="mensagem_erro"
@@ -70,7 +70,7 @@
 	<h:form id="form2">
 
 		<rich:dataTable var="prop" id="listapropostas"
-			 value="#{propostaBean.listaProposta}" 
+			 value="#{propostaBean.listaProposta}" width="560" 
 			binding="#{propostaBean.objDatatableProposta}" rows="5"
 			 align="center" >			
 			<rich:column width="60%" sortBy="#{prop.nome}">

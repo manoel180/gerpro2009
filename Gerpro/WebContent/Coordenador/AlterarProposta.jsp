@@ -28,41 +28,46 @@
 	<div id="menu"><br />
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
-	<!--fim div menu-->
-	<div id="content"><h:form>
+	<br>
+	<!--fim div menu--> 
+	<h:outputLabel value="ALTERAR PROPOSTA"	styleClass="Titulo1" /> 
+	<h:messages tooltip="true" layout="list"
+		showDetail="true" showSummary="true" rendered="true"
+		errorClass="mensagem_erro" infoClass="mensagem_sucesso" />
+		 <br>
+	<br>
+	<div id="content"><h:panelGrid columns="2" cellpadding="5"
+		width="560">
+		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro"
+			width="99%">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="5" width="99%" id="id1">
+					<h:outputText value="Nome*:" styleClass="Obrigatorio" />
+					<h:inputText maxlength="100" id="txtdesc1" required="true"
+						value="#{propostaBean.proposta.nome}">
+						<f:attribute name="fieldRef" value="Proposta" />
+					</h:inputText>
 
-		<div align="center"><h:outputLabel value="ALTERAR PROPOSTA"
-			styleClass="Titulo1" /></div>
+					<h:outputText value="Equipe:" />
+					<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"
+						disabled="true">
+						<f:selectItems value="#{propostaBean.equipesCombo}" />
+					</h:selectOneMenu>
 
-		<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
-		<br>
-		<br>
-		<rich:simpleTogglePanel focus="txtdesc1" label="Dados do cadastro">
-			<h:panelGrid columns="2" cellpadding="5" id="id1">
-				<h:outputText value="Nome*:" />
-				<h:inputText maxlength="100" id="txtdesc1" required="true"
-					value="#{propostaBean.proposta.nome}">
-					<f:attribute name="fieldRef" value="Proposta" />
-				</h:inputText>
+					<h:outputText value="Data de criação:" />
+					<h:inputText id="txtdata"
+						value="#{propostaBean.proposta.dataCriacao}" disabled="true"></h:inputText>
 
-				<h:outputText value="Equipe:" />
-				<h:selectOneMenu id="equipe" value="#{propostaBean.equipe.id}"	disabled="true" >
-					<f:selectItems value="#{propostaBean.equipesCombo}" />
-				</h:selectOneMenu>
-
-				<h:outputText value="Data de criação:" />
-				<h:inputText id="txtdata"
-					value="#{propostaBean.proposta.dataCriacao}" disabled="true"></h:inputText>
-
-				<h:outputText value="Periodo:" />
-				<h:inputText id="txtperiodo"
-					value="#{propostaBean.proposta.periodo}" disabled="true"></h:inputText>
-			</h:panelGrid>
+					<h:outputText value="Periodo:" />
+					<h:inputText id="txtperiodo"
+						value="#{propostaBean.proposta.periodo}" disabled="true"></h:inputText>
+				</h:panelGrid>
+				<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
+			</h:form>
 		</rich:simpleTogglePanel>
-		<h:commandButton value="Salvar" action="#{propostaBean.salvar}" />
-	</h:form></div>
+
+	</h:panelGrid></div>
+
 	</div>
 </f:view>
 

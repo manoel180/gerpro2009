@@ -27,29 +27,24 @@
 	<br />
 	<%@ include file="menuCoordenador.jsp"%></div>
 
+	<br>
+	<h:outputLabel styleClass="Titulo1" value="ALOCAR ALUNOS" />
+	<h:messages tooltip="true" layout="list" showDetail="true"
+				showSummary="true" rendered="true" errorClass="mensagem_erro"
+				infoClass="mensagem_sucesso" />
+	<br>			<br>
 	<div id="content">
 	<h:form id="form1">
-
-		<h:outputLabel styleClass="Titulo1" value="ALOCAR ALUNOS" />
-
-		<h:panelGrid columns="1" cellpadding="10" style="width=100%"
-			width="100%" rowClasses="2">
-
-			<h:messages tooltip="true" layout="list" showDetail="true"
-				showSummary="true" rendered="true" errorClass="mensagem_erro"
-				 infoClass="mensagem_sucesso"/>
-			<rich:simpleTogglePanel>
-		
-				
-
+		<h:panelGrid columns="1" cellpadding="5" width="560">
+			
+			<rich:simpleTogglePanel width="99%">
 				<h:panelGrid columns="2" id="pg">
-				<h:outputText value="Equipe:" />
-				<h:selectOneMenu id="equipe"
-					value="#{alocarBean.equipe.id}">
-					<f:selectItems value="#{alocarBean.equipesCombo}" />
-					<f:attribute name="fieldRef" value="Equipe" />
-				</h:selectOneMenu>
-				<br>
+					<h:outputText value="Equipe:" />
+					<h:selectOneMenu id="equipe" value="#{alocarBean.equipe.id}">
+						<f:selectItems value="#{alocarBean.equipesCombo}" />
+						<f:attribute name="fieldRef" value="Equipe" />
+					</h:selectOneMenu>
+					<br>
 					<rich:pickList removeAllControlLabel="Remover Todos"
 						copyControlLabel="Adicionar" removeControlLabel="Remover"
 						copyAllControlLabel="Adicionar Todos" switchByDblClick="false"
