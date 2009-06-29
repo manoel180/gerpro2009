@@ -74,6 +74,8 @@
 				</rich:dataTable>
 			</h:form>
 		</rich:simpleTogglePanel>
+		<rich:datascroller align="center" for="idtable" maxPages="5"
+						fastControls="show" />
 	</h:panelGrid> <br>
 
 		<%@ include file="perguntasCorrecao.jsp"%>

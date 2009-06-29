@@ -7,13 +7,13 @@
 
 <rich:simpleTogglePanel label="Pergunta/Observação" width="560">
 <h:form>
-	<h:outputLabel value="#{corrigirPropostaBean.pergunta.descricao}"></h:outputLabel>
+	<rich:editor theme="" readonly="true" viewMode="source" width="530" value="#{corrigirPropostaBean.pergunta.descricao}" />
 	<h:selectOneRadio value="#{corrigirPropostaBean.resposta.id}" disabled="#{corrigirPropostaBean.desabilitar}">
 		<f:selectItem itemLabel="Sim" itemValue="1" />
 		<f:selectItem itemLabel="Não" itemValue="2" />
 	</h:selectOneRadio>
 	
-	<rich:editor width="99%" value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
+	<rich:editor width="530" value="#{corrigirPropostaBean.correcao.observacao}" readonly="#{corrigirPropostaBean.desabilitar}"
 		theme="advanced"  required="true">
 		<f:attribute name="fieldRef" value="Descrição" />	
 	</rich:editor>
