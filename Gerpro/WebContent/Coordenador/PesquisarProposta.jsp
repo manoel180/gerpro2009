@@ -55,12 +55,8 @@
 						action="#{propostaBean.alterarComponente}"
 						reRender="pg"/>
 				</h:selectOneMenu>
-					<h:inputText maxlength="100" autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}"   rendered="#{propostaBean.viewDes}">
+					<h:inputText maxlength="100" autocomplete="on" immediate="true" id="txtdesc" value="#{propostaBean.busca}" >
 				</h:inputText>
-					
-				<rich:inputNumberSpinner  rendered="#{propostaBean.viewint}"  immediate="true"  id="txtdescint" value="#{propostaBean.busca}">
-					<f:convertNumber  integerOnly="true" type="number"/>
-				</rich:inputNumberSpinner>
 					<h:commandButton value="Pesquisar" id="btnpesquisar" action="#{propostaBean.pesquisar}" />
 			</h:panelGrid>
 		</rich:simpleTogglePanel>		

@@ -73,7 +73,7 @@
 
 					<h:outputText value="Equipe:" rendered="#{usuarioBean.desabilitar}" />
 					<h:selectOneMenu id="equipe"
-						value="#{usuarioBean.usuario.equipe.id}"
+						value="#{usuarioBean.equipe.id}"
 						rendered="#{usuarioBean.desabilitar}">
 						<f:selectItems value="#{usuarioBean.equipesCombo}" />
 						<f:attribute name="fieldRef" value="Equipe" />
