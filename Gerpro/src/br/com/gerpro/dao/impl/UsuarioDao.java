@@ -38,7 +38,6 @@ public class UsuarioDao implements FacadeUsuario {
 			tx = session.beginTransaction();
 			session.saveOrUpdate(usuario);
 			tx.commit();
-			
 		} catch (HibernateException e) {
 			tx.rollback();			
 			e.printStackTrace();
