@@ -42,7 +42,7 @@
 			label="#{corrigirPropostaBean.proposta.nome}">
 			<h:form>
 				<rich:dataTable id="idtable" var="lstCronograma"
-					value="#{corrigirPropostaBean.lstCronograma}" rows="10"
+					value="#{corrigirPropostaBean.lstCronograma}" rows="5"
 					width="99%" align="center">
 					<rich:column sortBy="#{lstCronograma.dataInicial}">
 						<f:facet name="header">
@@ -72,17 +72,17 @@
 					</rich:column>
 
 				</rich:dataTable>
+				<rich:datascroller align="center" for="idtable" maxPages="5"
+						fastControls="show" />
 			</h:form>
 		</rich:simpleTogglePanel>
-		<rich:datascroller align="center" for="idtable" maxPages="5"
-						fastControls="show" />
+		
 	</h:panelGrid> <br>
 
 		<%@ include file="perguntasCorrecao.jsp"%>
-	
 	</div>
 	</div>
-	</div>
+		</div>
 </f:view>
 
 
