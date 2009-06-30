@@ -37,16 +37,15 @@ public class UsuarioBean {
 	private Usuario logado = new Usuario();
 	private String senhaNova;
 	private String senhaConfirmacao;
-	
-	
+
 	private String tipo = new String();
 	private String busca = new String();
 	private boolean viewDes = false;
 	private boolean viewint = true;
 
-
 	private ApplicationSecurityManager applicationSecurityManager = new ApplicationSecurityManager();
 	private boolean desabilitar;
+	private Equipe equipe = new Equipe();
 
 	public SelectItem[] getItensPesqCombo() {
 		List<SelectItem> itens = new ArrayList<SelectItem>(3);
@@ -55,7 +54,7 @@ public class UsuarioBean {
 		itens.add(new SelectItem(3, "Equipe"));
 		return itens.toArray(new SelectItem[itens.size()]);
 	}
-	
+
 	public void desabilitarComponente() {
 		if (tipoUsuario.getId() == 1) {
 			desabilitar = true;
@@ -63,14 +62,14 @@ public class UsuarioBean {
 			desabilitar = false;
 		}
 	}
-	
+
 	public void alterarComponente() {
 		if (tipo.equals("1")) {
 			viewDes = false;
 			viewint = true;
 			setBusca("0");
 		}
-		if (tipo.equals("2")||tipo.equals("3")) {
+		if (tipo.equals("2") || tipo.equals("3")) {
 			viewDes = true;
 			viewint = false;
 			setBusca("");
@@ -78,40 +77,45 @@ public class UsuarioBean {
 
 	}
 
-	public String alterarSenha(){
-	String sair ="";
+	public String alterarSenha() {
+		String sair = "";
 		try {
 
 			Usuario usuarioBD = usuarioDao.procurarPorMatricula(usuario
 					.getMatricula());
 			usuario.setSenha(criptografia.criptografar(usuario.getSenha()));
 			usuario.setTipoUsuario(usuarioBD.getTipoUsuario());
-			if(usuarioBD!= null){
-				
+			if (usuarioBD != null) {
+
 				if (usuario.getSenha().equals(usuarioBD.getSenha())) {
-					if(senhaConfirmacao.equals(senhaNova)){
+					if (senhaConfirmacao.equals(senhaNova)) {
 						usuario.setSenha(criptografia.criptografar(senhaNova));
 						usuarioDao.salvar(usuario);
-						sair= "logoff";
-					}else {
+						sair = "logoff";
+					} else {
 						// Alterar a Mesg
-						MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
+						MessageManagerImpl.setMensagem(
+								FacesMessage.SEVERITY_ERROR,
+								"usuario.invalido", "usuario.invalido_detail");
 					}
-				}else {
-					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");				
+				} else {
+					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+							"usuario.invalido", "usuario.invalido_detail");
 				}
-			}	
-				else{
-					// Substituir mesg
-					MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
-				}
-		} catch (NullPointerException nullPointerException) {			
-			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR, "usuario.invalido", "usuario.invalido_detail");
-	}
+			} else {
+				// Substituir mesg
+				MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+						"usuario.invalido", "usuario.invalido_detail");
+			}
+		} catch (NullPointerException nullPointerException) {
+			MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
+					"usuario.invalido", "usuario.invalido_detail");
+		}
 		return sair;
-		
+
 	}
-	public String resetarSenha(){
+
+	public String resetarSenha() {
 		usuario.setSenha(criptografia.criptografar("123"));
 		usuarioDao.salvar(usuario);
 		return prepararBean();
@@ -133,6 +137,7 @@ public class UsuarioBean {
 		listaUsuarios = getUsuarioDao().listar();
 		return "homeCoordenador";
 	}
+
 	public String prepararPesquisar() {
 		usuario = new Usuario();
 		listaUsuarios = getUsuarioDao().listar();
@@ -140,7 +145,9 @@ public class UsuarioBean {
 	}
 
 	public String prepararInclusao() {
+		tipoUsuario = new TipoUsuario();
 		usuario = new Usuario();
+		equipe = new Equipe();
 		return "incluirUsuario";
 	}
 
@@ -150,10 +157,10 @@ public class UsuarioBean {
 	}
 
 	public String prepararEdicao() {
-		
+
 		usuario = (Usuario) objDatatableUsuario.getRowData();
 		tipoUsuario = usuario.getTipoUsuario();
-		
+
 		return "alterarUsuario";
 	}
 
@@ -163,6 +170,12 @@ public class UsuarioBean {
 
 	public String salvar() {
 		try {
+			if (tipoUsuario.getId() == 2
+					|| tipoUsuario.getId() == 3) {
+				equipe.setId(null);
+			}
+			usuario.setSenha("202CB962AC59075B964B07152D234B70");
+			usuario.setEquipe(equipe);
 			usuario.setTipoUsuario(tipoUsuario);
 			getUsuarioDao().salvar(usuario);
 		} catch (Exception e) {
@@ -182,7 +195,7 @@ public class UsuarioBean {
 
 	public String excluir() {
 		usuario = (Usuario) objDatatableUsuario.getRowData();
-		//getUsuarioDao().remover(usuario);
+		// getUsuarioDao().remover(usuario);
 		return prepararBean();
 	}
 
@@ -210,13 +223,14 @@ public class UsuarioBean {
 					FacadeProposta propostaDao = new PropostaDao();
 					proposta = propostaDao.listarPorIdEquipe(usuarioBD
 							.getEquipe().getId());
-					
-					if(proposta != null){
-						applicationSecurityManager.setProposta(proposta);						
-					}else
-						MessageManagerImpl.setMensagem(FacesMessage.SEVERITY_ERROR,
-								"aviso", "aluno.sem.proposta");
-					
+
+					if (proposta != null) {
+						applicationSecurityManager.setProposta(proposta);
+					} else
+						MessageManagerImpl.setMensagem(
+								FacesMessage.SEVERITY_ERROR, "aviso",
+								"aluno.sem.proposta");
+
 				}
 
 			} else {
@@ -260,7 +274,6 @@ public class UsuarioBean {
 	public List<Usuario> getListaUsuario() {
 		return listaUsuarios;
 	}
-
 
 	public void setObjDatatableEquipe(UIData objDatatableUsuario) {
 		this.objDatatableUsuario = objDatatableUsuario;
@@ -357,7 +370,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param objDatatableUsuario the objDatatableUsuario to set
+	 * @param objDatatableUsuario
+	 *            the objDatatableUsuario to set
 	 */
 	public void setObjDatatableUsuario(UIData objDatatableUsuario) {
 		this.objDatatableUsuario = objDatatableUsuario;
@@ -371,7 +385,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param listaUsuarios the listaUsuarios to set
+	 * @param listaUsuarios
+	 *            the listaUsuarios to set
 	 */
 	public void setListaUsuarios(List<Usuario> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
@@ -385,7 +400,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param tipo the tipo to set
+	 * @param tipo
+	 *            the tipo to set
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
@@ -399,7 +415,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param busca the busca to set
+	 * @param busca
+	 *            the busca to set
 	 */
 	public void setBusca(String busca) {
 		this.busca = busca;
@@ -413,7 +430,8 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param viewDes the viewDes to set
+	 * @param viewDes
+	 *            the viewDes to set
 	 */
 	public void setViewDes(boolean viewDes) {
 		this.viewDes = viewDes;
@@ -427,11 +445,26 @@ public class UsuarioBean {
 	}
 
 	/**
-	 * @param viewint the viewint to set
+	 * @param viewint
+	 *            the viewint to set
 	 */
 	public void setViewint(boolean viewint) {
 		this.viewint = viewint;
 	}
 
+	/**
+	 * @return the equipe
+	 */
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	/**
+	 * @param equipe
+	 *            the equipe to set
+	 */
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
 
 }

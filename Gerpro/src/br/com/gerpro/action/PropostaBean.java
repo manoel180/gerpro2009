@@ -110,7 +110,7 @@ public class PropostaBean {
 	}
 
 	public String prepararBean() {
-		tipo = "2";
+		tipo = "1";
 		busca = null;
 		proposta = new Proposta();
 		listaProposta = getPropostaDao().listar();
