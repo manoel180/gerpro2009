@@ -61,7 +61,7 @@ public class CriarGrafico implements ICriarGrafico {
 	 * 
 	 */
 
-	public BufferedImage gerarGraficoBarraVertical3D(String tituloGrafico,
+/*	public BufferedImage gerarGraficoBarraVertical3D(String tituloGrafico,
 			String tituloEixoX, String tituloEixoY, ArrayList arrayValores)
 			throws Exception {
 
@@ -75,7 +75,7 @@ public class CriarGrafico implements ICriarGrafico {
 
 			while (iterator.hasNext()) {
 
-				VoPropostas modelo = (VoPropostas) iterator.next();
+			//	VoPropostas modelo = (VoPropostas) iterator.next();
 
 				defaultCategoryDataset.addValue(modelo.getTotal(), modelo
 						.getPropostas(), modelo.getPropostas().substring(0, 3));
@@ -100,7 +100,7 @@ public class CriarGrafico implements ICriarGrafico {
 
 		return buf;
 
-	}
+	}*/
 
 	/**
 	 * 
@@ -108,7 +108,7 @@ public class CriarGrafico implements ICriarGrafico {
 	 * 
 	 */
 
-	public BufferedImage gerarGraficoBarraVertical(String tituloGrafico, String
+/*	public BufferedImage gerarGraficoBarraVertical(String tituloGrafico, String
 
 	tituloEixoX, String tituloEixoY, ArrayList arrayValores) throws Exception {
 
@@ -153,14 +153,14 @@ public class CriarGrafico implements ICriarGrafico {
 
 		return buf;
 
-	}
+	}*/
 
 	/**
 	 * 
 	 * Gera um Grafico de Linhas
 	 * 
 	 */
-
+/*
 	public BufferedImage gerarGraficoLinha(String tituloGrafico,
 			String tituloEixoX, String tituloEixoY, ArrayList arrayValores)
 			throws Exception {
@@ -208,7 +208,7 @@ public class CriarGrafico implements ICriarGrafico {
 
 		return buf;
 
-	}
+	}*/
 
 	/**
 	 * 
@@ -216,7 +216,7 @@ public class CriarGrafico implements ICriarGrafico {
 	 * 
 	 */
 
-	public BufferedImage gerarGraficoLinha3D(String tituloGrafico,
+/*	public BufferedImage gerarGraficoLinha3D(String tituloGrafico,
 			String tituloEixoX, String tituloEixoY, ArrayList arrayValores)
 			throws Exception {
 
@@ -256,19 +256,21 @@ public class CriarGrafico implements ICriarGrafico {
 
 		return buf;
 
-	}
+	}*/
 
 	/**
 	 * 
 	 * Gera um grafico de pizza 3D
 	 * 
 	 */
+	//Método que gera a Imagem do Relatório
 	private BufferedImage pizza3D(ArrayList nome, ArrayList valor,
 			String tituloGrafico, float transparencia, String tipo) {
 		BufferedImage buf = null;
 		DefaultPieDataset data = new DefaultPieDataset();
 		DecimalFormat digitos = new DecimalFormat("00.00");
 		
+		//Faz a formatação de exibição dos parametro do relatorio
 		for (int i = 0; i < nome.toArray().length; i++) {
 
 			data.setValue(digitos.format(valor.get(i)) + "% \n"
@@ -277,6 +279,7 @@ public class CriarGrafico implements ICriarGrafico {
 
 		}
 
+		//
 		JFreeChart chart = ChartFactory.createPieChart3D(tituloGrafico, data,
 				true, false, true);
 

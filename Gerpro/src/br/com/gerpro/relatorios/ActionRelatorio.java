@@ -61,7 +61,7 @@ public class ActionRelatorio {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("logo", logo.getImage());
-		params.put("periodo", periodo);
+		params.put("data", periodo);
 
 		try {
 			gerarRelatorioPDF("proposta", params);
@@ -75,7 +75,7 @@ public class ActionRelatorio {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("logo", logo.getImage());
-		params.put("periodo", periodo);
+		params.put("data", periodo);
 
 		try {
 			gerarRelatorioPDF("Professor_proposta", params);
@@ -114,7 +114,9 @@ public class ActionRelatorio {
 			byte[] pdf = JasperRunManager.runReportToPdf(SUB + nome + SUFFIX,
 					params, session.connection());
 
+			//Captura uma instancia da página
 			FacesContext faces = FacesContext.getCurrentInstance();
+			//Captura a respostas do contexto e set os tipo de retorno. 
 			HttpServletResponse response = (HttpServletResponse) faces
 					.getExternalContext().getResponse();
 			response.setContentType("application/pdf");
@@ -126,6 +128,7 @@ public class ActionRelatorio {
 			ServletOutputStream out = response.getOutputStream();
 
 			out.write(pdf);
+			//
 			StateManager stateManager = (StateManager) faces.getApplication()
 					.getStateManager();
 			stateManager.saveSerializedView(faces);

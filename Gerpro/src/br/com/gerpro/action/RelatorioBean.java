@@ -49,11 +49,6 @@ public class RelatorioBean {
 		default:
 			break;
 		}
-		if (tipo == 1) {
-
-		} else {
-
-		}
 	}
 
 	/*

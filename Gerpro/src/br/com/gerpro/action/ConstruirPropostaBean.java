@@ -207,7 +207,7 @@ public class ConstruirPropostaBean {
 				java.util.Calendar startDate = GregorianCalendar.getInstance();
 				startDate.add(java.util.Calendar.DATE, -1);
 
-				// Verifica se a data de inicio Ã© maior que data final
+				// Verifica se a data de inicio Ã© maior que data final e data corrente menor que data inicial
 				if ((cronograma.getDataInicial().compareTo(
 						cronograma.getDataFinal()) == 1)
 						|| (startDate.after(endDate)))
@@ -244,7 +244,7 @@ public class ConstruirPropostaBean {
 				java.util.Calendar startDate = GregorianCalendar.getInstance();
 				startDate.add(java.util.Calendar.DATE, -1);
 
-				// Verifica se a data de inicio é maior que data final
+				// Verifica se a data de inicio é maior que data final e data corrente menor que data inicial
 				if ((cronograma.getDataInicial().compareTo(
 						cronograma.getDataFinal()) == 1)
 						|| (startDate.after(endDate)))

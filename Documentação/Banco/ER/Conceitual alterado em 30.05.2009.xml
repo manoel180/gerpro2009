@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <MER>
 	<Informacoes>
-		<Posicao Left="0" Top="134"/>
-		<TotalItens Valor="273"/>
+		<Posicao Left="0" Top="424"/>
+		<TotalItens Valor="147"/>
 		<Tipo Valor="CONCEITUAL"/>
-		<Versao Valor="1.0.1"/>
+		<Versao Valor="2.0.0"/>
 		<Autor Valor=""/>
 		<Observacao Valor=""/>
+		<Template>
+      <CAMPOS/>
+      <TIPOS/>
+      <COMPLEMENTO_CAMPOS/>
+      <COMPLEMENTO_TABELAS/>
+      <DDL>
+        <CTab_A>CREATE TABLE *$nome_tabela</CTab_A>
+        <CTab_B> (</CTab_B>
+        <CTab_Compl>*$compl_tabela</CTab_Compl>
+        <CTab_C>)*$separador*$\n</CTab_C>
+        <CCamp>*$nome_campo *$tipo_campo *$compl_campo</CCamp>
+        <Pk_inTab>-1</Pk_inTab>
+        <Fk_inTab>-1</Fk_inTab>
+        <Const_Nomear>0</Const_Nomear>
+        <CConst_Nome>*$nome_tabela_*$envol_campo</CConst_Nome>
+        <Separador></Separador>
+      </DDL>
+    </Template>
 	</Informacoes>
 	<Entidades>
     <Entidade nome="equipe" id="1">
@@ -27,6 +45,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -58,6 +77,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -83,6 +103,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
@@ -105,6 +126,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -136,6 +158,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -167,6 +190,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -192,6 +216,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="-1">
@@ -211,6 +236,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <Parcial Valor="0"/>
           <Ligacoes>
@@ -254,6 +280,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -279,6 +306,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
@@ -294,6 +322,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="-1">
         <AutoRelacao nome="Coordenador" id="185">
@@ -307,7 +336,9 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
+          <SetaDirecao Valor="0"/>
           <Ligacoes>
             <Ligacao Destino_ID="6">
               <MostraCardinalidade Valor="-1" Card_id="186"/>
@@ -323,6 +354,7 @@
                   <Dicionario></Dicionario>
                   <Nula Valor="0"/>
                   <Observacao></Observacao>
+                  <Futuro></Futuro>
                   <Anexos/>
                   <Cor Valor="15780518"/>
                   <TamAuto Valor="-1"/>
@@ -350,6 +382,7 @@
                   <Dicionario></Dicionario>
                   <Nula Valor="0"/>
                   <Observacao></Observacao>
+                  <Futuro></Futuro>
                   <Anexos/>
                   <Cor Valor="15780518"/>
                   <TamAuto Valor="-1"/>
@@ -386,6 +419,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -417,6 +451,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -448,6 +483,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -479,6 +515,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -504,6 +541,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
@@ -526,6 +564,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -557,6 +596,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -582,6 +622,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
@@ -604,6 +645,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -635,6 +677,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -666,6 +709,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -691,6 +735,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="-1">
@@ -710,6 +755,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <Parcial Valor="0"/>
           <Ligacoes>
@@ -736,8 +782,8 @@
       </Especializacoes>
     </Entidade>
     <Entidade nome="Simples" id="256">
-      <Left Valor="294"/>
-      <Top Valor="930"/>
+      <Left Valor="259"/>
+      <Top Valor="854"/>
       <Width Valor="102"/>
       <Height Valor="66"/>
       <Fonte default="-1"/>
@@ -746,13 +792,14 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
     </Entidade>
     <Entidade nome="Composto" id="257">
-      <Left Valor="500"/>
-      <Top Valor="930"/>
+      <Left Valor="547"/>
+      <Top Valor="853"/>
       <Width Valor="102"/>
       <Height Valor="66"/>
       <Fonte default="-1"/>
@@ -761,6 +808,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
@@ -778,7 +826,9 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
+      <SetaDirecao Valor="0"/>
       <Ligacoes>
         <Ligacao Destino_ID="1">
           <MostraCardinalidade Valor="-1" Card_id="10"/>
@@ -794,6 +844,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -821,6 +872,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -854,6 +906,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -885,6 +938,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -916,6 +970,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -947,6 +1002,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -972,7 +1028,9 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
+      <SetaDirecao Valor="0"/>
       <Ligacoes>
         <Ligacao Destino_ID="6">
           <MostraCardinalidade Valor="-1" Card_id="76"/>
@@ -988,6 +1046,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1015,6 +1074,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1042,6 +1102,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1068,7 +1129,9 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
+      <SetaDirecao Valor="0"/>
       <Ligacoes>
         <Ligacao Destino_ID="19">
           <MostraCardinalidade Valor="-1" Card_id="152"/>
@@ -1084,6 +1147,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1111,6 +1175,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1144,6 +1209,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -1175,6 +1241,7 @@
           <Dicionario></Dicionario>
           <Nula Valor="0"/>
           <Observacao></Observacao>
+          <Futuro></Futuro>
           <Anexos/>
           <MaxCard Valor="1"/>
           <MinCard Valor="1"/>
@@ -1200,7 +1267,9 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
+      <SetaDirecao Valor="0"/>
       <Ligacoes>
         <Ligacao Destino_ID="1">
           <MostraCardinalidade Valor="-1" Card_id="171"/>
@@ -1216,6 +1285,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1243,6 +1313,7 @@
               <Dicionario></Dicionario>
               <Nula Valor="0"/>
               <Observacao></Observacao>
+              <Futuro></Futuro>
               <Anexos/>
               <Cor Valor="15780518"/>
               <TamAuto Valor="-1"/>
@@ -1271,6 +1342,7 @@
       <Dicionario></Dicionario>
       <Nula Valor="0"/>
       <Observacao></Observacao>
+      <Futuro></Futuro>
       <Anexos/>
       <AutoRelacoes AutoRelacionado="0"/>
       <ChildRelacao nome="possue" id="95">
@@ -1291,6 +1363,7 @@
             <Dicionario></Dicionario>
             <Nula Valor="0"/>
             <Observacao></Observacao>
+            <Futuro></Futuro>
             <Anexos/>
             <MaxCard Valor="1"/>
             <MinCard Valor="1"/>
@@ -1322,6 +1395,7 @@
             <Dicionario></Dicionario>
             <Nula Valor="0"/>
             <Observacao></Observacao>
+            <Futuro></Futuro>
             <Anexos/>
             <MaxCard Valor="1"/>
             <MinCard Valor="1"/>
@@ -1347,7 +1421,9 @@
         <Dicionario></Dicionario>
         <Nula Valor="0"/>
         <Observacao></Observacao>
+        <Futuro></Futuro>
         <Anexos/>
+        <SetaDirecao Valor="0"/>
         <Ligacoes>
           <Ligacao Destino_ID="12">
             <MostraCardinalidade Valor="-1" Card_id="97"/>
@@ -1363,6 +1439,7 @@
                 <Dicionario></Dicionario>
                 <Nula Valor="0"/>
                 <Observacao></Observacao>
+                <Futuro></Futuro>
                 <Anexos/>
                 <Cor Valor="15780518"/>
                 <TamAuto Valor="-1"/>
@@ -1390,6 +1467,7 @@
                 <Dicionario></Dicionario>
                 <Nula Valor="0"/>
                 <Observacao></Observacao>
+                <Futuro></Futuro>
                 <Anexos/>
                 <Cor Valor="15780518"/>
                 <TamAuto Valor="-1"/>

@@ -16,7 +16,7 @@
 			<rich:panelMenuItem label="Cadastrar" action="#{equipeBean.prepararInclusao}"/>
 		</rich:panelMenuGroup>
 		
-		<rich:panelMenuGroup label="Propostas"  expandMode="ajax" limitToList="true">
+		<rich:panelMenuGroup label="Proposta"  expandMode="ajax" limitToList="true">
 			<rich:panelMenuItem label="Alocar"  action="#{alocarBean.prepararBean}"/>
 			<rich:panelMenuItem label="Cadastrar" action="#{propostaBean.prepararBean}" />			
 		</rich:panelMenuGroup>

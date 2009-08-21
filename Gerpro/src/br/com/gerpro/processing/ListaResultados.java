@@ -22,7 +22,7 @@ public class ListaResultados implements IListaResultados {
 	//  conteudo do relatorio
 	 private List listapropostas = new ArrayList();
 	 private List listavalores = new ArrayList();
-	 private VoPropostas voProposta;
+	 // private VoPropostas voProposta;
 	 
 	 private FacadeProposta propostaDao = new PropostaDao();
 
@@ -139,17 +139,17 @@ public class ListaResultados implements IListaResultados {
 	/**
 	 * @return the voProposta
 	 */
-	public VoPropostas getVoProposta() {
-		return voProposta;
-	}
-
-
-	/**
-	 * @param voProposta the voProposta to set
-	 */
-	public void setVoProposta(VoPropostas voProposta) {
-		this.voProposta = voProposta;
-	}
+//	public VoPropostas getVoProposta() {
+//		return voProposta;
+//	}
+//
+//
+//	/**
+//	 * @param voProposta the voProposta to set
+//	 */
+//	public void setVoProposta(VoPropostas voProposta) {
+//		this.voProposta = voProposta;
+//	}
 
 
 }

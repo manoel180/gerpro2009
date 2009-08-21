@@ -67,7 +67,7 @@
 	</h:panelGrid>
 	</div>
 	</div>
-	</div>
+	
 </f:view>
 
 <div class="fontBranca" id="rodape"><!-- Rodapé --> <br />

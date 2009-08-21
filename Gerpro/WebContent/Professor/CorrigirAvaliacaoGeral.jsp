@@ -52,7 +52,7 @@
 		</div>	
 	</h:form> </div>
 	</div>
-	</div>
+	
 	
 </f:view>
 

@@ -86,7 +86,7 @@
 
 		</rich:simpleTogglePanel>
 	</h:panelGrid></div>
-	</div>
+	
 
 </f:view>
 
