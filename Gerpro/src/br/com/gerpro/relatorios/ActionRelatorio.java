@@ -37,7 +37,7 @@ import br.com.gerpro.util.HibernateUtil;
 public class ActionRelatorio {
 
 	private static Session session = null;
-	private static Transaction tx = null;
+	private Transaction tx = null;
 	private ImageIcon logo = new ImageIcon(getClass().getResource(
 			"/br/com/gerpro/relatorios/logo.jpg"));
 
