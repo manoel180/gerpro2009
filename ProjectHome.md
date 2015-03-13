@@ -1,0 +1,1 @@
+Sistema destinado a geração e o apoio a correção de PESw da Faculdade Uninorte, implementado pelo alunos do Curso de Desenvolvimento de Software como Trabalho de Conclusão de Curso.
